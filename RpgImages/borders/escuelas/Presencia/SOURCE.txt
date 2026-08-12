@@ -1,0 +1,3 @@
+source: niveles/C/border_r2_c6.png
+school: Presencia
+levels: lv1 cafe/bronce, lv2 plateado, lv3 azul diamante

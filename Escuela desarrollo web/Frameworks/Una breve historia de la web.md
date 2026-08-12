@@ -1,0 +1,3 @@
+## Como fue '?
+
+En sus  inicios el desarrollo para paginas web  , los diferneets navegadores de su momento se enfrentaban unos con otros dificultando mucho el desarrollo pues el codigo usado para un navegador puede tener conflictos  con otro pues todos buscaban su propia organizacion de codigo , en su moemento la salvacion de muchos programadores fue  jQuery una herramienta que era de especial utilidad al traducir el codigo escrito en js a todos los navegadores adaptandolo y transformandolo para ser efectivo univesalmente  

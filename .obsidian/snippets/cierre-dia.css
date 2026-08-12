@@ -1,0 +1,155 @@
+/* Cierre del Día — containers [!hito] y [!oma] solamente */
+
+/*
+ * Negro suave (no puro): menos contraste con el fondo del tema.
+ * No afecta [!warning], [!info], etc.
+ */
+body .markdown-preview-view .callout[data-callout="hito"],
+body .markdown-reading-view .callout[data-callout="hito"],
+body .markdown-source-view.mod-cm6 .callout[data-callout="hito"],
+body .markdown-preview-view .callout[data-callout="oma"],
+body .markdown-reading-view .callout[data-callout="oma"],
+body .markdown-source-view.mod-cm6 .callout[data-callout="oma"] {
+  --callout-color: 36, 36, 36 !important;
+  --callout-opacity: 1 !important;
+  --callout-icon: none;
+  background-color: #1e1e1e !important;
+  background: #1e1e1e !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-left: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 8px !important;
+  box-shadow: none !important;
+  padding: 4px 8px 8px 8px;
+  margin: 0;
+  mix-blend-mode: normal;
+}
+
+body .callout[data-callout="hito"] .callout-title,
+body .callout[data-callout="oma"] .callout-title {
+  gap: 8px;
+  margin-bottom: 8px;
+  background: transparent !important;
+  color: var(--text-normal) !important;
+}
+
+body .callout[data-callout="hito"] .callout-icon,
+body .callout[data-callout="oma"] .callout-icon {
+  display: none !important;
+  color: var(--text-muted) !important;
+}
+
+body .callout[data-callout="hito"] .callout-title-inner,
+body .callout[data-callout="oma"] .callout-title-inner {
+  font-size: 1.05em;
+  font-weight: 700;
+  color: var(--text-normal) !important;
+}
+
+body .callout[data-callout="hito"] .callout-content,
+body .callout[data-callout="oma"] .callout-content {
+  padding: 0;
+  background: transparent !important;
+  color: var(--text-normal);
+}
+
+/* Separación + línea gris entre hitos */
+.callout[data-callout="hito"] + hr {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin: 12px 0;
+}
+
+.callout[data-callout="hito"] + .callout[data-callout="hito"] {
+  margin-top: 12px;
+}
+
+.callout[data-callout="oma"] {
+  margin-top: 8px;
+}
+
+/* Dentro del container: sin doble borde en .mb-card */
+.callout[data-callout="hito"] .mb-card,
+.callout[data-callout="oma"] .mb-card {
+  border: none !important;
+  background: transparent !important;
+  padding: 0 !important;
+  margin: 0 0 12px 0 !important;
+  gap: 4px;
+  box-shadow: none !important;
+}
+
+.callout[data-callout="hito"] .mb-card:last-child,
+.callout[data-callout="oma"] .mb-card:last-child {
+  margin-bottom: 0 !important;
+}
+
+.markdown-source-view.mod-cm6 .callout[data-callout="hito"] .cm-preview-code-block,
+.markdown-source-view.mod-cm6 .callout[data-callout="oma"] .cm-preview-code-block {
+  margin: 0 0 12px 0;
+}
+
+/* Full width inputs */
+.meta-bind-full-width,
+.meta-bind-full-width > * {
+  width: 100% !important;
+  box-sizing: border-box;
+}
+
+.meta-bind-full-width input,
+.meta-bind-full-width textarea,
+.mb-input.meta-bind-full-width input,
+.mb-input.meta-bind-full-width textarea {
+  width: 100% !important;
+  box-sizing: border-box;
+}
+
+/* Slider a ancho completo dentro del card */
+.callout[data-callout="hito"] .mb-input-type-slider,
+.callout[data-callout="oma"] .mb-input-type-slider {
+  width: 100%;
+}
+
+.mb-input-textarea textarea,
+.meta-bind-compact-area textarea {
+  min-height: 2.6em !important;
+  height: auto !important;
+}
+
+/* Qué logré: ~3 renglones */
+.meta-bind-hito-area textarea,
+.mb-input.meta-bind-hito-area textarea {
+  min-height: 4.8em !important;
+  height: 4.8em !important;
+  resize: vertical;
+}
+
+.meta-bind-small-width,
+.meta-bind-small-width > * {
+  width: 80px !important;
+  max-width: 100px;
+}
+
+.mb-card .mb-input {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 4px;
+}
+
+/* Energía (fuera de callout): card ligera */
+.markdown-reading-view .mb-card,
+.markdown-preview-view .mb-card {
+  gap: 8px;
+  padding: 8px 10px;
+  margin: 0 0 12px 0;
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 8px;
+  background: var(--background-primary-alt);
+}
+
+.callout[data-callout="hito"] .mb-card,
+.callout[data-callout="oma"] .mb-card {
+  border: none !important;
+  background: transparent !important;
+  padding: 0 !important;
+}

@@ -1,0 +1,19 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+*.log
+.vscode/
+.idea/
+
+# Obsidian UI state (cambia solo al abrir paneles)
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/cache/
+.trash/
+
+# Dependencias de plugins (rebuild con npm)
+**/node_modules/
+package-lock.json
+
+# Backups locales de este incidente
+*.broken-2026-08-12

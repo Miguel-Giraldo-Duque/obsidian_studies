@@ -1,0 +1,62 @@
+[
+  {
+    "name": "Q1.1 UFC - Primer salto del campeon",
+    "description": "Al terminar el primer habito AM: 1 salto (o talones) + pecho abierto + frase BUENA CAMPEON SIIII antes de tocar el telefono."
+  },
+  {
+    "name": "Q1.2 UFC - Doble reclamo",
+    "description": "Tras el primer habito: 2 saltos cortos + pecho + frase UFC en el segundo salto."
+  },
+  {
+    "name": "Q1.3 UFC - Pecho primero, voz despues",
+    "description": "1s pecho maximo -> 1 salto -> frase UFC con SIIII alargada."
+  },
+  {
+    "name": "Q1.4 UFC - Camara mental del octagono",
+    "description": "1s imagen 'acabo de ganar' -> salto + frase UFC mirando al frente (no al piso)."
+  },
+  {
+    "name": "Q1.5 UFC - Shine sin ensayo",
+    "description": "Max 2s entre 'termine' y movimiento UFC + frase completa en automatico."
+  },
+  {
+    "name": "Q1.6 General - Postura de briefing",
+    "description": "Pies a ancho de hombros, pecho abierto, menton nivelado: 'Hoy comando mi manana.'"
+  },
+  {
+    "name": "Q1.7 General - Tres ordenes",
+    "description": "Postura de general + 3 micro-ordenes concretas para las proximas horas."
+  },
+  {
+    "name": "Q1.8 General - Voz que baja el ruido",
+    "description": "Postura + 'Atencion. Ejecutamos el plan.' Voz mas grave y lenta que lo habitual."
+  },
+  {
+    "name": "Q1.9 General - Senal con la mano",
+    "description": "Postura + 'Avanzamos.' + gesto de mando corto; mirada al frente."
+  },
+  {
+    "name": "Q1.10 General - Briefing sin guion",
+    "description": "Postura de general + 1 frase improvisada de estrategia real del proximo paso."
+  },
+  {
+    "name": "Q1.11 Aperturas - Arriba, laterales, sonrisa",
+    "description": "Brazos arriba -> laterales -> inhalar pecho -> mirar arriba -> mejor sonrisa -> relajar."
+  },
+  {
+    "name": "Q1.12 Aperturas - Doble respiracion",
+    "description": "Dos ciclos de Aperturas; en el segundo sonrisa al menos 2s mirando arriba."
+  },
+  {
+    "name": "Q1.13 Aperturas - Frase de apertura",
+    "description": "Apertura completa y durante la sonrisa: 'Estoy abierto a crecer.'"
+  },
+  {
+    "name": "Q1.14 Aperturas - Sin espejo, sin juicio",
+    "description": "Aperturas de espaldas a espejos; al relajar nombra 1s el juicio y sueltalo en la exhalacion."
+  },
+  {
+    "name": "Q1.15 Aperturas - Shine automatico",
+    "description": "Aperturas en max 2s sin checklist mental; secuencia fluida + sonrisa + relajar."
+  }
+]

@@ -1,0 +1,16 @@
+# Dependencies
+node_modules/
+package-lock.json
+
+# Build output (generated from src/)
+# main.js
+
+# Development
+.DS_Store
+*.log
+.vscode/
+.idea/
+
+# Keep manifest and styles (needed for plugin)
+!manifest.json
+!styles.css

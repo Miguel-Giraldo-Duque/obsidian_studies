@@ -1,0 +1,3 @@
+source: niveles/A/border_r5_c6.png
+school: Autoridad
+levels: lv1 cafe/bronce, lv2 plateado, lv3 dorado brillante

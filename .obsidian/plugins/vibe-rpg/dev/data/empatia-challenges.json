@@ -1,0 +1,482 @@
+[
+  {
+    "bankLevel": 1,
+    "number": 1,
+    "globalNumber": 1,
+    "title": "El Filtro del Cajero",
+    "text": "[El Filtro del Cajero] Analiza las manos del cajero mientras cobra. Responde: _¿Cómo se siente? ¿3 cosas por las que pasa? ¿Y si es su último día?_\n\nTSN: Si sientes prisa, di en tu mente: _\"Estoy teniendo el pensamiento de que esto es lento\"_. Localiza la impaciencia en tus hombros por 5 segundos.",
+    "skillLevel": 1
+  },
+  {
+    "bankLevel": 1,
+    "number": 2,
+    "globalNumber": 2,
+    "title": "La Silueta de la Parada",
+    "text": "[La Silueta de la Parada] Mira a alguien esperando el autobús de forma inmóvil. Decodifica su postura corporal con el protocolo de las 3 preguntas.\n\nTSN: Si sientes apatía, di: _\"Noto la presencia de un vacío en mi pecho\"_. No lo fuerces, solo mide su tamaño.",
+    "skillLevel": 1
+  },
+  {
+    "bankLevel": 1,
+    "number": 3,
+    "globalNumber": 3,
+    "title": "El Pasajero Dormido",
+    "text": "[El Pasajero Dormido] Observa a alguien cabeceando de sueño en el tren. Aplica las 3 preguntas deduciendo su nivel de fatiga acumulada.\n\nTSN: Si te da igual, di: _\"Hola, aburrimiento\"_ y pon tu atención en el peso físico de tus párpados durante 3 respiraciones.",
+    "skillLevel": 1
+  },
+  {
+    "bankLevel": 1,
+    "number": 4,
+    "globalNumber": 4,
+    "title": "El Rostro del Andén",
+    "text": "[El Rostro del Andén] Enfoca a una persona que mira fijamente las vías del metro. Ejecuta el protocolo completo para descifrar su estado.\n\nTSN: Si tu mente divaga, di: _\"Mente dispersa regresando\"_ y ancla la planta de tus pies firmemente contra el suelo.",
+    "skillLevel": 1
+  },
+  {
+    "bankLevel": 1,
+    "number": 5,
+    "globalNumber": 5,
+    "title": "La Fila Silenciosa",
+    "text": "[La Fila Silenciosa] Elige a quien está delante de ti en la fila del banco. Visualiza las últimas 24 horas de esa vida usando las 3 preguntas.\n\nTSN: Si te irrita la espera, di: _\"Mi estómago se está apretando por la prisa\"_. Observa la tensión sin juzgarla.",
+    "skillLevel": 1
+  },
+  {
+    "bankLevel": 1,
+    "number": 6,
+    "globalNumber": 6,
+    "title": "El Copiloto Ausente",
+    "text": "[El Copiloto Ausente] Mira al acompañante de un auto detenido en el tráfico. Define su estado emocional exacto con las 3 preguntas.\n\nTSN: Si piensas en tus propios problemas, di: _\"Pensamientos autorreferenciales detectados\"_ y vuelve a mirar el rostro del extraño.",
+    "skillLevel": 1
+  },
+  {
+    "bankLevel": 1,
+    "number": 7,
+    "globalNumber": 7,
+    "title": "El Caminante Apurado",
+    "text": "[El Caminante Apurado] Sigue con la mirada a alguien que camina rápido. Desmenuza sus 3 urgencias hipotéticas en silencio.\n\nTSN: Si sientes desinterés, di: _\"Esto es desconexión médica, la acepto\"_. Saborea esa planicie emocional por 10 segundos.",
+    "skillLevel": 1
+  },
+  {
+    "bankLevel": 1,
+    "number": 8,
+    "globalNumber": 8,
+    "title": "La Sombra del Conserje",
+    "text": "[La Sombra del Conserje] Mira al personal de limpieza. Ejecuta el protocolo ignorando su uniforme. Asume que el otro no ha tenido la Oportunidad (información) necesaria en lugar de asumir pereza.\n\nTSN: Si notas invisibilidad social, di: _\"Estoy experimentando el filtro de la indiferencia en mi garganta\"_. **¿Para qué? Para mantener una conexión horizontal.**",
+    "skillLevel": 1
+  },
+  {
+    "bankLevel": 1,
+    "number": 9,
+    "globalNumber": 9,
+    "title": "La Observación del Triunfador",
+    "text": "[La Observación del Triunfador] Mira a alguien visiblemente exitoso o un líder en su entorno. Reconoce sus probables \"éxitos ruidosos\" (suerte) y sus miedos internos bajo el protocolo de las 3 preguntas.\n\nTSN: Si sientes inferioridad, di: _\"Mi mente está comparando métricas competitivas\"_. **¿Para qué? Para humanizar la jerarquía y desactivar la autoestima condicional.**",
+    "skillLevel": 1
+  },
+  {
+    "bankLevel": 1,
+    "number": 10,
+    "globalNumber": 10,
+    "title": "El Guardia de la Entrada",
+    "text": "[El Guardia de la Entrada] Mira por 3 segundos al guardia de seguridad estático. Cuestiónate su vulnerabilidad existencial hoy.\n\nTSN: Si sientes alienación, di: _\"Mi mente dice que este hombre es un objeto. Noto esa rigidez en mi nuca\"_.",
+    "skillLevel": 1
+  },
+  {
+    "bankLevel": 1,
+    "number": 11,
+    "globalNumber": 11,
+    "title": "El Repartidor en Pausa",
+    "text": "[El Repartidor en Pausa] Enfoca al repartidor en moto que espera un pedido. Asume que hoy podría ser su último día y aplica el protocolo.\n\nTSN: Si sientes frialdad, di: _\"Hola, hielo en mi plexo. Te doy espacio para descansar aquí\"_.",
+    "skillLevel": 1
+  },
+  {
+    "bankLevel": 1,
+    "number": 12,
+    "globalNumber": 12,
+    "title": "El Reframe del Método Ajeno",
+    "text": "[El Reframe del Método Ajeno] Observa a un colega o proveedor cuyo resultado final haya sido defectuoso o fallido. Valora el esfuerzo de su método o proceso por encima del resultado.\n\nTSN: Si aparece el juicio de incompetencia, di: _\"Estoy fusionado con el resultado\"_. **¿Para qué? Para fomentar la resiliencia técnica y valorar el proceso.**",
+    "skillLevel": 1
+  },
+  {
+    "bankLevel": 1,
+    "number": 13,
+    "globalNumber": 13,
+    "title": "La Recepción Vacía",
+    "text": "[La Recepción Vacía] Mira a la recepcionista que atiende llamadas en automático. Procesa sus tres variables de estrés con las 3 preguntas.\n\nTSN: Si sientes desconexión total, nómbrala clínicamente: _\"Activación de anestesia cognitiva\"_. Observa el vacío.",
+    "skillLevel": 1
+  },
+  {
+    "bankLevel": 1,
+    "number": 14,
+    "globalNumber": 14,
+    "title": "La Mirada del Barrendero",
+    "text": "[La Mirada del Barrendero] Observa al barrendero municipal recolectando desechos. Detén tu marcha mental y ejecuta las 3 preguntas.\n\nTSN: Si tu mente lo esquiva, di: _\"Noto la tendencia evolutiva de mi cerebro a ignorar lo cotidiano\"_.",
+    "skillLevel": 1
+  },
+  {
+    "bankLevel": 1,
+    "number": 15,
+    "globalNumber": 15,
+    "title": "El Lector de Parque",
+    "text": "[El Lector de Parque] Analiza a alguien sentado en una banca leyendo. Descifra su estado anímico actual a través de sus gestos.\n\nTSN: Si sientes que pierdes el tiempo haciendo esto, di: _\"Pensamiento de productividad detectado\"_. Quédate quieto.",
+    "skillLevel": 1
+  },
+  {
+    "bankLevel": 1,
+    "number": 16,
+    "globalNumber": 16,
+    "title": "El Turista Perdido",
+    "text": "[El Turista Perdido] Mira a un extranjero buscando direcciones. Empatiza con su desorientación usando el protocolo de 3 pasos.\n\nTSN: Si sientes apatía territorial, di: _\"Noto una contracción defensiva en mis cejas. La observo\"_.",
+    "skillLevel": 1
+  },
+  {
+    "bankLevel": 1,
+    "number": 17,
+    "globalNumber": 17,
+    "title": "El Escaneo de Pertenencia",
+    "text": "[El Escaneo de Pertenencia] En un espacio público o plaza, observa a alguien que intente encajar sutilmente en un grupo o entorno y se note incómodo. Aplica el protocolo.\n\nTSN: Si sientes indiferencia, di: _\"Noto el impulso de ignorar al desadaptado\"_. **¿Para qué? Para identificar el deseo de pertenencia grupal.**",
+    "skillLevel": 1
+  },
+  {
+    "bankLevel": 1,
+    "number": 18,
+    "globalNumber": 18,
+    "title": "El Fotógrafo Solitario",
+    "text": "[El Fotógrafo Solitario] Observa a alguien tomando fotos solo. Detén el veredicto de que es superficial y procesa su soledad interna.\n\nTSN: Si aparece un juicio crítico, di: _\"Estoy teniendo la historia de que esta persona busca atención\"_.",
+    "skillLevel": 1
+  },
+  {
+    "bankLevel": 1,
+    "number": 19,
+    "globalNumber": 19,
+    "title": "El Deportista Exhausto",
+    "text": "[El Deportista Exhausto] Mira a alguien descansando tras correr, jadeando. Calcula el dolor físico o mental que intenta mitigar.\n\nTSN: Si sientes desconexión, registra la anestesia en tu pecho y di: _\"Cuerpo neutral, mente observadora\"_.",
+    "skillLevel": 1
+  },
+  {
+    "bankLevel": 1,
+    "number": 20,
+    "globalNumber": 20,
+    "title": "El Obrero en el Descanso",
+    "text": "[El Obrero en el Descanso] Analiza al trabajador de construcción almorzando en la acera. Ejecuta el protocolo del último día de vida.\n\nTSN: Si te da incomodidad socioeconómica, di: _\"Siento una opresión de culpa en mi vientre\"_. Sostén la mirada neutral.",
+    "skillLevel": 1
+  },
+  {
+    "bankLevel": 2,
+    "number": 1,
+    "globalNumber": 21,
+    "title": "El Rostro de la Pantalla",
+    "text": "[El Rostro de la Pantalla] Busca a alguien leyendo su teléfono cuyo rostro cambie sutilmente (un micro-fruncimiento). Deduce la crisis o alegría del texto.\n\nTSN: Si sientes pereza mental, di: _\"Mi frente se siente pesada\"_. Sostén la mirada abierta hacia el cambio gestual.",
+    "skillLevel": 2
+  },
+  {
+    "bankLevel": 2,
+    "number": 2,
+    "globalNumber": 22,
+    "title": "El Ajuste del Auricular",
+    "text": "[El Ajuste del Auricular] Mira a alguien que se quita los audífonos con un suspiro pesado. Decodifica su fatiga auditiva con las 3 preguntas.\n\nTSN: Si tu mente divaga, di: _\"Fluctuación de atención\"_ y regresa al ritmo de la respiración del extraño.",
+    "skillLevel": 2
+  },
+  {
+    "bankLevel": 2,
+    "number": 3,
+    "globalNumber": 23,
+    "title": "El Eco del Restaurante",
+    "text": "[El Eco del Restaurante] Observa a alguien comiendo solo en un sitio ruidoso. Procesa sus 3 realidades contextuales sin caer en lástima.\n\nTSN: Si sientes condescendencia, di: _\"Estoy teniendo el pensamiento de que su vida es triste\"_. Elimina el veneno en tu garganta.",
+    "skillLevel": 2
+  },
+  {
+    "bankLevel": 2,
+    "number": 4,
+    "globalNumber": 24,
+    "title": "El Reframe de la Crítica",
+    "text": "[El Reframe de la Crítica] Ante un comentario crítico o feedback negativo de un tercero, detén la reacción inmediata. Elige ver la crítica estrictamente como \"información técnica\" en lugar de un \"ataque personal\".\n\nTSN: Si tu pulso se dispara, di: _\"Mi cuerpo está reaccionando a una amenaza percibida\"_. **¿Para qué? Para reencuadrar el significado fisiológico y regular tu química interna.**",
+    "skillLevel": 2
+  },
+  {
+    "bankLevel": 2,
+    "number": 5,
+    "globalNumber": 25,
+    "title": "El Tecleo Furioso",
+    "text": "[El Tecleo Furioso] Enfoca a alguien que tipea desesperadamente en su laptop en un café. Responde las 3 preguntas rompiendo tu burbuja.\n\nTSN: Si te aíslas, di: _\"Hola, blindaje somático\"_. Siente el aislamiento en tu piel y disuélvelo abriendo los ojos.",
+    "skillLevel": 2
+  },
+  {
+    "bankLevel": 2,
+    "number": 6,
+    "globalNumber": 26,
+    "title": "El Selfi Interrumpido",
+    "text": "[El Selfi Interrumpido] Observa el cambio drástico de rostro de alguien justo después de tomarse una foto sonriendo. Analiza su vacío real.\n\nTSN: Si sientes desprecio por su vanidad, di: _\"Juicio moral detectado en mis ojos\"_. Relaja la vista.",
+    "skillLevel": 2
+  },
+  {
+    "bankLevel": 2,
+    "number": 7,
+    "globalNumber": 27,
+    "title": "El Flujo de Invitación",
+    "text": "[El Flujo de Invitación] En tu próxima conversación, frena tu impulso de hablar de ti. Diseña la charla invitando deliberadamente al otro a compartir primero.\n\nTSN: Si experimentas ansiedad por intervenir, di: _\"Deseo de validación personal detectado\"_. **¿Para qué? Para aumentar la inversión emocional de la otra persona en la conexión.**",
+    "skillLevel": 2
+  },
+  {
+    "bankLevel": 2,
+    "number": 8,
+    "globalNumber": 28,
+    "title": "El Detector de Inversión Verbal",
+    "text": "[El Detector de Inversión Verbal] Durante una plática con un compañero, observa analíticamente qué temas específicos hacen que gaste más energía verbal o gesticule más. Aplica el protocolo de las 3 preguntas sobre esos focos.\n\nTSN: Si te aburres, di: _\"Mi mente quiere desconectarse\"_. **¿Para qué? Para identificar sus valores load-bearing (de carga).**",
+    "skillLevel": 2
+  },
+  {
+    "bankLevel": 2,
+    "number": 9,
+    "globalNumber": 29,
+    "title": "El Espejo Emocional",
+    "text": "[El Espejo Emocional] Ante alguien que te cuente un problema, no ofrezcas soluciones técnicas inmediatamente. Refleja su emoción diciendo: _\"Parece que esta situación te está generando una carga de frustración/estrés\"_.\n\nTSN: Si absorbes su tensión, di: _\"Esto es su estrés, no el mío\"_. **¿Para qué? Para validar su realidad sin absorber su cortisol.**",
+    "skillLevel": 2
+  },
+  {
+    "bankLevel": 2,
+    "number": 10,
+    "globalNumber": 30,
+    "title": "La Curiosidad No Juiciosa",
+    "text": "[La Curiosidad No Juiciosa] Cuando alguien exprese una opinión con la que discrepes profundamente, no contraargumentes. Pregunta de forma neutral: _¿Cómo llegaste a esa conclusión?_ y aplica el protocolo de las 3 preguntas a su proceso mental.\n\nTSN: Si sientes rabia intelectual, di: _\"Mi ego se siente agredido\"_. **¿Para qué? Para mapear modelos mentales distintos al tuyo.**",
+    "skillLevel": 2
+  },
+  {
+    "bankLevel": 2,
+    "number": 11,
+    "globalNumber": 31,
+    "title": "La Gratitud por la Inversión",
+    "text": "[La Gratitud por la Inversión] Cuando un amigo o colega te confíe una situación personal difícil, detén la charla casual y di explícitamente: _\"Gracias por confiarme esto, sé que no es fácil de contar\"_.\n\nTSN: Si te sientes incómodo ante su vulnerabilidad, di: _\"Noto incomodidad social en mi pecho\"_. **¿Para qué? Para validar su vulnerabilidad como un activo de valor.**",
+    "skillLevel": 2
+  },
+  {
+    "bankLevel": 2,
+    "number": 12,
+    "globalNumber": 32,
+    "title": "El Suavizado de la Vergüenza",
+    "text": "[El Suavizado de la Vergüenza] Si notas que un interlocutor evita el contacto visual, se sonroja o titubea por un error menor, baja conscientemente el tono y volumen de tu voz.\n\nTSN: Si sientes el impulso de dominar o corregir con fuerza, di: _\"Impulso de dominancia detectado\"_. **¿Para qué? Para analizar el lenguaje no verbal de la vergüenza y no sobrecargar su sistema de amenaza.**",
+    "skillLevel": 2
+  },
+  {
+    "bankLevel": 2,
+    "number": 13,
+    "globalNumber": 33,
+    "title": "La Despedida de Estación",
+    "text": "[La Despedida de Estación] Mira un abrazo prolongado entre dos personas en una terminal. Mide el impacto si fuera su último día juntos.\n\nTSN: Si te sientes rígido o como un intruso, di: _\"Cuerpo de piedra\"_. Habita esa rigidez por 10 segundos.",
+    "skillLevel": 2
+  },
+  {
+    "bankLevel": 2,
+    "number": 14,
+    "globalNumber": 34,
+    "title": "El Placebo Social de Progreso",
+    "text": "[El Placebo Social de Progreso] Identifica un avance real (por pequeño que sea) en el desempeño de alguien a tu alrededor y reconócelo detalladamente en público o privado.\n\nTSN: Si tu mente minimiza el logro ajeno, di: _\"Envidia o tacañería emocional detectada en mi entrecejo\"_. **¿Para qué? Para que su creencia en su capacidad mejore su rendimiento biológico.**",
+    "skillLevel": 2
+  },
+  {
+    "bankLevel": 2,
+    "number": 15,
+    "globalNumber": 35,
+    "title": "El Paciente que Espera",
+    "text": "[El Paciente que Espera] Mira a quien espera afuera de una clínica con papeles médicos en mano. Procesa su posible diagnóstico.\n\nTSN: Si evitas mirar por miedo a la enfermedad, di: _\"Noto miedo a la fragilidad en mi vientre\"_. Quédate mirando.",
+    "skillLevel": 2
+  },
+  {
+    "bankLevel": 2,
+    "number": 16,
+    "globalNumber": 36,
+    "title": "El Nocebo Social Transgredido",
+    "text": "[El Nocebo Social Transgredido] Observa a alguien que se auto-limita debido a una etiqueta externa (ej. \"soy malo para esto\" o \"por mi edad ya no puedo\"). Escúchalo con compasión radical y ejecuta el protocolo.\n\nTSN: Si sientes ganas de darle un consejo condescendiente, di: _\"Mi mente quiere jugar al salvador\"_. **¿Para qué? Para no reforzar su estructura de fracaso.**",
+    "skillLevel": 2
+  },
+  {
+    "bankLevel": 2,
+    "number": 17,
+    "globalNumber": 37,
+    "title": "La Vulnerabilidad Liderada",
+    "text": "[La Vulnerabilidad Liderada] En una reunión o grupo donde todos simulen perfección, comparte abiertamente un error de proceso propio que hayas cometido recientemente.\n\nTSN: Si experimentas pánico al juicio ajeno, di: _\"Miedo a la exposición en mi plexo\"_. Sostén la declaración. **¿Para qué? Para reducir el \"coste de reporte\" en el grupo y que otros admitan los suyos.**",
+    "skillLevel": 2
+  },
+  {
+    "bankLevel": 2,
+    "number": 18,
+    "globalNumber": 38,
+    "title": "El Regreso del Trabajo",
+    "text": "[El Regreso del Trabajo] En el último transporte de la noche, analiza a quien va apoyado contra la ventana con los ojos cerrados.\n\nTSN: Si sientes indiferencia nocturna, nómbrala: _\"Inercia de Medianoche\"_. Obliga al cerebro a lanzar las 3 hipótesis.",
+    "skillLevel": 2
+  },
+  {
+    "bankLevel": 2,
+    "number": 19,
+    "globalNumber": 39,
+    "title": "El Uniforme Incómodo",
+    "text": "[El Uniforme Incómodo] Observa a alguien atrapado en un traje de botarga publicitaria calurosa. Empatiza con su aislamiento térmico y mental.\n\nTSN: Si te causa gracia superficial, di: _\"Filtro de burla activo\"_. Siente el calor simulado en tu propio cuerpo.",
+    "skillLevel": 2
+  },
+  {
+    "bankLevel": 2,
+    "number": 20,
+    "globalNumber": 40,
+    "title": "La Mirada del Desempleado",
+    "text": "[La Mirada del Desempleado] Identifica a alguien revisando ofertas de empleo con rostro sombrío. Rompe el muro de tu propia estabilidad.\n\nTSN: Si sientes resistencia a sintonizar con su escasez, di: _\"Noto un candado de protección en mi pecho\"_.",
+    "skillLevel": 2
+  },
+  {
+    "bankLevel": 3,
+    "number": 1,
+    "globalNumber": 41,
+    "title": "La Paradoja del Conductor",
+    "text": "[La Paradoja del Conductor] Enfrenta mentalmente al conductor que te acaba de cerrar el paso de forma temeraria. Deduce sus 3 crisis extremas.\n\nTSN: Si deseas insultar, rastrea el fuego en tus manos y di: _\"Estoy experimentando una oleada de ira en mi pecho\"_. No ejecutes el insulto.",
+    "skillLevel": 3
+  },
+  {
+    "bankLevel": 3,
+    "number": 2,
+    "globalNumber": 42,
+    "title": "El Por Qué del Miedo",
+    "text": "[El Por Qué del Miedo] Durante una discusión acalorada con tu pareja, socio o compañero de trabajo, frena la escalada verbal. Inquiere con calma: _¿Qué es lo que más te preocupa de que esto falle?_\n\nTSN: Si tu mente quiere ganar el argumento, di: _\"Necesidad de tener la razón detectada\"_. **¿Para qué? Para llegar a los cimientos de su miedo y desactivar el conflicto.**",
+    "skillLevel": 3
+  },
+  {
+    "bankLevel": 3,
+    "number": 3,
+    "globalNumber": 43,
+    "title": "El Deseo de Ser Amado",
+    "text": "[El Deseo de Ser Amado] Mira fijamente a un extraño que esté actuando de forma abiertamente hostil o grosera en un entorno público. Piensa textualmente: _\"Esta persona no actuaría de forma tan reactiva si no tuviera un deseo profundo de ser aceptada\"_.\n\nTSN: Si experimentas desprecio visceral, di: _\"Mis puños se están apretando. Siento la alarma biológica\"_. **¿Para qué? Para neutralizar tu propio sistema de defensa.**",
+    "skillLevel": 3
+  },
+  {
+    "bankLevel": 3,
+    "number": 4,
+    "globalNumber": 44,
+    "title": "La Amabilidad ante la Hostilidad Técnica",
+    "text": "[La Amabilidad ante la Hostilidad Técnica] Si un subordinado o colega comete un error crítico que te afecta directamente, detén la reprimenda punitiva. Di con firmeza pero calidez: _\"Cualquiera en tu posición podría haber pasado por alto ese dato o cometido ese fallo. Vamos a resolverlo\"_.\n\nTSN: Si sientes el deseo de humillar o castigar, di: _\"Furia punitiva activa en mi garganta\"_. **¿Para qué? Para activar su sistema de seguridad biológica.**",
+    "skillLevel": 3
+  },
+  {
+    "bankLevel": 3,
+    "number": 5,
+    "globalNumber": 45,
+    "title": "La Compasión Firme vs Indulgencia",
+    "text": "[La Compasión Firme vs Indulgencia] Confronta a alguien que esté ejecutando un comportamiento dañino o tóxico en tu entorno. Hazlo desde la amabilidad absoluta, pero marcando un límite estructural inquebrantable (ej: _\"Entiendo perfectamente tu frustración, pero no voy a permitir que me hables en ese tono\"_).\n\nTSN: Si sientes miedo a la confrontación o debilidad indulgente, di: _\"Evitación del conflicto detectada en mi estómago\"_. **¿Para qué? Para proteger la integridad del sistema.**",
+    "skillLevel": 3
+  },
+  {
+    "bankLevel": 3,
+    "number": 6,
+    "globalNumber": 46,
+    "title": "El Análisis de Causas Sistémicas",
+    "text": "[El Análisis de Causas Sistémicas] Ante un fallo operativo grave provocado por otra persona, prohíbete buscar culpables individuales durante las primeras dos horas. Investiga qué parte de la estructura, la falta de capacitación o el diseño del flujo falló _antes_ de señalar al individuo.\n\nTSN: Si experimentas la urgencia de desahogar la culpa en alguien, di: _\"Sesgo de atribución activa\"_. **¿Para qué? Para entrenarte como un arquitecto social justo.**",
+    "skillLevel": 3
+  },
+  {
+    "bankLevel": 3,
+    "number": 7,
+    "globalNumber": 47,
+    "title": "El Espejo del Mendigo",
+    "text": "[El Espejo del Mendigo] Pasa junto a alguien en situación de calle extrema. Míralo a los ojos 3 segundos completos y ejecuta el protocolo de las 3 preguntas.\n\nTSN: Si tu mente se congela de repulsión o culpa, di: _\"Habito un vacío helado en mi plexo solar\"_. No desvíes la mirada por 3 segundos.",
+    "skillLevel": 3
+  },
+  {
+    "bankLevel": 3,
+    "number": 8,
+    "globalNumber": 48,
+    "title": "La Crisis de Adicción",
+    "text": "[La Crisis de Adicción] Mira a una persona bajo los efectos severos de sustancias en la vía pública. Desmenuza el dolor de su biografía profunda.\n\nTSN: Si sientes asco o juicio moral, di: _\"Mi estómago se está contrayendo en señal de rechazo\"_. Sostén la observación clínica.",
+    "skillLevel": 3
+  },
+  {
+    "bankLevel": 3,
+    "number": 9,
+    "globalNumber": 49,
+    "title": "El Detonante Político",
+    "text": "[El Detonante Político] Lee una publicación de alguien que defienda una postura ideológica que detestas. Pregúntate rigurosamente sus 3 miedos base.\n\nTSN: Si experimentas rabia visceral, di: _\"Noto una barrera protectora de asco en mi garganta\"_. Sigue leyendo sin cerrar la app.",
+    "skillLevel": 3
+  },
+  {
+    "bankLevel": 3,
+    "number": 10,
+    "globalNumber": 50,
+    "title": "La Discapacidad Severa",
+    "text": "[La Discapacidad Severa] Cruza tu camino con alguien que sufra una deformidad física muy visible. Obliga a tu mirada a sostenerse abierta y neutral.\n\nTSN: Si por incomodidad retiras los ojos, di: _\"Tensión evasiva en mi cuello\"_. Regresa la mirada al plano humano con suavidad.",
+    "skillLevel": 3
+  },
+  {
+    "bankLevel": 3,
+    "number": 11,
+    "globalNumber": 51,
+    "title": "La Expresión del Delincuente",
+    "text": "[La Expresión del Delincuente] Mira el rostro de alguien arrestado en las noticias. Procesa científicamente su nivel de descomposición humana.\n\nTSN: Si sientes deseos de venganza, di: _\"Estoy experimentando la historia mental de que esta persona no merece compasión\"_.",
+    "skillLevel": 3
+  },
+  {
+    "bankLevel": 3,
+    "number": 12,
+    "globalNumber": 52,
+    "title": "El Olor Repulsivo",
+    "text": "[El Olor Repulsivo] Entra a un vagón donde alguien emita un olor muy fuerte por falta de higiene. Calcula el nivel de abandono que sufre.\n\nTSN: Si sientes náuseas o rabia, di: _\"Nudo de rechazo en mi nariz y boca\"_. Mantén la respiración acompasada sin hacer gestos de desprecio.",
+    "skillLevel": 3
+  },
+  {
+    "bankLevel": 3,
+    "number": 13,
+    "globalNumber": 53,
+    "title": "El Predicador Invasivo",
+    "text": "[El Predicador Invasivo] Escucha a alguien gritando fanatismo religioso con megáfono. Imagina la tremenda necesidad de control de su mente.\n\nTSN: Si te genera desprecio intelectual, di: _\"Soberbia detectada en mi entrecejo\"_. Baja las defensas del ego.",
+    "skillLevel": 3
+  },
+  {
+    "bankLevel": 3,
+    "number": 14,
+    "globalNumber": 54,
+    "title": "El Llanto Desconsolado",
+    "text": "[El Llanto Desconsolado] Encuentra a un extraño llorando a lágrima viva en público. Quédate cerca en silencio y procesa su duelo actual.\n\nTSN: Si deseas huir por miedo a la intensidad emocional, di: _\"Siento un temblor de desamparo en mi propio pecho\"_. No te muevas.",
+    "skillLevel": 3
+  },
+  {
+    "bankLevel": 3,
+    "number": 15,
+    "globalNumber": 55,
+    "title": "La Demencia Pública",
+    "text": "[La Demencia Pública] Observa a un anciano desorientado hablando solo de forma errática. Haz el mapa mental de su fragmentación cognitiva.\n\nTSN: Si sientes pánico a envejecer, di: _\"Miedo al deterioro detectado en mi espalda baja\"_. Sostén la observación del anciano.",
+    "skillLevel": 3
+  },
+  {
+    "bankLevel": 3,
+    "number": 16,
+    "globalNumber": 56,
+    "title": "El Comportamiento Tóxico",
+    "text": "[El Comportamiento Tóxico] Presencia a alguien tratando mal a su propia pareja o hijo de forma pasivo-agresiva. Descifra su cadena de trauma heredado.\n\nTSN: Si quieres juzgar con severidad, di: _\"Opresión de juez en mi corazón\"_. Recuerda que el abuso es dolor transmitido.",
+    "skillLevel": 3
+  },
+  {
+    "bankLevel": 3,
+    "number": 17,
+    "globalNumber": 57,
+    "title": "La Envidia del Éxito",
+    "text": "[La Envidia del Éxito] Mira a alguien notablemente más joven ostentando un lujo extremo con arrogancia. Analiza qué tres vacíos oculta su fachada.\n\nTSN: Si sientes una punzada de amargura, di: _\"Hola, envidia defensiva en mi estómago\"_. Sommelier-testea ese ácido sin avergonzarte.",
+    "skillLevel": 3
+  },
+  {
+    "bankLevel": 3,
+    "number": 18,
+    "globalNumber": 58,
+    "title": "El Cuerpo Moribundo",
+    "text": "[El Cuerpo Moribundo] Observa a un enfermo grave con serias dificultades para respirar en un hospital. Habita el destino biológico compartido.\n\nTSN: Si te invade el miedo a la muerte, di: _\"Presencia de un vacío negro en mi mente\"_. Quédate perfectamente quieto habitando ese vacío.",
+    "skillLevel": 3
+  },
+  {
+    "bankLevel": 3,
+    "number": 19,
+    "globalNumber": 59,
+    "title": "El Espejo del Enemigo",
+    "text": "[El Espejo del Enemigo] Trae a tu mente a la persona que más daño te ha hecho. Ejecuta las 3 preguntas sobre su patología o historia mental.\n\nTSN: Si tu pecho se cierra con un candado de hielo, di: _\"Candado defensivo activo\"_. Mide su diámetro exacto por 10 segundos sin forzar amor.",
+    "skillLevel": 3
+  },
+  {
+    "bankLevel": 3,
+    "number": 20,
+    "globalNumber": 60,
+    "title": "El Umbral del Espejo",
+    "text": "[El Umbral del Espejo] Mírate fijamente a los ojos en un espejo bajo una luz cruda. Aplica las 3 preguntas contigo mismo con total honestidad.\n\nTSN: Si tu mente responde con autocrítica dura o silencio pesado, di: _\"Estoy teniendo el pensamiento de que no soy suficiente\"_. Inhabita tu propio reflejo con aceptación radical.",
+    "skillLevel": 3
+  }
+]
