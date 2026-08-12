@@ -2989,6 +2989,282 @@ class NewRewardModal extends Modal {
 }
 
 // ============================================================================
+// VOW EDITOR MODAL (create / edit)
+// ============================================================================
+class VowEditorModal extends Modal {
+    constructor(app, plugin, onSubmit, vowId = null) {
+        super(app);
+        this.plugin = plugin;
+        this.onSubmit = onSubmit;
+        this.vowId = vowId;
+        this.isEdit = !!vowId;
+    }
+
+    onOpen() {
+        const { contentEl } = this;
+        const service = new VowService(this.plugin);
+        const existing = this.isEdit ? service.getVow(this.vowId) : null;
+
+        if (this.isEdit && !existing) {
+            contentEl.createEl('p', { text: 'Vow no encontrado.' });
+            return;
+        }
+
+        contentEl.createEl('h2', { text: this.isEdit ? 'Editar vow' : 'Nuevo vow' });
+        contentEl.createEl('p', {
+            cls: 'rpg-modal-subtitle',
+            text: 'Título + creencia en el banner; elegí arte de RpgImages/vows.'
+        });
+
+        let title = existing?.title || '';
+        let inscription = existing?.inscription || '';
+        let imagePath = existing?.imagePath || '';
+        let cols = existing?.cols || 5;
+        let rows = existing?.rows || 10;
+
+        const banner = contentEl.createDiv({ cls: 'rpg-vow-banner rpg-vow-banner-modal' });
+        const imagePreview = contentEl.createDiv({ cls: 'rpg-boss-image-preview' });
+
+        const refreshBanner = () => {
+            banner.empty();
+            banner.createDiv({ cls: 'rpg-vow-banner-title', text: title.trim() || 'Título del vow' });
+            banner.createDiv({
+                cls: 'rpg-vow-banner-inscription',
+                text: inscription.trim() || 'Creencia / inscripción…'
+            });
+
+            imagePreview.empty();
+            if (!imagePath) {
+                imagePreview.createEl('p', { cls: 'rpg-subtitle', text: 'Sin imagen seleccionada' });
+                return;
+            }
+            const wrap = imagePreview.createDiv({ cls: 'rpg-vow-modal-art' });
+            const file = this.app.vault.getAbstractFileByPath(imagePath);
+            if (file) {
+                const img = wrap.createEl('img', { cls: 'rpg-vault-image' });
+                img.src = this.app.vault.adapter.getResourcePath(file.path);
+                img.alt = file.name;
+            } else {
+                wrap.createDiv({ cls: 'rpg-vault-image-placeholder', text: '?' });
+            }
+            imagePreview.createDiv({
+                cls: 'rpg-tome-preview-name',
+                text: imagePath.replace(/\\/g, '/').split('/').pop()
+            });
+        };
+
+        new Setting(contentEl)
+            .setName('Título')
+            .setDesc('Nombre corto del vow (aparece en el banner)')
+            .addText(text => text
+                .setPlaceholder('Autocompasión')
+                .setValue(title)
+                .onChange(value => {
+                    title = value;
+                    refreshBanner();
+                }));
+
+        new Setting(contentEl)
+            .setName('Creencia / inscripción')
+            .setDesc('La frase de identidad que iluminás con evidencias')
+            .addTextArea(text => {
+                text.setPlaceholder('Soy una persona…');
+                text.setValue(inscription);
+                text.inputEl.rows = 3;
+                text.onChange(value => {
+                    inscription = value;
+                    refreshBanner();
+                });
+            });
+
+        const vowImages = service.listVowImages(this.app);
+        new Setting(contentEl)
+            .setName('Imagen')
+            .setDesc(`Elegí un archivo de ${VOWS_IMAGES_FOLDER}`)
+            .addDropdown(dd => {
+                dd.addOption('', '— Sin imagen —');
+                vowImages.forEach(file => dd.addOption(file.path, file.name));
+                if (imagePath && !vowImages.some(f => f.path === imagePath || f.path.replace(/\\/g, '/') === imagePath.replace(/\\/g, '/'))) {
+                    const label = imagePath.replace(/\\/g, '/').split('/').pop();
+                    dd.addOption(imagePath, `${label} (actual)`);
+                }
+                dd.setValue(imagePath || '');
+                dd.onChange(value => {
+                    imagePath = value;
+                    refreshBanner();
+                });
+            });
+
+        new Setting(contentEl)
+            .setName('Columnas')
+            .addText(text => text
+                .setValue(String(cols))
+                .onChange(value => {
+                    const n = parseInt(value, 10);
+                    if (!Number.isNaN(n) && n > 0) cols = n;
+                }));
+
+        new Setting(contentEl)
+            .setName('Filas')
+            .addText(text => text
+                .setValue(String(rows))
+                .onChange(value => {
+                    const n = parseInt(value, 10);
+                    if (!Number.isNaN(n) && n > 0) rows = n;
+                }));
+
+        refreshBanner();
+
+        new Setting(contentEl)
+            .addButton(btn => btn
+                .setButtonText('Cancelar')
+                .onClick(() => this.close()))
+            .addButton(btn => btn
+                .setButtonText(this.isEdit ? 'Guardar' : 'Crear')
+                .setCta()
+                .onClick(async () => {
+                    if (!title.trim()) {
+                        new Notice('El vow necesita un título.');
+                        return;
+                    }
+                    if (this.isEdit) {
+                        service.updateVow(this.vowId, { title, inscription, imagePath, cols, rows });
+                    } else {
+                        service.createVow({ title, inscription, imagePath, cols, rows });
+                    }
+                    await this.plugin.saveSettings();
+                    new Notice(this.isEdit ? 'Vow actualizado' : 'Vow creado');
+                    if (this.onSubmit) this.onSubmit();
+                    this.close();
+                }));
+    }
+
+    onClose() { this.contentEl.empty(); }
+}
+
+// ============================================================================
+// LINK HITO → VOW MODAL
+// ============================================================================
+class LinkHitoToVowModal extends Modal {
+    constructor(app, plugin) {
+        super(app);
+        this.plugin = plugin;
+    }
+
+    getActiveDailyMeta() {
+        const file = this.app.workspace.getActiveFile();
+        if (!file) return { file: null, cache: null, date: new Date().toISOString().slice(0, 10) };
+        const cache = this.app.metadataCache.getFileCache(file);
+        const base = file.basename || '';
+        const dateMatch = base.match(/^(\d{4}-\d{2}-\d{2})/);
+        return {
+            file,
+            cache,
+            date: dateMatch ? dateMatch[1] : new Date().toISOString().slice(0, 10)
+        };
+    }
+
+    onOpen() {
+        const { contentEl } = this;
+        const service = new VowService(this.plugin);
+        const vows = service.listVows();
+        const { file, cache, date } = this.getActiveDailyMeta();
+        const fm = cache?.frontmatter || {};
+
+        contentEl.createEl('h2', { text: 'Vincular hito a vow' });
+        contentEl.createEl('p', {
+            cls: 'rpg-modal-subtitle',
+            text: file
+                ? `Nota: ${file.basename} · fecha ${date}`
+                : 'Abrí una nota diaria primero (o elegí hito vacío y pegá texto luego).'
+        });
+
+        let hitoIndex = 1;
+        let vowId = vows[0]?.id || '';
+        const preview = contentEl.createDiv({ cls: 'rpg-vow-hito-preview' });
+
+        const readHitoText = (idx) => {
+            const raw = fm[`hito${idx}`];
+            return raw != null ? String(raw).trim() : '';
+        };
+
+        const refreshPreview = () => {
+            preview.empty();
+            const text = readHitoText(hitoIndex);
+            preview.createEl('strong', { text: `Hito ${hitoIndex}:` });
+            preview.createEl('p', {
+                text: text || '(vacío — escribí el hito en el diario antes de vincular)'
+            });
+        };
+
+        new Setting(contentEl)
+            .setName('Hito')
+            .addDropdown(dd => {
+                [1, 2, 3].forEach(n => {
+                    const t = readHitoText(n);
+                    const label = t ? `Hito ${n}: ${t.slice(0, 40)}${t.length > 40 ? '…' : ''}` : `Hito ${n} (vacío)`;
+                    dd.addOption(String(n), label);
+                });
+                dd.setValue('1');
+                dd.onChange(value => {
+                    hitoIndex = parseInt(value, 10) || 1;
+                    refreshPreview();
+                });
+            });
+
+        new Setting(contentEl)
+            .setName('Vow')
+            .setDesc('Lista dinámica desde Hero → Vows')
+            .addDropdown(dd => {
+                if (vows.length === 0) {
+                    dd.addOption('', '— No hay vows —');
+                } else {
+                    vows.forEach(v => {
+                        const n = service.revealedCount(v);
+                        const target = service.targetCells(v);
+                        dd.addOption(v.id, `${v.title} (${n}/${target})`);
+                    });
+                }
+                dd.setValue(vowId);
+                dd.onChange(value => { vowId = value; });
+            });
+
+        refreshPreview();
+
+        new Setting(contentEl)
+            .addButton(btn => btn
+                .setButtonText('Cancelar')
+                .onClick(() => this.close()))
+            .addButton(btn => btn
+                .setButtonText('Vincular')
+                .setCta()
+                .onClick(async () => {
+                    if (!vowId) {
+                        new Notice('Creá un vow primero en Hero → Vows.');
+                        return;
+                    }
+                    const experience = readHitoText(hitoIndex);
+                    try {
+                        service.addGrain(vowId, { date, experience });
+                        await this.plugin.saveSettings();
+                        if (file) {
+                            await this.app.fileManager.processFrontMatter(file, (frontmatter) => {
+                                frontmatter[`vowId${hitoIndex}`] = vowId;
+                            });
+                        }
+                        this.plugin.refreshViews?.();
+                        new Notice(`Grano agregado a vow (${hitoIndex})`);
+                        this.close();
+                    } catch (err) {
+                        new Notice(err.message || String(err));
+                    }
+                }));
+    }
+
+    onClose() { this.contentEl.empty(); }
+}
+
+// ============================================================================
 // BOSS FIGHT MODAL
 // ============================================================================
 class NewBossFightModal extends Modal {
@@ -4008,6 +4284,9 @@ module.exports = class LifeRPG extends Plugin {
         this.registerView(VIEW_TYPE_HERO, (leaf) => new HeroView(leaf, this));
         this.addRibbonIcon('swords', 'Open Hero Sheet', () => this.activateView());
         this.addCommand({ id: 'open-hero-sheet', name: 'Open Hero Sheet', callback: () => this.activateView() });
+        this.addCommand({ id: 'link-hito-to-vow', name: 'Vincular hito del diario a un vow', callback: () => {
+            new LinkHitoToVowModal(this.app, this).open();
+        }});
         this.addCommand({ id: 'sync-habit-skills', name: 'Sync Habit Checklists to Skills', callback: () => this.syncHabitSkills(true) });
         this.addCommand({ id: 'create-character', name: 'Create/Retake Character Assessment', callback: () => {
             new CharacterCreationModal(this.app, this, () => this.refreshViews()).open();
@@ -4212,6 +4491,35 @@ module.exports = class LifeRPG extends Plugin {
             }))
             : [];
 
+        let migratedVows;
+        if (!Array.isArray(saved.vows)) {
+            migratedVows = JSON.parse(JSON.stringify(DEFAULT_SEED_VOWS));
+        } else {
+            migratedVows = saved.vows.map(raw => {
+                const cols = Math.max(1, Number(raw.cols) || 5);
+                const rows = Math.max(1, Number(raw.rows) || 10);
+                return {
+                    id: raw.id || `vow_${Date.now()}_${Math.random().toString(36).substr(2, 6)}`,
+                    title: (raw.title || '').trim() || 'Vow',
+                    inscription: (raw.inscription || raw.belief || '').trim(),
+                    imagePath: (raw.imagePath || '').trim(),
+                    cols,
+                    rows,
+                    grains: Array.isArray(raw.grains)
+                        ? raw.grains.map((g, i) => ({
+                            id: g.id || `grain_${i}`,
+                            date: g.date || '',
+                            experience: g.experience || g.text || ''
+                        }))
+                        : []
+                };
+            });
+            const hasAutocompasion = migratedVows.some(v => String(v.id) === 'autocompasion');
+            if (!hasAutocompasion) {
+                migratedVows.unshift(JSON.parse(JSON.stringify(DEFAULT_SEED_VOWS[0])));
+            }
+        }
+
         const characterProfile = saved.characterProfile
             ? {
                 ...saved.characterProfile,
@@ -4256,6 +4564,7 @@ module.exports = class LifeRPG extends Plugin {
             // Knowledge Tomes & Flowers
             tomes: migratedTomes,
             flowers: migratedFlowers,
+            vows: migratedVows,
             // Dungeon System (Focus Sessions)
             activeDungeon: saved.activeDungeon || null,
             totalDungeonsCleared: saved.totalDungeonsCleared || 0,
@@ -4288,6 +4597,10 @@ module.exports = class LifeRPG extends Plugin {
                 ...(saved.habitTimerChain || {})
             }
         };
+
+        if (!Array.isArray(saved.vows) || !saved.vows.some(v => String(v.id) === 'autocompasion')) {
+            await this.saveSettings();
+        }
     }
 
     async saveSettings() {
@@ -4324,6 +4637,7 @@ module.exports = class LifeRPG extends Plugin {
             // Knowledge Tomes & Flowers
             tomes: [],
             flowers: [],
+            vows: JSON.parse(JSON.stringify(DEFAULT_SEED_VOWS)),
             // Dungeon System
             activeDungeon: null,
             totalDungeonsCleared: 0,

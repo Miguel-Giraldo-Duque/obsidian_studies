@@ -1,20 +1,20 @@
 {
   "level": 11,
-  "xp": 117,
+  "xp": 137,
   "hp": 210,
   "maxHp": 210,
-  "gold": 2616,
-  "totalGoldEarned": 1916,
-  "totalHabitsCompleted": 177,
+  "gold": 2626,
+  "totalGoldEarned": 1926,
+  "totalHabitsCompleted": 179,
   "totalQuestsCompleted": 42,
-  "lastPlayedDate": "Mon Aug 10 2026",
+  "lastPlayedDate": "Wed Aug 12 2026",
   "domains": [
     {
       "id": "psychologicalWellbeing",
       "name": "Psychological Well-being",
       "score": 69,
       "level": 10,
-      "xp": 225,
+      "xp": 235,
       "icon": "🧠",
       "color": "#9b59b6"
     },
@@ -23,7 +23,7 @@
       "name": "Health",
       "score": 71,
       "level": 8,
-      "xp": 82,
+      "xp": 92,
       "icon": "💪",
       "color": "#e74c3c"
     },
@@ -103,7 +103,7 @@
       ],
       "skillXp": 10,
       "completed": false,
-      "streak": 10,
+      "streak": 0,
       "bestStreak": 10,
       "lastCompletedDate": "Sun Aug 09 2026",
       "id": "habit_1785588794845_0_5401ak",
@@ -123,10 +123,10 @@
         "skill_1782600801284_anttohfwh"
       ],
       "skillXp": 10,
-      "completed": false,
-      "streak": 10,
+      "completed": true,
+      "streak": 0,
       "bestStreak": 10,
-      "lastCompletedDate": "Sun Aug 09 2026",
+      "lastCompletedDate": "Wed Aug 12 2026",
       "id": "habit_1785588794845_1_aitecv",
       "linkedBossIds": [],
       "bossDamage": 10
@@ -141,10 +141,10 @@
         "skill_1782596299032_o0ambkloe"
       ],
       "skillXp": 10,
-      "completed": false,
-      "streak": 10,
+      "completed": true,
+      "streak": 0,
       "bestStreak": 10,
-      "lastCompletedDate": "Sun Aug 09 2026",
+      "lastCompletedDate": "Wed Aug 12 2026",
       "id": "habit_1785588794845_2_p1xxd7",
       "linkedBossIds": [
         "1783917794860",
@@ -163,7 +163,7 @@
       ],
       "skillXp": 10,
       "completed": false,
-      "streak": 10,
+      "streak": 0,
       "bestStreak": 10,
       "lastCompletedDate": "Sun Aug 09 2026",
       "id": "habit_1785588794845_3_jhrj2u",
@@ -220,7 +220,7 @@
       ],
       "skillXp": 10,
       "completed": false,
-      "streak": 7,
+      "streak": 0,
       "bestStreak": 7,
       "lastCompletedDate": "Sun Aug 09 2026",
       "id": "habit_1785588794845_6_ipm0v7",
@@ -319,7 +319,7 @@
       ],
       "bossDamage": 10,
       "completed": false,
-      "streak": 7,
+      "streak": 0,
       "bestStreak": 7,
       "lastCompletedDate": "Sun Aug 09 2026",
       "id": "habit_1785588794845_12_4mynu4"
@@ -335,7 +335,7 @@
       ],
       "skillXp": 10,
       "completed": false,
-      "streak": 9,
+      "streak": 0,
       "bestStreak": 9,
       "lastCompletedDate": "Sun Aug 09 2026",
       "id": "habit_1785588794845_13_gk42or",
@@ -351,7 +351,7 @@
       "linkedSkillIds": [],
       "skillXp": 10,
       "completed": false,
-      "streak": 7,
+      "streak": 0,
       "bestStreak": 7,
       "lastCompletedDate": "Sun Aug 09 2026",
       "id": "habit_1785611046950_carrera_2555",
@@ -8272,13 +8272,88 @@
   },
   "aiQuestsGenerated": 0,
   "currentPhase": "dissonance",
-  "psychicEntropy": 100,
+  "psychicEntropy": 90,
   "lastWisdomDate": "Sat Aug 01 2026",
   "dailyWisdom": {
     "text": "When you are in the Dissonance phase, search for excitement and enthusiasm and pursue that without shame.",
     "category": "dissonance"
   },
   "activityLog": [
+    {
+      "id": "1786541248373",
+      "timestamp": "2026-08-12T13:27:28.373Z",
+      "category": "boss_damage",
+      "description": "Dealt 10 damage to Kryos",
+      "details": {
+        "damage": 10,
+        "remaining": 210
+      }
+    },
+    {
+      "id": "1786541248370",
+      "timestamp": "2026-08-12T13:27:28.370Z",
+      "category": "boss_damage",
+      "description": "Dealt 10 damage to Phobos Aliénos",
+      "details": {
+        "damage": 10,
+        "remaining": 110
+      }
+    },
+    {
+      "id": "1786541248360",
+      "timestamp": "2026-08-12T13:27:28.360Z",
+      "category": "boss_damage",
+      "description": "Dealt 10 damage to Kryos",
+      "details": {
+        "damage": 10,
+        "remaining": 220
+      }
+    },
+    {
+      "id": "1786541248346",
+      "timestamp": "2026-08-12T13:27:28.346Z",
+      "category": "boss_damage",
+      "description": "Dealt 10 damage to Phobos Aliénos",
+      "details": {
+        "damage": 10,
+        "remaining": 120
+      }
+    },
+    {
+      "id": "1786541248334",
+      "timestamp": "2026-08-12T13:27:28.334Z",
+      "category": "habit_complete",
+      "description": "10min meditación FOM y OM",
+      "details": {
+        "xp": 10,
+        "gold": 5,
+        "streak": 0,
+        "linkedSkillIds": [
+          "skill_1782596299032_o0ambkloe"
+        ],
+        "linkedBossIds": [
+          "1783917794860",
+          "1783927787622"
+        ],
+        "bossDamage": 10
+      }
+    },
+    {
+      "id": "1786539265742",
+      "timestamp": "2026-08-12T12:54:25.742Z",
+      "category": "habit_complete",
+      "description": "30min ejercicio",
+      "details": {
+        "xp": 10,
+        "gold": 5,
+        "streak": 0,
+        "linkedSkillIds": [
+          "skill_1782600801284_anttohfwh"
+        ],
+        "linkedBossIds": [],
+        "bossDamage": 10
+      }
+    },
     {
       "id": "1786329967051",
       "timestamp": "2026-08-10T02:46:07.051Z",
@@ -13038,7 +13113,7 @@
       ]
     }
   ],
-  "lastPenaltyCheck": "2026-08-04T03:54:53.202Z",
+  "lastPenaltyCheck": "2026-08-12T12:52:40.429Z",
   "penaltyEnabled": true,
   "bossFights": [
     {
@@ -13081,7 +13156,7 @@
       "imagePath": "RpgImages/bosses/Icon14.png",
       "tier": "primordial",
       "maxHp": 2000,
-      "currentHp": 130,
+      "currentHp": 110,
       "domain": "psychologicalWellbeing",
       "defeated": false,
       "createdAt": "2026-07-13T04:43:14.860Z",
@@ -13096,7 +13171,7 @@
       "imagePath": "RpgImages/bosses/Icon34.png",
       "tier": "primordial",
       "maxHp": 2000,
-      "currentHp": 230,
+      "currentHp": 210,
       "domain": "psychologicalWellbeing",
       "defeated": false,
       "createdAt": "2026-07-13T07:29:47.622Z",
@@ -13407,6 +13482,68 @@
       "damageReport": null
     }
   ],
+  "vows": [
+    {
+      "id": "autocompasion",
+      "title": "Autocompasión",
+      "inscription": "Soy una persona autocompasiva en mis momentos de mayor dolor.",
+      "imagePath": "RpgImages/vows/autocompasion_higanbana.png",
+      "cols": 5,
+      "rows": 10,
+      "grains": [
+        {
+          "id": "g1",
+          "date": "2026-07-12",
+          "experience": "Me abracé en el colegio cuando me sentía solo y me dije: todo pasará, Migue."
+        },
+        {
+          "id": "g2",
+          "date": "2026-07-18",
+          "experience": "Hice un chocolate caliente mientras sentía culpa; me cuidé en vez de castigarme."
+        },
+        {
+          "id": "g3",
+          "date": "2026-07-22",
+          "experience": "Admití a papá que no trabajé lo suficiente y me sostuve por dentro."
+        },
+        {
+          "id": "g4",
+          "date": "2026-07-28",
+          "experience": "Mirando el árbol de Gilberto Alzate: pronto tanta paz como él; no hay algo mal en mí."
+        },
+        {
+          "id": "g5",
+          "date": "2026-08-01",
+          "experience": "Cuidé las plantas con el mismo amor que quiero darme."
+        },
+        {
+          "id": "g6",
+          "date": "2026-08-03",
+          "experience": "Rechazo en el bus: no me critiqué; quedó una sensación de calma."
+        },
+        {
+          "id": "g7",
+          "date": "2026-08-05",
+          "experience": "Me levanté de noche, chocolate + libreta, y me escribí con ternura."
+        },
+        {
+          "id": "g8",
+          "date": "2026-08-08",
+          "experience": "Camino por limonadas, nervioso: me motivé y me cuidé en el trayecto."
+        },
+        {
+          "id": "g9",
+          "date": "2026-08-09",
+          "experience": "En el sillón, mano en el pecho: \"Migue, ¿me permitís decirte algo?\""
+        },
+        {
+          "id": "g10",
+          "date": "2026-08-10",
+          "experience": "Novia se enojó en el parque; me traté con amabilidad, mano en el pecho bajo el sol."
+        }
+      ]
+    }
+  ],
   "activeDungeon": null,
   "totalDungeonsCleared": 0,
   "totalFocusMinutes": 0,
@@ -13573,13 +13710,13 @@
         "name": "Meditación",
         "category": "mind",
         "level": 4,
-        "xp": 105,
+        "xp": 115,
         "xpToNextLevel": 337,
         "description": "Hechizo de canalización activa el (presente)\n\n- Mecánica: Mientras canalizas el Presente, cargas un multiplicador de energía. Al terminar la canalización, el siguiente hechizo lanzado de la escuela de Calidez (conexión, escucha) o Poder (acción, autoridad) se ejecuta con máxima potencia.\n\n- Foco laser y monitoreo abierto permite maxima persepción sin generar reacciones por estimulo.\n\n- Disipa (ansiedad bruma del futuro, sindrome del impostor) permite el estado [Armonia] \nque convierte cualquier hechizo bloqueante de vision en nubes inocentes.",
         "discoveredFrom": "manual",
         "discoveredDate": "2026-06-27T21:38:19.032Z",
-        "lastPracticed": "2026-08-09T15:19:59.577Z",
-        "totalPracticeCount": 58,
+        "lastPracticed": "2026-08-12T13:27:28.335Z",
+        "totalPracticeCount": 59,
         "kind": "spell",
         "spellSchool": "Presencia",
         "effects": [
@@ -13630,7 +13767,7 @@
         "kind": "spell",
         "spellSchool": "Vitalidad",
         "level": 3,
-        "xp": 10,
+        "xp": 20,
         "xpToNextLevel": 225,
         "description": "Hechizo corporal que fortalece energía, resistencia y presencia física.",
         "effects": [
@@ -13646,8 +13783,8 @@
         "spellPowerBonus": 5,
         "discoveredFrom": "native-habit",
         "discoveredDate": "2026-06-27T22:53:21.284Z",
-        "lastPracticed": "2026-08-09T14:34:03.944Z",
-        "totalPracticeCount": 26
+        "lastPracticed": "2026-08-12T12:54:25.742Z",
+        "totalPracticeCount": 27
       },
       {
         "id": "skill_1782600801284_710kzzmwo",

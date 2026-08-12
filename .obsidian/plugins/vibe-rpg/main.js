@@ -290,6 +290,31 @@ const SKILL_TREE_ORNATE_BORDER_SCHOOLS = ['Autoridad', 'Presencia', 'Calidez'];
 const SKILL_TREE_BORDER_ROOT = 'RpgImages/borders/escuelas';
 /** Numbered skill ability icons (1.png … N.png) for skill-tree node carousel */
 const SKILL_ICONS_FOLDER = 'RpgImages/skills';
+const VOWS_IMAGES_FOLDER = 'RpgImages/vows';
+
+/** Seed vow: autocompasión (higanbana grid 5×10). Used only when settings.vows is missing. */
+const DEFAULT_SEED_VOWS = [
+    {
+        id: 'autocompasion',
+        title: 'Autocompasión',
+        inscription: 'Soy una persona autocompasiva en mis momentos de mayor dolor.',
+        imagePath: 'RpgImages/vows/autocompasion_higanbana.png',
+        cols: 5,
+        rows: 10,
+        grains: [
+            { id: 'g1', date: '2026-07-12', experience: 'Me abracé en el colegio cuando me sentía solo y me dije: todo pasará, Migue.' },
+            { id: 'g2', date: '2026-07-18', experience: 'Hice un chocolate caliente mientras sentía culpa; me cuidé en vez de castigarme.' },
+            { id: 'g3', date: '2026-07-22', experience: 'Admití a papá que no trabajé lo suficiente y me sostuve por dentro.' },
+            { id: 'g4', date: '2026-07-28', experience: 'Mirando el árbol de Gilberto Alzate: pronto tanta paz como él; no hay algo mal en mí.' },
+            { id: 'g5', date: '2026-08-01', experience: 'Cuidé las plantas con el mismo amor que quiero darme.' },
+            { id: 'g6', date: '2026-08-03', experience: 'Rechazo en el bus: no me critiqué; quedó una sensación de calma.' },
+            { id: 'g7', date: '2026-08-05', experience: 'Me levanté de noche, chocolate + libreta, y me escribí con ternura.' },
+            { id: 'g8', date: '2026-08-08', experience: 'Camino por limonadas, nervioso: me motivé y me cuidé en el trayecto.' },
+            { id: 'g9', date: '2026-08-09', experience: 'En el sillón, mano en el pecho: "Migue, ¿me permitís decirte algo?"' },
+            { id: 'g10', date: '2026-08-10', experience: 'Novia se enojó en el parque; me traté con amabilidad, mano en el pecho bajo el sol.' }
+        ]
+    }
+];
 
 function resolveSkillTreeSchoolId(school) {
     const raw = String(school || '').trim();
@@ -321,9 +346,140 @@ function getSkillTreeBorderTier(currentLevel) {
 const BOSS_FRAME_ROOT = 'RpgImages/borders/bosses/frames';
 const BOSS_FRAME_STANDARD = `${BOSS_FRAME_ROOT}/frame_063_r6_c6.png`;
 const BOSS_FRAME_PRIMORDIAL = `${BOSS_FRAME_ROOT}/frame_047_r5_c0_s1.png`;
+const NIVELES_FRAME_ROOT = 'RpgImages/borders/niveles';
+const MAX_BOSS_PHASES = 5;
+const DEFAULT_BOSS_HP_BAR_COLOR = '#e74c3c';
+const DEFAULT_BOSS_CARD_BG_COLOR = '#2d3436';
+const DEFAULT_BOSS_HP_BAR_COLOR_PRIMORDIAL = '#9b59b6';
+const DEFAULT_BOSS_CARD_BG_COLOR_PRIMORDIAL = '#1a0a2e';
 
 function getBossFramePath(tier) {
     return tier === 'primordial' ? BOSS_FRAME_PRIMORDIAL : BOSS_FRAME_STANDARD;
+}
+
+function createDefaultBossPhase(id, overrides = {}) {
+    return {
+        id: Number(id) || 1,
+        maxHp: overrides.maxHp != null ? Number(overrides.maxHp) : 100,
+        framePath: overrides.framePath || '',
+        hpBarColor: overrides.hpBarColor || DEFAULT_BOSS_HP_BAR_COLOR,
+        cardBgColor: overrides.cardBgColor || DEFAULT_BOSS_CARD_BG_COLOR,
+        imagePath: overrides.imagePath != null && overrides.imagePath !== ''
+            ? overrides.imagePath
+            : null
+    };
+}
+
+function defaultBossPhaseColors(tier) {
+    if (tier === 'primordial') {
+        return {
+            hpBarColor: DEFAULT_BOSS_HP_BAR_COLOR_PRIMORDIAL,
+            cardBgColor: DEFAULT_BOSS_CARD_BG_COLOR_PRIMORDIAL
+        };
+    }
+    return {
+        hpBarColor: DEFAULT_BOSS_HP_BAR_COLOR,
+        cardBgColor: DEFAULT_BOSS_CARD_BG_COLOR
+    };
+}
+
+function normalizeBossPhases(boss, phaseCount = null) {
+    const colors = defaultBossPhaseColors(boss?.tier);
+    const existing = Array.isArray(boss?.phases) ? boss.phases : [];
+    const count = Math.max(
+        1,
+        Math.min(
+            MAX_BOSS_PHASES,
+            phaseCount != null ? Number(phaseCount) : (existing.length || 1)
+        )
+    );
+    const phases = [];
+    for (let i = 0; i < count; i++) {
+        const prev = existing[i] || {};
+        const baseMax = i === 0
+            ? (prev.maxHp ?? boss?.maxHp ?? 100)
+            : (prev.maxHp ?? (boss?.maxHp ?? 100) * (i + 1));
+        phases.push(createDefaultBossPhase(i + 1, {
+            maxHp: baseMax,
+            framePath: prev.framePath || '',
+            hpBarColor: prev.hpBarColor || colors.hpBarColor,
+            cardBgColor: prev.cardBgColor || colors.cardBgColor,
+            imagePath: prev.imagePath ?? null
+        }));
+    }
+    return phases;
+}
+
+function getBossPhaseIndex(boss) {
+    const phases = Array.isArray(boss?.phases) ? boss.phases : [];
+    if (phases.length === 0) return 0;
+    const phase = Number(boss.phase) || 1;
+    return Math.max(0, Math.min(phases.length - 1, phase - 1));
+}
+
+function getActivePhaseConfig(boss) {
+    const phases = Array.isArray(boss?.phases) ? boss.phases : [];
+    if (phases.length === 0) {
+        const colors = defaultBossPhaseColors(boss?.tier);
+        return createDefaultBossPhase(1, {
+            maxHp: boss?.maxHp ?? 100,
+            framePath: '',
+            hpBarColor: colors.hpBarColor,
+            cardBgColor: colors.cardBgColor,
+            imagePath: boss?.imagePath || null
+        });
+    }
+    return phases[getBossPhaseIndex(boss)];
+}
+
+function resolveBossFramePath(boss) {
+    const phase = getActivePhaseConfig(boss);
+    if (phase?.framePath) return phase.framePath;
+    return getBossFramePath(boss?.tier);
+}
+
+function resolveBossImagePath(boss) {
+    const phase = getActivePhaseConfig(boss);
+    if (phase?.imagePath) return phase.imagePath;
+    return boss?.imagePath || '';
+}
+
+function getActiveBossPhaseVisual(boss) {
+    const phases = Array.isArray(boss?.phases) ? boss.phases : [];
+    const phaseNum = phases.length ? getBossPhaseIndex(boss) + 1 : 1;
+    const phaseCount = phases.length || 1;
+    const phase = getActivePhaseConfig(boss);
+    return {
+        phase: phaseNum,
+        phaseCount,
+        maxHp: phase.maxHp ?? boss?.maxHp ?? 100,
+        framePath: resolveBossFramePath(boss),
+        imagePath: resolveBossImagePath(boss),
+        hpBarColor: phase.hpBarColor || DEFAULT_BOSS_HP_BAR_COLOR,
+        cardBgColor: phase.cardBgColor || DEFAULT_BOSS_CARD_BG_COLOR,
+        stripedHp: phaseNum >= 2
+    };
+}
+
+/** List PNG frames under RpgImages/borders/niveles (skips _sources / _ui). */
+function listNivelesFramePaths(app) {
+    const root = NIVELES_FRAME_ROOT.replace(/\\/g, '/');
+    return (app.vault.getFiles() || [])
+        .filter(file => {
+            const p = file.path.replace(/\\/g, '/');
+            if (!p.startsWith(`${root}/`)) return false;
+            if (p.includes('/_sources/') || p.includes('/_ui/')) return false;
+            return /\.png$/i.test(file.name);
+        })
+        .map(file => file.path.replace(/\\/g, '/'))
+        .sort((a, b) => a.localeCompare(b, undefined, { numeric: true }));
+}
+
+function nivelesFrameLabel(framePath) {
+    const root = NIVELES_FRAME_ROOT.replace(/\\/g, '/');
+    const p = (framePath || '').replace(/\\/g, '/');
+    if (p.startsWith(`${root}/`)) return p.slice(root.length + 1);
+    return p.split('/').pop() || p;
 }
 
 const SKILL_TREE_NODE_ROLES = {
@@ -3205,6 +3361,138 @@ class SkillTreeService {
 }
 
 // ============================================================================
+// DEV/SRC/SERVICES/VOWSERVICE.JS
+// ============================================================================
+
+/* VowService - Belief vows with grid-reveal evidence grains */
+
+class VowService {
+    constructor(plugin) {
+        this.plugin = plugin;
+    }
+
+    createId(prefix) {
+        return `${prefix}_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+    }
+
+    ensureVows() {
+        const s = this.plugin.settings;
+        if (!Array.isArray(s.vows)) {
+            s.vows = [];
+        }
+        return s.vows;
+    }
+
+    listVows() {
+        return this.ensureVows();
+    }
+
+    getVow(vowId) {
+        return this.ensureVows().find(v => String(v.id) === String(vowId)) || null;
+    }
+
+    targetCells(vow) {
+        const cols = Math.max(1, Number(vow.cols) || 5);
+        const rows = Math.max(1, Number(vow.rows) || 10);
+        return cols * rows;
+    }
+
+    revealedCount(vow) {
+        return Array.isArray(vow.grains) ? vow.grains.length : 0;
+    }
+
+    intensityLabel(vow) {
+        const target = this.targetCells(vow);
+        const count = this.revealedCount(vow);
+        const pct = target > 0 ? count / target : 0;
+        if (pct < 0.15) return 'Chispa';
+        if (pct < 0.35) return 'Bajo brillo';
+        if (pct < 0.6) return 'Tejido visible';
+        if (pct < 0.85) return 'Casi completo';
+        return 'Identidad bordada';
+    }
+
+    listVowImages(app) {
+        const folder = typeof VOWS_IMAGES_FOLDER !== 'undefined'
+            ? VOWS_IMAGES_FOLDER
+            : 'RpgImages/vows';
+        return app.vault.getFiles()
+            .filter(file => {
+                const p = file.path.replace(/\\/g, '/');
+                return p.startsWith(`${folder}/`) &&
+                    !p.includes('/_refs/') &&
+                    /\.(png|jpe?g|gif|webp|svg)$/i.test(file.name);
+            })
+            .sort((a, b) => a.name.localeCompare(b.name, undefined, { numeric: true }));
+    }
+
+    normalizeVow(raw) {
+        const cols = Math.max(1, Number(raw.cols) || 5);
+        const rows = Math.max(1, Number(raw.rows) || 10);
+        return {
+            id: raw.id || this.createId('vow'),
+            title: (raw.title || '').trim() || 'Vow',
+            inscription: (raw.inscription || raw.belief || '').trim(),
+            imagePath: (raw.imagePath || '').trim(),
+            cols,
+            rows,
+            grains: Array.isArray(raw.grains)
+                ? raw.grains.map((g, i) => ({
+                    id: g.id || `grain_${i}`,
+                    date: g.date || '',
+                    experience: g.experience || g.text || ''
+                }))
+                : []
+        };
+    }
+
+    createVow({ title, inscription, imagePath, cols = 5, rows = 10 }) {
+        const vows = this.ensureVows();
+        const vow = this.normalizeVow({
+            id: this.createId('vow'),
+            title,
+            inscription,
+            imagePath,
+            cols,
+            rows,
+            grains: []
+        });
+        vows.push(vow);
+        return vow;
+    }
+
+    updateVow(vowId, patch) {
+        const vow = this.getVow(vowId);
+        if (!vow) return null;
+        if (patch.title != null) vow.title = String(patch.title).trim() || vow.title;
+        if (patch.inscription != null) vow.inscription = String(patch.inscription).trim();
+        if (patch.imagePath != null) vow.imagePath = String(patch.imagePath).trim();
+        if (patch.cols != null) vow.cols = Math.max(1, Number(patch.cols) || vow.cols);
+        if (patch.rows != null) vow.rows = Math.max(1, Number(patch.rows) || vow.rows);
+        return vow;
+    }
+
+    addGrain(vowId, { date, experience }) {
+        const vow = this.getVow(vowId);
+        if (!vow) throw new Error('Vow no encontrado');
+        if (!Array.isArray(vow.grains)) vow.grains = [];
+        const target = this.targetCells(vow);
+        if (vow.grains.length >= target) {
+            throw new Error(`Este vow ya tiene ${target} evidencias (meta completa)`);
+        }
+        const text = String(experience || '').trim();
+        if (!text) throw new Error('La experiencia del hito está vacía');
+        const grain = {
+            id: this.createId('grain'),
+            date: String(date || '').trim() || new Date().toISOString().slice(0, 10),
+            experience: text
+        };
+        vow.grains.push(grain);
+        return grain;
+    }
+}
+
+// ============================================================================
 // DEV/SRC/VIEWS/HEROVIEW.JS
 // ============================================================================
 
@@ -3217,6 +3505,7 @@ class HeroView extends ItemView {
         this.activeArenaTab = 'boss'; // For Arena sub-tabs
         this.activeSkillTreeSchool = 'Autoridad';
         this.selectedSkillTreeNodeId = null;
+        this.selectedVowId = null;
         this.skillTreePanBySchool = {};
         this.skillTreeDidPan = false;
         this.aiChatInput = '';
@@ -3313,6 +3602,7 @@ class HeroView extends ItemView {
             { id: 'elder', label: '🧙 Elder' },
             { id: 'quests', label: '⚔️ Quests' },
             { id: 'arena', label: '🐉 Arena' },
+            { id: 'vows', label: '🕯️ Vows' },
             { id: 'tavern', label: '🏨 Tavern' },
             { id: 'log', label: '📜 History' }
         ];
@@ -3335,6 +3625,7 @@ class HeroView extends ItemView {
         else if (this.activeTab === 'elder') this.renderElder(tabContent);
         else if (this.activeTab === 'quests') this.renderQuestsHub(tabContent);
         else if (this.activeTab === 'arena') this.renderArena(tabContent);
+        else if (this.activeTab === 'vows') this.renderVows(tabContent);
         else if (this.activeTab === 'tavern') this.renderTavern(tabContent);
         else if (this.activeTab === 'log') this.renderActivityLog(tabContent);
     }
@@ -4502,6 +4793,180 @@ class HeroView extends ItemView {
         );
     }
 
+    // ============================================================================
+    // VOWS TAB - Belief grid-reveal
+    // ============================================================================
+    renderVows(container) {
+        const service = new VowService(this.plugin);
+        const vows = service.listVows();
+
+        const header = container.createDiv({ cls: 'rpg-vows-header' });
+        header.createEl('h3', { text: '🕯️ Vows' });
+        header.createEl('p', {
+            cls: 'rpg-subtitle',
+            text: 'Cada evidencia revela un sector. Vincular desde el diario con «Vincular a vow».'
+        });
+
+        const actions = header.createDiv({ cls: 'rpg-vows-actions' });
+        const newBtn = actions.createEl('button', { text: '+ Nuevo vow', cls: 'rpg-btn' });
+        newBtn.onclick = () => {
+            new VowEditorModal(this.app, this.plugin, () => this.render(), null).open();
+        };
+
+        if (this.selectedVowId) {
+            const vow = service.getVow(this.selectedVowId);
+            if (!vow) {
+                this.selectedVowId = null;
+            } else {
+                this.renderVowDetail(container, vow, service);
+                return;
+            }
+        }
+
+        const list = container.createDiv({ cls: 'rpg-vows-list' });
+        if (vows.length === 0) {
+            list.createEl('p', { cls: 'rpg-subtitle', text: 'Todavía no hay vows. Creá el primero.' });
+            return;
+        }
+
+        vows.forEach((vow, index) => {
+            this.renderVowBlock(list, vow, service, { compact: true });
+            if (index < vows.length - 1) {
+                list.createDiv({ cls: 'rpg-vow-divider' });
+            }
+        });
+    }
+
+    renderVowBanner(parentEl, vow, service) {
+        const banner = parentEl.createDiv({ cls: 'rpg-vow-banner' });
+        banner.createDiv({ cls: 'rpg-vow-banner-title', text: vow.title || 'Vow' });
+        if (vow.inscription) {
+            banner.createDiv({ cls: 'rpg-vow-banner-inscription', text: vow.inscription });
+        }
+        const meta = banner.createDiv({ cls: 'rpg-vow-banner-meta' });
+        const count = service.revealedCount(vow);
+        const target = service.targetCells(vow);
+        meta.createSpan({ text: `${count} / ${target}` });
+        meta.createSpan({ cls: 'rpg-vow-stage', text: service.intensityLabel(vow) });
+        return banner;
+    }
+
+    renderVowGrid(parentEl, vow, service, { large = false } = {}) {
+        const cols = Math.max(1, Number(vow.cols) || 5);
+        const rows = Math.max(1, Number(vow.rows) || 10);
+        const target = cols * rows;
+        const revealed = service.revealedCount(vow);
+        const grains = Array.isArray(vow.grains) ? vow.grains : [];
+
+        const stage = parentEl.createDiv({
+            cls: large ? 'rpg-vow-stage-art rpg-vow-stage-art-large' : 'rpg-vow-stage-art'
+        });
+        const canvas = stage.createDiv({ cls: 'rpg-vow-canvas' });
+
+        if (vow.imagePath) {
+            this.renderVaultImage(canvas, vow.imagePath, {
+                className: 'rpg-vow-art-wrap',
+                placeholder: '?'
+            });
+        } else {
+            canvas.createDiv({ cls: 'rpg-vault-image-placeholder', text: '🕯️' });
+        }
+
+        const grid = canvas.createDiv({ cls: 'rpg-vow-grid' });
+        const detailHost = parentEl.createDiv({ cls: 'rpg-vow-cell-detail' });
+        detailHost.createEl('p', {
+            cls: 'rpg-subtitle',
+            text: 'Hover o click en una celda revelada para ver fecha + experiencia.'
+        });
+
+        for (let i = 0; i < target; i++) {
+            const col = i % cols;
+            const row = Math.floor(i / cols);
+            const isRevealed = i < revealed;
+            const grain = isRevealed ? grains[i] : null;
+            const tip = grain
+                ? `${grain.date || '?'} — ${grain.experience || ''}`
+                : `Celda ${i + 1} (oculta)`;
+
+            const cell = grid.createDiv({
+                cls: `rpg-vow-cell ${isRevealed ? 'revealed' : 'hidden'}`,
+                attr: {
+                    style: `left:${(col / cols) * 100}%;top:${(row / rows) * 100}%;width:${100 / cols}%;height:${100 / rows}%;`,
+                    title: tip
+                }
+            });
+
+            if (isRevealed) {
+                cell.onclick = () => {
+                    detailHost.empty();
+                    detailHost.createEl('strong', { text: grain?.date || `Celda ${i + 1}` });
+                    detailHost.createEl('p', { text: grain?.experience || '' });
+                };
+            }
+        }
+
+        return stage;
+    }
+
+    renderVowBlock(container, vow, service, { compact = true } = {}) {
+        const block = container.createDiv({ cls: 'rpg-vow-block' });
+        this.renderVowBanner(block, vow, service);
+        this.renderVowGrid(block, vow, service, { large: !compact });
+
+        const row = block.createDiv({ cls: 'rpg-vow-block-actions' });
+        const moreBtn = row.createEl('button', { text: 'Ver más', cls: 'rpg-btn' });
+        moreBtn.onclick = () => {
+            this.selectedVowId = vow.id;
+            this.render();
+        };
+        const editBtn = row.createEl('button', { text: 'Editar', cls: 'rpg-btn secondary' });
+        editBtn.onclick = () => {
+            new VowEditorModal(this.app, this.plugin, () => this.render(), vow.id).open();
+        };
+    }
+
+    renderVowDetail(container, vow, service) {
+        const backRow = container.createDiv({ cls: 'rpg-vows-actions' });
+        const backBtn = backRow.createEl('button', { text: '← Volver a vows', cls: 'rpg-btn secondary' });
+        backBtn.onclick = () => {
+            this.selectedVowId = null;
+            this.render();
+        };
+        const editBtn = backRow.createEl('button', { text: 'Editar', cls: 'rpg-btn' });
+        editBtn.onclick = () => {
+            new VowEditorModal(this.app, this.plugin, () => this.render(), vow.id).open();
+        };
+
+        const detail = container.createDiv({ cls: 'rpg-vow-detail' });
+        this.renderVowBanner(detail, vow, service);
+        this.renderVowGrid(detail, vow, service, { large: true });
+
+        detail.createEl('h4', { text: 'Historial de evidencias' });
+        const table = detail.createEl('table', { cls: 'rpg-vow-table' });
+        const thead = table.createEl('thead');
+        const headRow = thead.createEl('tr');
+        ['#', 'Fecha', 'Experiencia'].forEach(h => headRow.createEl('th', { text: h }));
+        const tbody = table.createEl('tbody');
+        const grains = Array.isArray(vow.grains) ? vow.grains : [];
+        if (grains.length === 0) {
+            const tr = tbody.createEl('tr');
+            const td = tr.createEl('td', { text: 'Sin evidencias todavía. Vinculá un hito desde el diario.' });
+            td.colSpan = 3;
+        } else {
+            grains.forEach((g, idx) => {
+                const tr = tbody.createEl('tr');
+                tr.createEl('td', { text: String(idx + 1) });
+                tr.createEl('td', { text: g.date || '—' });
+                tr.createEl('td', { text: g.experience || '' });
+            });
+        }
+
+        detail.createEl('p', {
+            cls: 'rpg-subtitle',
+            text: 'MVP: mismo grid sobre PNG. Avance real = hitos vinculados.'
+        });
+    }
+
     getNodeRoleLabel(node) {
         const role = node?.nodeRole || 'standard';
         return SKILL_TREE_NODE_ROLES[role]?.label || 'Estándar';
@@ -4546,17 +5011,19 @@ class HeroView extends ItemView {
     }
 
     renderBossVisual(parentEl, boss) {
+        const visual = getActiveBossPhaseVisual(boss);
         const isPrimordial = boss.tier === 'primordial';
         const iconWrap = parentEl.createDiv({
-            cls: `rpg-boss-icon has-ornate-frame ${isPrimordial ? 'primordial' : ''}`
+            cls: `rpg-boss-icon has-ornate-frame ${isPrimordial ? 'primordial' : ''} phase-${visual.phase}`
         });
-        const framePath = getBossFramePath(boss.tier);
+        const framePath = visual.framePath || getBossFramePath(boss.tier);
         this.renderVaultImage(iconWrap, framePath, {
             className: 'rpg-boss-art-frame',
             placeholder: ''
         });
-        if (boss.imagePath) {
-            this.renderVaultImage(iconWrap, boss.imagePath, {
+        const portraitPath = visual.imagePath || boss.imagePath;
+        if (portraitPath) {
+            this.renderVaultImage(iconWrap, portraitPath, {
                 className: 'rpg-boss-image-wrap',
                 placeholder: boss.icon || '🐉'
             });
@@ -5858,7 +6325,16 @@ class HeroView extends ItemView {
 
         // Render active bosses
         activeBosses.forEach((boss, index) => {
-            const bossCard = container.createDiv({ cls: `rpg-boss-card active ${boss.tier === 'primordial' ? 'primordial' : ''}` });
+            const visual = getActiveBossPhaseVisual(boss);
+            const bossCard = container.createDiv({
+                cls: `rpg-boss-card active phase-${visual.phase} ${boss.tier === 'primordial' ? 'primordial' : ''}`
+            });
+            if (visual.cardBgColor) {
+                bossCard.style.setProperty('--boss-card-bg', visual.cardBgColor);
+            }
+            if (visual.hpBarColor) {
+                bossCard.style.setProperty('--boss-hp-color', visual.hpBarColor);
+            }
 
             const editBtn = bossCard.createEl('button', {
                 cls: 'rpg-boss-edit-pencil',
@@ -5873,6 +6349,12 @@ class HeroView extends ItemView {
             this.renderBossVisual(bossHeader, boss);
             const bossInfo = bossHeader.createDiv({ cls: 'rpg-boss-info' });
             bossInfo.createEl('h4', { text: boss.name });
+            if (visual.phaseCount > 1) {
+                bossInfo.createDiv({
+                    cls: 'rpg-boss-phase-badge',
+                    text: `Fase ${visual.phase} / ${visual.phaseCount}`
+                });
+            }
             if (boss.tier === 'primordial') {
                 bossInfo.createDiv({ cls: 'rpg-boss-tier primordial', text: 'Nivel Primordial' });
             } else if (boss.tier && BOSS_TIERS[boss.tier]) {
@@ -5885,7 +6367,10 @@ class HeroView extends ItemView {
             const hpBar = bossCard.createDiv({ cls: 'rpg-boss-hp' });
             hpBar.createDiv({ cls: 'rpg-boss-hp-label', text: `HP: ${boss.currentHp} / ${boss.maxHp}` });
             const hpBarBg = hpBar.createDiv({ cls: 'rpg-boss-hp-bar' });
-            hpBarBg.createDiv({ cls: 'rpg-boss-hp-fill', attr: { style: `width: ${hpPercent}%` } });
+            const fillCls = visual.stripedHp
+                ? 'rpg-boss-hp-fill rpg-boss-hp-fill--striped'
+                : 'rpg-boss-hp-fill';
+            hpBarBg.createDiv({ cls: fillCls, attr: { style: `width: ${hpPercent}%` } });
 
             // Linked Tasks
             bossCard.createDiv({ cls: 'rpg-boss-tasks-label', text: '⚔️ Damage Sources:' });
@@ -9788,6 +10273,282 @@ class NewRewardModal extends Modal {
 }
 
 // ============================================================================
+// VOW EDITOR MODAL (create / edit)
+// ============================================================================
+class VowEditorModal extends Modal {
+    constructor(app, plugin, onSubmit, vowId = null) {
+        super(app);
+        this.plugin = plugin;
+        this.onSubmit = onSubmit;
+        this.vowId = vowId;
+        this.isEdit = !!vowId;
+    }
+
+    onOpen() {
+        const { contentEl } = this;
+        const service = new VowService(this.plugin);
+        const existing = this.isEdit ? service.getVow(this.vowId) : null;
+
+        if (this.isEdit && !existing) {
+            contentEl.createEl('p', { text: 'Vow no encontrado.' });
+            return;
+        }
+
+        contentEl.createEl('h2', { text: this.isEdit ? 'Editar vow' : 'Nuevo vow' });
+        contentEl.createEl('p', {
+            cls: 'rpg-modal-subtitle',
+            text: 'Título + creencia en el banner; elegí arte de RpgImages/vows.'
+        });
+
+        let title = existing?.title || '';
+        let inscription = existing?.inscription || '';
+        let imagePath = existing?.imagePath || '';
+        let cols = existing?.cols || 5;
+        let rows = existing?.rows || 10;
+
+        const banner = contentEl.createDiv({ cls: 'rpg-vow-banner rpg-vow-banner-modal' });
+        const imagePreview = contentEl.createDiv({ cls: 'rpg-boss-image-preview' });
+
+        const refreshBanner = () => {
+            banner.empty();
+            banner.createDiv({ cls: 'rpg-vow-banner-title', text: title.trim() || 'Título del vow' });
+            banner.createDiv({
+                cls: 'rpg-vow-banner-inscription',
+                text: inscription.trim() || 'Creencia / inscripción…'
+            });
+
+            imagePreview.empty();
+            if (!imagePath) {
+                imagePreview.createEl('p', { cls: 'rpg-subtitle', text: 'Sin imagen seleccionada' });
+                return;
+            }
+            const wrap = imagePreview.createDiv({ cls: 'rpg-vow-modal-art' });
+            const file = this.app.vault.getAbstractFileByPath(imagePath);
+            if (file) {
+                const img = wrap.createEl('img', { cls: 'rpg-vault-image' });
+                img.src = this.app.vault.adapter.getResourcePath(file.path);
+                img.alt = file.name;
+            } else {
+                wrap.createDiv({ cls: 'rpg-vault-image-placeholder', text: '?' });
+            }
+            imagePreview.createDiv({
+                cls: 'rpg-tome-preview-name',
+                text: imagePath.replace(/\\/g, '/').split('/').pop()
+            });
+        };
+
+        new Setting(contentEl)
+            .setName('Título')
+            .setDesc('Nombre corto del vow (aparece en el banner)')
+            .addText(text => text
+                .setPlaceholder('Autocompasión')
+                .setValue(title)
+                .onChange(value => {
+                    title = value;
+                    refreshBanner();
+                }));
+
+        new Setting(contentEl)
+            .setName('Creencia / inscripción')
+            .setDesc('La frase de identidad que iluminás con evidencias')
+            .addTextArea(text => {
+                text.setPlaceholder('Soy una persona…');
+                text.setValue(inscription);
+                text.inputEl.rows = 3;
+                text.onChange(value => {
+                    inscription = value;
+                    refreshBanner();
+                });
+            });
+
+        const vowImages = service.listVowImages(this.app);
+        new Setting(contentEl)
+            .setName('Imagen')
+            .setDesc(`Elegí un archivo de ${VOWS_IMAGES_FOLDER}`)
+            .addDropdown(dd => {
+                dd.addOption('', '— Sin imagen —');
+                vowImages.forEach(file => dd.addOption(file.path, file.name));
+                if (imagePath && !vowImages.some(f => f.path === imagePath || f.path.replace(/\\/g, '/') === imagePath.replace(/\\/g, '/'))) {
+                    const label = imagePath.replace(/\\/g, '/').split('/').pop();
+                    dd.addOption(imagePath, `${label} (actual)`);
+                }
+                dd.setValue(imagePath || '');
+                dd.onChange(value => {
+                    imagePath = value;
+                    refreshBanner();
+                });
+            });
+
+        new Setting(contentEl)
+            .setName('Columnas')
+            .addText(text => text
+                .setValue(String(cols))
+                .onChange(value => {
+                    const n = parseInt(value, 10);
+                    if (!Number.isNaN(n) && n > 0) cols = n;
+                }));
+
+        new Setting(contentEl)
+            .setName('Filas')
+            .addText(text => text
+                .setValue(String(rows))
+                .onChange(value => {
+                    const n = parseInt(value, 10);
+                    if (!Number.isNaN(n) && n > 0) rows = n;
+                }));
+
+        refreshBanner();
+
+        new Setting(contentEl)
+            .addButton(btn => btn
+                .setButtonText('Cancelar')
+                .onClick(() => this.close()))
+            .addButton(btn => btn
+                .setButtonText(this.isEdit ? 'Guardar' : 'Crear')
+                .setCta()
+                .onClick(async () => {
+                    if (!title.trim()) {
+                        new Notice('El vow necesita un título.');
+                        return;
+                    }
+                    if (this.isEdit) {
+                        service.updateVow(this.vowId, { title, inscription, imagePath, cols, rows });
+                    } else {
+                        service.createVow({ title, inscription, imagePath, cols, rows });
+                    }
+                    await this.plugin.saveSettings();
+                    new Notice(this.isEdit ? 'Vow actualizado' : 'Vow creado');
+                    if (this.onSubmit) this.onSubmit();
+                    this.close();
+                }));
+    }
+
+    onClose() { this.contentEl.empty(); }
+}
+
+// ============================================================================
+// LINK HITO → VOW MODAL
+// ============================================================================
+class LinkHitoToVowModal extends Modal {
+    constructor(app, plugin) {
+        super(app);
+        this.plugin = plugin;
+    }
+
+    getActiveDailyMeta() {
+        const file = this.app.workspace.getActiveFile();
+        if (!file) return { file: null, cache: null, date: new Date().toISOString().slice(0, 10) };
+        const cache = this.app.metadataCache.getFileCache(file);
+        const base = file.basename || '';
+        const dateMatch = base.match(/^(\d{4}-\d{2}-\d{2})/);
+        return {
+            file,
+            cache,
+            date: dateMatch ? dateMatch[1] : new Date().toISOString().slice(0, 10)
+        };
+    }
+
+    onOpen() {
+        const { contentEl } = this;
+        const service = new VowService(this.plugin);
+        const vows = service.listVows();
+        const { file, cache, date } = this.getActiveDailyMeta();
+        const fm = cache?.frontmatter || {};
+
+        contentEl.createEl('h2', { text: 'Vincular hito a vow' });
+        contentEl.createEl('p', {
+            cls: 'rpg-modal-subtitle',
+            text: file
+                ? `Nota: ${file.basename} · fecha ${date}`
+                : 'Abrí una nota diaria primero (o elegí hito vacío y pegá texto luego).'
+        });
+
+        let hitoIndex = 1;
+        let vowId = vows[0]?.id || '';
+        const preview = contentEl.createDiv({ cls: 'rpg-vow-hito-preview' });
+
+        const readHitoText = (idx) => {
+            const raw = fm[`hito${idx}`];
+            return raw != null ? String(raw).trim() : '';
+        };
+
+        const refreshPreview = () => {
+            preview.empty();
+            const text = readHitoText(hitoIndex);
+            preview.createEl('strong', { text: `Hito ${hitoIndex}:` });
+            preview.createEl('p', {
+                text: text || '(vacío — escribí el hito en el diario antes de vincular)'
+            });
+        };
+
+        new Setting(contentEl)
+            .setName('Hito')
+            .addDropdown(dd => {
+                [1, 2, 3].forEach(n => {
+                    const t = readHitoText(n);
+                    const label = t ? `Hito ${n}: ${t.slice(0, 40)}${t.length > 40 ? '…' : ''}` : `Hito ${n} (vacío)`;
+                    dd.addOption(String(n), label);
+                });
+                dd.setValue('1');
+                dd.onChange(value => {
+                    hitoIndex = parseInt(value, 10) || 1;
+                    refreshPreview();
+                });
+            });
+
+        new Setting(contentEl)
+            .setName('Vow')
+            .setDesc('Lista dinámica desde Hero → Vows')
+            .addDropdown(dd => {
+                if (vows.length === 0) {
+                    dd.addOption('', '— No hay vows —');
+                } else {
+                    vows.forEach(v => {
+                        const n = service.revealedCount(v);
+                        const target = service.targetCells(v);
+                        dd.addOption(v.id, `${v.title} (${n}/${target})`);
+                    });
+                }
+                dd.setValue(vowId);
+                dd.onChange(value => { vowId = value; });
+            });
+
+        refreshPreview();
+
+        new Setting(contentEl)
+            .addButton(btn => btn
+                .setButtonText('Cancelar')
+                .onClick(() => this.close()))
+            .addButton(btn => btn
+                .setButtonText('Vincular')
+                .setCta()
+                .onClick(async () => {
+                    if (!vowId) {
+                        new Notice('Creá un vow primero en Hero → Vows.');
+                        return;
+                    }
+                    const experience = readHitoText(hitoIndex);
+                    try {
+                        service.addGrain(vowId, { date, experience });
+                        await this.plugin.saveSettings();
+                        if (file) {
+                            await this.app.fileManager.processFrontMatter(file, (frontmatter) => {
+                                frontmatter[`vowId${hitoIndex}`] = vowId;
+                            });
+                        }
+                        this.plugin.refreshViews?.();
+                        new Notice(`Grano agregado a vow (${hitoIndex})`);
+                        this.close();
+                    } catch (err) {
+                        new Notice(err.message || String(err));
+                    }
+                }));
+    }
+
+    onClose() { this.contentEl.empty(); }
+}
+
+// ============================================================================
 // BOSS FIGHT MODAL
 // ============================================================================
 class NewBossFightModal extends Modal {
@@ -10807,6 +11568,9 @@ module.exports = class LifeRPG extends Plugin {
         this.registerView(VIEW_TYPE_HERO, (leaf) => new HeroView(leaf, this));
         this.addRibbonIcon('swords', 'Open Hero Sheet', () => this.activateView());
         this.addCommand({ id: 'open-hero-sheet', name: 'Open Hero Sheet', callback: () => this.activateView() });
+        this.addCommand({ id: 'link-hito-to-vow', name: 'Vincular hito del diario a un vow', callback: () => {
+            new LinkHitoToVowModal(this.app, this).open();
+        }});
         this.addCommand({ id: 'sync-habit-skills', name: 'Sync Habit Checklists to Skills', callback: () => this.syncHabitSkills(true) });
         this.addCommand({ id: 'create-character', name: 'Create/Retake Character Assessment', callback: () => {
             new CharacterCreationModal(this.app, this, () => this.refreshViews()).open();
@@ -11011,6 +11775,35 @@ module.exports = class LifeRPG extends Plugin {
             }))
             : [];
 
+        let migratedVows;
+        if (!Array.isArray(saved.vows)) {
+            migratedVows = JSON.parse(JSON.stringify(DEFAULT_SEED_VOWS));
+        } else {
+            migratedVows = saved.vows.map(raw => {
+                const cols = Math.max(1, Number(raw.cols) || 5);
+                const rows = Math.max(1, Number(raw.rows) || 10);
+                return {
+                    id: raw.id || `vow_${Date.now()}_${Math.random().toString(36).substr(2, 6)}`,
+                    title: (raw.title || '').trim() || 'Vow',
+                    inscription: (raw.inscription || raw.belief || '').trim(),
+                    imagePath: (raw.imagePath || '').trim(),
+                    cols,
+                    rows,
+                    grains: Array.isArray(raw.grains)
+                        ? raw.grains.map((g, i) => ({
+                            id: g.id || `grain_${i}`,
+                            date: g.date || '',
+                            experience: g.experience || g.text || ''
+                        }))
+                        : []
+                };
+            });
+            const hasAutocompasion = migratedVows.some(v => String(v.id) === 'autocompasion');
+            if (!hasAutocompasion) {
+                migratedVows.unshift(JSON.parse(JSON.stringify(DEFAULT_SEED_VOWS[0])));
+            }
+        }
+
         const characterProfile = saved.characterProfile
             ? {
                 ...saved.characterProfile,
@@ -11055,6 +11848,7 @@ module.exports = class LifeRPG extends Plugin {
             // Knowledge Tomes & Flowers
             tomes: migratedTomes,
             flowers: migratedFlowers,
+            vows: migratedVows,
             // Dungeon System (Focus Sessions)
             activeDungeon: saved.activeDungeon || null,
             totalDungeonsCleared: saved.totalDungeonsCleared || 0,
@@ -11087,6 +11881,10 @@ module.exports = class LifeRPG extends Plugin {
                 ...(saved.habitTimerChain || {})
             }
         };
+
+        if (!Array.isArray(saved.vows) || !saved.vows.some(v => String(v.id) === 'autocompasion')) {
+            await this.saveSettings();
+        }
     }
 
     async saveSettings() {
@@ -11123,6 +11921,7 @@ module.exports = class LifeRPG extends Plugin {
             // Knowledge Tomes & Flowers
             tomes: [],
             flowers: [],
+            vows: JSON.parse(JSON.stringify(DEFAULT_SEED_VOWS)),
             // Dungeon System
             activeDungeon: null,
             totalDungeonsCleared: 0,
