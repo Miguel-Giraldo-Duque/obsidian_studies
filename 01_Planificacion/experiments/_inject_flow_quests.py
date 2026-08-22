@@ -8,14 +8,13 @@ import time
 from pathlib import Path
 
 root = Path(__file__).resolve().parents[2]
-data_path = root / ".obsidian/plugins/vibe-rpg/data.json"
+data_path = root / ".obsidian/plugins/soulhy/data.json"
 bank_path = root / "001 banco de retos de Flow.md"
 
 NODE = "node_1785983669892_tu8ccua1d"
 SOURCE = "flow-bank"
 SCHOOL = "Presencia"
-PHOBOS = "1783917794860"
-KRYOS = "1783927787622"
+GUILTMAL = "1786983444165"
 
 
 def _rand_alnum(n=9):
@@ -104,7 +103,7 @@ def inject():
                 "skillNodeId": NODE,
                 "skillLevel": meta["skillLevel"],
                 "school": SCHOOL,
-                "linkedBossIds": [PHOBOS, KRYOS],
+                "linkedBossIds": [GUILTMAL],
                 "bossDamage": meta["bossDamage"],
                 "source": SOURCE,
             }

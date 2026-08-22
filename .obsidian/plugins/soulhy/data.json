@@ -1,20 +1,20 @@
 {
-  "level": 11,
-  "xp": 137,
-  "hp": 210,
-  "maxHp": 210,
-  "gold": 2626,
-  "totalGoldEarned": 1926,
-  "totalHabitsCompleted": 179,
-  "totalQuestsCompleted": 42,
-  "lastPlayedDate": "Wed Aug 12 2026",
+  "level": 13,
+  "xp": 1048,
+  "hp": 230,
+  "maxHp": 230,
+  "gold": 7247,
+  "totalGoldEarned": 2547,
+  "totalHabitsCompleted": 258,
+  "totalQuestsCompleted": 58,
+  "lastPlayedDate": "Sat Aug 22 2026",
   "domains": [
     {
       "id": "psychologicalWellbeing",
       "name": "Psychological Well-being",
-      "score": 69,
-      "level": 10,
-      "xp": 235,
+      "score": 71,
+      "level": 11,
+      "xp": 309,
       "icon": "🧠",
       "color": "#9b59b6"
     },
@@ -23,7 +23,7 @@
       "name": "Health",
       "score": 71,
       "level": 8,
-      "xp": 92,
+      "xp": 293,
       "icon": "💪",
       "color": "#e74c3c"
     },
@@ -39,9 +39,9 @@
     {
       "id": "education",
       "name": "Education",
-      "score": 58,
-      "level": 6,
-      "xp": 136,
+      "score": 60,
+      "level": 7,
+      "xp": 51,
       "icon": "📚",
       "color": "#f39c12"
     },
@@ -68,7 +68,7 @@
       "name": "Community Vitality",
       "score": 60,
       "level": 7,
-      "xp": 122,
+      "xp": 222,
       "icon": "🤝",
       "color": "#2ecc71"
     },
@@ -84,9 +84,9 @@
     {
       "id": "livingStandards",
       "name": "Living Standards",
-      "score": 31,
-      "level": 4,
-      "xp": 138,
+      "score": 33,
+      "level": 5,
+      "xp": 83,
       "icon": "💰",
       "color": "#16a085"
     }
@@ -105,11 +105,12 @@
       "completed": false,
       "streak": 0,
       "bestStreak": 10,
-      "lastCompletedDate": "Sun Aug 09 2026",
+      "lastCompletedDate": "Thu Aug 20 2026",
       "id": "habit_1785588794845_0_5401ak",
       "linkedBossIds": [
         "1783917794860",
-        "1783927787622"
+        "1783927787622",
+        "1786983444165"
       ],
       "bossDamage": 10
     },
@@ -123,12 +124,14 @@
         "skill_1782600801284_anttohfwh"
       ],
       "skillXp": 10,
-      "completed": true,
+      "completed": false,
       "streak": 0,
       "bestStreak": 10,
-      "lastCompletedDate": "Wed Aug 12 2026",
+      "lastCompletedDate": "Thu Aug 20 2026",
       "id": "habit_1785588794845_1_aitecv",
-      "linkedBossIds": [],
+      "linkedBossIds": [
+        "1786983444165"
+      ],
       "bossDamage": 10
     },
     {
@@ -141,14 +144,15 @@
         "skill_1782596299032_o0ambkloe"
       ],
       "skillXp": 10,
-      "completed": true,
+      "completed": false,
       "streak": 0,
       "bestStreak": 10,
-      "lastCompletedDate": "Wed Aug 12 2026",
+      "lastCompletedDate": "Thu Aug 20 2026",
       "id": "habit_1785588794845_2_p1xxd7",
       "linkedBossIds": [
         "1783917794860",
-        "1783927787622"
+        "1783927787622",
+        "1786983444165"
       ],
       "bossDamage": 10
     },
@@ -165,11 +169,12 @@
       "completed": false,
       "streak": 0,
       "bestStreak": 10,
-      "lastCompletedDate": "Sun Aug 09 2026",
+      "lastCompletedDate": "Thu Aug 20 2026",
       "id": "habit_1785588794845_3_jhrj2u",
       "linkedBossIds": [
         "1783917794860",
-        "1783927787622"
+        "1783927787622",
+        "1786983444165"
       ],
       "bossDamage": 10
     },
@@ -221,10 +226,12 @@
       "skillXp": 10,
       "completed": false,
       "streak": 0,
-      "bestStreak": 7,
-      "lastCompletedDate": "Sun Aug 09 2026",
+      "bestStreak": 9,
+      "lastCompletedDate": "Thu Aug 20 2026",
       "id": "habit_1785588794845_6_ipm0v7",
-      "linkedBossIds": [],
+      "linkedBossIds": [
+        "1786983444165"
+      ],
       "bossDamage": 10
     },
     {
@@ -240,7 +247,7 @@
       "completed": false,
       "streak": 0,
       "bestStreak": 1,
-      "lastCompletedDate": "Wed Aug 05 2026",
+      "lastCompletedDate": "Sun Aug 16 2026",
       "id": "habit_1785588794845_7_kwxew2",
       "linkedBossIds": [],
       "bossDamage": 10
@@ -257,8 +264,8 @@
       "skillXp": 10,
       "completed": false,
       "streak": 0,
-      "bestStreak": 1,
-      "lastCompletedDate": "Mon Jul 06 2026",
+      "bestStreak": 7,
+      "lastCompletedDate": "Wed Aug 19 2026",
       "id": "habit_1785588794845_8_10weyf",
       "linkedBossIds": [],
       "bossDamage": 10
@@ -276,7 +283,7 @@
       "completed": false,
       "streak": 0,
       "bestStreak": 1,
-      "lastCompletedDate": "Wed Aug 05 2026",
+      "lastCompletedDate": "Sun Aug 16 2026",
       "id": "habit_1785588794845_9_pjoey6",
       "linkedBossIds": [],
       "bossDamage": 10
@@ -295,7 +302,7 @@
       "completed": false,
       "streak": 0,
       "bestStreak": 2,
-      "lastCompletedDate": "Thu Aug 06 2026",
+      "lastCompletedDate": "Sun Aug 16 2026",
       "id": "habit_1785588794845_10_7im19m",
       "linkedBossIds": [],
       "bossDamage": 10
@@ -315,13 +322,14 @@
       "skillXp": 10,
       "linkedBossIds": [
         "1783927787622",
-        "1783917794860"
+        "1783917794860",
+        "1786983444165"
       ],
       "bossDamage": 10,
       "completed": false,
       "streak": 0,
       "bestStreak": 7,
-      "lastCompletedDate": "Sun Aug 09 2026",
+      "lastCompletedDate": "Tue Aug 18 2026",
       "id": "habit_1785588794845_12_4mynu4"
     },
     {
@@ -337,7 +345,7 @@
       "completed": false,
       "streak": 0,
       "bestStreak": 9,
-      "lastCompletedDate": "Sun Aug 09 2026",
+      "lastCompletedDate": "Thu Aug 20 2026",
       "id": "habit_1785588794845_13_gk42or",
       "linkedBossIds": [],
       "bossDamage": 10
@@ -351,12 +359,13 @@
       "linkedSkillIds": [],
       "skillXp": 10,
       "completed": false,
-      "streak": 0,
+      "streak": 1,
       "bestStreak": 7,
-      "lastCompletedDate": "Sun Aug 09 2026",
+      "lastCompletedDate": "Fri Aug 21 2026",
       "id": "habit_1785611046950_carrera_2555",
       "linkedBossIds": [
-        "1783917794860"
+        "1783917794860",
+        "1786983444165"
       ],
       "bossDamage": 10
     }
@@ -458,7 +467,7 @@
       "skillLevel": 1,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -551,8 +560,8 @@
       "gold": 5,
       "domain": "psychologicalWellbeing",
       "difficulty": "easy",
-      "completed": false,
-      "completedDate": null,
+      "completed": true,
+      "completedDate": "2026-08-16T23:28:15.127Z",
       "kind": "skill-challenge",
       "skillNodeId": "node_1783916853576_snysp17go",
       "skillLevel": 1,
@@ -598,7 +607,7 @@
       "skillLevel": 1,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -631,14 +640,14 @@
       "gold": 5,
       "domain": "psychologicalWellbeing",
       "difficulty": "easy",
-      "completed": false,
-      "completedDate": null,
+      "completed": true,
+      "completedDate": "2026-08-19T23:46:10.297Z",
       "kind": "skill-challenge",
       "skillNodeId": "node_1783916853576_snysp17go",
       "skillLevel": 1,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -658,7 +667,7 @@
       "skillLevel": 1,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -698,7 +707,7 @@
       "skillLevel": 1,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -718,7 +727,7 @@
       "skillLevel": 1,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -738,7 +747,7 @@
       "skillLevel": 1,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -758,7 +767,7 @@
       "skillLevel": 1,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -778,7 +787,7 @@
       "skillLevel": 1,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -798,7 +807,7 @@
       "skillLevel": 1,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -818,7 +827,7 @@
       "skillLevel": 1,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -838,7 +847,7 @@
       "skillLevel": 1,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -858,7 +867,7 @@
       "skillLevel": 1,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -878,7 +887,7 @@
       "skillLevel": 1,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -898,7 +907,7 @@
       "skillLevel": 1,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -918,7 +927,7 @@
       "skillLevel": 1,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -938,7 +947,7 @@
       "skillLevel": 1,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -958,7 +967,7 @@
       "skillLevel": 1,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -978,7 +987,7 @@
       "skillLevel": 1,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -998,7 +1007,7 @@
       "skillLevel": 1,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -1018,7 +1027,7 @@
       "skillLevel": 1,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -1038,7 +1047,7 @@
       "skillLevel": 1,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -1058,7 +1067,7 @@
       "skillLevel": 1,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -1078,7 +1087,7 @@
       "skillLevel": 1,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -1098,7 +1107,7 @@
       "skillLevel": 1,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -1118,7 +1127,7 @@
       "skillLevel": 1,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -1138,7 +1147,7 @@
       "skillLevel": 1,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -1158,7 +1167,7 @@
       "skillLevel": 1,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -1178,7 +1187,7 @@
       "skillLevel": 2,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -1198,7 +1207,7 @@
       "skillLevel": 2,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -1218,7 +1227,7 @@
       "skillLevel": 2,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -1238,7 +1247,7 @@
       "skillLevel": 2,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -1258,7 +1267,7 @@
       "skillLevel": 2,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -1278,7 +1287,7 @@
       "skillLevel": 2,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -1298,7 +1307,7 @@
       "skillLevel": 2,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -1318,7 +1327,7 @@
       "skillLevel": 2,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -1338,7 +1347,7 @@
       "skillLevel": 2,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -1358,7 +1367,7 @@
       "skillLevel": 2,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -1378,7 +1387,7 @@
       "skillLevel": 2,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -1398,7 +1407,7 @@
       "skillLevel": 2,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -1418,7 +1427,7 @@
       "skillLevel": 2,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -1438,7 +1447,7 @@
       "skillLevel": 2,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -1458,7 +1467,7 @@
       "skillLevel": 2,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -1478,7 +1487,7 @@
       "skillLevel": 2,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -1498,7 +1507,7 @@
       "skillLevel": 2,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -1518,7 +1527,7 @@
       "skillLevel": 2,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -1538,7 +1547,7 @@
       "skillLevel": 2,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -1558,7 +1567,7 @@
       "skillLevel": 2,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -1578,7 +1587,7 @@
       "skillLevel": 2,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -1598,7 +1607,7 @@
       "skillLevel": 2,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -1618,7 +1627,7 @@
       "skillLevel": 2,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -1638,7 +1647,7 @@
       "skillLevel": 2,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -1658,7 +1667,7 @@
       "skillLevel": 2,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -1678,7 +1687,7 @@
       "skillLevel": 2,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -1698,7 +1707,7 @@
       "skillLevel": 2,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -1718,7 +1727,7 @@
       "skillLevel": 2,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -1738,7 +1747,7 @@
       "skillLevel": 2,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -1758,7 +1767,7 @@
       "skillLevel": 2,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -1778,7 +1787,7 @@
       "skillLevel": 2,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -1798,7 +1807,7 @@
       "skillLevel": 2,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -1818,7 +1827,7 @@
       "skillLevel": 2,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -1838,7 +1847,7 @@
       "skillLevel": 2,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -1858,7 +1867,7 @@
       "skillLevel": 2,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -1878,7 +1887,7 @@
       "skillLevel": 2,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -1898,7 +1907,7 @@
       "skillLevel": 2,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -1918,7 +1927,7 @@
       "skillLevel": 2,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -1938,7 +1947,7 @@
       "skillLevel": 2,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -1958,7 +1967,7 @@
       "skillLevel": 2,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -1978,7 +1987,7 @@
       "skillLevel": 3,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -1998,7 +2007,7 @@
       "skillLevel": 3,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -2018,7 +2027,7 @@
       "skillLevel": 3,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -2038,7 +2047,7 @@
       "skillLevel": 3,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -2058,7 +2067,7 @@
       "skillLevel": 3,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -2078,7 +2087,7 @@
       "skillLevel": 3,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -2098,7 +2107,7 @@
       "skillLevel": 3,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -2118,7 +2127,7 @@
       "skillLevel": 3,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -2138,7 +2147,7 @@
       "skillLevel": 3,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -2158,7 +2167,7 @@
       "skillLevel": 3,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -2178,7 +2187,7 @@
       "skillLevel": 3,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -2198,7 +2207,7 @@
       "skillLevel": 3,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -2218,7 +2227,7 @@
       "skillLevel": 3,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -2238,7 +2247,7 @@
       "skillLevel": 3,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -2258,7 +2267,7 @@
       "skillLevel": 3,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -2278,7 +2287,7 @@
       "skillLevel": 3,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -2298,7 +2307,7 @@
       "skillLevel": 3,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -2318,7 +2327,7 @@
       "skillLevel": 3,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -2338,7 +2347,7 @@
       "skillLevel": 3,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -2358,7 +2367,7 @@
       "skillLevel": 3,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -2378,7 +2387,7 @@
       "skillLevel": 3,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -2398,7 +2407,7 @@
       "skillLevel": 3,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -2418,7 +2427,7 @@
       "skillLevel": 3,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -2438,7 +2447,7 @@
       "skillLevel": 3,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -2458,7 +2467,7 @@
       "skillLevel": 3,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -2478,7 +2487,7 @@
       "skillLevel": 3,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -2498,7 +2507,7 @@
       "skillLevel": 3,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -2518,7 +2527,7 @@
       "skillLevel": 3,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -2538,7 +2547,7 @@
       "skillLevel": 3,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -2558,7 +2567,7 @@
       "skillLevel": 3,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -2578,7 +2587,7 @@
       "skillLevel": 3,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -2598,7 +2607,7 @@
       "skillLevel": 3,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -2618,7 +2627,7 @@
       "skillLevel": 3,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -2638,7 +2647,7 @@
       "skillLevel": 3,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -2658,7 +2667,7 @@
       "skillLevel": 3,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -2678,7 +2687,7 @@
       "skillLevel": 3,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -2698,7 +2707,7 @@
       "skillLevel": 3,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -2718,7 +2727,7 @@
       "skillLevel": 3,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -2738,7 +2747,7 @@
       "skillLevel": 3,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -2758,7 +2767,7 @@
       "skillLevel": 3,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -2778,7 +2787,7 @@
       "skillLevel": 3,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -2798,7 +2807,7 @@
       "skillLevel": 3,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -2818,7 +2827,7 @@
       "skillLevel": 3,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -2838,7 +2847,7 @@
       "skillLevel": 3,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -2858,7 +2867,7 @@
       "skillLevel": 3,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -2878,7 +2887,7 @@
       "skillLevel": 3,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -2898,7 +2907,7 @@
       "skillLevel": 3,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -2918,7 +2927,7 @@
       "skillLevel": 3,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -2938,7 +2947,7 @@
       "skillLevel": 3,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -2958,7 +2967,7 @@
       "skillLevel": 3,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "sommelier-bank"
@@ -3131,14 +3140,14 @@
       "gold": 5,
       "domain": "psychologicalWellbeing",
       "difficulty": "easy",
-      "completed": false,
-      "completedDate": null,
+      "completed": true,
+      "completedDate": "2026-08-21T14:35:30.271Z",
       "kind": "skill-challenge",
       "skillNodeId": "node_1783924907507_h8pezfu4q",
       "skillLevel": 1,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "benevolencia-bank"
@@ -3158,7 +3167,7 @@
       "skillLevel": 1,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "benevolencia-bank"
@@ -3178,7 +3187,7 @@
       "skillLevel": 1,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "benevolencia-bank"
@@ -3191,14 +3200,14 @@
       "gold": 5,
       "domain": "psychologicalWellbeing",
       "difficulty": "easy",
-      "completed": false,
-      "completedDate": null,
+      "completed": true,
+      "completedDate": "2026-08-21T14:35:55.253Z",
       "kind": "skill-challenge",
       "skillNodeId": "node_1783924907507_h8pezfu4q",
       "skillLevel": 1,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "benevolencia-bank"
@@ -3218,7 +3227,7 @@
       "skillLevel": 1,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "benevolencia-bank"
@@ -3238,7 +3247,7 @@
       "skillLevel": 1,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "benevolencia-bank"
@@ -3258,7 +3267,7 @@
       "skillLevel": 1,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "benevolencia-bank"
@@ -3278,7 +3287,7 @@
       "skillLevel": 1,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "benevolencia-bank"
@@ -3298,7 +3307,7 @@
       "skillLevel": 1,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "benevolencia-bank"
@@ -3318,7 +3327,7 @@
       "skillLevel": 1,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "benevolencia-bank"
@@ -3338,7 +3347,7 @@
       "skillLevel": 1,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "benevolencia-bank"
@@ -3358,7 +3367,7 @@
       "skillLevel": 1,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "benevolencia-bank"
@@ -3378,7 +3387,7 @@
       "skillLevel": 2,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "benevolencia-bank"
@@ -3398,7 +3407,7 @@
       "skillLevel": 2,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "benevolencia-bank"
@@ -3418,7 +3427,7 @@
       "skillLevel": 2,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "benevolencia-bank"
@@ -3438,7 +3447,7 @@
       "skillLevel": 2,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "benevolencia-bank"
@@ -3458,7 +3467,7 @@
       "skillLevel": 2,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "benevolencia-bank"
@@ -3478,7 +3487,7 @@
       "skillLevel": 2,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "benevolencia-bank"
@@ -3498,7 +3507,7 @@
       "skillLevel": 2,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "benevolencia-bank"
@@ -3518,7 +3527,7 @@
       "skillLevel": 2,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "benevolencia-bank"
@@ -3538,7 +3547,7 @@
       "skillLevel": 2,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "benevolencia-bank"
@@ -3558,7 +3567,7 @@
       "skillLevel": 2,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "benevolencia-bank"
@@ -3578,7 +3587,7 @@
       "skillLevel": 2,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "benevolencia-bank"
@@ -3598,7 +3607,7 @@
       "skillLevel": 2,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "benevolencia-bank"
@@ -3618,7 +3627,7 @@
       "skillLevel": 2,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "benevolencia-bank"
@@ -3638,7 +3647,7 @@
       "skillLevel": 2,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "benevolencia-bank"
@@ -3658,7 +3667,7 @@
       "skillLevel": 2,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "benevolencia-bank"
@@ -3678,7 +3687,7 @@
       "skillLevel": 2,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "benevolencia-bank"
@@ -3698,7 +3707,7 @@
       "skillLevel": 2,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "benevolencia-bank"
@@ -3718,7 +3727,7 @@
       "skillLevel": 2,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "benevolencia-bank"
@@ -3738,7 +3747,7 @@
       "skillLevel": 2,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "benevolencia-bank"
@@ -3758,7 +3767,7 @@
       "skillLevel": 2,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "benevolencia-bank"
@@ -3778,7 +3787,7 @@
       "skillLevel": 3,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "benevolencia-bank"
@@ -3798,7 +3807,7 @@
       "skillLevel": 3,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "benevolencia-bank"
@@ -3818,7 +3827,7 @@
       "skillLevel": 3,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "benevolencia-bank"
@@ -3838,7 +3847,7 @@
       "skillLevel": 3,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "benevolencia-bank"
@@ -3858,7 +3867,7 @@
       "skillLevel": 3,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "benevolencia-bank"
@@ -3878,7 +3887,7 @@
       "skillLevel": 3,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "benevolencia-bank"
@@ -3898,7 +3907,7 @@
       "skillLevel": 3,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "benevolencia-bank"
@@ -3918,7 +3927,7 @@
       "skillLevel": 3,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "benevolencia-bank"
@@ -3938,7 +3947,7 @@
       "skillLevel": 3,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "benevolencia-bank"
@@ -3958,7 +3967,7 @@
       "skillLevel": 3,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "benevolencia-bank"
@@ -3978,7 +3987,7 @@
       "skillLevel": 3,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "benevolencia-bank"
@@ -3998,7 +4007,7 @@
       "skillLevel": 3,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "benevolencia-bank"
@@ -4018,7 +4027,7 @@
       "skillLevel": 3,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "benevolencia-bank"
@@ -4038,7 +4047,7 @@
       "skillLevel": 3,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "benevolencia-bank"
@@ -4058,7 +4067,7 @@
       "skillLevel": 3,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "benevolencia-bank"
@@ -4078,7 +4087,7 @@
       "skillLevel": 3,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "benevolencia-bank"
@@ -4098,7 +4107,7 @@
       "skillLevel": 3,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "benevolencia-bank"
@@ -4118,7 +4127,7 @@
       "skillLevel": 3,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "benevolencia-bank"
@@ -4138,7 +4147,7 @@
       "skillLevel": 3,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "benevolencia-bank"
@@ -4158,7 +4167,7 @@
       "skillLevel": 3,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "benevolencia-bank"
@@ -4339,15 +4348,14 @@
       "gold": 5,
       "domain": "psychologicalWellbeing",
       "difficulty": "easy",
-      "completed": false,
-      "completedDate": null,
+      "completed": true,
+      "completedDate": "2026-08-19T23:46:01.617Z",
       "kind": "skill-challenge",
       "skillNodeId": "node_1783925025123_9qj0tnoxs",
       "skillLevel": 1,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622",
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "empatia-bank"
@@ -4367,8 +4375,7 @@
       "skillLevel": 1,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622",
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "empatia-bank"
@@ -4388,8 +4395,7 @@
       "skillLevel": 1,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622",
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "empatia-bank"
@@ -4409,8 +4415,7 @@
       "skillLevel": 1,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622",
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "empatia-bank"
@@ -4430,8 +4435,7 @@
       "skillLevel": 1,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622",
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "empatia-bank"
@@ -4451,8 +4455,7 @@
       "skillLevel": 1,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622",
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "empatia-bank"
@@ -4472,8 +4475,7 @@
       "skillLevel": 1,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622",
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "empatia-bank"
@@ -4493,8 +4495,7 @@
       "skillLevel": 1,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622",
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "empatia-bank"
@@ -4514,8 +4515,7 @@
       "skillLevel": 1,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622",
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "empatia-bank"
@@ -4535,8 +4535,7 @@
       "skillLevel": 1,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622",
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "empatia-bank"
@@ -4556,8 +4555,7 @@
       "skillLevel": 1,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622",
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "empatia-bank"
@@ -4577,8 +4575,7 @@
       "skillLevel": 1,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622",
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "empatia-bank"
@@ -4598,8 +4595,7 @@
       "skillLevel": 2,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622",
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "empatia-bank"
@@ -4619,8 +4615,7 @@
       "skillLevel": 2,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622",
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "empatia-bank"
@@ -4640,8 +4635,7 @@
       "skillLevel": 2,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622",
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "empatia-bank"
@@ -4661,8 +4655,7 @@
       "skillLevel": 2,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622",
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "empatia-bank"
@@ -4682,8 +4675,7 @@
       "skillLevel": 2,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622",
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "empatia-bank"
@@ -4703,8 +4695,7 @@
       "skillLevel": 2,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622",
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "empatia-bank"
@@ -4724,8 +4715,7 @@
       "skillLevel": 2,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622",
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "empatia-bank"
@@ -4745,8 +4735,7 @@
       "skillLevel": 2,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622",
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "empatia-bank"
@@ -4766,8 +4755,7 @@
       "skillLevel": 2,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622",
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "empatia-bank"
@@ -4787,8 +4775,7 @@
       "skillLevel": 2,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622",
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "empatia-bank"
@@ -4808,8 +4795,7 @@
       "skillLevel": 2,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622",
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "empatia-bank"
@@ -4829,8 +4815,7 @@
       "skillLevel": 2,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622",
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "empatia-bank"
@@ -4850,8 +4835,7 @@
       "skillLevel": 2,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622",
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "empatia-bank"
@@ -4871,8 +4855,7 @@
       "skillLevel": 2,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622",
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "empatia-bank"
@@ -4892,8 +4875,7 @@
       "skillLevel": 2,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622",
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "empatia-bank"
@@ -4913,8 +4895,7 @@
       "skillLevel": 2,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622",
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "empatia-bank"
@@ -4934,8 +4915,7 @@
       "skillLevel": 2,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622",
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "empatia-bank"
@@ -4955,8 +4935,7 @@
       "skillLevel": 2,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622",
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "empatia-bank"
@@ -4976,8 +4955,7 @@
       "skillLevel": 2,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622",
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "empatia-bank"
@@ -4997,8 +4975,7 @@
       "skillLevel": 2,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622",
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "empatia-bank"
@@ -5018,8 +4995,7 @@
       "skillLevel": 3,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622",
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "empatia-bank"
@@ -5039,8 +5015,7 @@
       "skillLevel": 3,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622",
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "empatia-bank"
@@ -5060,8 +5035,7 @@
       "skillLevel": 3,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622",
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "empatia-bank"
@@ -5081,8 +5055,7 @@
       "skillLevel": 3,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622",
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "empatia-bank"
@@ -5102,8 +5075,7 @@
       "skillLevel": 3,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622",
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "empatia-bank"
@@ -5123,8 +5095,7 @@
       "skillLevel": 3,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622",
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "empatia-bank"
@@ -5144,8 +5115,7 @@
       "skillLevel": 3,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622",
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "empatia-bank"
@@ -5165,8 +5135,7 @@
       "skillLevel": 3,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622",
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "empatia-bank"
@@ -5186,8 +5155,7 @@
       "skillLevel": 3,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622",
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "empatia-bank"
@@ -5207,8 +5175,7 @@
       "skillLevel": 3,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622",
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "empatia-bank"
@@ -5228,8 +5195,7 @@
       "skillLevel": 3,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622",
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "empatia-bank"
@@ -5249,8 +5215,7 @@
       "skillLevel": 3,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622",
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "empatia-bank"
@@ -5270,8 +5235,7 @@
       "skillLevel": 3,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622",
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "empatia-bank"
@@ -5291,8 +5255,7 @@
       "skillLevel": 3,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622",
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "empatia-bank"
@@ -5312,8 +5275,7 @@
       "skillLevel": 3,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622",
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "empatia-bank"
@@ -5333,8 +5295,7 @@
       "skillLevel": 3,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622",
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "empatia-bank"
@@ -5354,8 +5315,7 @@
       "skillLevel": 3,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622",
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "empatia-bank"
@@ -5375,8 +5335,7 @@
       "skillLevel": 3,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622",
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "empatia-bank"
@@ -5396,8 +5355,7 @@
       "skillLevel": 3,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622",
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "empatia-bank"
@@ -5417,8 +5375,7 @@
       "skillLevel": 3,
       "school": "Calidez",
       "linkedBossIds": [
-        "1783927787622",
-        "1783917794860"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "empatia-bank"
@@ -5599,8 +5556,8 @@
       "gold": 5,
       "domain": "psychologicalWellbeing",
       "difficulty": "easy",
-      "completed": false,
-      "completedDate": null,
+      "completed": true,
+      "completedDate": "2026-08-12T14:36:56.101Z",
       "kind": "skill-challenge",
       "skillNodeId": "node_1784952949938_smn8n1yyu",
       "skillLevel": 1,
@@ -5620,8 +5577,8 @@
       "gold": 5,
       "domain": "psychologicalWellbeing",
       "difficulty": "easy",
-      "completed": false,
-      "completedDate": null,
+      "completed": true,
+      "completedDate": "2026-08-12T14:41:53.621Z",
       "kind": "skill-challenge",
       "skillNodeId": "node_1784952949938_smn8n1yyu",
       "skillLevel": 1,
@@ -5641,8 +5598,8 @@
       "gold": 5,
       "domain": "psychologicalWellbeing",
       "difficulty": "easy",
-      "completed": false,
-      "completedDate": null,
+      "completed": true,
+      "completedDate": "2026-08-15T17:26:56.857Z",
       "kind": "skill-challenge",
       "skillNodeId": "node_1784952949938_smn8n1yyu",
       "skillLevel": 1,
@@ -5662,8 +5619,8 @@
       "gold": 5,
       "domain": "psychologicalWellbeing",
       "difficulty": "easy",
-      "completed": false,
-      "completedDate": null,
+      "completed": true,
+      "completedDate": "2026-08-15T17:26:57.566Z",
       "kind": "skill-challenge",
       "skillNodeId": "node_1784952949938_smn8n1yyu",
       "skillLevel": 1,
@@ -5683,15 +5640,14 @@
       "gold": 5,
       "domain": "psychologicalWellbeing",
       "difficulty": "easy",
-      "completed": false,
-      "completedDate": null,
+      "completed": true,
+      "completedDate": "2026-08-19T20:15:21.235Z",
       "kind": "skill-challenge",
       "skillNodeId": "node_1784952949938_smn8n1yyu",
       "skillLevel": 1,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860",
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "postura-poder-all"
@@ -5704,15 +5660,14 @@
       "gold": 5,
       "domain": "psychologicalWellbeing",
       "difficulty": "easy",
-      "completed": false,
-      "completedDate": null,
+      "completed": true,
+      "completedDate": "2026-08-19T20:15:22.122Z",
       "kind": "skill-challenge",
       "skillNodeId": "node_1784952949938_smn8n1yyu",
       "skillLevel": 1,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860",
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "postura-poder-all"
@@ -5725,15 +5680,14 @@
       "gold": 5,
       "domain": "psychologicalWellbeing",
       "difficulty": "easy",
-      "completed": false,
-      "completedDate": null,
+      "completed": true,
+      "completedDate": "2026-08-20T15:16:45.789Z",
       "kind": "skill-challenge",
       "skillNodeId": "node_1784952949938_smn8n1yyu",
       "skillLevel": 1,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860",
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "postura-poder-all"
@@ -5753,8 +5707,7 @@
       "skillLevel": 2,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860",
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "postura-poder-all"
@@ -5774,8 +5727,7 @@
       "skillLevel": 2,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860",
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "postura-poder-all"
@@ -5795,8 +5747,7 @@
       "skillLevel": 2,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860",
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "postura-poder-all"
@@ -5816,8 +5767,7 @@
       "skillLevel": 2,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860",
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "postura-poder-all"
@@ -5837,8 +5787,7 @@
       "skillLevel": 2,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860",
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "postura-poder-all"
@@ -5858,8 +5807,7 @@
       "skillLevel": 2,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860",
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "postura-poder-all"
@@ -5879,8 +5827,7 @@
       "skillLevel": 2,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860",
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "postura-poder-all"
@@ -5900,8 +5847,7 @@
       "skillLevel": 2,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860",
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "postura-poder-all"
@@ -5921,8 +5867,7 @@
       "skillLevel": 2,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860",
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "postura-poder-all"
@@ -5942,8 +5887,7 @@
       "skillLevel": 2,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860",
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "postura-poder-all"
@@ -5963,8 +5907,7 @@
       "skillLevel": 2,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860",
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "postura-poder-all"
@@ -5984,8 +5927,7 @@
       "skillLevel": 2,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860",
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "postura-poder-all"
@@ -6005,8 +5947,7 @@
       "skillLevel": 2,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860",
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "postura-poder-all"
@@ -6026,8 +5967,7 @@
       "skillLevel": 2,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860",
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "postura-poder-all"
@@ -6047,8 +5987,7 @@
       "skillLevel": 2,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860",
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "postura-poder-all"
@@ -6068,8 +6007,7 @@
       "skillLevel": 3,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860",
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "postura-poder-all"
@@ -6089,8 +6027,7 @@
       "skillLevel": 3,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860",
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "postura-poder-all"
@@ -6110,8 +6047,7 @@
       "skillLevel": 3,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860",
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "postura-poder-all"
@@ -6131,8 +6067,7 @@
       "skillLevel": 3,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860",
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "postura-poder-all"
@@ -6152,8 +6087,7 @@
       "skillLevel": 3,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860",
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "postura-poder-all"
@@ -6173,8 +6107,7 @@
       "skillLevel": 3,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860",
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "postura-poder-all"
@@ -6194,8 +6127,7 @@
       "skillLevel": 3,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860",
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "postura-poder-all"
@@ -6215,8 +6147,7 @@
       "skillLevel": 3,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860",
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "postura-poder-all"
@@ -6236,8 +6167,7 @@
       "skillLevel": 3,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860",
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "postura-poder-all"
@@ -6257,8 +6187,7 @@
       "skillLevel": 3,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860",
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "postura-poder-all"
@@ -6278,8 +6207,7 @@
       "skillLevel": 3,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860",
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "postura-poder-all"
@@ -6299,8 +6227,7 @@
       "skillLevel": 3,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860",
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "postura-poder-all"
@@ -6320,8 +6247,7 @@
       "skillLevel": 3,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860",
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "postura-poder-all"
@@ -6341,8 +6267,7 @@
       "skillLevel": 3,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860",
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "postura-poder-all"
@@ -6362,8 +6287,7 @@
       "skillLevel": 3,
       "school": "Autoridad",
       "linkedBossIds": [
-        "1783917794860",
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "postura-poder-all"
@@ -6739,8 +6663,8 @@
       "gold": 5,
       "domain": "psychologicalWellbeing",
       "difficulty": "easy",
-      "completed": false,
-      "completedDate": null,
+      "completed": true,
+      "completedDate": "2026-08-15T17:27:10.847Z",
       "kind": "skill-challenge",
       "skillNodeId": "node_1785983669892_tu8ccua1d",
       "skillLevel": 1,
@@ -6760,8 +6684,8 @@
       "gold": 5,
       "domain": "psychologicalWellbeing",
       "difficulty": "easy",
-      "completed": false,
-      "completedDate": null,
+      "completed": true,
+      "completedDate": "2026-08-15T17:54:57.081Z",
       "kind": "skill-challenge",
       "skillNodeId": "node_1785983669892_tu8ccua1d",
       "skillLevel": 1,
@@ -6781,8 +6705,8 @@
       "gold": 5,
       "domain": "psychologicalWellbeing",
       "difficulty": "easy",
-      "completed": false,
-      "completedDate": null,
+      "completed": true,
+      "completedDate": "2026-08-17T00:56:19.618Z",
       "kind": "skill-challenge",
       "skillNodeId": "node_1785983669892_tu8ccua1d",
       "skillLevel": 1,
@@ -6802,15 +6726,14 @@
       "gold": 5,
       "domain": "psychologicalWellbeing",
       "difficulty": "easy",
-      "completed": false,
-      "completedDate": null,
+      "completed": true,
+      "completedDate": "2026-08-17T21:19:52.370Z",
       "kind": "skill-challenge",
       "skillNodeId": "node_1785983669892_tu8ccua1d",
       "skillLevel": 1,
       "school": "Presencia",
       "linkedBossIds": [
-        "1783917794860",
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "flow-bank"
@@ -6830,8 +6753,7 @@
       "skillLevel": 1,
       "school": "Presencia",
       "linkedBossIds": [
-        "1783917794860",
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "flow-bank"
@@ -6851,8 +6773,7 @@
       "skillLevel": 1,
       "school": "Presencia",
       "linkedBossIds": [
-        "1783917794860",
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "flow-bank"
@@ -6872,8 +6793,7 @@
       "skillLevel": 1,
       "school": "Presencia",
       "linkedBossIds": [
-        "1783917794860",
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "flow-bank"
@@ -6893,8 +6813,7 @@
       "skillLevel": 1,
       "school": "Presencia",
       "linkedBossIds": [
-        "1783917794860",
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "flow-bank"
@@ -6914,8 +6833,7 @@
       "skillLevel": 1,
       "school": "Presencia",
       "linkedBossIds": [
-        "1783917794860",
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "flow-bank"
@@ -6935,8 +6853,7 @@
       "skillLevel": 1,
       "school": "Presencia",
       "linkedBossIds": [
-        "1783917794860",
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "flow-bank"
@@ -6956,8 +6873,7 @@
       "skillLevel": 1,
       "school": "Presencia",
       "linkedBossIds": [
-        "1783917794860",
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "flow-bank"
@@ -6977,8 +6893,7 @@
       "skillLevel": 1,
       "school": "Presencia",
       "linkedBossIds": [
-        "1783917794860",
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "flow-bank"
@@ -6998,8 +6913,7 @@
       "skillLevel": 1,
       "school": "Presencia",
       "linkedBossIds": [
-        "1783917794860",
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "flow-bank"
@@ -7019,8 +6933,7 @@
       "skillLevel": 1,
       "school": "Presencia",
       "linkedBossIds": [
-        "1783917794860",
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "flow-bank"
@@ -7040,8 +6953,7 @@
       "skillLevel": 1,
       "school": "Presencia",
       "linkedBossIds": [
-        "1783917794860",
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "flow-bank"
@@ -7061,8 +6973,7 @@
       "skillLevel": 1,
       "school": "Presencia",
       "linkedBossIds": [
-        "1783917794860",
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "flow-bank"
@@ -7082,8 +6993,7 @@
       "skillLevel": 1,
       "school": "Presencia",
       "linkedBossIds": [
-        "1783917794860",
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 10,
       "source": "flow-bank"
@@ -7103,8 +7013,7 @@
       "skillLevel": 2,
       "school": "Presencia",
       "linkedBossIds": [
-        "1783917794860",
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 15,
       "source": "flow-bank"
@@ -7124,8 +7033,7 @@
       "skillLevel": 2,
       "school": "Presencia",
       "linkedBossIds": [
-        "1783917794860",
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 15,
       "source": "flow-bank"
@@ -7145,8 +7053,7 @@
       "skillLevel": 2,
       "school": "Presencia",
       "linkedBossIds": [
-        "1783917794860",
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 15,
       "source": "flow-bank"
@@ -7166,8 +7073,7 @@
       "skillLevel": 2,
       "school": "Presencia",
       "linkedBossIds": [
-        "1783917794860",
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 15,
       "source": "flow-bank"
@@ -7187,8 +7093,7 @@
       "skillLevel": 2,
       "school": "Presencia",
       "linkedBossIds": [
-        "1783917794860",
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 15,
       "source": "flow-bank"
@@ -7208,8 +7113,7 @@
       "skillLevel": 2,
       "school": "Presencia",
       "linkedBossIds": [
-        "1783917794860",
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 15,
       "source": "flow-bank"
@@ -7229,8 +7133,7 @@
       "skillLevel": 2,
       "school": "Presencia",
       "linkedBossIds": [
-        "1783917794860",
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 15,
       "source": "flow-bank"
@@ -7250,8 +7153,7 @@
       "skillLevel": 2,
       "school": "Presencia",
       "linkedBossIds": [
-        "1783917794860",
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 15,
       "source": "flow-bank"
@@ -7271,8 +7173,7 @@
       "skillLevel": 2,
       "school": "Presencia",
       "linkedBossIds": [
-        "1783917794860",
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 15,
       "source": "flow-bank"
@@ -7292,8 +7193,7 @@
       "skillLevel": 2,
       "school": "Presencia",
       "linkedBossIds": [
-        "1783917794860",
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 15,
       "source": "flow-bank"
@@ -7313,8 +7213,7 @@
       "skillLevel": 2,
       "school": "Presencia",
       "linkedBossIds": [
-        "1783917794860",
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 15,
       "source": "flow-bank"
@@ -7334,8 +7233,7 @@
       "skillLevel": 2,
       "school": "Presencia",
       "linkedBossIds": [
-        "1783917794860",
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 15,
       "source": "flow-bank"
@@ -7355,8 +7253,7 @@
       "skillLevel": 2,
       "school": "Presencia",
       "linkedBossIds": [
-        "1783917794860",
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 15,
       "source": "flow-bank"
@@ -7376,8 +7273,7 @@
       "skillLevel": 2,
       "school": "Presencia",
       "linkedBossIds": [
-        "1783917794860",
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 15,
       "source": "flow-bank"
@@ -7397,8 +7293,7 @@
       "skillLevel": 2,
       "school": "Presencia",
       "linkedBossIds": [
-        "1783917794860",
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 15,
       "source": "flow-bank"
@@ -7418,8 +7313,7 @@
       "skillLevel": 2,
       "school": "Presencia",
       "linkedBossIds": [
-        "1783917794860",
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 15,
       "source": "flow-bank"
@@ -7439,8 +7333,7 @@
       "skillLevel": 2,
       "school": "Presencia",
       "linkedBossIds": [
-        "1783917794860",
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 15,
       "source": "flow-bank"
@@ -7460,8 +7353,7 @@
       "skillLevel": 2,
       "school": "Presencia",
       "linkedBossIds": [
-        "1783917794860",
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 15,
       "source": "flow-bank"
@@ -7481,8 +7373,7 @@
       "skillLevel": 2,
       "school": "Presencia",
       "linkedBossIds": [
-        "1783917794860",
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 15,
       "source": "flow-bank"
@@ -7502,8 +7393,7 @@
       "skillLevel": 2,
       "school": "Presencia",
       "linkedBossIds": [
-        "1783917794860",
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 15,
       "source": "flow-bank"
@@ -7523,8 +7413,7 @@
       "skillLevel": 3,
       "school": "Presencia",
       "linkedBossIds": [
-        "1783917794860",
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 20,
       "source": "flow-bank"
@@ -7544,8 +7433,7 @@
       "skillLevel": 3,
       "school": "Presencia",
       "linkedBossIds": [
-        "1783917794860",
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 20,
       "source": "flow-bank"
@@ -7565,8 +7453,7 @@
       "skillLevel": 3,
       "school": "Presencia",
       "linkedBossIds": [
-        "1783917794860",
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 20,
       "source": "flow-bank"
@@ -7586,8 +7473,7 @@
       "skillLevel": 3,
       "school": "Presencia",
       "linkedBossIds": [
-        "1783917794860",
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 20,
       "source": "flow-bank"
@@ -7607,8 +7493,7 @@
       "skillLevel": 3,
       "school": "Presencia",
       "linkedBossIds": [
-        "1783917794860",
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 20,
       "source": "flow-bank"
@@ -7628,8 +7513,7 @@
       "skillLevel": 3,
       "school": "Presencia",
       "linkedBossIds": [
-        "1783917794860",
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 20,
       "source": "flow-bank"
@@ -7649,8 +7533,7 @@
       "skillLevel": 3,
       "school": "Presencia",
       "linkedBossIds": [
-        "1783917794860",
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 20,
       "source": "flow-bank"
@@ -7670,8 +7553,7 @@
       "skillLevel": 3,
       "school": "Presencia",
       "linkedBossIds": [
-        "1783917794860",
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 20,
       "source": "flow-bank"
@@ -7691,8 +7573,7 @@
       "skillLevel": 3,
       "school": "Presencia",
       "linkedBossIds": [
-        "1783917794860",
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 20,
       "source": "flow-bank"
@@ -7712,8 +7593,7 @@
       "skillLevel": 3,
       "school": "Presencia",
       "linkedBossIds": [
-        "1783917794860",
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 20,
       "source": "flow-bank"
@@ -7733,8 +7613,7 @@
       "skillLevel": 3,
       "school": "Presencia",
       "linkedBossIds": [
-        "1783917794860",
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 20,
       "source": "flow-bank"
@@ -7754,8 +7633,7 @@
       "skillLevel": 3,
       "school": "Presencia",
       "linkedBossIds": [
-        "1783917794860",
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 20,
       "source": "flow-bank"
@@ -7775,8 +7653,7 @@
       "skillLevel": 3,
       "school": "Presencia",
       "linkedBossIds": [
-        "1783917794860",
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 20,
       "source": "flow-bank"
@@ -7796,8 +7673,7 @@
       "skillLevel": 3,
       "school": "Presencia",
       "linkedBossIds": [
-        "1783917794860",
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 20,
       "source": "flow-bank"
@@ -7817,8 +7693,7 @@
       "skillLevel": 3,
       "school": "Presencia",
       "linkedBossIds": [
-        "1783917794860",
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 20,
       "source": "flow-bank"
@@ -7838,8 +7713,7 @@
       "skillLevel": 3,
       "school": "Presencia",
       "linkedBossIds": [
-        "1783917794860",
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 20,
       "source": "flow-bank"
@@ -7859,8 +7733,7 @@
       "skillLevel": 3,
       "school": "Presencia",
       "linkedBossIds": [
-        "1783917794860",
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 20,
       "source": "flow-bank"
@@ -7880,8 +7753,7 @@
       "skillLevel": 3,
       "school": "Presencia",
       "linkedBossIds": [
-        "1783917794860",
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 20,
       "source": "flow-bank"
@@ -7901,8 +7773,7 @@
       "skillLevel": 3,
       "school": "Presencia",
       "linkedBossIds": [
-        "1783917794860",
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 20,
       "source": "flow-bank"
@@ -7922,8 +7793,7 @@
       "skillLevel": 3,
       "school": "Presencia",
       "linkedBossIds": [
-        "1783917794860",
-        "1783927787622"
+        "1786983444165"
       ],
       "bossDamage": 20,
       "source": "flow-bank"
@@ -8272,13 +8142,2577 @@
   },
   "aiQuestsGenerated": 0,
   "currentPhase": "dissonance",
-  "psychicEntropy": 90,
-  "lastWisdomDate": "Sat Aug 01 2026",
+  "psychicEntropy": 100,
+  "lastWisdomDate": "Mon Aug 17 2026",
   "dailyWisdom": {
     "text": "When you are in the Dissonance phase, search for excitement and enthusiasm and pursue that without shame.",
     "category": "dissonance"
   },
   "activityLog": [
+    {
+      "id": "1787322955263",
+      "timestamp": "2026-08-21T14:35:55.263Z",
+      "category": "boss_damage",
+      "description": "Dealt 10 damage to Guiltmal",
+      "details": {
+        "damage": 10,
+        "remaining": 9510
+      }
+    },
+    {
+      "id": "1787322955253",
+      "timestamp": "2026-08-21T14:35:55.253Z",
+      "category": "boss_damage",
+      "description": "Dealt 10 damage to Guiltmal",
+      "details": {
+        "damage": 10,
+        "remaining": 9520
+      }
+    },
+    {
+      "id": "1787322955253",
+      "timestamp": "2026-08-21T14:35:55.253Z",
+      "category": "quest_complete",
+      "description": "Reto 1.12",
+      "details": {
+        "xp": 5,
+        "gold": 3,
+        "difficulty": "easy",
+        "kind": "skill-challenge",
+        "skillNodeId": "node_1783924907507_h8pezfu4q",
+        "school": "Calidez",
+        "linkedBossIds": [
+          "1786983444165"
+        ],
+        "bossDamage": 10,
+        "vowMultiplier": 1
+      }
+    },
+    {
+      "id": "1787322930288",
+      "timestamp": "2026-08-21T14:35:30.288Z",
+      "category": "boss_damage",
+      "description": "Dealt 10 damage to Guiltmal",
+      "details": {
+        "damage": 10,
+        "remaining": 9530
+      }
+    },
+    {
+      "id": "1787322930272",
+      "timestamp": "2026-08-21T14:35:30.272Z",
+      "category": "boss_damage",
+      "description": "Dealt 10 damage to Guiltmal",
+      "details": {
+        "damage": 10,
+        "remaining": 9540
+      }
+    },
+    {
+      "id": "1787322930272",
+      "timestamp": "2026-08-21T14:35:30.272Z",
+      "category": "quest_complete",
+      "description": "Reto 1.9",
+      "details": {
+        "xp": 5,
+        "gold": 3,
+        "difficulty": "easy",
+        "kind": "skill-challenge",
+        "skillNodeId": "node_1783924907507_h8pezfu4q",
+        "school": "Calidez",
+        "linkedBossIds": [
+          "1786983444165"
+        ],
+        "bossDamage": 10,
+        "vowMultiplier": 1
+      }
+    },
+    {
+      "id": "1787319491864",
+      "timestamp": "2026-08-21T13:38:11.864Z",
+      "category": "boss_damage",
+      "description": "Dealt 10 damage to Guiltmal",
+      "details": {
+        "damage": 10,
+        "remaining": 9550
+      }
+    },
+    {
+      "id": "1787319491864",
+      "timestamp": "2026-08-21T13:38:11.864Z",
+      "category": "habit_complete",
+      "description": "15min carrera (apply/connect)",
+      "details": {
+        "xp": 15,
+        "gold": 5,
+        "streak": 0,
+        "linkedSkillIds": [],
+        "linkedBossIds": [
+          "1783917794860",
+          "1786983444165"
+        ],
+        "bossDamage": 10
+      }
+    },
+    {
+      "id": "1787242593893",
+      "timestamp": "2026-08-20T16:16:33.893Z",
+      "category": "habit_complete",
+      "description": "15min Perply",
+      "details": {
+        "xp": 18,
+        "gold": 9,
+        "streak": 8,
+        "linkedSkillIds": [
+          "skill_1782600801285_xfjqocoem"
+        ],
+        "linkedBossIds": [],
+        "bossDamage": 10
+      }
+    },
+    {
+      "id": "1787242033831",
+      "timestamp": "2026-08-20T16:07:13.831Z",
+      "category": "boss_damage",
+      "description": "Dealt 10 damage to Guiltmal",
+      "details": {
+        "damage": 10,
+        "remaining": 9560
+      }
+    },
+    {
+      "id": "1787242033815",
+      "timestamp": "2026-08-20T16:07:13.815Z",
+      "category": "boss_damage",
+      "description": "Dealt 10 damage to Guiltmal",
+      "details": {
+        "damage": 10,
+        "remaining": 9570
+      }
+    },
+    {
+      "id": "1787242033815",
+      "timestamp": "2026-08-20T16:07:13.815Z",
+      "category": "habit_complete",
+      "description": "Meditación Metta",
+      "details": {
+        "xp": 18,
+        "gold": 9,
+        "streak": 8,
+        "linkedSkillIds": [
+          "skill_1782596299032_o0ambkloe"
+        ],
+        "linkedBossIds": [
+          "1783917794860",
+          "1783927787622",
+          "1786983444165"
+        ],
+        "bossDamage": 10
+      }
+    },
+    {
+      "id": "1787241749364",
+      "timestamp": "2026-08-20T16:02:29.364Z",
+      "category": "boss_damage",
+      "description": "Dealt 10 damage to Guiltmal",
+      "details": {
+        "damage": 10,
+        "remaining": 9580
+      }
+    },
+    {
+      "id": "1787241749353",
+      "timestamp": "2026-08-20T16:02:29.353Z",
+      "category": "boss_damage",
+      "description": "Dealt 10 damage to Guiltmal",
+      "details": {
+        "damage": 10,
+        "remaining": 9590
+      }
+    },
+    {
+      "id": "1787241749352",
+      "timestamp": "2026-08-20T16:02:29.352Z",
+      "category": "habit_complete",
+      "description": "Lectura de mis principios",
+      "details": {
+        "xp": 18,
+        "gold": 9,
+        "streak": 8,
+        "linkedSkillIds": [
+          "skill_1782600801284_g84pfxiy7"
+        ],
+        "linkedBossIds": [
+          "1786983444165"
+        ],
+        "bossDamage": 10
+      }
+    },
+    {
+      "id": "1787241746851",
+      "timestamp": "2026-08-20T16:02:26.851Z",
+      "category": "boss_damage",
+      "description": "Dealt 10 damage to Guiltmal",
+      "details": {
+        "damage": 10,
+        "remaining": 9600
+      }
+    },
+    {
+      "id": "1787241746841",
+      "timestamp": "2026-08-20T16:02:26.841Z",
+      "category": "boss_damage",
+      "description": "Dealt 10 damage to Guiltmal",
+      "details": {
+        "damage": 10,
+        "remaining": 9610
+      }
+    },
+    {
+      "id": "1787241746840",
+      "timestamp": "2026-08-20T16:02:26.840Z",
+      "category": "habit_complete",
+      "description": "Escribir 5 agradecimientos propios y vision en tercera persona viendome",
+      "details": {
+        "xp": 18,
+        "gold": 9,
+        "streak": 8,
+        "linkedSkillIds": [
+          "skill_1782600801284_710kzzmwo"
+        ],
+        "linkedBossIds": [
+          "1783917794860",
+          "1783927787622",
+          "1786983444165"
+        ],
+        "bossDamage": 10
+      }
+    },
+    {
+      "id": "1787240983773",
+      "timestamp": "2026-08-20T15:49:43.773Z",
+      "category": "boss_damage",
+      "description": "Dealt 10 damage to Guiltmal",
+      "details": {
+        "damage": 10,
+        "remaining": 9620
+      }
+    },
+    {
+      "id": "1787240983756",
+      "timestamp": "2026-08-20T15:49:43.756Z",
+      "category": "boss_damage",
+      "description": "Dealt 10 damage to Guiltmal",
+      "details": {
+        "damage": 10,
+        "remaining": 9630
+      }
+    },
+    {
+      "id": "1787240983756",
+      "timestamp": "2026-08-20T15:49:43.756Z",
+      "category": "habit_complete",
+      "description": "10min meditación FOM y OM",
+      "details": {
+        "xp": 18,
+        "gold": 9,
+        "streak": 8,
+        "linkedSkillIds": [
+          "skill_1782596299032_o0ambkloe"
+        ],
+        "linkedBossIds": [
+          "1783917794860",
+          "1783927787622",
+          "1786983444165"
+        ],
+        "bossDamage": 10
+      }
+    },
+    {
+      "id": "1787239005800",
+      "timestamp": "2026-08-20T15:16:45.800Z",
+      "category": "boss_damage",
+      "description": "Dealt 10 damage to Guiltmal",
+      "details": {
+        "damage": 10,
+        "remaining": 9640
+      }
+    },
+    {
+      "id": "1787239005790",
+      "timestamp": "2026-08-20T15:16:45.790Z",
+      "category": "boss_damage",
+      "description": "Dealt 10 damage to Guiltmal",
+      "details": {
+        "damage": 10,
+        "remaining": 9650
+      }
+    },
+    {
+      "id": "1787239005790",
+      "timestamp": "2026-08-20T15:16:45.790Z",
+      "category": "quest_complete",
+      "description": "Q1.15 Aperturas - Shine automatico",
+      "details": {
+        "xp": 5,
+        "gold": 3,
+        "difficulty": "easy",
+        "kind": "skill-challenge",
+        "skillNodeId": "node_1784952949938_smn8n1yyu",
+        "school": "Autoridad",
+        "linkedBossIds": [
+          "1786983444165"
+        ],
+        "bossDamage": 10,
+        "vowMultiplier": 1
+      }
+    },
+    {
+      "id": "1787238839815",
+      "timestamp": "2026-08-20T15:13:59.815Z",
+      "category": "boss_damage",
+      "description": "Dealt 10 damage to Guiltmal",
+      "details": {
+        "damage": 10,
+        "remaining": 9660
+      }
+    },
+    {
+      "id": "1787238839806",
+      "timestamp": "2026-08-20T15:13:59.806Z",
+      "category": "habit_complete",
+      "description": "30min ejercicio",
+      "details": {
+        "xp": 18,
+        "gold": 9,
+        "streak": 8,
+        "linkedSkillIds": [
+          "skill_1782600801284_anttohfwh"
+        ],
+        "linkedBossIds": [
+          "1786983444165"
+        ],
+        "bossDamage": 10
+      }
+    },
+    {
+      "id": "1787183170308",
+      "timestamp": "2026-08-19T23:46:10.308Z",
+      "category": "boss_damage",
+      "description": "Dealt 10 damage to Guiltmal",
+      "details": {
+        "damage": 10,
+        "remaining": 9670
+      }
+    },
+    {
+      "id": "1787183170297",
+      "timestamp": "2026-08-19T23:46:10.297Z",
+      "category": "boss_damage",
+      "description": "Dealt 10 damage to Guiltmal",
+      "details": {
+        "damage": 10,
+        "remaining": 9680
+      }
+    },
+    {
+      "id": "1787183170297",
+      "timestamp": "2026-08-19T23:46:10.297Z",
+      "category": "quest_complete",
+      "description": "Reto 1.14",
+      "details": {
+        "xp": 5,
+        "gold": 3,
+        "difficulty": "easy",
+        "kind": "skill-challenge",
+        "skillNodeId": "node_1783916853576_snysp17go",
+        "school": "Autoridad",
+        "linkedBossIds": [
+          "1786983444165"
+        ],
+        "bossDamage": 10,
+        "vowMultiplier": 1
+      }
+    },
+    {
+      "id": "1787183161631",
+      "timestamp": "2026-08-19T23:46:01.631Z",
+      "category": "boss_damage",
+      "description": "Dealt 10 damage to Guiltmal",
+      "details": {
+        "damage": 10,
+        "remaining": 9690
+      }
+    },
+    {
+      "id": "1787183161618",
+      "timestamp": "2026-08-19T23:46:01.618Z",
+      "category": "boss_damage",
+      "description": "Dealt 10 damage to Guiltmal",
+      "details": {
+        "damage": 10,
+        "remaining": 9700
+      }
+    },
+    {
+      "id": "1787183161618",
+      "timestamp": "2026-08-19T23:46:01.618Z",
+      "category": "quest_complete",
+      "description": "Reto 1.9",
+      "details": {
+        "xp": 5,
+        "gold": 3,
+        "difficulty": "easy",
+        "kind": "skill-challenge",
+        "skillNodeId": "node_1783925025123_9qj0tnoxs",
+        "school": "Calidez",
+        "linkedBossIds": [
+          "1786983444165"
+        ],
+        "bossDamage": 10,
+        "vowMultiplier": 1
+      }
+    },
+    {
+      "id": "1787174838018",
+      "timestamp": "2026-08-19T21:27:18.018Z",
+      "category": "boss_damage",
+      "description": "Dealt 10 damage to Guiltmal",
+      "details": {
+        "damage": 10,
+        "remaining": 9710
+      }
+    },
+    {
+      "id": "1787174838018",
+      "timestamp": "2026-08-19T21:27:18.018Z",
+      "category": "habit_complete",
+      "description": "15min carrera (apply/connect)",
+      "details": {
+        "xp": 24,
+        "gold": 8,
+        "streak": 6,
+        "linkedSkillIds": [],
+        "linkedBossIds": [
+          "1783917794860",
+          "1786983444165"
+        ],
+        "bossDamage": 10
+      }
+    },
+    {
+      "id": "1787174836410",
+      "timestamp": "2026-08-19T21:27:16.410Z",
+      "category": "habit_complete",
+      "description": "1 clase de Plazi",
+      "details": {
+        "xp": 16,
+        "gold": 8,
+        "streak": 6,
+        "linkedSkillIds": [
+          "skill_1782598763683_06ikkboio"
+        ],
+        "linkedBossIds": [],
+        "bossDamage": 10
+      }
+    },
+    {
+      "id": "1787170522133",
+      "timestamp": "2026-08-19T20:15:22.133Z",
+      "category": "boss_damage",
+      "description": "Dealt 10 damage to Guiltmal",
+      "details": {
+        "damage": 10,
+        "remaining": 9720
+      }
+    },
+    {
+      "id": "1787170522122",
+      "timestamp": "2026-08-19T20:15:22.122Z",
+      "category": "boss_damage",
+      "description": "Dealt 10 damage to Guiltmal",
+      "details": {
+        "damage": 10,
+        "remaining": 9730
+      }
+    },
+    {
+      "id": "1787170522122",
+      "timestamp": "2026-08-19T20:15:22.122Z",
+      "category": "quest_complete",
+      "description": "Q1.14 Aperturas - Sin espejo, sin juicio",
+      "details": {
+        "xp": 5,
+        "gold": 3,
+        "difficulty": "easy",
+        "kind": "skill-challenge",
+        "skillNodeId": "node_1784952949938_smn8n1yyu",
+        "school": "Autoridad",
+        "linkedBossIds": [
+          "1786983444165"
+        ],
+        "bossDamage": 10,
+        "vowMultiplier": 1
+      }
+    },
+    {
+      "id": "1787170521246",
+      "timestamp": "2026-08-19T20:15:21.246Z",
+      "category": "boss_damage",
+      "description": "Dealt 10 damage to Guiltmal",
+      "details": {
+        "damage": 10,
+        "remaining": 9740
+      }
+    },
+    {
+      "id": "1787170521236",
+      "timestamp": "2026-08-19T20:15:21.236Z",
+      "category": "boss_damage",
+      "description": "Dealt 10 damage to Guiltmal",
+      "details": {
+        "damage": 10,
+        "remaining": 9750
+      }
+    },
+    {
+      "id": "1787170521236",
+      "timestamp": "2026-08-19T20:15:21.236Z",
+      "category": "quest_complete",
+      "description": "Q1.13 Aperturas - Frase de apertura",
+      "details": {
+        "xp": 5,
+        "gold": 3,
+        "difficulty": "easy",
+        "kind": "skill-challenge",
+        "skillNodeId": "node_1784952949938_smn8n1yyu",
+        "school": "Autoridad",
+        "linkedBossIds": [
+          "1786983444165"
+        ],
+        "bossDamage": 10,
+        "vowMultiplier": 1
+      }
+    },
+    {
+      "id": "1787154026755",
+      "timestamp": "2026-08-19T15:40:26.755Z",
+      "category": "habit_complete",
+      "description": "15min Perply",
+      "details": {
+        "xp": 17,
+        "gold": 9,
+        "streak": 7,
+        "linkedSkillIds": [
+          "skill_1782600801285_xfjqocoem"
+        ],
+        "linkedBossIds": [],
+        "bossDamage": 10
+      }
+    },
+    {
+      "id": "1787153147663",
+      "timestamp": "2026-08-19T15:25:47.663Z",
+      "category": "boss_damage",
+      "description": "Dealt 10 damage to Guiltmal",
+      "details": {
+        "damage": 10,
+        "remaining": 9760
+      }
+    },
+    {
+      "id": "1787153147652",
+      "timestamp": "2026-08-19T15:25:47.652Z",
+      "category": "boss_damage",
+      "description": "Dealt 10 damage to Guiltmal",
+      "details": {
+        "damage": 10,
+        "remaining": 9770
+      }
+    },
+    {
+      "id": "1787153147652",
+      "timestamp": "2026-08-19T15:25:47.652Z",
+      "category": "habit_complete",
+      "description": "Meditación Metta",
+      "details": {
+        "xp": 17,
+        "gold": 9,
+        "streak": 7,
+        "linkedSkillIds": [
+          "skill_1782596299032_o0ambkloe"
+        ],
+        "linkedBossIds": [
+          "1783917794860",
+          "1783927787622",
+          "1786983444165"
+        ],
+        "bossDamage": 10
+      }
+    },
+    {
+      "id": "1787152878007",
+      "timestamp": "2026-08-19T15:21:18.007Z",
+      "category": "boss_damage",
+      "description": "Dealt 10 damage to Guiltmal",
+      "details": {
+        "damage": 10,
+        "remaining": 9780
+      }
+    },
+    {
+      "id": "1787152877996",
+      "timestamp": "2026-08-19T15:21:17.996Z",
+      "category": "boss_damage",
+      "description": "Dealt 10 damage to Guiltmal",
+      "details": {
+        "damage": 10,
+        "remaining": 9790
+      }
+    },
+    {
+      "id": "1787152877995",
+      "timestamp": "2026-08-19T15:21:17.995Z",
+      "category": "habit_complete",
+      "description": "Lectura de mis principios",
+      "details": {
+        "xp": 17,
+        "gold": 9,
+        "streak": 7,
+        "linkedSkillIds": [
+          "skill_1782600801284_g84pfxiy7"
+        ],
+        "linkedBossIds": [
+          "1786983444165"
+        ],
+        "bossDamage": 10
+      }
+    },
+    {
+      "id": "1787152875824",
+      "timestamp": "2026-08-19T15:21:15.824Z",
+      "category": "boss_damage",
+      "description": "Dealt 10 damage to Guiltmal",
+      "details": {
+        "damage": 10,
+        "remaining": 9800
+      }
+    },
+    {
+      "id": "1787152875811",
+      "timestamp": "2026-08-19T15:21:15.811Z",
+      "category": "boss_damage",
+      "description": "Dealt 10 damage to Guiltmal",
+      "details": {
+        "damage": 10,
+        "remaining": 9810
+      }
+    },
+    {
+      "id": "1787152875811",
+      "timestamp": "2026-08-19T15:21:15.811Z",
+      "category": "habit_complete",
+      "description": "Escribir 5 agradecimientos propios y vision en tercera persona viendome",
+      "details": {
+        "xp": 17,
+        "gold": 9,
+        "streak": 7,
+        "linkedSkillIds": [
+          "skill_1782600801284_710kzzmwo"
+        ],
+        "linkedBossIds": [
+          "1783917794860",
+          "1783927787622",
+          "1786983444165"
+        ],
+        "bossDamage": 10
+      }
+    },
+    {
+      "id": "1787152002864",
+      "timestamp": "2026-08-19T15:06:42.864Z",
+      "category": "boss_damage",
+      "description": "Dealt 10 damage to Guiltmal",
+      "details": {
+        "damage": 10,
+        "remaining": 9820
+      }
+    },
+    {
+      "id": "1787152002852",
+      "timestamp": "2026-08-19T15:06:42.852Z",
+      "category": "boss_damage",
+      "description": "Dealt 10 damage to Guiltmal",
+      "details": {
+        "damage": 10,
+        "remaining": 9830
+      }
+    },
+    {
+      "id": "1787152002852",
+      "timestamp": "2026-08-19T15:06:42.852Z",
+      "category": "habit_complete",
+      "description": "10min meditación FOM y OM",
+      "details": {
+        "xp": 17,
+        "gold": 9,
+        "streak": 7,
+        "linkedSkillIds": [
+          "skill_1782596299032_o0ambkloe"
+        ],
+        "linkedBossIds": [
+          "1783917794860",
+          "1783927787622",
+          "1786983444165"
+        ],
+        "bossDamage": 10
+      }
+    },
+    {
+      "id": "1787151013155",
+      "timestamp": "2026-08-19T14:50:13.155Z",
+      "category": "boss_damage",
+      "description": "Dealt 10 damage to Guiltmal",
+      "details": {
+        "damage": 10,
+        "remaining": 9840
+      }
+    },
+    {
+      "id": "1787151013155",
+      "timestamp": "2026-08-19T14:50:13.155Z",
+      "category": "habit_complete",
+      "description": "30min ejercicio",
+      "details": {
+        "xp": 17,
+        "gold": 9,
+        "streak": 7,
+        "linkedSkillIds": [
+          "skill_1782600801284_anttohfwh"
+        ],
+        "linkedBossIds": [
+          "1786983444165"
+        ],
+        "bossDamage": 10
+      }
+    },
+    {
+      "id": "1787105249840",
+      "timestamp": "2026-08-19T02:07:29.840Z",
+      "category": "habit_complete",
+      "description": "1 clase de Plazi",
+      "details": {
+        "xp": 15,
+        "gold": 8,
+        "streak": 5,
+        "linkedSkillIds": [
+          "skill_1782598763683_06ikkboio"
+        ],
+        "linkedBossIds": [],
+        "bossDamage": 10
+      }
+    },
+    {
+      "id": "1787105238682",
+      "timestamp": "2026-08-19T02:07:18.682Z",
+      "category": "boss_damage",
+      "description": "Dealt 10 damage to Guiltmal",
+      "details": {
+        "damage": 10,
+        "remaining": 9850
+      }
+    },
+    {
+      "id": "1787105238681",
+      "timestamp": "2026-08-19T02:07:18.681Z",
+      "category": "habit_complete",
+      "description": "Escribir exitos del dia",
+      "details": {
+        "xp": 15,
+        "gold": 8,
+        "streak": 5,
+        "linkedSkillIds": [
+          "skill_1782600801285_byeggsb1h",
+          "skill_1782600801284_e4lh9515p",
+          "skill_1782600801284_710kzzmwo",
+          "skill_1782598763683_06ikkboio"
+        ],
+        "linkedBossIds": [
+          "1783927787622",
+          "1783917794860",
+          "1786983444165"
+        ],
+        "bossDamage": 10
+      }
+    },
+    {
+      "id": "1787105236657",
+      "timestamp": "2026-08-19T02:07:16.657Z",
+      "category": "boss_damage",
+      "description": "Dealt 10 damage to Guiltmal",
+      "details": {
+        "damage": 10,
+        "remaining": 9860
+      }
+    },
+    {
+      "id": "1787105236657",
+      "timestamp": "2026-08-19T02:07:16.657Z",
+      "category": "habit_complete",
+      "description": "15min carrera (apply/connect)",
+      "details": {
+        "xp": 23,
+        "gold": 8,
+        "streak": 5,
+        "linkedSkillIds": [],
+        "linkedBossIds": [
+          "1783917794860",
+          "1786983444165"
+        ],
+        "bossDamage": 10
+      }
+    },
+    {
+      "id": "1787082136885",
+      "timestamp": "2026-08-18T19:42:16.885Z",
+      "category": "habit_complete",
+      "description": "15min Perply",
+      "details": {
+        "xp": 16,
+        "gold": 8,
+        "streak": 6,
+        "linkedSkillIds": [
+          "skill_1782600801285_xfjqocoem"
+        ],
+        "linkedBossIds": [],
+        "bossDamage": 10
+      }
+    },
+    {
+      "id": "1787079559434",
+      "timestamp": "2026-08-18T18:59:19.434Z",
+      "category": "boss_damage",
+      "description": "Dealt 10 damage to Guiltmal",
+      "details": {
+        "damage": 10,
+        "remaining": 9870
+      }
+    },
+    {
+      "id": "1787079559423",
+      "timestamp": "2026-08-18T18:59:19.423Z",
+      "category": "boss_damage",
+      "description": "Dealt 10 damage to Guiltmal",
+      "details": {
+        "damage": 10,
+        "remaining": 9880
+      }
+    },
+    {
+      "id": "1787079559422",
+      "timestamp": "2026-08-18T18:59:19.422Z",
+      "category": "habit_complete",
+      "description": "Meditación Metta",
+      "details": {
+        "xp": 16,
+        "gold": 8,
+        "streak": 6,
+        "linkedSkillIds": [
+          "skill_1782596299032_o0ambkloe"
+        ],
+        "linkedBossIds": [
+          "1783917794860",
+          "1783927787622",
+          "1786983444165"
+        ],
+        "bossDamage": 10
+      }
+    },
+    {
+      "id": "1787078805221",
+      "timestamp": "2026-08-18T18:46:45.221Z",
+      "category": "boss_damage",
+      "description": "Dealt 10 damage to Guiltmal",
+      "details": {
+        "damage": 10,
+        "remaining": 9890
+      }
+    },
+    {
+      "id": "1787078805209",
+      "timestamp": "2026-08-18T18:46:45.209Z",
+      "category": "boss_damage",
+      "description": "Dealt 10 damage to Guiltmal",
+      "details": {
+        "damage": 10,
+        "remaining": 9900
+      }
+    },
+    {
+      "id": "1787078805208",
+      "timestamp": "2026-08-18T18:46:45.208Z",
+      "category": "habit_complete",
+      "description": "Lectura de mis principios",
+      "details": {
+        "xp": 16,
+        "gold": 8,
+        "streak": 6,
+        "linkedSkillIds": [
+          "skill_1782600801284_g84pfxiy7"
+        ],
+        "linkedBossIds": [
+          "1786983444165"
+        ],
+        "bossDamage": 10
+      }
+    },
+    {
+      "id": "1787078801853",
+      "timestamp": "2026-08-18T18:46:41.853Z",
+      "category": "boss_damage",
+      "description": "Dealt 10 damage to Guiltmal",
+      "details": {
+        "damage": 10,
+        "remaining": 9910
+      }
+    },
+    {
+      "id": "1787078801841",
+      "timestamp": "2026-08-18T18:46:41.841Z",
+      "category": "boss_damage",
+      "description": "Dealt 10 damage to Guiltmal",
+      "details": {
+        "damage": 10,
+        "remaining": 9920
+      }
+    },
+    {
+      "id": "1787078801840",
+      "timestamp": "2026-08-18T18:46:41.840Z",
+      "category": "habit_complete",
+      "description": "Escribir 5 agradecimientos propios y vision en tercera persona viendome",
+      "details": {
+        "xp": 16,
+        "gold": 8,
+        "streak": 6,
+        "linkedSkillIds": [
+          "skill_1782600801284_710kzzmwo"
+        ],
+        "linkedBossIds": [
+          "1783917794860",
+          "1783927787622",
+          "1786983444165"
+        ],
+        "bossDamage": 10
+      }
+    },
+    {
+      "id": "1787078127581",
+      "timestamp": "2026-08-18T18:35:27.581Z",
+      "category": "boss_damage",
+      "description": "Dealt 10 damage to Guiltmal",
+      "details": {
+        "damage": 10,
+        "remaining": 9930
+      }
+    },
+    {
+      "id": "1787078127560",
+      "timestamp": "2026-08-18T18:35:27.560Z",
+      "category": "boss_damage",
+      "description": "Dealt 10 damage to Guiltmal",
+      "details": {
+        "damage": 10,
+        "remaining": 9940
+      }
+    },
+    {
+      "id": "1787078127557",
+      "timestamp": "2026-08-18T18:35:27.557Z",
+      "category": "habit_complete",
+      "description": "10min meditación FOM y OM",
+      "details": {
+        "xp": 16,
+        "gold": 8,
+        "streak": 6,
+        "linkedSkillIds": [
+          "skill_1782596299032_o0ambkloe"
+        ],
+        "linkedBossIds": [
+          "1783917794860",
+          "1783927787622",
+          "1786983444165"
+        ],
+        "bossDamage": 10
+      }
+    },
+    {
+      "id": "1787068929053",
+      "timestamp": "2026-08-18T16:02:09.053Z",
+      "category": "boss_damage",
+      "description": "Dealt 10 damage to Guiltmal",
+      "details": {
+        "damage": 10,
+        "remaining": 9950
+      }
+    },
+    {
+      "id": "1787068929045",
+      "timestamp": "2026-08-18T16:02:09.045Z",
+      "category": "habit_complete",
+      "description": "30min ejercicio",
+      "details": {
+        "xp": 16,
+        "gold": 8,
+        "streak": 6,
+        "linkedSkillIds": [
+          "skill_1782600801284_anttohfwh"
+        ],
+        "linkedBossIds": [
+          "1786983444165"
+        ],
+        "bossDamage": 10
+      }
+    },
+    {
+      "id": "1787015686721",
+      "timestamp": "2026-08-18T01:14:46.721Z",
+      "category": "boss_damage",
+      "description": "Dealt 10 damage to Guiltmal",
+      "details": {
+        "damage": 10,
+        "remaining": 9960
+      }
+    },
+    {
+      "id": "1787015686721",
+      "timestamp": "2026-08-18T01:14:46.721Z",
+      "category": "habit_complete",
+      "description": "15min carrera (apply/connect)",
+      "details": {
+        "xp": 21,
+        "gold": 7,
+        "streak": 4,
+        "linkedSkillIds": [],
+        "linkedBossIds": [
+          "1783917794860",
+          "1786983444165"
+        ],
+        "bossDamage": 10
+      }
+    },
+    {
+      "id": "1787015685518",
+      "timestamp": "2026-08-18T01:14:45.518Z",
+      "category": "boss_damage",
+      "description": "Dealt 10 damage to Guiltmal",
+      "details": {
+        "damage": 10,
+        "remaining": 9970
+      }
+    },
+    {
+      "id": "1787015685508",
+      "timestamp": "2026-08-18T01:14:45.508Z",
+      "category": "habit_complete",
+      "description": "Escribir exitos del dia",
+      "details": {
+        "xp": 14,
+        "gold": 7,
+        "streak": 4,
+        "linkedSkillIds": [
+          "skill_1782600801285_byeggsb1h",
+          "skill_1782600801284_e4lh9515p",
+          "skill_1782600801284_710kzzmwo",
+          "skill_1782598763683_06ikkboio"
+        ],
+        "linkedBossIds": [
+          "1783927787622",
+          "1783917794860",
+          "1786983444165"
+        ],
+        "bossDamage": 10
+      }
+    },
+    {
+      "id": "1787001592394",
+      "timestamp": "2026-08-17T21:19:52.394Z",
+      "category": "boss_damage",
+      "description": "Dealt 10 damage to Guiltmal",
+      "details": {
+        "damage": 10,
+        "remaining": 9980
+      }
+    },
+    {
+      "id": "1787001592372",
+      "timestamp": "2026-08-17T21:19:52.372Z",
+      "category": "boss_damage",
+      "description": "Dealt 10 damage to Guiltmal",
+      "details": {
+        "damage": 10,
+        "remaining": 9990
+      }
+    },
+    {
+      "id": "1787001592371",
+      "timestamp": "2026-08-17T21:19:52.371Z",
+      "category": "quest_complete",
+      "description": "Reto 1.7 [Pared de 20 — Gate Ochenta]",
+      "details": {
+        "xp": 5,
+        "gold": 3,
+        "difficulty": "easy",
+        "kind": "skill-challenge",
+        "skillNodeId": "node_1785983669892_tu8ccua1d",
+        "school": "Presencia",
+        "linkedBossIds": [
+          "1786983444165"
+        ],
+        "bossDamage": 10,
+        "vowMultiplier": 1
+      }
+    },
+    {
+      "id": "1786980350909",
+      "timestamp": "2026-08-17T15:25:50.909Z",
+      "category": "habit_complete",
+      "description": "15min Perply",
+      "details": {
+        "xp": 15,
+        "gold": 8,
+        "streak": 5,
+        "linkedSkillIds": [
+          "skill_1782600801285_xfjqocoem"
+        ],
+        "linkedBossIds": [],
+        "bossDamage": 10
+      }
+    },
+    {
+      "id": "1786980116973",
+      "timestamp": "2026-08-17T15:21:56.974Z",
+      "category": "habit_complete",
+      "description": "1 clase de Plazi",
+      "details": {
+        "xp": 14,
+        "gold": 7,
+        "streak": 4,
+        "linkedSkillIds": [
+          "skill_1782598763683_06ikkboio"
+        ],
+        "linkedBossIds": [],
+        "bossDamage": 10
+      }
+    },
+    {
+      "id": "1786979473646",
+      "timestamp": "2026-08-17T15:11:13.646Z",
+      "category": "habit_complete",
+      "description": "Meditación Metta",
+      "details": {
+        "xp": 15,
+        "gold": 8,
+        "streak": 5,
+        "linkedSkillIds": [
+          "skill_1782596299032_o0ambkloe"
+        ],
+        "linkedBossIds": [
+          "1783917794860",
+          "1783927787622"
+        ],
+        "bossDamage": 10
+      }
+    },
+    {
+      "id": "1786979198206",
+      "timestamp": "2026-08-17T15:06:38.206Z",
+      "category": "habit_complete",
+      "description": "Lectura de mis principios",
+      "details": {
+        "xp": 15,
+        "gold": 8,
+        "streak": 5,
+        "linkedSkillIds": [
+          "skill_1782600801284_g84pfxiy7"
+        ],
+        "linkedBossIds": [],
+        "bossDamage": 10
+      }
+    },
+    {
+      "id": "1786979191510",
+      "timestamp": "2026-08-17T15:06:31.510Z",
+      "category": "habit_complete",
+      "description": "Escribir 5 agradecimientos propios y vision en tercera persona viendome",
+      "details": {
+        "xp": 15,
+        "gold": 8,
+        "streak": 5,
+        "linkedSkillIds": [
+          "skill_1782600801284_710kzzmwo"
+        ],
+        "linkedBossIds": [
+          "1783917794860",
+          "1783927787622"
+        ],
+        "bossDamage": 10
+      }
+    },
+    {
+      "id": "1786979187839",
+      "timestamp": "2026-08-17T15:06:27.839Z",
+      "category": "habit_complete",
+      "description": "10min meditación FOM y OM",
+      "details": {
+        "xp": 15,
+        "gold": 8,
+        "streak": 5,
+        "linkedSkillIds": [
+          "skill_1782596299032_o0ambkloe"
+        ],
+        "linkedBossIds": [
+          "1783917794860",
+          "1783927787622"
+        ],
+        "bossDamage": 10
+      }
+    },
+    {
+      "id": "1786972499219",
+      "timestamp": "2026-08-17T13:14:59.219Z",
+      "category": "habit_complete",
+      "description": "30min ejercicio",
+      "details": {
+        "xp": 15,
+        "gold": 8,
+        "streak": 5,
+        "linkedSkillIds": [
+          "skill_1782600801284_anttohfwh"
+        ],
+        "linkedBossIds": [],
+        "bossDamage": 10
+      }
+    },
+    {
+      "id": "1786928179619",
+      "timestamp": "2026-08-17T00:56:19.619Z",
+      "category": "quest_complete",
+      "description": "Reto 1.6 [Pared de 20 — Setenta]",
+      "details": {
+        "xp": 5,
+        "gold": 3,
+        "difficulty": "easy",
+        "kind": "skill-challenge",
+        "skillNodeId": "node_1785983669892_tu8ccua1d",
+        "linkedBossIds": [
+          "1783917794860",
+          "1783927787622"
+        ],
+        "bossDamage": 10
+      }
+    },
+    {
+      "id": "1786926105712",
+      "timestamp": "2026-08-17T00:21:45.712Z",
+      "category": "habit_complete",
+      "description": "Salir a conocer una persona a las 3pm en plaza irlanda",
+      "details": {
+        "xp": 20,
+        "gold": 10,
+        "streak": 0,
+        "linkedSkillIds": [
+          "skill_1782600801285_jj0fzwy4u"
+        ],
+        "linkedBossIds": [],
+        "bossDamage": 10
+      }
+    },
+    {
+      "id": "1786926103600",
+      "timestamp": "2026-08-17T00:21:43.600Z",
+      "category": "habit_complete",
+      "description": "1 clase de Plazi",
+      "details": {
+        "xp": 13,
+        "gold": 7,
+        "streak": 3,
+        "linkedSkillIds": [
+          "skill_1782598763683_06ikkboio"
+        ],
+        "linkedBossIds": [],
+        "bossDamage": 10
+      }
+    },
+    {
+      "id": "1786926102336",
+      "timestamp": "2026-08-17T00:21:42.336Z",
+      "category": "habit_complete",
+      "description": "Mirar 2 conductores a los ojos mientras espero en la parada del bus, sin reir, ni enconbarme solo mirar.",
+      "details": {
+        "xp": 20,
+        "gold": 10,
+        "streak": 0,
+        "linkedSkillIds": [
+          "skill_1782600801285_36i7nyml0"
+        ],
+        "linkedBossIds": [],
+        "bossDamage": 10
+      }
+    },
+    {
+      "id": "1786926101752",
+      "timestamp": "2026-08-17T00:21:41.752Z",
+      "category": "habit_complete",
+      "description": "Durante la conversación con una persona, decir 3 cosas que agradesco de esa persona.",
+      "details": {
+        "xp": 20,
+        "gold": 10,
+        "streak": 0,
+        "linkedSkillIds": [
+          "skill_1782600801285_byeggsb1h",
+          "skill_1782600801284_710kzzmwo"
+        ],
+        "linkedBossIds": [],
+        "bossDamage": 10
+      }
+    },
+    {
+      "id": "1786926100112",
+      "timestamp": "2026-08-17T00:21:40.112Z",
+      "category": "habit_complete",
+      "description": "Escribir exitos del dia",
+      "details": {
+        "xp": 13,
+        "gold": 7,
+        "streak": 3,
+        "linkedSkillIds": [
+          "skill_1782600801285_byeggsb1h",
+          "skill_1782600801284_e4lh9515p",
+          "skill_1782600801284_710kzzmwo",
+          "skill_1782598763683_06ikkboio"
+        ],
+        "linkedBossIds": [
+          "1783927787622",
+          "1783917794860"
+        ],
+        "bossDamage": 10
+      }
+    },
+    {
+      "id": "1786922895128",
+      "timestamp": "2026-08-16T23:28:15.128Z",
+      "category": "quest_complete",
+      "description": "Reto 1.10",
+      "details": {
+        "xp": 5,
+        "gold": 3,
+        "difficulty": "easy",
+        "kind": "skill-challenge",
+        "skillNodeId": "node_1783916853576_snysp17go",
+        "linkedBossIds": [
+          "1783917794860"
+        ],
+        "bossDamage": 10
+      }
+    },
+    {
+      "id": "1786910697117",
+      "timestamp": "2026-08-16T20:04:57.117Z",
+      "category": "habit_complete",
+      "description": "15min carrera (apply/connect)",
+      "details": {
+        "xp": 20,
+        "gold": 7,
+        "streak": 3,
+        "linkedSkillIds": [],
+        "linkedBossIds": [
+          "1783917794860"
+        ],
+        "bossDamage": 10
+      }
+    },
+    {
+      "id": "1786902305933",
+      "timestamp": "2026-08-16T17:45:05.933Z",
+      "category": "habit_complete",
+      "description": "15min Perply",
+      "details": {
+        "xp": 14,
+        "gold": 7,
+        "streak": 4,
+        "linkedSkillIds": [
+          "skill_1782600801285_xfjqocoem"
+        ],
+        "linkedBossIds": [],
+        "bossDamage": 10
+      }
+    },
+    {
+      "id": "1786895198608",
+      "timestamp": "2026-08-16T15:46:38.608Z",
+      "category": "habit_complete",
+      "description": "Meditación Metta",
+      "details": {
+        "xp": 14,
+        "gold": 7,
+        "streak": 4,
+        "linkedSkillIds": [
+          "skill_1782596299032_o0ambkloe"
+        ],
+        "linkedBossIds": [
+          "1783917794860",
+          "1783927787622"
+        ],
+        "bossDamage": 10
+      }
+    },
+    {
+      "id": "1786894828288",
+      "timestamp": "2026-08-16T15:40:28.288Z",
+      "category": "habit_complete",
+      "description": "Lectura de mis principios",
+      "details": {
+        "xp": 14,
+        "gold": 7,
+        "streak": 4,
+        "linkedSkillIds": [
+          "skill_1782600801284_g84pfxiy7"
+        ],
+        "linkedBossIds": [],
+        "bossDamage": 10
+      }
+    },
+    {
+      "id": "1786894824575",
+      "timestamp": "2026-08-16T15:40:24.575Z",
+      "category": "habit_complete",
+      "description": "Escribir 5 agradecimientos propios y vision en tercera persona viendome",
+      "details": {
+        "xp": 14,
+        "gold": 7,
+        "streak": 4,
+        "linkedSkillIds": [
+          "skill_1782600801284_710kzzmwo"
+        ],
+        "linkedBossIds": [
+          "1783917794860",
+          "1783927787622"
+        ],
+        "bossDamage": 10
+      }
+    },
+    {
+      "id": "1786893994911",
+      "timestamp": "2026-08-16T15:26:34.911Z",
+      "category": "habit_complete",
+      "description": "10min meditación FOM y OM",
+      "details": {
+        "xp": 14,
+        "gold": 7,
+        "streak": 4,
+        "linkedSkillIds": [
+          "skill_1782596299032_o0ambkloe"
+        ],
+        "linkedBossIds": [
+          "1783917794860",
+          "1783927787622"
+        ],
+        "bossDamage": 10
+      }
+    },
+    {
+      "id": "1786892001383",
+      "timestamp": "2026-08-16T14:53:21.383Z",
+      "category": "habit_complete",
+      "description": "30min ejercicio",
+      "details": {
+        "xp": 14,
+        "gold": 7,
+        "streak": 4,
+        "linkedSkillIds": [
+          "skill_1782600801284_anttohfwh"
+        ],
+        "linkedBossIds": [],
+        "bossDamage": 10
+      }
+    },
+    {
+      "id": "1786837873095",
+      "timestamp": "2026-08-15T23:51:13.095Z",
+      "category": "habit_complete",
+      "description": "Escribir exitos del dia",
+      "details": {
+        "xp": 12,
+        "gold": 6,
+        "streak": 2,
+        "linkedSkillIds": [
+          "skill_1782600801285_byeggsb1h",
+          "skill_1782600801284_e4lh9515p",
+          "skill_1782600801284_710kzzmwo",
+          "skill_1782598763683_06ikkboio"
+        ],
+        "linkedBossIds": [
+          "1783927787622",
+          "1783917794860"
+        ],
+        "bossDamage": 10
+      }
+    },
+    {
+      "id": "1786831605991",
+      "timestamp": "2026-08-15T22:06:45.991Z",
+      "category": "habit_complete",
+      "description": "1 clase de Plazi",
+      "details": {
+        "xp": 12,
+        "gold": 6,
+        "streak": 2,
+        "linkedSkillIds": [
+          "skill_1782598763683_06ikkboio"
+        ],
+        "linkedBossIds": [],
+        "bossDamage": 10
+      }
+    },
+    {
+      "id": "1786829148097",
+      "timestamp": "2026-08-15T21:25:48.097Z",
+      "category": "habit_complete",
+      "description": "15min carrera (apply/connect)",
+      "details": {
+        "xp": 18,
+        "gold": 6,
+        "streak": 2,
+        "linkedSkillIds": [],
+        "linkedBossIds": [
+          "1783917794860"
+        ],
+        "bossDamage": 10
+      }
+    },
+    {
+      "id": "1786816497081",
+      "timestamp": "2026-08-15T17:54:57.081Z",
+      "category": "quest_complete",
+      "description": "Reto 1.5 [Pared de 20 — Baseline]",
+      "details": {
+        "xp": 5,
+        "gold": 3,
+        "difficulty": "easy",
+        "kind": "skill-challenge",
+        "skillNodeId": "node_1785983669892_tu8ccua1d",
+        "linkedBossIds": [
+          "1783917794860",
+          "1783927787622"
+        ],
+        "bossDamage": 10
+      }
+    },
+    {
+      "id": "1786814830847",
+      "timestamp": "2026-08-15T17:27:10.847Z",
+      "category": "quest_complete",
+      "description": "Reto 1.4 [Quince Sin Dopamina]",
+      "details": {
+        "xp": 5,
+        "gold": 3,
+        "difficulty": "easy",
+        "kind": "skill-challenge",
+        "skillNodeId": "node_1785983669892_tu8ccua1d",
+        "linkedBossIds": [
+          "1783917794860",
+          "1783927787622"
+        ],
+        "bossDamage": 10
+      }
+    },
+    {
+      "id": "1786814817566",
+      "timestamp": "2026-08-15T17:26:57.566Z",
+      "category": "quest_complete",
+      "description": "Q1.12 Aperturas - Doble respiracion",
+      "details": {
+        "xp": 5,
+        "gold": 3,
+        "difficulty": "easy",
+        "kind": "skill-challenge",
+        "skillNodeId": "node_1784952949938_smn8n1yyu",
+        "linkedBossIds": [
+          "1783917794860",
+          "1783927787622"
+        ],
+        "bossDamage": 10
+      }
+    },
+    {
+      "id": "1786814816857",
+      "timestamp": "2026-08-15T17:26:56.857Z",
+      "category": "quest_complete",
+      "description": "Q1.11 Aperturas - Arriba, laterales, sonrisa",
+      "details": {
+        "xp": 5,
+        "gold": 3,
+        "difficulty": "easy",
+        "kind": "skill-challenge",
+        "skillNodeId": "node_1784952949938_smn8n1yyu",
+        "linkedBossIds": [
+          "1783917794860",
+          "1783927787622"
+        ],
+        "bossDamage": 10
+      }
+    },
+    {
+      "id": "1786809253724",
+      "timestamp": "2026-08-15T15:54:13.724Z",
+      "category": "habit_complete",
+      "description": "15min Perply",
+      "details": {
+        "xp": 13,
+        "gold": 7,
+        "streak": 3,
+        "linkedSkillIds": [
+          "skill_1782600801285_xfjqocoem"
+        ],
+        "linkedBossIds": [],
+        "bossDamage": 10
+      }
+    },
+    {
+      "id": "1786808756519",
+      "timestamp": "2026-08-15T15:45:56.519Z",
+      "category": "habit_complete",
+      "description": "Meditación Metta",
+      "details": {
+        "xp": 13,
+        "gold": 7,
+        "streak": 3,
+        "linkedSkillIds": [
+          "skill_1782596299032_o0ambkloe"
+        ],
+        "linkedBossIds": [
+          "1783917794860",
+          "1783927787622"
+        ],
+        "bossDamage": 10
+      }
+    },
+    {
+      "id": "1786808304969",
+      "timestamp": "2026-08-15T15:38:24.969Z",
+      "category": "habit_complete",
+      "description": "Lectura de mis principios",
+      "details": {
+        "xp": 13,
+        "gold": 7,
+        "streak": 3,
+        "linkedSkillIds": [
+          "skill_1782600801284_g84pfxiy7"
+        ],
+        "linkedBossIds": [],
+        "bossDamage": 10
+      }
+    },
+    {
+      "id": "1786808302009",
+      "timestamp": "2026-08-15T15:38:22.009Z",
+      "category": "habit_complete",
+      "description": "Escribir 5 agradecimientos propios y vision en tercera persona viendome",
+      "details": {
+        "xp": 13,
+        "gold": 7,
+        "streak": 3,
+        "linkedSkillIds": [
+          "skill_1782600801284_710kzzmwo"
+        ],
+        "linkedBossIds": [
+          "1783917794860",
+          "1783927787622"
+        ],
+        "bossDamage": 10
+      }
+    },
+    {
+      "id": "1786807233493",
+      "timestamp": "2026-08-15T15:20:33.493Z",
+      "category": "habit_complete",
+      "description": "10min meditación FOM y OM",
+      "details": {
+        "xp": 13,
+        "gold": 7,
+        "streak": 3,
+        "linkedSkillIds": [
+          "skill_1782596299032_o0ambkloe"
+        ],
+        "linkedBossIds": [
+          "1783917794860",
+          "1783927787622"
+        ],
+        "bossDamage": 10
+      }
+    },
+    {
+      "id": "1786806056889",
+      "timestamp": "2026-08-15T15:00:56.889Z",
+      "category": "habit_complete",
+      "description": "30min ejercicio",
+      "details": {
+        "xp": 13,
+        "gold": 7,
+        "streak": 3,
+        "linkedSkillIds": [
+          "skill_1782600801284_anttohfwh"
+        ],
+        "linkedBossIds": [],
+        "bossDamage": 10
+      }
+    },
+    {
+      "id": "1786756947870",
+      "timestamp": "2026-08-15T01:22:27.870Z",
+      "category": "habit_complete",
+      "description": "Lectura de mis principios",
+      "details": {
+        "xp": 12,
+        "gold": 6,
+        "streak": 2,
+        "linkedSkillIds": [
+          "skill_1782600801284_g84pfxiy7"
+        ],
+        "linkedBossIds": [],
+        "bossDamage": 10
+      }
+    },
+    {
+      "id": "1786756945790",
+      "timestamp": "2026-08-15T01:22:25.790Z",
+      "category": "habit_complete",
+      "description": "Salir a conocer una persona a las 3pm en plaza irlanda",
+      "details": {
+        "xp": 20,
+        "gold": 10,
+        "streak": 0,
+        "linkedSkillIds": [
+          "skill_1782600801285_jj0fzwy4u"
+        ],
+        "linkedBossIds": [],
+        "bossDamage": 10
+      }
+    },
+    {
+      "id": "1786756943942",
+      "timestamp": "2026-08-15T01:22:23.942Z",
+      "category": "habit_complete",
+      "description": "Durante la conversación con una persona, decir 3 cosas que agradesco de esa persona.",
+      "details": {
+        "xp": 20,
+        "gold": 10,
+        "streak": 0,
+        "linkedSkillIds": [
+          "skill_1782600801285_byeggsb1h",
+          "skill_1782600801284_710kzzmwo"
+        ],
+        "linkedBossIds": [],
+        "bossDamage": 10
+      }
+    },
+    {
+      "id": "1786756942470",
+      "timestamp": "2026-08-15T01:22:22.470Z",
+      "category": "habit_complete",
+      "description": "Escribir exitos del dia",
+      "details": {
+        "xp": 11,
+        "gold": 6,
+        "streak": 1,
+        "linkedSkillIds": [
+          "skill_1782600801285_byeggsb1h",
+          "skill_1782600801284_e4lh9515p",
+          "skill_1782600801284_710kzzmwo",
+          "skill_1782598763683_06ikkboio"
+        ],
+        "linkedBossIds": [
+          "1783927787622",
+          "1783917794860"
+        ],
+        "bossDamage": 10
+      }
+    },
+    {
+      "id": "1786751847143",
+      "timestamp": "2026-08-14T23:57:27.143Z",
+      "category": "habit_complete",
+      "description": "1 clase de Plazi",
+      "details": {
+        "xp": 11,
+        "gold": 6,
+        "streak": 1,
+        "linkedSkillIds": [
+          "skill_1782598763683_06ikkboio"
+        ],
+        "linkedBossIds": [],
+        "bossDamage": 10
+      }
+    },
+    {
+      "id": "1786751844770",
+      "timestamp": "2026-08-14T23:57:24.770Z",
+      "category": "habit_complete",
+      "description": "15min carrera (apply/connect)",
+      "details": {
+        "xp": 17,
+        "gold": 6,
+        "streak": 1,
+        "linkedSkillIds": [],
+        "linkedBossIds": [
+          "1783917794860"
+        ],
+        "bossDamage": 10
+      }
+    },
+    {
+      "id": "1786722373435",
+      "timestamp": "2026-08-14T15:46:13.435Z",
+      "category": "habit_complete",
+      "description": "15min Perply",
+      "details": {
+        "xp": 12,
+        "gold": 6,
+        "streak": 2,
+        "linkedSkillIds": [
+          "skill_1782600801285_xfjqocoem"
+        ],
+        "linkedBossIds": [],
+        "bossDamage": 10
+      }
+    },
+    {
+      "id": "1786720445563",
+      "timestamp": "2026-08-14T15:14:05.563Z",
+      "category": "habit_complete",
+      "description": "Meditación Metta",
+      "details": {
+        "xp": 12,
+        "gold": 6,
+        "streak": 2,
+        "linkedSkillIds": [
+          "skill_1782596299032_o0ambkloe"
+        ],
+        "linkedBossIds": [
+          "1783917794860",
+          "1783927787622"
+        ],
+        "bossDamage": 10
+      }
+    },
+    {
+      "id": "1786719915447",
+      "timestamp": "2026-08-14T15:05:15.447Z",
+      "category": "level_up",
+      "description": "Reached Level 13!",
+      "details": {
+        "newLevel": 13,
+        "devLevel": "1.0",
+        "skillPointsGained": 1
+      }
+    },
+    {
+      "id": "1786719915428",
+      "timestamp": "2026-08-14T15:05:15.428Z",
+      "category": "boss_defeated",
+      "description": "Defeated Kryos!",
+      "details": {
+        "xp": 4000,
+        "gold": 2000,
+        "tomeId": "earth-tome",
+        "flowerId": null
+      }
+    },
+    {
+      "id": "1786719915427",
+      "timestamp": "2026-08-14T15:05:15.427Z",
+      "category": "boss_damage",
+      "description": "Dealt 10 damage to Kryos",
+      "details": {
+        "damage": 10,
+        "remaining": 0
+      }
+    },
+    {
+      "id": "1786719915427",
+      "timestamp": "2026-08-14T15:05:15.427Z",
+      "category": "habit_complete",
+      "description": "Escribir 5 agradecimientos propios y vision en tercera persona viendome",
+      "details": {
+        "xp": 12,
+        "gold": 6,
+        "streak": 2,
+        "linkedSkillIds": [
+          "skill_1782600801284_710kzzmwo"
+        ],
+        "linkedBossIds": [
+          "1783917794860",
+          "1783927787622"
+        ],
+        "bossDamage": 10
+      }
+    },
+    {
+      "id": "1786717357228",
+      "timestamp": "2026-08-14T14:22:37.228Z",
+      "category": "boss_damage",
+      "description": "Dealt 10 damage to Kryos",
+      "details": {
+        "damage": 10,
+        "remaining": 10
+      }
+    },
+    {
+      "id": "1786717357220",
+      "timestamp": "2026-08-14T14:22:37.220Z",
+      "category": "boss_damage",
+      "description": "Dealt 10 damage to Kryos",
+      "details": {
+        "damage": 10,
+        "remaining": 20
+      }
+    },
+    {
+      "id": "1786717357219",
+      "timestamp": "2026-08-14T14:22:37.219Z",
+      "category": "habit_complete",
+      "description": "10min meditación FOM y OM",
+      "details": {
+        "xp": 12,
+        "gold": 6,
+        "streak": 2,
+        "linkedSkillIds": [
+          "skill_1782596299032_o0ambkloe"
+        ],
+        "linkedBossIds": [
+          "1783917794860",
+          "1783927787622"
+        ],
+        "bossDamage": 10
+      }
+    },
+    {
+      "id": "1786715420509",
+      "timestamp": "2026-08-14T13:50:20.509Z",
+      "category": "habit_complete",
+      "description": "30min ejercicio",
+      "details": {
+        "xp": 12,
+        "gold": 6,
+        "streak": 2,
+        "linkedSkillIds": [
+          "skill_1782600801284_anttohfwh"
+        ],
+        "linkedBossIds": [],
+        "bossDamage": 10
+      }
+    },
+    {
+      "id": "1786668662593",
+      "timestamp": "2026-08-14T00:51:02.593Z",
+      "category": "habit_complete",
+      "description": "1 clase de Plazi",
+      "details": {
+        "xp": 10,
+        "gold": 5,
+        "streak": 0,
+        "linkedSkillIds": [
+          "skill_1782598763683_06ikkboio"
+        ],
+        "linkedBossIds": [],
+        "bossDamage": 10
+      }
+    },
+    {
+      "id": "1786665843253",
+      "timestamp": "2026-08-14T00:04:03.253Z",
+      "category": "boss_damage",
+      "description": "Dealt 10 damage to Kryos",
+      "details": {
+        "damage": 10,
+        "remaining": 30
+      }
+    },
+    {
+      "id": "1786665843252",
+      "timestamp": "2026-08-14T00:04:03.252Z",
+      "category": "habit_complete",
+      "description": "Escribir exitos del dia",
+      "details": {
+        "xp": 10,
+        "gold": 5,
+        "streak": 0,
+        "linkedSkillIds": [
+          "skill_1782600801285_byeggsb1h",
+          "skill_1782600801284_e4lh9515p",
+          "skill_1782600801284_710kzzmwo",
+          "skill_1782598763683_06ikkboio"
+        ],
+        "linkedBossIds": [
+          "1783927787622",
+          "1783917794860"
+        ],
+        "bossDamage": 10
+      }
+    },
+    {
+      "id": "1786665841188",
+      "timestamp": "2026-08-14T00:04:01.188Z",
+      "category": "habit_complete",
+      "description": "15min carrera (apply/connect)",
+      "details": {
+        "xp": 15,
+        "gold": 5,
+        "streak": 0,
+        "linkedSkillIds": [],
+        "linkedBossIds": [
+          "1783917794860"
+        ],
+        "bossDamage": 10
+      }
+    },
+    {
+      "id": "1786636008211",
+      "timestamp": "2026-08-13T15:46:48.211Z",
+      "category": "habit_complete",
+      "description": "15min Perply",
+      "details": {
+        "xp": 11,
+        "gold": 6,
+        "streak": 1,
+        "linkedSkillIds": [
+          "skill_1782600801285_xfjqocoem"
+        ],
+        "linkedBossIds": [],
+        "bossDamage": 10
+      }
+    },
+    {
+      "id": "1786634909299",
+      "timestamp": "2026-08-13T15:28:29.299Z",
+      "category": "boss_damage",
+      "description": "Dealt 10 damage to Kryos",
+      "details": {
+        "damage": 10,
+        "remaining": 40
+      }
+    },
+    {
+      "id": "1786634909288",
+      "timestamp": "2026-08-13T15:28:29.288Z",
+      "category": "boss_damage",
+      "description": "Dealt 10 damage to Kryos",
+      "details": {
+        "damage": 10,
+        "remaining": 50
+      }
+    },
+    {
+      "id": "1786634909288",
+      "timestamp": "2026-08-13T15:28:29.288Z",
+      "category": "habit_complete",
+      "description": "Meditación Metta",
+      "details": {
+        "xp": 11,
+        "gold": 6,
+        "streak": 1,
+        "linkedSkillIds": [
+          "skill_1782596299032_o0ambkloe"
+        ],
+        "linkedBossIds": [
+          "1783917794860",
+          "1783927787622"
+        ],
+        "bossDamage": 10
+      }
+    },
+    {
+      "id": "1786634643265",
+      "timestamp": "2026-08-13T15:24:03.265Z",
+      "category": "boss_damage",
+      "description": "Dealt 10 damage to Kryos",
+      "details": {
+        "damage": 10,
+        "remaining": 60
+      }
+    },
+    {
+      "id": "1786634643264",
+      "timestamp": "2026-08-13T15:24:03.264Z",
+      "category": "habit_complete",
+      "description": "Lectura de mis principios",
+      "details": {
+        "xp": 11,
+        "gold": 6,
+        "streak": 1,
+        "linkedSkillIds": [
+          "skill_1782600801284_g84pfxiy7"
+        ],
+        "linkedBossIds": [],
+        "bossDamage": 10
+      }
+    },
+    {
+      "id": "1786634640356",
+      "timestamp": "2026-08-13T15:24:00.356Z",
+      "category": "boss_damage",
+      "description": "Dealt 10 damage to Kryos",
+      "details": {
+        "damage": 10,
+        "remaining": 70
+      }
+    },
+    {
+      "id": "1786634640345",
+      "timestamp": "2026-08-13T15:24:00.345Z",
+      "category": "boss_damage",
+      "description": "Dealt 10 damage to Kryos",
+      "details": {
+        "damage": 10,
+        "remaining": 80
+      }
+    },
+    {
+      "id": "1786634640344",
+      "timestamp": "2026-08-13T15:24:00.344Z",
+      "category": "habit_complete",
+      "description": "Escribir 5 agradecimientos propios y vision en tercera persona viendome",
+      "details": {
+        "xp": 11,
+        "gold": 6,
+        "streak": 1,
+        "linkedSkillIds": [
+          "skill_1782600801284_710kzzmwo"
+        ],
+        "linkedBossIds": [
+          "1783917794860",
+          "1783927787622"
+        ],
+        "bossDamage": 10
+      }
+    },
+    {
+      "id": "1786633346440",
+      "timestamp": "2026-08-13T15:02:26.440Z",
+      "category": "level_up",
+      "description": "Reached Level 12!",
+      "details": {
+        "newLevel": 12,
+        "devLevel": "1.0",
+        "skillPointsGained": 1
+      }
+    },
+    {
+      "id": "1786633346438",
+      "timestamp": "2026-08-13T15:02:26.438Z",
+      "category": "boss_damage",
+      "description": "Dealt 10 damage to Kryos",
+      "details": {
+        "damage": 10,
+        "remaining": 90
+      }
+    },
+    {
+      "id": "1786633346422",
+      "timestamp": "2026-08-13T15:02:26.422Z",
+      "category": "boss_damage",
+      "description": "Dealt 10 damage to Kryos",
+      "details": {
+        "damage": 10,
+        "remaining": 100
+      }
+    },
+    {
+      "id": "1786633346406",
+      "timestamp": "2026-08-13T15:02:26.406Z",
+      "category": "boss_defeated",
+      "description": "Defeated Phobos Aliénos!",
+      "details": {
+        "xp": 4000,
+        "gold": 2000,
+        "tomeId": "tome-of-fire",
+        "flowerId": null
+      }
+    },
+    {
+      "id": "1786633346405",
+      "timestamp": "2026-08-13T15:02:26.405Z",
+      "category": "boss_damage",
+      "description": "Dealt 10 damage to Phobos Aliénos",
+      "details": {
+        "damage": 10,
+        "remaining": 0
+      }
+    },
+    {
+      "id": "1786633346405",
+      "timestamp": "2026-08-13T15:02:26.405Z",
+      "category": "habit_complete",
+      "description": "10min meditación FOM y OM",
+      "details": {
+        "xp": 11,
+        "gold": 6,
+        "streak": 1,
+        "linkedSkillIds": [
+          "skill_1782596299032_o0ambkloe"
+        ],
+        "linkedBossIds": [
+          "1783917794860",
+          "1783927787622"
+        ],
+        "bossDamage": 10
+      }
+    },
+    {
+      "id": "1786631870882",
+      "timestamp": "2026-08-13T14:37:50.882Z",
+      "category": "habit_complete",
+      "description": "30min ejercicio",
+      "details": {
+        "xp": 11,
+        "gold": 6,
+        "streak": 1,
+        "linkedSkillIds": [
+          "skill_1782600801284_anttohfwh"
+        ],
+        "linkedBossIds": [],
+        "bossDamage": 10
+      }
+    },
+    {
+      "id": "1786599983506",
+      "timestamp": "2026-08-13T05:46:23.506Z",
+      "category": "boss_damage",
+      "description": "Dealt 10 damage to Phobos Aliénos",
+      "details": {
+        "damage": 10,
+        "remaining": 10
+      }
+    },
+    {
+      "id": "1786599983491",
+      "timestamp": "2026-08-13T05:46:23.491Z",
+      "category": "boss_damage",
+      "description": "Dealt 10 damage to Kryos",
+      "details": {
+        "damage": 10,
+        "remaining": 110
+      }
+    },
+    {
+      "id": "1786599983483",
+      "timestamp": "2026-08-13T05:46:23.483Z",
+      "category": "habit_complete",
+      "description": "Escribir exitos del dia",
+      "details": {
+        "xp": 10,
+        "gold": 5,
+        "streak": 0,
+        "linkedSkillIds": [
+          "skill_1782600801285_byeggsb1h",
+          "skill_1782600801284_e4lh9515p",
+          "skill_1782600801284_710kzzmwo",
+          "skill_1782598763683_06ikkboio"
+        ],
+        "linkedBossIds": [
+          "1783927787622",
+          "1783917794860"
+        ],
+        "bossDamage": 10
+      }
+    },
+    {
+      "id": "1786545713647",
+      "timestamp": "2026-08-12T14:41:53.647Z",
+      "category": "boss_damage",
+      "description": "Dealt 10 damage to Kryos",
+      "details": {
+        "damage": 10,
+        "remaining": 120
+      }
+    },
+    {
+      "id": "1786545713644",
+      "timestamp": "2026-08-12T14:41:53.644Z",
+      "category": "boss_damage",
+      "description": "Dealt 10 damage to Phobos Aliénos",
+      "details": {
+        "damage": 10,
+        "remaining": 20
+      }
+    },
+    {
+      "id": "1786545713631",
+      "timestamp": "2026-08-12T14:41:53.631Z",
+      "category": "boss_damage",
+      "description": "Dealt 10 damage to Kryos",
+      "details": {
+        "damage": 10,
+        "remaining": 130
+      }
+    },
+    {
+      "id": "1786545713621",
+      "timestamp": "2026-08-12T14:41:53.621Z",
+      "category": "boss_damage",
+      "description": "Dealt 10 damage to Phobos Aliénos",
+      "details": {
+        "damage": 10,
+        "remaining": 30
+      }
+    },
+    {
+      "id": "1786545713621",
+      "timestamp": "2026-08-12T14:41:53.621Z",
+      "category": "quest_complete",
+      "description": "Q1.10 General - Briefing sin guion",
+      "details": {
+        "xp": 5,
+        "gold": 3,
+        "difficulty": "easy",
+        "kind": "skill-challenge",
+        "skillNodeId": "node_1784952949938_smn8n1yyu",
+        "linkedBossIds": [
+          "1783917794860",
+          "1783927787622"
+        ],
+        "bossDamage": 10
+      }
+    },
+    {
+      "id": "1786545416128",
+      "timestamp": "2026-08-12T14:36:56.128Z",
+      "category": "boss_damage",
+      "description": "Dealt 10 damage to Kryos",
+      "details": {
+        "damage": 10,
+        "remaining": 140
+      }
+    },
+    {
+      "id": "1786545416125",
+      "timestamp": "2026-08-12T14:36:56.125Z",
+      "category": "boss_damage",
+      "description": "Dealt 10 damage to Phobos Aliénos",
+      "details": {
+        "damage": 10,
+        "remaining": 40
+      }
+    },
+    {
+      "id": "1786545416110",
+      "timestamp": "2026-08-12T14:36:56.110Z",
+      "category": "boss_damage",
+      "description": "Dealt 10 damage to Kryos",
+      "details": {
+        "damage": 10,
+        "remaining": 150
+      }
+    },
+    {
+      "id": "1786545416101",
+      "timestamp": "2026-08-12T14:36:56.101Z",
+      "category": "boss_damage",
+      "description": "Dealt 10 damage to Phobos Aliénos",
+      "details": {
+        "damage": 10,
+        "remaining": 50
+      }
+    },
+    {
+      "id": "1786545416101",
+      "timestamp": "2026-08-12T14:36:56.101Z",
+      "category": "quest_complete",
+      "description": "Q1.9 General - Senal con la mano",
+      "details": {
+        "xp": 5,
+        "gold": 3,
+        "difficulty": "easy",
+        "kind": "skill-challenge",
+        "skillNodeId": "node_1784952949938_smn8n1yyu",
+        "linkedBossIds": [
+          "1783917794860",
+          "1783927787622"
+        ],
+        "bossDamage": 10
+      }
+    },
+    {
+      "id": "1786545301853",
+      "timestamp": "2026-08-12T14:35:01.853Z",
+      "category": "habit_complete",
+      "description": "15min Perply",
+      "details": {
+        "xp": 10,
+        "gold": 5,
+        "streak": 0,
+        "linkedSkillIds": [
+          "skill_1782600801285_xfjqocoem"
+        ],
+        "linkedBossIds": [],
+        "bossDamage": 10
+      }
+    },
+    {
+      "id": "1786542548034",
+      "timestamp": "2026-08-12T13:49:08.034Z",
+      "category": "boss_damage",
+      "description": "Dealt 10 damage to Kryos",
+      "details": {
+        "damage": 10,
+        "remaining": 160
+      }
+    },
+    {
+      "id": "1786542548032",
+      "timestamp": "2026-08-12T13:49:08.032Z",
+      "category": "boss_damage",
+      "description": "Dealt 10 damage to Phobos Aliénos",
+      "details": {
+        "damage": 10,
+        "remaining": 60
+      }
+    },
+    {
+      "id": "1786542548018",
+      "timestamp": "2026-08-12T13:49:08.018Z",
+      "category": "boss_damage",
+      "description": "Dealt 10 damage to Kryos",
+      "details": {
+        "damage": 10,
+        "remaining": 170
+      }
+    },
+    {
+      "id": "1786542548005",
+      "timestamp": "2026-08-12T13:49:08.005Z",
+      "category": "boss_damage",
+      "description": "Dealt 10 damage to Phobos Aliénos",
+      "details": {
+        "damage": 10,
+        "remaining": 70
+      }
+    },
+    {
+      "id": "1786542548005",
+      "timestamp": "2026-08-12T13:49:08.005Z",
+      "category": "habit_complete",
+      "description": "Meditación Metta",
+      "details": {
+        "xp": 10,
+        "gold": 5,
+        "streak": 0,
+        "linkedSkillIds": [
+          "skill_1782596299032_o0ambkloe"
+        ],
+        "linkedBossIds": [
+          "1783917794860",
+          "1783927787622"
+        ],
+        "bossDamage": 10
+      }
+    },
+    {
+      "id": "1786542244832",
+      "timestamp": "2026-08-12T13:44:04.832Z",
+      "category": "boss_damage",
+      "description": "Dealt 10 damage to Kryos",
+      "details": {
+        "damage": 10,
+        "remaining": 180
+      }
+    },
+    {
+      "id": "1786542244829",
+      "timestamp": "2026-08-12T13:44:04.829Z",
+      "category": "boss_damage",
+      "description": "Dealt 10 damage to Phobos Aliénos",
+      "details": {
+        "damage": 10,
+        "remaining": 80
+      }
+    },
+    {
+      "id": "1786542244828",
+      "timestamp": "2026-08-12T13:44:04.828Z",
+      "category": "habit_complete",
+      "description": "Lectura de mis principios",
+      "details": {
+        "xp": 10,
+        "gold": 5,
+        "streak": 0,
+        "linkedSkillIds": [
+          "skill_1782600801284_g84pfxiy7"
+        ],
+        "linkedBossIds": [],
+        "bossDamage": 10
+      }
+    },
+    {
+      "id": "1786542234495",
+      "timestamp": "2026-08-12T13:43:54.495Z",
+      "category": "boss_damage",
+      "description": "Dealt 10 damage to Kryos",
+      "details": {
+        "damage": 10,
+        "remaining": 190
+      }
+    },
+    {
+      "id": "1786542234493",
+      "timestamp": "2026-08-12T13:43:54.493Z",
+      "category": "boss_damage",
+      "description": "Dealt 10 damage to Phobos Aliénos",
+      "details": {
+        "damage": 10,
+        "remaining": 90
+      }
+    },
+    {
+      "id": "1786542234482",
+      "timestamp": "2026-08-12T13:43:54.482Z",
+      "category": "boss_damage",
+      "description": "Dealt 10 damage to Kryos",
+      "details": {
+        "damage": 10,
+        "remaining": 200
+      }
+    },
+    {
+      "id": "1786542234469",
+      "timestamp": "2026-08-12T13:43:54.469Z",
+      "category": "boss_damage",
+      "description": "Dealt 10 damage to Phobos Aliénos",
+      "details": {
+        "damage": 10,
+        "remaining": 100
+      }
+    },
+    {
+      "id": "1786542234469",
+      "timestamp": "2026-08-12T13:43:54.469Z",
+      "category": "habit_complete",
+      "description": "Escribir 5 agradecimientos propios y vision en tercera persona viendome",
+      "details": {
+        "xp": 10,
+        "gold": 5,
+        "streak": 0,
+        "linkedSkillIds": [
+          "skill_1782600801284_710kzzmwo"
+        ],
+        "linkedBossIds": [
+          "1783917794860",
+          "1783927787622"
+        ],
+        "bossDamage": 10
+      }
+    },
     {
       "id": "1786541248373",
       "timestamp": "2026-08-12T13:27:28.373Z",
@@ -13113,7 +15547,7 @@
       ]
     }
   ],
-  "lastPenaltyCheck": "2026-08-12T12:52:40.429Z",
+  "lastPenaltyCheck": "2026-08-19T14:34:37.099Z",
   "penaltyEnabled": true,
   "bossFights": [
     {
@@ -13156,12 +15590,13 @@
       "imagePath": "RpgImages/bosses/Icon14.png",
       "tier": "primordial",
       "maxHp": 2000,
-      "currentHp": 110,
+      "currentHp": 0,
       "domain": "psychologicalWellbeing",
-      "defeated": false,
+      "defeated": true,
       "createdAt": "2026-07-13T04:43:14.860Z",
       "tomeId": "tome-of-fire",
-      "flowerId": null
+      "flowerId": null,
+      "defeatedAt": "2026-08-13T15:02:26.405Z"
     },
     {
       "id": "1783927787622",
@@ -13171,12 +15606,13 @@
       "imagePath": "RpgImages/bosses/Icon34.png",
       "tier": "primordial",
       "maxHp": 2000,
-      "currentHp": 210,
+      "currentHp": 0,
       "domain": "psychologicalWellbeing",
-      "defeated": false,
+      "defeated": true,
       "createdAt": "2026-07-13T07:29:47.622Z",
       "tomeId": "earth-tome",
-      "flowerId": null
+      "flowerId": null,
+      "defeatedAt": "2026-08-14T15:05:15.427Z"
     },
     {
       "id": "1785816112558",
@@ -13193,9 +15629,24 @@
       "createdAt": "2026-08-04T04:01:52.558Z",
       "flowerId": "flower6",
       "defeatedAt": "2026-08-08T20:00:32.453Z"
+    },
+    {
+      "id": "1786983444165",
+      "name": "Guiltmal",
+      "description": "Liberar la culpa de su carga negativa: no borrar el pasado, quitarle el veneno que encadena. Mirar la nube sección por sección, miedo por miedo, con luz cálida. Reconocer ese dolor como martillo para construir identidad significa dejar ir el pasado para conectar con el presente con sanacción y amor",
+      "icon": "🐉",
+      "imagePath": "RpgImages/bosses/Icon12.png",
+      "tier": "soberano",
+      "maxHp": 10000,
+      "currentHp": 9510,
+      "domain": "psychologicalWellbeing",
+      "defeated": false,
+      "createdAt": "2026-08-17T16:17:24.165Z",
+      "tomeId": "tome-of-light",
+      "flowerId": null
     }
   ],
-  "totalBossesDefeated": 3,
+  "totalBossesDefeated": 5,
   "tomes": [
     {
       "id": "blood-tome",
@@ -13243,9 +15694,104 @@
       "flatPath": "RpgImages/Loot/Tomes/Flats/EarthTome_Flat_16x16.png",
       "description": "Liberarme de la máscara de fingir ser amable y serlo realmente de forma genuina.Liberar la tensión interna ansiosa y vivir con más paz.Vivir las experiencias a su totalidad al abrir mi corazón y darle cabida a las emociones.",
       "bossId": "1783927787622",
-      "unlocked": false,
-      "unlockedAt": null,
-      "damageReport": null
+      "unlocked": true,
+      "unlockedAt": "2026-08-14T15:05:15.427Z",
+      "damageReport": {
+        "questTotal": 200,
+        "habitTotal": 420,
+        "quests": [
+          {
+            "name": "Q1.10 General - Briefing sin guion",
+            "damage": 10
+          },
+          {
+            "name": "Q1.9 General - Senal con la mano",
+            "damage": 10
+          },
+          {
+            "name": "Q1.8 General - Voz que baja el ruido",
+            "damage": 10
+          },
+          {
+            "name": "Reto 1.3 [Diez Minutos Neutros]",
+            "damage": 10
+          },
+          {
+            "name": "Q1.7 General - Tres ordenes",
+            "damage": 10
+          },
+          {
+            "name": "Reto 1.2 [Cinco Minutos de Hardware]",
+            "damage": 10
+          },
+          {
+            "name": "Q1.6 General - Postura de briefing",
+            "damage": 10
+          },
+          {
+            "name": "Reto 1.1 [El Punto de 2 Minutos]",
+            "damage": 10
+          },
+          {
+            "name": "Q1.5 UFC - Shine sin ensayo",
+            "damage": 10
+          },
+          {
+            "name": "Reto 1.4",
+            "damage": 20
+          },
+          {
+            "name": "Q1.4 UFC - Camara mental del octagono",
+            "damage": 10
+          },
+          {
+            "name": "Reto 1.8",
+            "damage": 10
+          },
+          {
+            "name": "Reto 1.7",
+            "damage": 20
+          },
+          {
+            "name": "Q1.3 UFC - Pecho primero, voz despues",
+            "damage": 10
+          },
+          {
+            "name": "Q1.2 UFC - Doble reclamo",
+            "damage": 10
+          },
+          {
+            "name": "Q1.1 UFC - Primer salto del campeon",
+            "damage": 10
+          },
+          {
+            "name": "Reto 1.9",
+            "damage": 10
+          },
+          {
+            "name": "Reto 1.11",
+            "damage": 10
+          }
+        ],
+        "habits": [
+          {
+            "name": "Escribir 5 agradecimientos propios y vision en tercera persona viendome",
+            "damage": 110
+          },
+          {
+            "name": "10min meditación FOM y OM",
+            "damage": 110
+          },
+          {
+            "name": "Escribir exitos del dia",
+            "damage": 100
+          },
+          {
+            "name": "Meditación Metta",
+            "damage": 100
+          }
+        ]
+      }
     },
     {
       "id": "healing-tome",
@@ -13263,16 +15809,115 @@
       "flatPath": "RpgImages/Loot/Tomes/Flats/TomeOfFire_Flat_16x16.png",
       "description": "Significa vencer el miedo al rechazo que hoy me limita a buscar ese nuevo trabajo, explorar mi vida sexual y conocer a las personas que quiero conocer. Significa ganar fortaleza interna y congruencia para afrontar los desafíos con una mente bien unificada. Significa dejar de buscar aprobación porque yo mismo me valido; significa vivir la vida bajo mis propios términos y no bajo creencias sociales implantadas.",
       "bossId": "1783917794860",
-      "unlocked": false,
-      "unlockedAt": null,
-      "damageReport": null
+      "unlocked": true,
+      "unlockedAt": "2026-08-13T15:02:26.405Z",
+      "damageReport": {
+        "questTotal": 240,
+        "habitTotal": 440,
+        "quests": [
+          {
+            "name": "Q1.10 General - Briefing sin guion",
+            "damage": 10
+          },
+          {
+            "name": "Q1.9 General - Senal con la mano",
+            "damage": 10
+          },
+          {
+            "name": "Reto 1.16",
+            "damage": 10
+          },
+          {
+            "name": "Q1.8 General - Voz que baja el ruido",
+            "damage": 10
+          },
+          {
+            "name": "Reto 1.3 [Diez Minutos Neutros]",
+            "damage": 10
+          },
+          {
+            "name": "Q1.7 General - Tres ordenes",
+            "damage": 10
+          },
+          {
+            "name": "Reto 1.2 [Cinco Minutos de Hardware]",
+            "damage": 10
+          },
+          {
+            "name": "Q1.6 General - Postura de briefing",
+            "damage": 10
+          },
+          {
+            "name": "Reto 1.1 [El Punto de 2 Minutos]",
+            "damage": 10
+          },
+          {
+            "name": "Q1.5 UFC - Shine sin ensayo",
+            "damage": 10
+          },
+          {
+            "name": "Reto 1.9",
+            "damage": 20
+          },
+          {
+            "name": "Q1.4 UFC - Camara mental del octagono",
+            "damage": 10
+          },
+          {
+            "name": "Reto 1.8",
+            "damage": 30
+          },
+          {
+            "name": "Reto 1.7",
+            "damage": 30
+          },
+          {
+            "name": "Q1.3 UFC - Pecho primero, voz despues",
+            "damage": 10
+          },
+          {
+            "name": "Q1.2 UFC - Doble reclamo",
+            "damage": 10
+          },
+          {
+            "name": "Reto 1.2",
+            "damage": 20
+          },
+          {
+            "name": "Q1.1 UFC - Primer salto del campeon",
+            "damage": 10
+          }
+        ],
+        "habits": [
+          {
+            "name": "10min meditación FOM y OM",
+            "damage": 100
+          },
+          {
+            "name": "Escribir exitos del dia",
+            "damage": 90
+          },
+          {
+            "name": "Meditación Metta",
+            "damage": 90
+          },
+          {
+            "name": "Escribir 5 agradecimientos propios y vision en tercera persona viendome",
+            "damage": 90
+          },
+          {
+            "name": "15min carrera (apply/connect)",
+            "damage": 70
+          }
+        ]
+      }
     },
     {
       "id": "tome-of-light",
       "name": "Tome Of Light",
       "flatPath": "RpgImages/Loot/Tomes/Flats/TomeOfLight_Flat_16x16.png",
-      "description": "",
-      "bossId": null,
+      "description": "Liberar la culpa de su carga negativa: no borrar el pasado, quitarle el veneno que encadena. Mirar la nube sección por sección, miedo por miedo, con luz cálida. Reconocer ese dolor como martillo para construir identidad significa dejar ir el pasado para conectar con el presente con sanacción y amor",
+      "bossId": "1786983444165",
       "unlocked": false,
       "unlockedAt": null,
       "damageReport": null
@@ -13487,9 +16132,17 @@
       "id": "autocompasion",
       "title": "Autocompasión",
       "inscription": "Soy una persona autocompasiva en mis momentos de mayor dolor.",
-      "imagePath": "RpgImages/vows/autocompasion_higanbana.png",
+      "imagePath": "RpgImages/vows/Jarden sunset.jpg",
       "cols": 5,
       "rows": 10,
+      "schools": [
+        "Autoridad",
+        "Presencia",
+        "Calidez"
+      ],
+      "xpBonus": 0.2,
+      "damageBonus": 0.2,
+      "completedAt": null,
       "grains": [
         {
           "id": "g1",
@@ -13540,6 +16193,115 @@
           "id": "g10",
           "date": "2026-08-10",
           "experience": "Novia se enojó en el parque; me traté con amabilidad, mano en el pecho bajo el sol."
+        },
+        {
+          "id": "grain_1786541496205_dim36o03q",
+          "date": "2026-08-10",
+          "experience": "Hoy me estaba sintiendo mal, tenia mucho dolor en el pecho sobre una pregunta algo dolorosa, ¿sere yo capaz de entregar un producto que aporte valor?, de verdad podre construir un pasaporte circular que de verdad si ayude, me sentia solo, me trate bien pare el trabajo:\n\nY con mucho amor me recorde cuantas veces ya habia pasado por aqui, \"te amo, entiendo este dolor y estoy aqui para ti, lo vamos a lograr. Me senti mas aliviado y relajado, puede continuar el día incluso con ese fuerte dolor, que ahora entiendo es mi sentido de la responsabilidad motivandome a esforzarme mas."
+        },
+        {
+          "id": "grain_1786595491386_qxgeqrnwo",
+          "date": "2026-08-12",
+          "experience": "Hoy no me animé a intimar en mi casa ni en la de Salomé; me sentí intimidado de nuevo en mi vida, porque creo que tomé todo el reto por su magnitud y no por el siguiente paso. Aun así, gracias a esta experiencia enriquecedora y dolorosa que fue esta bella interacción, incluso con todo ese dolor y frustración, me preparé mi té, abracé todo el proceso y sostuve mi autocrítica, sentado en mi sofá negro, sosteniéndome en el dolor. Definitivamente, me agradezco eso, porque no golpeé las paredes, incluso ante el impulso de la frustración. Aunque ahora me siento un poco adolorido en el pecho, me agradezco mi cuidado, mi determinación por crecer y mis próximos pasos"
+        },
+        {
+          "id": "grain_1786595898457_urtpk73cs",
+          "date": "2026-08-12",
+          "experience": "Hoy no me animé a intimar en mi casa ni en la de Salomé; me sentí intimidado de nuevo en mi vida, porque creo que tomé todo el reto por su magnitud y no por el siguiente paso. Aun así, gracias a esta experiencia enriquecedora y dolorosa que fue esta bella interacción, incluso con todo ese dolor y frustración, me preparé mi té, abracé todo el proceso y sostuve mi autocrítica, sentado en mi sofá negro, sosteniéndome en el dolor. Definitivamente, me agradezco eso, porque no golpeé las paredes, incluso ante el impulso de la frustración. Aunque ahora me siento un poco adolorido en el pecho, me agradezco mi cuidado, mi determinación por crecer y mis próximos pasos"
+        },
+        {
+          "id": "grain_1786665684989_olxnvpean",
+          "date": "2026-08-13",
+          "experience": "Aprendí que significa ser responsable, soy parte de una gran métrica de mentirosos compulsivos en gran o pequeña escala, mentiras sobre mi edad, mis deseos, mis miedos, me di cuenta que le negué el segundo beso a Salome por que me daba miedo no poder satisfacerla y lo oculte en una mascara de orgullo, para mi este es un acto de auto honestidad que me va ayudar a crecer"
+        },
+        {
+          "id": "grain_1786756933478_yzpeytc1i",
+          "date": "2026-08-14",
+          "experience": "Hoy fui a esta clase de danza improv. Su hora de llegada era a las 4:00 p. m.; yo llegué a las 5:00 p. m. Me metí a la clase sin preguntar al profe ni a nadie; simplemente me incluí. Rápidamente, el profesor me vio y me dijo: \"Necesito que te vayas de la clase\". Salimos del centro del escenario, me dolió la garganta y el pecho parecía cerrarse como un libro.\n\nLe pregunté: \"¿Por qué?\". Me dijo: \"Porque no damos más de 15 minutos de demora, y porque, aparte, no me pediste permiso para entrar\". Hubo silencio. Lo procesé y reconocí internamente: sí, él tiene razón. Y le dije: \"Parce, tenés razón, me equivoqué, perdón\".\n\nMe pude haber ido, pero me quedé. Puse mis manos detrás de mi espalda. Quedaba 1 hora entera más de clase, pero yo me quedé ahí, erguido, aplicando uno de los sommeliers más intensos: detectando dónde me dolía, la sensación del pecho bajo una prensa circular, el nudo en la garganta. Decidí quedarme estático. Cada vez que la llama parecía intensificarse en dolor, de hecho la miraba de vuelta y volvía a buscar: ¿dónde está este dolor? El tiempo se fue rápido, pero cada instante de esa hora quieto, sin hablar, fue una experiencia gigante en incomodidad. Que me enorgullece tanto que hoy ahora me ayudará tanto a fortalecerme, que voluntariamente me decidí quedar incluso tras ser rechazado. Luego me apliqué calidez en el corazón y le agradecí a Damián, el profe, mentalmente por la oportunidad de aprender cómo poner límites y por esta sensación enriquecedora de incomodidad."
+        },
+        {
+          "id": "grain_1786836433461_4idv67cfx",
+          "date": "2026-08-15",
+          "experience": "Incluso ayer con todo el dolor que estaba viviendo con la interacción con Salome y el dolor que me daba mirar ese mensaje, le respondi, con de hecho una tranquilidad que me impreciono, como si hubiera esta fuerza curativa dentro de mi, que me permitio dejar pasar el dolor y escribirle ."
+        },
+        {
+          "id": "grain_1786836628636_i81yei04l",
+          "date": "2026-08-15",
+          "experience": "Incluso ayer con todo el dolor que estaba viviendo con la interacción con Salome y el dolor que me daba mirar ese mensaje, le respondi, con de hecho una tranquilidad que me impreciono, como si hubiera esta fuerza curativa dentro de mi, que me permitio dejar pasar el dolor y escribirle ."
+        },
+        {
+          "id": "grain_1786926991722_4hu58ngcp",
+          "date": "2026-08-16",
+          "experience": "Hoy me pude recuperar bastante rápido de mi dolor cuando me equivoqué de gaseosa. Llegué a la puerta de la casa, sin mis llaves además, porque las había olvidado. Mi padre bajó molesto, me miró algo enojado; me había equivocado de gaseosa. Su enojo me había dolido. No reaccioné, no me moví. En su lugar, esperé 2 segundos antes de responder y dije: \"¿Voy y la cambio? Se me quedaron las llaves\".\n\nFui, me devolví y sentí un fuerte torrente de dolor en el pecho. Me sentía avergonzado, pensando en que de nuevo no presté atención. Es duro, mucho de hecho. Paré, apoyándome en una pared, me puse una mano en el pecho mientras me enfocaba en cuidarme a mí mismo.\n\nApareció esta policía que me pregunta: \"¿Cómo estás?\". Le conté la historia, aunque mientras la contaba me sentía culpable. Ella se mostró súper receptiva, diciéndome: \"No deberías darte tanta culpa\". Yo le dije: \"No, si es mi culpa, es mi trabajo escuchar bien\". Fue gracioso porque, aunque no compartíamos perspectivas, ella empezó con las preguntas de \"ay, ¿cuántos años tienes?\" y demás.\n\nAl final fue gracioso porque me dijo: \"Ay, cuídate al caminar solo en la noche\". Me reí y me fui. Me di cuenta de que el factor más seductor es que la persona se sienta útil para vos. Pero más importante: tuve la fortaleza de recuperarme y estar en una interacción coqueta incluso con dolor, y que incluso ahí, con dolor, generé esta estructura interna tan resiliente."
+        },
+        {
+          "id": "grain_1786927009234_s2ywbd6ep",
+          "date": "2026-08-16",
+          "experience": "Hoy tomé rápido la responsabilidad con mi papá al no traer la gaseosa correcta en:\n\nDecir: \"Parce, perdón, me equivoqué, la próxima vez voy a anotar así no lo olvido\". E incluso si él me respondió \"está bien\", yo digo: \"No, no está bien, y lo voy a cambiar\".\n\nAsumiendo rápido la responsabilidad: soy YO quien es responsable, no se trata de quién tiene la culpa. Soy yo el dueño de mi vida, de mis resultados, de mi estado actual."
+        },
+        {
+          "id": "grain_1787011487460_cwvl0jsqz",
+          "date": "2026-08-17",
+          "experience": "Hoy en el almuerzo mi padre me dijo Migue no me guarde la olla de pollo en la nevera si esta caliente, lave los trastes. Vi la olla  toque el caldo y este me pareció frio, lo guarde, mas tarde en la noche mi padre mira la nevera y me grita desde la cocina \"MIGUE ah que chimbada\", me pare frustrado rápido a la cocina, mi padre me dijo \"Te dije que no guardaras la puta olla\",  explique o bueno creo que me defendi diciendo que estaba fria, que la toque.\n\nEl se enojo aun mas, me dijo \"por que me decis mentiras maricas\", el estaba muy enojado, demasiado, cuando volví a tocar el caldo estaba caliente, y estallo viste \"A vos no te importa ni chimba de lo que tengo para decirte, no estas presente\"  me dolió.\n\nSin embargo aunque mi padre insistiera \"Enójate Deci algo\", reconocí mi error con calma, si fue mi error no revise lo suficientemente bien tienes razon, seguía enojado y aunque me dolia el pecho me sorprendía mi manejo, no grite, no pelee mas, lo acepte.\n\nMe dolia el pecho, pero sentía calma, antes esta situación me hubiera hecho estallar hoy mantuve mi compostura reconocí mi error. Aunque hoy me duele \"no estas presente\".\n\nEl me expreso su profunda decepción y que ya no sabia como comunicarse conmigo, el se fue. Y ahi llore, las lagrimas silenciosas se me salieron mientras el pecho se arrugaba, la garganta caliente y el rostro tenso mientras me sostenía, no hubo critica, solo lloraba del puro dolor físico, no pare mis lagrimas simplemente llore, me dije \"voy a estar contigo hasta el final Miguel te amo. Y vamos a prender de esto\" justo como en el salon de baile con la manos detrás del torso, erguido con dolor, note mi dolor, y reconocí, que... es mi responsabilidad esto, también construir algo nuevo y me dije mentalmente, lo voy a lograr.\n\nY volví a sentarme a trabajar, me estabilice rápido pues pude enfocarme de nuevo a estar aquí"
+        },
+        {
+          "id": "grain_1787012062763_28cf11v90",
+          "date": "2026-08-17",
+          "experience": "Hoy mientras terminaba de lavar los trastes recordé a Salome, la sola idea de haberla lastimado cuando me dijo que tenia una relación abierta y yo no supiera como reaccionar, el haber rechazado el beso que ella me quería dar por miedo a no darle placer. Me dolió, recuerdo que pare. Me hice un chocolate caliente y aplique todo el flujo de Olivia, pensando en yo soy 100% responsable de las acciones que tome en la interacción con ella, esto duele por que es mi sentido de la responsabilidad motivándome a crecer a hacer algo respecto, yo soy el líder soy yo el que debe evolucionar, como comunico, donde lo hago, que tan claro tengo que quiero, y que tanto me golpeo por mi miedo a la insuficiencia, que pensamientos cultivo y identidades creo como sistemas para que esos errores NO se repitan igual o al menos crear sistemas donde la sola idea de rechazarla por miedo se cambia a un nuevo sistema o idea, me senti rápidamente tranquilo y me sorprende mucho por que antes podia pasar un día entero sintiendo rush de arrepentimiento y un solo trigger me llevaba todo el dia."
+        },
+        {
+          "id": "grain_1787096229778_srxialsst",
+          "date": "2026-08-18",
+          "experience": "Hoy pude manejar espectacular otra interacción de conflicto con mi padre, estab vez estaba enojado por algo del trabajo que no lo inclui, nuevamente se puso muy a la defensiva inciando con \"entonces haces todo vos para tener la aprobación de lac chicas de la mia?\" o es que \"no me respetas\",  curiosamente no me movio, pude mantenerme bastante bien, aplique el framwork que habalmos y funciono\n\n1. Primero reconoci su emoción \"Se siente despreciado\", admiti que era entendible que sintiera asi.\n\n2. Luego hice un resumen de lo que me dijo admitiendo mis errores algo como, es cierto no te inclui en el trabajo y fue mi error suponer que no podrias ayudar, se me ocurre que podemos usar limites en el calendario de ese modo terminar un feture me permite avanzar con los demas.\n\n3. Decir gracias al inicio por traerlo a la conversacción y el iniciarlo.\n\n4. Decir gracias por compartirlo. Aunque si me aprecio raro la cara de rabia que me lanzo, no supe como manejarla.  Esta vez la interacción termino en un plan de acción, roles en el trabajo, y responder a la pregunta mentalmente de \"Que estas buscando\" con \"Encontrar una solución \"me permtio soltar y enfocarme en las acciones concretas"
+        },
+        {
+          "id": "grain_1787189092706_usg85hecc",
+          "date": "2026-08-19",
+          "experience": "Hoy me sostuve cuando mi padre se enojo por no escuchar que esa no era su bebida, me sostuve cuando la autocritica aparecio, me puse la mano en el pecho y le dije la verdad me equivoque."
+        },
+        {
+          "id": "grain_1787270356989_m8bqq74py",
+          "date": "2026-08-20",
+          "experience": "Hoy fue de esso dias que me siento mal y poquisima energia,  aun no entiendo muy bien como interactuar en frio, las interacciones a veces segun mi energia son super faciles otros dias no, en general me siento mal, veo el enojo de mi papa, la frustacción de pesnar que no tengo plata para invitar a la que me gusta, el miedo de no entender, me da mucho miedo sentir que me voy a quedar siendo el mismo. Puedo decri que la autocompación me acompaño, no senti algo no fue \"magico\" simplemente se que me sostuvo durante el dia. Y hice lo mejor que pude hoy no para no ser cruel incluso sin hacer todo lo que me propuse."
+        }
+      ]
+    },
+    {
+      "id": "vow_1786644525750_vrc24l4a1",
+      "title": "Transparencia",
+      "inscription": "Soy transparente con mi realidad actual desde mis errores, mis metas y mi progreso como mi compromiso por crecer.",
+      "imagePath": "RpgImages/vows/Greenhouse.jpg",
+      "cols": 5,
+      "rows": 10,
+      "schools": [],
+      "xpBonus": 0.2,
+      "damageBonus": 0.2,
+      "completedAt": null,
+      "grains": [
+        {
+          "id": "grain_1786665467374_ztjhmbi6l",
+          "date": "2026-08-13",
+          "experience": "Aprendí que significa ser responsable, soy parte de una gran métrica de mentirosos compulsivos en gran o pequeña escala, mentiras sobre mi edad, mis deseos, mis miedos, me di cuenta que le negué el segundo beso a Salome por que me daba miedo no poder satisfacerla y lo oculte en una mascara de orgullo, para mi este es un acto de auto honestidad que me va ayudar a crecer"
+        },
+        {
+          "id": "grain_1786754876039_1fwnb7gf2",
+          "date": "2026-08-14",
+          "experience": "Hoy en el subte mientras hablaba con esta chica Colombiana, ella me pregunta ¿Tu que estudias?, al principio le dije que estudiaba teatro, recorde que aunque cierto, no es mi enfoque principal lo aclare y dije, en realidad estudio teatro y ingieneria"
+        },
+        {
+          "id": "grain_1786836714284_q0tchvhtt",
+          "date": "2026-08-15",
+          "experience": "Incluso ayer con todo el dolor que estaba viviendo con la interacción con Salome y el dolor que me daba mirar ese mensaje, le respondi, con de hecho una tranquilidad que me impreciono, como si hubiera esta fuerza curativa dentro de mi, que me permitio dejar pasar el dolor y escribirle ."
+        },
+        {
+          "id": "grain_1786927018402_0ct1w33qp",
+          "date": "2026-08-16",
+          "experience": "Hoy dije la verdad a la oficial, no solo con lo que sentía, sino con la pregunta: \"¿Vives con tu padre?\". Dije: \"Sí, mientras soluciono el trabajo\".\nAdemás, un pequeño secreto: hoy en la tienda del chino, mientras la cajera tenía libre el mostrador de salamis, me salté la valla del mostrador y empecé a atender personas... bueno, hasta que me puse muy incómodo y me fui. JAJAJAJ."
+        },
+        {
+          "id": "grain_1787189142320_72enucqgz",
+          "date": "2026-08-19",
+          "experience": "Hoy me sostuve cuando mi padre se enojo por no escuchar que esa no era su bebida, me sostuve cuando la autocritica aparecio, me puse la mano en el pecho y le dije la verdad me equivoque."
         }
       ]
     }
@@ -13710,13 +16472,13 @@
         "name": "Meditación",
         "category": "mind",
         "level": 4,
-        "xp": 115,
+        "xp": 285,
         "xpToNextLevel": 337,
         "description": "Hechizo de canalización activa el (presente)\n\n- Mecánica: Mientras canalizas el Presente, cargas un multiplicador de energía. Al terminar la canalización, el siguiente hechizo lanzado de la escuela de Calidez (conexión, escucha) o Poder (acción, autoridad) se ejecuta con máxima potencia.\n\n- Foco laser y monitoreo abierto permite maxima persepción sin generar reacciones por estimulo.\n\n- Disipa (ansiedad bruma del futuro, sindrome del impostor) permite el estado [Armonia] \nque convierte cualquier hechizo bloqueante de vision en nubes inocentes.",
         "discoveredFrom": "manual",
         "discoveredDate": "2026-06-27T21:38:19.032Z",
-        "lastPracticed": "2026-08-12T13:27:28.335Z",
-        "totalPracticeCount": 59,
+        "lastPracticed": "2026-08-20T16:07:13.815Z",
+        "totalPracticeCount": 76,
         "kind": "spell",
         "spellSchool": "Presencia",
         "effects": [
@@ -13738,14 +16500,14 @@
         "id": "skill_1782598763683_06ikkboio",
         "name": "Learning",
         "category": "mind",
-        "level": 2,
-        "xp": 20,
-        "xpToNextLevel": 150,
+        "level": 3,
+        "xp": 10,
+        "xpToNextLevel": 225,
         "description": "Hechizo de adquisición de conocimiento y avance intelectual.",
         "discoveredFrom": "habit-checklist",
         "discoveredDate": "2026-06-27T22:19:23.683Z",
-        "lastPracticed": "2026-08-10T02:09:33.809Z",
-        "totalPracticeCount": 12,
+        "lastPracticed": "2026-08-19T21:27:16.410Z",
+        "totalPracticeCount": 26,
         "kind": "spell",
         "spellSchool": "Aprendizaje",
         "effects": [
@@ -13767,7 +16529,7 @@
         "kind": "spell",
         "spellSchool": "Vitalidad",
         "level": 3,
-        "xp": 20,
+        "xp": 100,
         "xpToNextLevel": 225,
         "description": "Hechizo corporal que fortalece energía, resistencia y presencia física.",
         "effects": [
@@ -13783,8 +16545,8 @@
         "spellPowerBonus": 5,
         "discoveredFrom": "native-habit",
         "discoveredDate": "2026-06-27T22:53:21.284Z",
-        "lastPracticed": "2026-08-12T12:54:25.742Z",
-        "totalPracticeCount": 27
+        "lastPracticed": "2026-08-20T15:13:59.806Z",
+        "totalPracticeCount": 35
       },
       {
         "id": "skill_1782600801284_710kzzmwo",
@@ -13792,9 +16554,9 @@
         "category": "mind",
         "kind": "spell",
         "spellSchool": "Disipación",
-        "level": 3,
-        "xp": 170,
-        "xpToNextLevel": 225,
+        "level": 4,
+        "xp": 125,
+        "xpToNextLevel": 337,
         "description": "Hechizo de disipación para ansiedad o apego al resultado.",
         "effects": [
           "Permite volver al presente.",
@@ -13813,8 +16575,8 @@
         "spellPowerBonus": 10,
         "discoveredFrom": "native-habit",
         "discoveredDate": "2026-06-27T22:53:21.284Z",
-        "lastPracticed": "2026-08-10T02:09:33.809Z",
-        "totalPracticeCount": 42
+        "lastPracticed": "2026-08-20T16:02:26.840Z",
+        "totalPracticeCount": 60
       },
       {
         "id": "skill_1782600801284_e4lh9515p",
@@ -13823,7 +16585,7 @@
         "kind": "spell",
         "spellSchool": "Influencia",
         "level": 2,
-        "xp": 0,
+        "xp": 70,
         "xpToNextLevel": 150,
         "description": "Hechizo social de presencia, calidez e impacto interpersonal.",
         "effects": [
@@ -13840,8 +16602,8 @@
         "spellPowerBonus": 5,
         "discoveredFrom": "native-habit",
         "discoveredDate": "2026-06-27T22:53:21.284Z",
-        "lastPracticed": "2026-08-10T02:09:33.809Z",
-        "totalPracticeCount": 10
+        "lastPracticed": "2026-08-19T02:07:18.681Z",
+        "totalPracticeCount": 17
       },
       {
         "id": "skill_1782600801284_311afiafz",
@@ -13876,9 +16638,9 @@
         "category": "mind",
         "kind": "spell",
         "spellSchool": "Congruencia",
-        "level": 2,
-        "xp": 120,
-        "xpToNextLevel": 150,
+        "level": 3,
+        "xp": 60,
+        "xpToNextLevel": 225,
         "description": "Hechizo de energía que activa el estado Congruencia.",
         "effects": [
           "Potencia todos los demás hechizos con +10 puntos.",
@@ -13896,8 +16658,8 @@
         "spellPowerBonus": 10,
         "discoveredFrom": "native-habit",
         "discoveredDate": "2026-06-27T22:53:21.284Z",
-        "lastPracticed": "2026-08-09T15:15:28.593Z",
-        "totalPracticeCount": 22
+        "lastPracticed": "2026-08-20T16:02:29.352Z",
+        "totalPracticeCount": 31
       },
       {
         "id": "skill_1782600801285_jj0fzwy4u",
@@ -13905,9 +16667,9 @@
         "category": "spirit",
         "kind": "spell",
         "spellSchool": "Vínculo",
-        "level": 1,
-        "xp": 80,
-        "xpToNextLevel": 100,
+        "level": 2,
+        "xp": 0,
+        "xpToNextLevel": 150,
         "description": "Hechizo de apertura social y contacto con nuevas personas.",
         "effects": [
           "Reduce fricción de acercamiento.",
@@ -13922,8 +16684,8 @@
         "spellPowerBonus": 5,
         "discoveredFrom": "native-habit",
         "discoveredDate": "2026-06-27T22:53:21.285Z",
-        "lastPracticed": "2026-08-06T00:20:32.269Z",
-        "totalPracticeCount": 8
+        "lastPracticed": "2026-08-17T00:21:45.712Z",
+        "totalPracticeCount": 10
       },
       {
         "id": "skill_1782600801285_xfjqocoem",
@@ -13931,9 +16693,9 @@
         "category": "mind",
         "kind": "spell",
         "spellSchool": "Lenguaje",
-        "level": 1,
-        "xp": 90,
-        "xpToNextLevel": 100,
+        "level": 2,
+        "xp": 80,
+        "xpToNextLevel": 150,
         "description": "Hechizo de expansión lingüística y comprensión verbal.",
         "effects": [
           "Aumenta precisión auditiva y verbal.",
@@ -13948,8 +16710,8 @@
         "spellPowerBonus": 5,
         "discoveredFrom": "native-habit",
         "discoveredDate": "2026-06-27T22:53:21.285Z",
-        "lastPracticed": "2026-08-09T15:50:02.344Z",
-        "totalPracticeCount": 9
+        "lastPracticed": "2026-08-20T16:16:33.893Z",
+        "totalPracticeCount": 18
       },
       {
         "id": "skill_1782600801285_36i7nyml0",
@@ -13958,7 +16720,7 @@
         "kind": "spell",
         "spellSchool": "Presencia",
         "level": 1,
-        "xp": 40,
+        "xp": 50,
         "xpToNextLevel": 100,
         "description": "Hechizo de contacto visual, postura y calma social.",
         "effects": [
@@ -13975,8 +16737,8 @@
         "spellPowerBonus": 5,
         "discoveredFrom": "native-habit",
         "discoveredDate": "2026-06-27T22:53:21.285Z",
-        "lastPracticed": "2026-08-06T00:20:35.015Z",
-        "totalPracticeCount": 4
+        "lastPracticed": "2026-08-17T00:21:42.336Z",
+        "totalPracticeCount": 5
       },
       {
         "id": "skill_1782600801285_byeggsb1h",
@@ -13984,9 +16746,9 @@
         "category": "spirit",
         "kind": "spell",
         "spellSchool": "Calidez",
-        "level": 2,
-        "xp": 80,
-        "xpToNextLevel": 150,
+        "level": 3,
+        "xp": 20,
+        "xpToNextLevel": 225,
         "description": "Hechizo de benevolencia expresada y conexión interpersonal.",
         "effects": [
           "Suaviza el marco de interacción.",
@@ -14002,8 +16764,8 @@
         "spellPowerBonus": 5,
         "discoveredFrom": "native-habit",
         "discoveredDate": "2026-06-27T22:53:21.285Z",
-        "lastPracticed": "2026-08-10T02:09:33.809Z",
-        "totalPracticeCount": 18
+        "lastPracticed": "2026-08-19T02:07:18.681Z",
+        "totalPracticeCount": 27
       },
       {
         "id": "skill_1782600801285_ukc3ihaso",
@@ -14034,7 +16796,7 @@
     ],
     "autoDiscovery": true,
     "skillPointsPerLevel": 1,
-    "availableSkillPoints": 5,
+    "availableSkillPoints": 7,
     "totalSkillsDiscovered": 12
   },
   "habitSkillSync": {
@@ -14136,7 +16898,7 @@
         "school": "Autoridad",
         "parentId": null,
         "maxLevel": 3,
-        "currentLevel": 0,
+        "currentLevel": 1,
         "acquired": false,
         "prerequisiteNodeIds": [],
         "prerequisiteMinLevel": 2,

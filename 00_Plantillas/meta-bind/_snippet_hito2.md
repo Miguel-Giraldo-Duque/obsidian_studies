@@ -20,5 +20,5 @@ style: default
 tooltip: Abre lista dinámica de vows y suma este hito como grano
 action:
   type: command
-  command: life-rpg:link-hito-to-vow
+  command: soulhy:link-hito-to-vow
 ```

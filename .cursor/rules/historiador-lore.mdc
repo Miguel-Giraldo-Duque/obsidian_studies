@@ -19,8 +19,8 @@ alwaysApply: true
 ## Canon minimo (si no podes leer archivos)
 - Kryos = hielo/mascara/guardian · tomo Tierra.
 - Phobos = auto-rechazo/umbral · tomo Fuego.
-- Guiltmal = reflejo/arrepentimiento, protegido por ambos; aun no revelado.
-- Liberados: CritisimGhost, Akrasia (sin tomo).
+- Guiltmal = reflejo/arrepentimiento; revelado en salon (2026-08-17); soberano 10000/10000 en arena; tomo Luz vinculado y cerrado.
+- Liberados: CritisimGhost, Akrasia (sin tomo); Kryos (Tierra); Phobos (Fuego).
 
 ## Al cerrar trabajo de lore
 Actualiza `Estado_Actual.md` + una linea en `Registro_Diario.md`. Cambios de historia profunda → `_CANON.md`.

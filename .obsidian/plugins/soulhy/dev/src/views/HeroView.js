@@ -1076,10 +1076,13 @@ class HeroView extends ItemView {
         summaryRow.createDiv({ text: `${summary.completedQuests} quests completadas`, cls: 'rpg-skill-tree-summary-item' });
 
         const schoolNav = container.createDiv({ cls: 'rpg-skill-tree-schools' });
+        const vowService = new VowService(this.plugin);
         schools.forEach(school => {
             const count = treeService.getNodes().filter(node => node.school === school.id).length;
+            const vowMult = vowService.getVowQuestMultiplier(school.id);
+            const multLabel = vowService.formatVowMultiplier(vowMult);
             const btn = schoolNav.createEl('button', {
-                text: `${school.name} (${count})`,
+                text: `${school.name} (${count})${multLabel ? ` ${multLabel}` : ''}`,
                 cls: `rpg-skill-tree-school-btn school-${school.id.toLowerCase()} ${this.activeSkillTreeSchool === school.id ? 'active' : ''}`
             });
             btn.onclick = () => {
@@ -1350,6 +1353,13 @@ class HeroView extends ItemView {
         const target = service.targetCells(vow);
         meta.createSpan({ text: `${count} / ${target}` });
         meta.createSpan({ cls: 'rpg-vow-stage', text: service.intensityLabel(vow) });
+        if (service.isVowComplete(vow)) {
+            const schools = Array.isArray(vow.schools) ? vow.schools : [];
+            const pill = schools.length > 0
+                ? `Estandarte activo · ${schools.join(', ')}`
+                : 'Estandarte activo';
+            meta.createSpan({ cls: 'rpg-vow-estandarte', text: pill });
+        }
         return banner;
     }
 
@@ -1514,9 +1524,9 @@ class HeroView extends ItemView {
 
     renderBossVisual(parentEl, boss) {
         const visual = getActiveBossPhaseVisual(boss);
-        const isPrimordial = boss.tier === 'primordial';
+        const usesTome = bossUsesTome(boss.tier);
         const iconWrap = parentEl.createDiv({
-            cls: `rpg-boss-icon has-ornate-frame ${isPrimordial ? 'primordial' : ''} phase-${visual.phase}`
+            cls: `rpg-boss-icon has-ornate-frame ${usesTome ? boss.tier : ''} phase-${visual.phase}`
         });
         const framePath = visual.framePath || getBossFramePath(boss.tier);
         this.renderVaultImage(iconWrap, framePath, {
@@ -1624,11 +1634,11 @@ class HeroView extends ItemView {
         const section = parentEl.createDiv({ cls: 'rpg-boss-loot' });
         section.createDiv({ cls: 'rpg-boss-loot-label', text: 'Loot:' });
 
-        const isPrimordial = boss.tier === 'primordial';
+        const usesTome = bossUsesTome(boss.tier);
         const tome = this.plugin.getTomeById(boss.tomeId);
         const flower = this.plugin.getFlowerById(boss.flowerId);
 
-        if (isPrimordial && tome) {
+        if (usesTome && tome) {
             const chip = section.createEl('button', {
                 cls: 'rpg-boss-loot-tome',
                 attr: { type: 'button', title: tome.name }
@@ -1644,7 +1654,7 @@ class HeroView extends ItemView {
             return;
         }
 
-        if (!isPrimordial && flower) {
+        if (!usesTome && flower) {
             const chip = section.createEl('button', {
                 cls: 'rpg-boss-loot-tome',
                 attr: { type: 'button', title: flower.name }
@@ -1662,7 +1672,7 @@ class HeroView extends ItemView {
 
         section.createSpan({
             cls: 'rpg-boss-loot-empty',
-            text: isPrimordial ? 'Sin tomo' : 'Sin flor'
+            text: usesTome ? 'Sin tomo' : 'Sin flor'
         });
     }
 
@@ -2829,7 +2839,7 @@ class HeroView extends ItemView {
         activeBosses.forEach((boss, index) => {
             const visual = getActiveBossPhaseVisual(boss);
             const bossCard = container.createDiv({
-                cls: `rpg-boss-card active phase-${visual.phase} ${boss.tier === 'primordial' ? 'primordial' : ''}`
+                cls: `rpg-boss-card active phase-${visual.phase} ${bossUsesTome(boss.tier) ? boss.tier : ''}`
             });
             if (visual.cardBgColor) {
                 bossCard.style.setProperty('--boss-card-bg', visual.cardBgColor);
@@ -2857,7 +2867,9 @@ class HeroView extends ItemView {
                     text: `Fase ${visual.phase} / ${visual.phaseCount}`
                 });
             }
-            if (boss.tier === 'primordial') {
+            if (boss.tier === 'soberano') {
+                bossInfo.createDiv({ cls: 'rpg-boss-tier soberano', text: 'Nivel Soberano' });
+            } else if (boss.tier === 'primordial') {
                 bossInfo.createDiv({ cls: 'rpg-boss-tier primordial', text: 'Nivel Primordial' });
             } else if (boss.tier && BOSS_TIERS[boss.tier]) {
                 bossInfo.createDiv({ cls: 'rpg-boss-tier', text: BOSS_TIERS[boss.tier].label });

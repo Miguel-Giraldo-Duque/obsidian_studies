@@ -1,6 +1,6 @@
 ---
 tipo: canon-lore
-actualizado: 2026-08-04
+actualizado: 2026-08-17
 ---
 
 # Canon — Soulhy, el Sanador
@@ -33,9 +33,11 @@ Soulhy las mira, **aprende** de ellas y toma los **tomos** para que su conocimie
                    aislamiento
 ```
 
-Kryos y Phobos **no son enemigos finales**: son **guardianes** de un poder aún mayor. Su frialdad y su intimidación existen para que Guiltmal no destruya el mundo interior de Soulhy antes de tiempo.
+Kryos y Phobos **no son enemigos finales**: son **guardianes** de un poder aún mayor. Su frialdad y su intimidación existían para que Guiltmal no destruyera el mundo interior de Soulhy antes de tiempo.
 
 Para derretir esa pared se necesitan **calidez** (abrir el corazón) y **valentía** (tomar acción). Herir a uno debilita la misma pared que sostiene al otro.
+
+**Estado 2026-08-17:** la pared cayó. Phobos (13 ago) y Kryos (14 ago) están **purificados**. Soulhy entra al salón de Guiltmal con los tomos de Fuego y Tierra en la mano. Guiltmal es el **soberano** de esta jerarquía (10000 HP, encima de Primordial) — no un jefe menor — y además el **maestro del método** para lo que venga después: ir al dolor no rescatado, no anestesiarlo.
 
 ---
 
@@ -47,8 +49,9 @@ Para derretir esa pared se necesitan **calidez** (abrir el corazón) y **valent�
 - **Naturaleza:** protector más que enemigo. Resguarda el dolor interior; levanta una **barrera de aislamiento**.
 - **Canon del sanador (descripción en juego):** liberarse de la máscara de fingir amabilidad y serlo de verdad; soltar la tensión ansiosa; abrir el corazón a las emociones.
 - **Cómo se purifica:** escuela **Calidez** (Benevolencia + Empatía). El hielo cae al abrir el corazón.
-- **Tomo:** [[#Tomo de la Tierra|Earth Tome]].
+- **Tomo:** [[#Tomo de la Tierra|Earth Tome]] — desbloqueado 2026-08-14.
 - **Vínculo:** al derretir a Kryos, Phobos también se expone / se hiere — son la misma pared.
+- **Estado:** purificado (liberado en juego 2026-08-14). Su sabiduría queda: **claridad para sanarte** (quitar la máscara, vulnerabilidad real).
 
 ### Phobos Aliénos — Guardián del umbral (primordial)
 
@@ -56,15 +59,62 @@ Para derretir esa pared se necesitan **calidez** (abrir el corazón) y **valent�
 - **Naturaleza:** intimidante, presencia fuerte, dolor imposible de ignorar. Incluso detrás del hielo de Kryos, **sigue impactando**.
 - **Canon del sanador (descripción en juego):** vencer el miedo al rechazo que limita trabajo nuevo, vida sexual y conocer a quien quiere conocer; fortaleza y congruencia; auto-validación; vivir en términos propios.
 - **Cómo se purifica:** **Sommelier de la incomodidad** (Autoridad) + Empatía (también daña a Kryos). Valentía de sostener el ardor de actuar.
-- **Tomo:** [[#Tomo del Fuego|Tome of Fire]].
-- **Vínculo:** esconde, tras la pared, la idea de que más allá solo hay miedo e infortunio — pero detrás está Guiltmal.
+- **Tomo:** [[#Tomo del Fuego|Tome of Fire]] — desbloqueado 2026-08-13.
+- **Vínculo:** escondía, tras la pared, la idea de que más allá solo hay miedo e infortunio — detrás estaba Guiltmal.
+- **Estado:** purificado (liberado en juego 2026-08-13). Su sabiduría queda: **valentía para avanzar** (sostener el ardor).
 
-### Guiltmal — El reflejo (legendario, aún no revelado en arena)
+### Guiltmal — El reflejo (soberano, revelado 2026-08-17)
 
-- **Naturaleza:** boss más fuerte y peligroso. Reflejo de Soulhy: lo que no quiere ver, sueños no cumplidos, arrepentimiento intenso.
-- **Estado:** no enfrentado. Muchos jamás lo conocen en décadas de vida.
-- **Guardianes:** Kryos y Phobos existen para que su poder no destruya el mundo interior antes de que el sanador esté listo.
-- **Tomo (boceto 2026-08-01):** [[#Tomo de la Luz|Tome of Light]] — aún sin vínculo en `data.json` (Guiltmal no está en arena).
+Nombre canónico: **Guiltmal** (no Guiltman). El más fuerte y peligroso de esta jerarquía. Reflejo de Soulhy: lo que no quiere ver, sueños no cumplidos, arrepentimiento intenso. **Es todo lo que representa el pasado y su dolor** — dolor que nunca fue rescatado ni escuchado.
+
+- **Guardianes:** Kryos y Phobos ya cumplieron: la pared se derritió. Su poder no debía destruir el mundo interior antes de tiempo; ahora Soulhy entra con ambos tomos.
+- **Arena:** ficha en `data.json` (`id` 1786983444165). Tier **soberano**, **10000/10000 HP** (una barra; las 5 secciones de la nube siguen siendo mapa de lore, no fases de juego).
+- **Tomo:** [[#Tomo de la Luz|Tome of Light]] — vinculado; `unlocked: false`.
+
+#### I. El salón
+
+Escaleras negras, tapete rojo. Guiltmal está **sentado en el trono**, reposado, mirando a Soulhy. Aplaude. Energía poderosa, casi arrogante, confiada. Lleva tantos años ahí que **pensar en sanarlo le parece gracioso**.
+
+El aplauso no es rendición: es un anfitrión que cree que el visitante acaba de entrar a *su* casa.
+
+#### II. Cómo hiere (no como los guardianes)
+
+| | Kryos | Phobos | Guiltmal |
+|---|--------|--------|----------|
+| Gesto | aísla (hielo) | intimida (umbral) | **absorbe** |
+| Dirección | te saca / te congela afuera | te frena antes de cruzar | **te quiere adentro** |
+| Máscara | frialdad, no pertenecer | auto-rechazo, miedo | **realista, sensato** |
+
+Guiltmal ofrece, en gran medida, **expresar años de dolor acumulado**. Esa oferta es el lazo. Phobos y Kryos eran intensos; Guiltmal te abraza con una **nube negra** que quema: recuerdos, rencores, miedos, promesas incumplidas. No te expulsa. Te invita a quedarte en lo profundo.
+
+Parece masivo. En su mente, muy en su interior, es un **maestro**.
+
+#### III. El maestro interior
+
+Su objetivo **no es derrotar a Soulhy**. Es mostrarle que, para los bosses que vengan en el camino, hay que **ir al pasado de dolor**: a los recuerdos que no quiere ver. Y aplicar lo que los guardianes ya enseñaron:
+
+- **Phobos / Fuego** — valentía para avanzar; sostener el ardor.
+- **Kryos / Tierra** — claridad para sanarte; quitar la máscara.
+
+Guiltmal sigue siendo el **soberano** de *esta* pared, no un tutorial descartable. Es el que **forja el método**: el camino no termina al cruzar el umbral (filosofía OMA). Los “próximos bosses” no lo vuelven menor; lo vuelven el archivo que hay que iluminar para no repetir el patrón.
+
+#### IV. La mesa
+
+Lo sienta a su mesa. Disfruta verlo **en el traje**: la identidad nueva (post-máscara, post-umbral) sentada frente al archivo del pasado.
+
+El trabajo del sanador no es asaltar el trono. Es:
+
+1. **Sentir la nube** — no huir, no anestesiar.
+2. Transformarla **sección por sección**.
+3. Mirar **miedo por miedo**.
+4. **Liberar la culpa de su carga negativa** — no borrar el dolor, quitarle el veneno que encadena.
+5. Reconocer lo que ese dolor siempre fue: una **opción de crecimiento**; un **martillo** para construir identidad y cambiar patrones.
+
+#### V. Cómo se purifica
+
+Con **luz cálida**, no con auto-inmolación ni sabotaje del propio libro. El Tomo del Fuego sirve para quedarse en el ardor de la nube; el de la Tierra, para no fingir que ya está sano. El de la Luz —cuando se abra— ilumina esas secciones rugosas hasta que la culpa deja de ser cárcel y queda como herramienta.
+
+Purificar Guiltmal ≠ borrar el pasado. Conserva la sabiduría. Sube el siguiente borde.
 
 ### Bosses liberados (historial)
 
@@ -72,6 +122,9 @@ Para derretir esa pared se necesitan **calidez** (abrir el corazón) y **valent�
 |------|-----|------|-------|
 | CritisimGhost | Voz del no-merecedor / crítico interno | — | Liberado (purificado). Sin tomo asignado. |
 | Akrasia | Brecha decir ≠ hacer; palabra que no pesa | — | Liberado. Sin tomo asignado. |
+| Phobos Aliénos | Guardián del umbral | Fire | Purificado 2026-08-13. Valentía para avanzar. |
+| Kryos | Guardián del hielo | Earth | Purificado 2026-08-14. Claridad para sanarte. |
+| EveVacum | Eco de campo (padre / Flor Rumen) | — | Liberado 2026-08-08. Flor Rumen al herbario. |
 
 ---
 
@@ -91,11 +144,13 @@ Café, imperfecto, no el más bello. Representa la **belleza de la imperfección
 
 Eco de juego: Calidez; soltar la máscara; genuino vs fingido.
 
-### Tomo de la Luz — Guiltmal (boceto)
+### Tomo de la Luz — Guiltmal (vinculado; aún cerrado)
 
 Ilumina pasado, presente y futuro en **congruencia interna** forjada en verdad, compasión y calidez interna.
 
-Al tacto es fácil de agarrar: cálido, sólido, sensación suave con **secciones rugosas** — el origen rústico / el trabajo original que formó esa suavidad. Abrirlo invita a la lectura: facilidad y apertura. Cuanto más al fondo vas, el calor se mantiene.
+Al tacto es fácil de agarrar: cálido, sólido, sensación suave con **secciones rugosas** — el origen rústico / el trabajo original que formó esa suavidad. Esas secciones son las de la **nube** en el salón: se leen una por una, miedo por miedo, no de un golpe. Abrirlo invita a la lectura: facilidad y apertura. Cuanto más al fondo vas, el calor se mantiene.
+
+Eco de la mesa (2026-08-17): la Luz no borra la culpa; le quita la **carga negativa** y deja el martillo — identidad, patrones nuevos.
 
 Si tratás de **dañar sus páginas o el tomo**, te expulsa. Tiene determinación de **proteger origen y fortaleza interna**. Es cálido — pero **hirviente** cuando esa calidez del explorador es malintencionada.
 
@@ -132,7 +187,7 @@ Eco de lore: el reflejo de Guiltmal se mira con luz cálida, no con auto-inmolac
 
 No son primordiales. No otorgan tomo. Son dolores **concretos** personificados para seguimiento (barra + banco de retos). Purificar libera un **remedio de campo** (flor / hierba), no reescribe la jerarquía Guiltmal.
 
-### EveVacum — Historia completa (activo, ago 2026)
+### EveVacum — Historia completa (liberado 2026-08-08)
 
 > Ficha jugable: [[Ecos_EveVacum]] · Banco: `001 banco de retos de EveVacum.md` · HP campo 400 · Alias temprano: Círculo Umbral.
 
@@ -183,7 +238,7 @@ Los retos del banco no son golpes de odio: son pruebas ante el padre — *sigue 
 
 Cuando la Flor Rumen queda al sol — en manos de Soulhy — EveVacum no estalla. **Llora de ternura.** El viejo grande ve a su hija respirar. Entiende que proteger no era asfixiar. Su misión termina en una bendición muda: *andá. Yo ya no te encierro.*
 
-No hay tomo. La **Flor Rumen** entra al herbario del sanador (una de las doce flores de campo que, algún día, acompañarán el encuentro con Guiltmal: el reflejo también pide no ser ahogado, sino mirado con luz cálida). Kryos y Phobos siguen en la pared; Guiltmal sigue oculto. El puesto avanzado del vacío panorámico ya no manda solo.
+No hay tomo. La **Flor Rumen** entra al herbario del sanador (una de las doce flores de campo que acompañan el encuentro con Guiltmal: el reflejo también pide no ser ahogado, sino mirado con luz cálida). Purificado en juego el 2026-08-08. El 17 ago Soulhy entra al salón; la flor ya está en el herbario. El puesto avanzado del vacío panorámico ya no manda solo.
 
 #### Frase de cierre
 

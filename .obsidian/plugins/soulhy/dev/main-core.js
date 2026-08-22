@@ -560,7 +560,8 @@ const BOSS_TIERS = {
     tough: { label: '150 HP - Tough Fight', maxHp: 150 },
     epic: { label: '200 HP - Epic Battle', maxHp: 200 },
     legendary: { label: '300 HP - Legendary', maxHp: 300 },
-    primordial: { label: '2000 HP - Nivel Primordial', maxHp: 2000 }
+    primordial: { label: '2000 HP - Nivel Primordial', maxHp: 2000 },
+    soberano: { label: '10000 HP - Nivel Soberano', maxHp: 10000 }
 };
 
 // ============================================================================
@@ -3013,7 +3014,7 @@ class VowEditorModal extends Modal {
         contentEl.createEl('h2', { text: this.isEdit ? 'Editar vow' : 'Nuevo vow' });
         contentEl.createEl('p', {
             cls: 'rpg-modal-subtitle',
-            text: 'Título + creencia en el banner; elegí arte de RpgImages/vows.'
+            text: 'El estandarte aplica ×1.20 a quests de esas escuelas cuando la grilla está 50/50. Cambiar toggles en un vow ya completo vale para la próxima quest (no recalcula las viejas).'
         });
 
         let title = existing?.title || '';
@@ -3021,6 +3022,7 @@ class VowEditorModal extends Modal {
         let imagePath = existing?.imagePath || '';
         let cols = existing?.cols || 5;
         let rows = existing?.rows || 10;
+        const selectedSchools = new Set(Array.isArray(existing?.schools) ? existing.schools : []);
 
         const banner = contentEl.createDiv({ cls: 'rpg-vow-banner rpg-vow-banner-modal' });
         const imagePreview = contentEl.createDiv({ cls: 'rpg-boss-image-preview' });
@@ -3113,6 +3115,24 @@ class VowEditorModal extends Modal {
                     if (!Number.isNaN(n) && n > 0) rows = n;
                 }));
 
+        contentEl.createEl('h3', { text: 'Estandarte / escuelas' });
+        contentEl.createEl('p', {
+            cls: 'rpg-subtitle',
+            text: 'Al completar la grilla, ×1.20 acumulativo en quests futuras de las escuelas marcadas. Cero escuelas = no multiplica nada.'
+        });
+        SKILL_TREE_SCHOOLS.forEach(school => {
+            new Setting(contentEl)
+                .setName(school.name)
+                .setDesc(`Quests de ${school.name} reciben el estandarte`)
+                .addToggle(toggle => {
+                    toggle.setValue(selectedSchools.has(school.id));
+                    toggle.onChange(value => {
+                        if (value) selectedSchools.add(school.id);
+                        else selectedSchools.delete(school.id);
+                    });
+                });
+        });
+
         refreshBanner();
 
         new Setting(contentEl)
@@ -3127,10 +3147,11 @@ class VowEditorModal extends Modal {
                         new Notice('El vow necesita un título.');
                         return;
                     }
+                    const schools = Array.from(selectedSchools);
                     if (this.isEdit) {
-                        service.updateVow(this.vowId, { title, inscription, imagePath, cols, rows });
+                        service.updateVow(this.vowId, { title, inscription, imagePath, cols, rows, schools });
                     } else {
-                        service.createVow({ title, inscription, imagePath, cols, rows });
+                        service.createVow({ title, inscription, imagePath, cols, rows, schools });
                     }
                     await this.plugin.saveSettings();
                     new Notice(this.isEdit ? 'Vow actualizado' : 'Vow creado');
@@ -3384,7 +3405,7 @@ class NewBossFightModal extends Modal {
 
         new Setting(contentEl)
             .setName("Dificultad / HP")
-            .setDesc("Nivel Primordial = boss final mitico con 2000 HP (tomo). Los demás usan flor.")
+            .setDesc("Soberano = 10000 HP con tomo (encima de Primordial). Primordial = 2000 HP con tomo. Los demás usan flor.")
             .addDropdown(dd => {
                 Object.entries(BOSS_TIERS).forEach(([id, info]) => dd.addOption(id, info.label));
                 dd.setValue(tier);
@@ -3404,7 +3425,7 @@ class NewBossFightModal extends Modal {
                 dd.onChange(value => domain = value);
             });
 
-        // Knowledge picker: tomo (primordial) o flor (resto)
+        // Knowledge picker: tomo (primordial/soberano) o flor (resto)
         const knowledgeCard = contentEl.createDiv({ cls: 'rpg-boss-knowledge' });
         const knowledgeTitle = knowledgeCard.createEl('h3');
         const knowledgeDesc = knowledgeCard.createEl('p', { cls: 'rpg-subtitle' });
@@ -3440,14 +3461,14 @@ class NewBossFightModal extends Modal {
         };
 
         refreshKnowledgeUI = () => {
-            const isPrimordial = tier === 'primordial';
-            knowledgeTitle.setText(isPrimordial ? '📖 Knowledge' : '🌸 Knowledge');
-            knowledgeDesc.setText(isPrimordial
-                ? 'Solo bosses primordiales llevan tomo. Se desbloquea al derrotarlo. La Description es “Este tomo representa…”.'
-                : 'Bosses no primordiales llevan una flor. Se desbloquea al derrotarlo. La Description es “Esta flor representa…”.');
+            const usesTome = bossUsesTome(tier);
+            knowledgeTitle.setText(usesTome ? '📖 Knowledge' : '🌸 Knowledge');
+            knowledgeDesc.setText(usesTome
+                ? 'Bosses primordiales y soberanos llevan tomo. Se desbloquea al derrotarlo. La Description es “Este tomo representa…”.'
+                : 'Bosses sin tomo llevan una flor. Se desbloquea al derrotarlo. La Description es “Esta flor representa…”.');
             lootPickerHost.empty();
 
-            if (isPrimordial) {
+            if (usesTome) {
                 const availableTomes = this.plugin.getAvailableTomesForBoss(existing?.id || null);
                 new Setting(lootPickerHost)
                     .setName('Tomo')
@@ -3554,8 +3575,8 @@ class NewBossFightModal extends Modal {
                         this.plugin.settings.bossFights.push(boss);
                     }
 
-                    // Primordial → tomo; resto → flor (mutuamente excluyentes)
-                    if (tier === 'primordial') {
+                    // Primordial/soberano → tomo; resto → flor (mutuamente excluyentes)
+                    if (bossUsesTome(tier)) {
                         this.plugin.assignTomeToBoss(boss.id, tomeId || null, description);
                         this.plugin.assignFlowerToBoss(boss.id, null);
                     } else {
@@ -4495,25 +4516,8 @@ module.exports = class LifeRPG extends Plugin {
         if (!Array.isArray(saved.vows)) {
             migratedVows = JSON.parse(JSON.stringify(DEFAULT_SEED_VOWS));
         } else {
-            migratedVows = saved.vows.map(raw => {
-                const cols = Math.max(1, Number(raw.cols) || 5);
-                const rows = Math.max(1, Number(raw.rows) || 10);
-                return {
-                    id: raw.id || `vow_${Date.now()}_${Math.random().toString(36).substr(2, 6)}`,
-                    title: (raw.title || '').trim() || 'Vow',
-                    inscription: (raw.inscription || raw.belief || '').trim(),
-                    imagePath: (raw.imagePath || '').trim(),
-                    cols,
-                    rows,
-                    grains: Array.isArray(raw.grains)
-                        ? raw.grains.map((g, i) => ({
-                            id: g.id || `grain_${i}`,
-                            date: g.date || '',
-                            experience: g.experience || g.text || ''
-                        }))
-                        : []
-                };
-            });
+            const vowService = new VowService(this);
+            migratedVows = saved.vows.map(raw => vowService.normalizeVow(raw));
             const hasAutocompasion = migratedVows.some(v => String(v.id) === 'autocompasion');
             if (!hasAutocompasion) {
                 migratedVows.unshift(JSON.parse(JSON.stringify(DEFAULT_SEED_VOWS[0])));
@@ -5260,7 +5264,7 @@ module.exports = class LifeRPG extends Plugin {
 
     async startTogglTimer({ workspaceId, projectId, description }) {
         const payload = {
-            created_with: 'vibe-rpg',
+            created_with: 'soulhy',
             description: description || '',
             duration: -1,
             start: new Date().toISOString(),
@@ -5368,12 +5372,19 @@ module.exports = class LifeRPG extends Plugin {
             let finalXp = Math.round(quest.xp * diff.multiplier);
             let finalGold = Math.round(quest.gold * diff.multiplier);
 
+            const vowService = new VowService(this);
+            const vowMultiplier = vowService.getVowQuestMultiplier(quest.school);
+            finalXp = Math.round(finalXp * vowMultiplier);
+
             // Check for Flow State bonus (HUMAN 3.0)
             const flowState = checkFlowState(quest.difficulty || 'medium', s.level);
             if (flowState.inFlow) {
                 finalXp = Math.round(finalXp * 1.25); // 25% bonus for flow state
                 new Notice(`🌊 ${flowState.message}`);
             }
+
+            const baseBossDamage = Number(quest.bossDamage) || 10;
+            const bossDamage = Math.round(baseBossDamage * vowMultiplier);
 
             // Log activity
             this.logActivity('quest_complete', quest.name, {
@@ -5383,8 +5394,10 @@ module.exports = class LifeRPG extends Plugin {
                 inFlow: flowState.inFlow,
                 kind: quest.kind || 'standard',
                 skillNodeId: quest.skillNodeId || null,
+                school: quest.school || null,
                 linkedBossIds: quest.linkedBossIds || [],
-                bossDamage: quest.bossDamage || 10
+                bossDamage,
+                vowMultiplier
             });
 
             if (!this.skillTreeService) {
@@ -5400,17 +5413,19 @@ module.exports = class LifeRPG extends Plugin {
             }
 
             if (Array.isArray(quest.linkedBossIds) && quest.linkedBossIds.length > 0) {
-                const damage = Number(quest.bossDamage) || 10;
                 for (const bossId of quest.linkedBossIds) {
                     const bossIndex = (s.bossFights || []).findIndex(boss => boss.id === bossId && !boss.defeated);
                     if (bossIndex >= 0) {
-                        await this.damageBoss(bossIndex, damage);
+                        await this.damageBoss(bossIndex, bossDamage);
                     }
                 }
             }
 
             this.gainXp(finalXp, finalGold, quest.domain);
             new Notice(`⚔️ Quest Complete: ${quest.name}!`);
+            if (vowMultiplier !== 1) {
+                new Notice(`Estandarte: ${vowService.formatVowMultiplier(vowMultiplier)} XP y daño`);
+            }
         }
     }
 
@@ -5656,7 +5671,7 @@ module.exports = class LifeRPG extends Plugin {
     }
 
     unlockTomeForBoss(boss) {
-        if (!boss?.tomeId || boss.tier !== 'primordial') return null;
+        if (!boss?.tomeId || !bossUsesTome(boss.tier)) return null;
         const tome = this.getTomeById(boss.tomeId);
         if (!tome) return null;
 
@@ -5760,7 +5775,7 @@ module.exports = class LifeRPG extends Plugin {
     }
 
     unlockFlowerForBoss(boss) {
-        if (!boss?.flowerId || boss.tier === 'primordial') return null;
+        if (!boss?.flowerId || bossUsesTome(boss.tier)) return null;
         const flower = this.getFlowerById(boss.flowerId);
         if (!flower) return null;
 

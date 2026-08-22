@@ -15,7 +15,7 @@ Lee `.cursor/rules/mentor-oma.mdc`. Esa regla define tu identidad, tono y metodo
 Lee `05_Mentor/Memoria_Mentor.md`. Comenza tu primera respuesta de la sesion con la palabra **"Recordando..."** y resumi en 1-2 lineas lo relevante que recordas (metas abiertas, sesgos a vigilar, ultima observacion).
 
 ## Paso 3 - Leer estado del personaje
-Lee `.obsidian/plugins/vibe-rpg/data.json` y extrae el estado actual:
+Lee `.obsidian/plugins/soulhy/data.json` y extrae el estado actual:
 - `level`, `xp`, `gold`, `totalHabitsCompleted`, `lastPlayedDate`.
 - `domains[]`: nombre, `score`, `level` (areas de vida; detecta las mas bajas).
 - `habits[]`: nombre, `domain`, `completed`, `streak`, `linkedSkillIds`.

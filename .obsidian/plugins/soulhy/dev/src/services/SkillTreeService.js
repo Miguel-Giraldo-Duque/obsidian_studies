@@ -320,7 +320,7 @@ class SkillTreeService {
         };
     }
 
-    importSommelierBank({ nodeId = SOMMELIER_NODE_ID, bossId = PHOBOS_BOSS_ID } = {}) {
+    importSommelierBank({ nodeId = SOMMELIER_NODE_ID, bossId = GUILTMAL_BOSS_ID } = {}) {
         this.ensureSkillTree();
         const node = this.getNode(nodeId);
         if (!node) {
@@ -365,7 +365,7 @@ class SkillTreeService {
         return { ok: true, alreadyImported: false, created, total: created };
     }
 
-    importBenevolenciaBank({ nodeId = BENEVOLENCIA_NODE_ID, bossId = KRYOS_BOSS_ID } = {}) {
+    importBenevolenciaBank({ nodeId = BENEVOLENCIA_NODE_ID, bossId = GUILTMAL_BOSS_ID } = {}) {
         this.ensureSkillTree();
         const node = this.getNode(nodeId);
         if (!node) {
@@ -411,7 +411,7 @@ class SkillTreeService {
 
     importEmpatiaBank({
         nodeId = EMPATIA_NODE_ID,
-        bossIds = [KRYOS_BOSS_ID, PHOBOS_BOSS_ID]
+        bossIds = [GUILTMAL_BOSS_ID]
     } = {}) {
         this.ensureSkillTree();
         const node = this.getNode(nodeId);

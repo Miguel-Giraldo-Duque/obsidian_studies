@@ -8,7 +8,7 @@ import time
 from pathlib import Path
 
 root = Path(__file__).resolve().parents[2]
-data_path = root / ".obsidian/plugins/vibe-rpg/data.json"
+data_path = root / ".obsidian/plugins/soulhy/data.json"
 bank_path = root / "001 banco de retos de EveVacum.md"
 
 BOSS_ID = "1785816112558"

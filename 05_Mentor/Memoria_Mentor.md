@@ -1,7 +1,7 @@
 ---
 tipo: memoria-mentor
-actualizado: 2026-08-05
-version: 12
+actualizado: 2026-08-17
+version: 16
 ---
 
 # Memoria del Mentor
@@ -49,18 +49,20 @@ version: 12
 - [Componente] Skill Tree vibe-rpg :: tab Arbol en `vibe-rpg` para escuelas sociales, sub-skills, quests por nivel y dano a bosses vinculados.
 - [Hechizo] Sommelier de la incomodidad :: seed del arbol social en Autoridad con 3 niveles y retos calibrados como quests.
 - [Componente] Regla maestro-estudios :: `.cursor/rules/maestro-estudios.mdc`, crea practicas en `02_Estudios` desde notas fuente; ortografia + Challenge Point ~60% + curva 1-2-7-15-31.
-- [Estado] Estudios Vercel AI SDK :: practicas `Vercel AI SDK.md` + `GenerateText.md` con `tema_iniciado: 2026-07-27`; GenerateText incluye ejercicios de codigo por dia de repaso.
+- [Estado] Estudios Vercel AI SDK :: practicas `Vercel AI SDK.md` + `GenerateText.md` (2026-07-27) + `Streaming.md` (2026-08-14) + `Modelos AI y proveedores.md` (2026-08-15) + `Tokens.md` (2026-08-16); GenerateText/Streaming = codigo; Modelos/Tokens = Q&A.
 - [Estado] Estudios Entrevista de comportamiento :: practica `02_Estudios/Entrevista de comportamiento.md`, `tema_iniciado: 2026-07-27`; fuente CV/behavioral (Exponent intro).
 - [Estado] Estudios Downleveling :: practica `02_Estudios/Downleveling.md`, `tema_iniciado: 2026-08-05`; fuente `Escuela desarrollo web/CV/Downleveling.md` (Exponent Avoiding Downleveling).
 - [Componente] Cronica del Sanador :: `05_Mentor/Cronica_Sanador/` — canon, estado corto y registro diario del lore.
 - [Componente] Regla historiador-lore :: `.cursor/rules/historiador-lore.mdc` (alwaysApply: lee Estado_Actual al inicio).
 - [Componente] Comando invocate-historiador :: `.cursor/skills/invocate-historiador/SKILL.md`.
-- [Jefe] Kryos :: primordial guardian del hielo/mascara; ~1290/2000 HP; tomo Earth; Calidez lo derrite.
-- [Jefe] Phobos Aliénos :: primordial del auto-rechazo/umbral; ~1300/2000 HP; tomo Fire; Sommelier + Empatia.
-- [Jefe] Guiltmal :: legendario oculto; reflejo/arrepentimiento; Kryos+Phobos lo protegen; sin tomo.
-- [Tomo] Fire :: Phobos — sostener el ardor del conocimiento / aprender en el dolor.
-- [Tomo] Earth :: Kryos — belleza de la imperfeccion / vulnerabilidad transparente.
+- [Jefe] Kryos :: primordial del hielo/mascara; 0/2000 purificado 2026-08-14; tomo Earth; claridad para sanarte.
+- [Jefe] Phobos Aliénos :: primordial del auto-rechazo/umbral; 0/2000 purificado 2026-08-13; tomo Fire; valentia para avanzar.
+- [Jefe] Guiltmal :: soberano (10000/10000 en arena, id 1786983444165); reflejo/pasado no rescatado; absorbe (nube) no expulsa; maestro interior; mesa seccion a seccion; tomo Light vinculado y cerrado.
+- [Tomo] Fire :: Phobos — sostener el ardor del conocimiento / aprender en el dolor; desbloqueado 2026-08-13.
+- [Tomo] Earth :: Kryos — belleza de la imperfeccion / vulnerabilidad transparente; desbloqueado 2026-08-14.
+- [Tomo] Light :: Guiltmal — vinculado en arena, unlocked false; iluminar la nube seccion a seccion; culpa como martillo no carcel.
 - [Hechizo] Flow :: skill Presencia; TPN vs DMN; 60 quests hardware→software social→caos; nodo `node_1785983669892_tu8ccua1d`.
+- [Estado] Flow Q1.7 Gate Ochenta :: 20 min pared, criterio S/R ≥80% (no conteo de pensamientos); pendiente; daña a Guiltmal.
 - [Componente] Banco Flow :: `001 banco de retos de Flow.md` + mapa `02_Estudios/Quests_Flow.md` + script `_inject_flow_quests.py`.
 
 ## Relaciones
@@ -106,8 +108,13 @@ version: 12
 - Estudios Downleveling --hermano_de--> Estudios Entrevista de comportamiento
 - Comando invocate-historiador --carga--> Regla historiador-lore
 - Comando invocate-historiador --lee_escribe--> Cronica del Sanador
-- Kryos --protege--> Guiltmal
-- Phobos Aliénos --protege--> Guiltmal
+- Kryos --protegio--> Guiltmal  (pared caida 2026-08-14)
+- Phobos Aliénos --protegio--> Guiltmal  (pared caida 2026-08-13)
+- Soulhy --entra_al_salon_de--> Guiltmal  (2026-08-17)
+- Guiltmal --exige_usar--> Tomo Fire  (valentia / sostener la nube)
+- Guiltmal --exige_usar--> Tomo Earth  (claridad / no fingir)
+- Guiltmal --destino_de--> Tomo Light  (vinculado, cerrado; secciones de la nube)
+- Guiltmal --ficha_arena--> data.json  (soberano 10000 HP, 2026-08-17)
 - Kryos --misma_pared--> Phobos Aliénos
 - Tomo Fire --preserva_sabiduria_de--> Phobos Aliénos
 - Tomo Earth --preserva_sabiduria_de--> Kryos
@@ -117,6 +124,8 @@ version: 12
 - Banco Flow --alimenta--> Quests skill-challenge (source flow-bank)
 - Flow --dana--> Phobos Aliénos
 - Flow --dana--> Kryos
+- Flow Q1.7 Gate Ochenta --mide--> Ratio S/R (señal en el punto vs ruido DMN)
+- Flow Q1.7 Gate Ochenta --dana--> Guiltmal
 
 ## Observaciones
 > Datapoints fechados por entidad. Formato: `- [AAAA-MM-DD] Entidad :: observacion`
@@ -159,3 +168,9 @@ version: 12
 - [2026-08-05] Material estudio :: evaluada nota `CV/Downleveling.md` vs articulo Exponent: nucleo ok (~55-60% fidelidad); corregidos BATNA (no BENDRA), mapa feature/problem/team/org/company, L-3 inventado; creada practica Q&A `02_Estudios/Downleveling.md` (12 flashcards, `tema_iniciado: 2026-08-05`).
 - [2026-08-05] Estudios Downleveling :: agregadas 3 flashcards de investigar empresa + stack + checklist (green flags 1–2 del articulo); total 15 Q&A.
 - [2026-08-05] Flow :: banco 60 quests (TPN/DMN) escrito + inject `flow-bank` en data.json (nodo Presencia Flow); mapa `Quests_Flow.md`.
+- [2026-08-14] Material estudio :: ortografia en `Vercel AI SDK/Streaming.md`; creada practica `02_Estudios/Streaming.md` (7 Q&A + ejercicios dias 1/2/7/15/31), `tema_iniciado: 2026-08-14`.
+- [2026-08-16] Material estudio :: ortografia en `Modelos AI y proveedores.md`; creada practica Q&A `02_Estudios/Modelos AI y proveedores.md` (11 flashcards, `tema_iniciado: 2026-08-15` — estudiado ayer).
+- [2026-08-16] Material estudio :: afinada teoria en `Tokens.md` + practica Q&A `02_Estudios/Tokens.md` (10 flashcards, `tema_iniciado: 2026-08-16`).
+- [2026-08-17] Guiltmal :: revelado en salon (trono, aplauso, nube que absorbe, mesa); Phobos y Kryos purificados; Light sigue cerrado.
+- [2026-08-17] Guiltmal HP :: categoria `soberano` (10000 HP, tomo) en plugin soulhy; ficha en arena 10000/10000; 5 fases x 2000 quedan como mapa de lore.
+- [2026-08-17] Flow Q1.7 :: Soulhy registra ~32 y ~35 pensamientos/20 min; estaba usando conteo (menos = mejor) en vez de S/R. Gate = 20 min + ≥80% de pensamientos EN el punto. TSN: no pelear el pensamiento, etiquetar y volver rapido.

@@ -293,6 +293,10 @@ const DEFAULT_SEED_VOWS = [
         imagePath: 'RpgImages/vows/autocompasion_higanbana.png',
         cols: 5,
         rows: 10,
+        schools: ['Autoridad', 'Presencia', 'Calidez'],
+        xpBonus: 0.2,
+        damageBonus: 0.2,
+        completedAt: null,
         grains: [
             { id: 'g1', date: '2026-07-12', experience: 'Me abracé en el colegio cuando me sentía solo y me dije: todo pasará, Migue.' },
             { id: 'g2', date: '2026-07-18', experience: 'Hice un chocolate caliente mientras sentía culpa; me cuidé en vez de castigarme.' },
@@ -344,9 +348,15 @@ const DEFAULT_BOSS_HP_BAR_COLOR = '#e74c3c';
 const DEFAULT_BOSS_CARD_BG_COLOR = '#2d3436';
 const DEFAULT_BOSS_HP_BAR_COLOR_PRIMORDIAL = '#9b59b6';
 const DEFAULT_BOSS_CARD_BG_COLOR_PRIMORDIAL = '#1a0a2e';
+const DEFAULT_BOSS_HP_BAR_COLOR_SOBERANO = '#d4a017';
+const DEFAULT_BOSS_CARD_BG_COLOR_SOBERANO = '#2a1a08';
+
+function bossUsesTome(tier) {
+    return tier === 'primordial' || tier === 'soberano';
+}
 
 function getBossFramePath(tier) {
-    return tier === 'primordial' ? BOSS_FRAME_PRIMORDIAL : BOSS_FRAME_STANDARD;
+    return bossUsesTome(tier) ? BOSS_FRAME_PRIMORDIAL : BOSS_FRAME_STANDARD;
 }
 
 function createDefaultBossPhase(id, overrides = {}) {
@@ -363,6 +373,12 @@ function createDefaultBossPhase(id, overrides = {}) {
 }
 
 function defaultBossPhaseColors(tier) {
+    if (tier === 'soberano') {
+        return {
+            hpBarColor: DEFAULT_BOSS_HP_BAR_COLOR_SOBERANO,
+            cardBgColor: DEFAULT_BOSS_CARD_BG_COLOR_SOBERANO
+        };
+    }
     if (tier === 'primordial') {
         return {
             hpBarColor: DEFAULT_BOSS_HP_BAR_COLOR_PRIMORDIAL,
@@ -494,6 +510,7 @@ const PHOBOS_BOSS_ID = '1783917794860';
 const BENEVOLENCIA_NODE_ID = 'node_1783924907507_h8pezfu4q';
 const EMPATIA_NODE_ID = 'node_1783925025123_9qj0tnoxs';
 const KRYOS_BOSS_ID = '1783927787622';
+const GUILTMAL_BOSS_ID = '1786983444165';
 
 const SOMMELIER_DESCRIPTION = `Sommelier de la incomodidad — la técnica:
 
@@ -587,6 +604,7 @@ module.exports = {
     MAX_BOSS_PHASES,
     DEFAULT_BOSS_HP_BAR_COLOR,
     DEFAULT_BOSS_CARD_BG_COLOR,
+    bossUsesTome,
     getBossFramePath,
     createDefaultBossPhase,
     defaultBossPhaseColors,
@@ -607,6 +625,7 @@ module.exports = {
     BENEVOLENCIA_NODE_ID,
     EMPATIA_NODE_ID,
     KRYOS_BOSS_ID,
+    GUILTMAL_BOSS_ID,
     SOMMELIER_DESCRIPTION,
     getChatModels,
     getEmbeddingModels,

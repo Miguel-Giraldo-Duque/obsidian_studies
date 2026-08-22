@@ -1,11 +1,22 @@
 ---
 tipo: registro-diario-cronica
-actualizado: 2026-08-12
+actualizado: 2026-08-17
 ---
 
 # Registro diario — Crónica del Sanador
 
 > Entradas cortas, más nuevas arriba. El Historiador agrega una línea cuando cambia canon, tomo o estado relevante de bosses.
+
+## 2026-08-17
+
+- Plugin: categoría **Soberano** (10000 HP, tomo). Guiltmal en arena `1786983444165` — 10000/10000, Luz vinculada y cerrada. 5×2000 queda como mapa de lore, no fases.
+- Quests **pendientes** de Autoridad / Presencia / Calidez redirigidas a Guiltmal (backup `soulhy/backups/data.json.2026-08-17-pre-guiltmal-quests`). Completadas y EveVacum no se tocaron.
+- **Guiltmal revelado** (lore): salón / trono / aplauso arrogante; máscara de realista; absorbe (nube negra) en vez de expulsar; interior maestro; mesa sección por sección. Nombre canónico Guiltmal.
+- Canon: guardianes = valentía (Fuego) + claridad (Tierra) que Guiltmal exige usar. Culpa → martillo de identidad, no cárcel. Ver [[_CANON]].
+
+## 2026-08-13
+
+- Plugin: id propio `soulhy` (antes `vibe-rpg`); carpeta `.obsidian/plugins/soulhy`; rebuild `main.js`. Evita overwrite de la tienda Life RPG.
 
 ## 2026-08-12
 

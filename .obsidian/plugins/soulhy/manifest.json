@@ -1,0 +1,9 @@
+{
+  "id": "soulhy",
+  "name": "Soulhy RPG",
+  "version": "5.0.0",
+  "minAppVersion": "1.5.0",
+  "description": "RPG de hábitos, skills, bosses y tomos de Soulhy.",
+  "author": "Soulhy",
+  "isDesktopOnly": false
+}

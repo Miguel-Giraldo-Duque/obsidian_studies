@@ -2992,8 +2992,18 @@
     box-shadow: 0 0 24px rgba(155, 89, 182, 0.35);
 }
 
+.rpg-boss-card.active.soberano {
+    border-color: #d4a017;
+    background: var(--boss-card-bg, linear-gradient(135deg, #2a1a08 0%, #4a3510 50%, #3a2a0a 100%));
+    box-shadow: 0 0 24px rgba(212, 160, 23, 0.4);
+}
+
 .theme-light .rpg-boss-card.active.primordial {
     background: var(--boss-card-bg, linear-gradient(135deg, #f3e8ff 0%, #e8d4ff 50%, #ffe0f0 100%));
+}
+
+.theme-light .rpg-boss-card.active.soberano {
+    background: var(--boss-card-bg, linear-gradient(135deg, #fff8e8 0%, #ffe9b8 50%, #fff0cc 100%));
 }
 
 .theme-light .rpg-boss-card.active {
@@ -3076,9 +3086,19 @@
     box-shadow: 0 0 16px rgba(155, 89, 182, 0.55);
 }
 
+.rpg-boss-icon.soberano {
+    border-color: #d4a017;
+    box-shadow: 0 0 16px rgba(212, 160, 23, 0.55);
+}
+
 .rpg-boss-icon.has-ornate-frame.primordial {
     border: none;
     box-shadow: 0 0 18px rgba(255, 120, 40, 0.55);
+}
+
+.rpg-boss-icon.has-ornate-frame.soberano {
+    border: none;
+    box-shadow: 0 0 18px rgba(255, 210, 80, 0.6);
 }
 
 .rpg-boss-image-wrap,
@@ -3110,8 +3130,19 @@
     letter-spacing: 0.04em;
 }
 
+.rpg-boss-tier.soberano {
+    background: linear-gradient(135deg, #d4a017, #8a6a10);
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
 .rpg-boss-card.active.primordial .rpg-boss-hp-fill:not(.rpg-boss-hp-fill--striped) {
     background: var(--boss-hp-color, linear-gradient(90deg, #6c3483, #9b59b6, #e056fd));
+}
+
+.rpg-boss-card.active.soberano .rpg-boss-hp-fill:not(.rpg-boss-hp-fill--striped) {
+    background: var(--boss-hp-color, linear-gradient(90deg, #8a6a10, #d4a017, #f5d76e));
 }
 
 .rpg-boss-card .rpg-boss-hp-fill {
@@ -5565,6 +5596,8 @@
 
 .rpg-vow-banner-meta {
     display: flex;
+    flex-wrap: wrap;
+    align-items: center;
     gap: 12px;
     margin-top: 10px;
     font-size: 0.9em;
@@ -5575,6 +5608,13 @@
     padding: 2px 8px;
     border-radius: 999px;
     background: rgba(255, 255, 255, 0.06);
+}
+
+.rpg-vow-estandarte {
+    padding: 2px 8px;
+    border-radius: 999px;
+    background: rgba(245, 166, 35, 0.18);
+    color: #f5a623;
 }
 
 .rpg-vow-stage-art {

@@ -6,12 +6,13 @@ import time
 from pathlib import Path
 
 root = Path(__file__).resolve().parents[2]
-data_path = root / ".obsidian/plugins/vibe-rpg/data.json"
+data_path = root / ".obsidian/plugins/soulhy/data.json"
 quests_md_path = root / "02_Estudios/Quests_Postura_de_poder.md"
 
 NODE = "node_1784952949938_smn8n1yyu"
 PHOBOS = "1783917794860"
 KRYOS = "1783927787622"
+GUILTMAL = "1786983444165"
 
 LV1 = [
     (
@@ -209,7 +210,7 @@ def inject_data() -> None:
                 "skillNodeId": NODE,
                 "skillLevel": 1,
                 "school": "Autoridad",
-                "linkedBossIds": [PHOBOS, KRYOS],
+                "linkedBossIds": [GUILTMAL],
                 "bossDamage": 10,
                 "source": "postura-poder-lv1",
             }

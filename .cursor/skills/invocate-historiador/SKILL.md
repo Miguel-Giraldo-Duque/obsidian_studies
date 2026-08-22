@@ -1,6 +1,6 @@
 ---
 name: invocate-historiador
-description: Invoca al Historiador de la Cronica del Sanador. Lee estado/canon, sincroniza HP y tomos desde vibe-rpg data.json, registra cambios de lore y actualiza Estado_Actual + Registro_Diario. Usar cuando el usuario escribe /invocate-historiador o pide actualizar la historia de bosses/tomos.
+description: Invoca al Historiador de la Cronica del Sanador. Lee estado/canon, sincroniza HP y tomos desde soulhy data.json, registra cambios de lore y actualiza Estado_Actual + Registro_Diario. Usar cuando el usuario escribe /invocate-historiador o pide actualizar la historia de bosses/tomos.
 disable-model-invocation: true
 ---
 
@@ -21,7 +21,7 @@ lee `05_Mentor/Cronica_Sanador/_CANON.md`.
 Si solo pide sync de HP / snapshot → salta este paso.
 
 ## Paso 4 — Sincronizar juego
-Lee `.obsidian/plugins/vibe-rpg/data.json` y extrae de `bossFights[]` y `tomes[]`:
+Lee `.obsidian/plugins/soulhy/data.json` y extrae de `bossFights[]` y `tomes[]`:
 - nombre, currentHp/maxHp, defeated, tier, tomeId
 - tomos: id, name, bossId, unlocked
 

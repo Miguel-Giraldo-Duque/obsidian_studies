@@ -35,6 +35,11 @@ class VowService {
         return Array.isArray(vow.grains) ? vow.grains.length : 0;
     }
 
+    isVowComplete(vow) {
+        if (!vow) return false;
+        return this.revealedCount(vow) >= this.targetCells(vow);
+    }
+
     intensityLabel(vow) {
         const target = this.targetCells(vow);
         const count = this.revealedCount(vow);
@@ -60,27 +65,81 @@ class VowService {
             .sort((a, b) => a.name.localeCompare(b.name, undefined, { numeric: true }));
     }
 
+    normalizeSchoolIds(raw) {
+        const list = Array.isArray(raw) ? raw : [];
+        const ids = [];
+        const seen = new Set();
+        for (const item of list) {
+            const id = typeof resolveSkillTreeSchoolId === 'function'
+                ? resolveSkillTreeSchoolId(item)
+                : String(item || '').trim();
+            if (!id || seen.has(id)) continue;
+            const known = typeof SKILL_TREE_SCHOOLS !== 'undefined'
+                && SKILL_TREE_SCHOOLS.some(school => school.id === id);
+            if (!known) continue;
+            seen.add(id);
+            ids.push(id);
+        }
+        return ids;
+    }
+
+    normalizeBonus(value, fallback = 0.2) {
+        const n = Number(value);
+        return Number.isFinite(n) ? n : fallback;
+    }
+
+    formatVowMultiplier(multiplier) {
+        const n = Number(multiplier);
+        if (!Number.isFinite(n) || n === 1) return '';
+        return `×${(Math.round(n * 100) / 100).toFixed(2)}`;
+    }
+
+    getVowQuestMultiplier(school) {
+        const schoolId = typeof resolveSkillTreeSchoolId === 'function'
+            ? resolveSkillTreeSchoolId(school)
+            : String(school || '').trim();
+        if (!schoolId) return 1;
+        let product = 1;
+        for (const vow of this.listVows()) {
+            if (!this.isVowComplete(vow)) continue;
+            const schools = Array.isArray(vow.schools) ? vow.schools : [];
+            if (!schools.includes(schoolId)) continue;
+            product *= (1 + this.normalizeBonus(vow.xpBonus));
+        }
+        return product;
+    }
+
     normalizeVow(raw) {
         const cols = Math.max(1, Number(raw.cols) || 5);
         const rows = Math.max(1, Number(raw.rows) || 10);
+        const id = raw.id || this.createId('vow');
+        const schools = raw.schools == null && String(id) === 'autocompasion'
+            ? ['Autoridad', 'Presencia', 'Calidez']
+            : this.normalizeSchoolIds(raw.schools);
+        const grains = Array.isArray(raw.grains)
+            ? raw.grains.map((g, i) => ({
+                id: g.id || `grain_${i}`,
+                date: g.date || '',
+                experience: g.experience || g.text || ''
+            }))
+            : [];
+        const complete = grains.length >= cols * rows;
         return {
-            id: raw.id || this.createId('vow'),
+            id,
             title: (raw.title || '').trim() || 'Vow',
             inscription: (raw.inscription || raw.belief || '').trim(),
             imagePath: (raw.imagePath || '').trim(),
             cols,
             rows,
-            grains: Array.isArray(raw.grains)
-                ? raw.grains.map((g, i) => ({
-                    id: g.id || `grain_${i}`,
-                    date: g.date || '',
-                    experience: g.experience || g.text || ''
-                }))
-                : []
+            schools,
+            xpBonus: this.normalizeBonus(raw.xpBonus),
+            damageBonus: this.normalizeBonus(raw.damageBonus),
+            completedAt: raw.completedAt || (complete ? new Date().toISOString() : null),
+            grains
         };
     }
 
-    createVow({ title, inscription, imagePath, cols = 5, rows = 10 }) {
+    createVow({ title, inscription, imagePath, cols = 5, rows = 10, schools = [] }) {
         const vows = this.ensureVows();
         const vow = this.normalizeVow({
             id: this.createId('vow'),
@@ -89,6 +148,7 @@ class VowService {
             imagePath,
             cols,
             rows,
+            schools,
             grains: []
         });
         vows.push(vow);
@@ -103,6 +163,9 @@ class VowService {
         if (patch.imagePath != null) vow.imagePath = String(patch.imagePath).trim();
         if (patch.cols != null) vow.cols = Math.max(1, Number(patch.cols) || vow.cols);
         if (patch.rows != null) vow.rows = Math.max(1, Number(patch.rows) || vow.rows);
+        if (patch.schools != null) vow.schools = this.normalizeSchoolIds(patch.schools);
+        if (patch.xpBonus != null) vow.xpBonus = this.normalizeBonus(patch.xpBonus, vow.xpBonus);
+        if (patch.damageBonus != null) vow.damageBonus = this.normalizeBonus(patch.damageBonus, vow.damageBonus);
         return vow;
     }
 
@@ -122,6 +185,9 @@ class VowService {
             experience: text
         };
         vow.grains.push(grain);
+        if (!vow.completedAt && vow.grains.length >= target) {
+            vow.completedAt = new Date().toISOString();
+        }
         return grain;
     }
 }

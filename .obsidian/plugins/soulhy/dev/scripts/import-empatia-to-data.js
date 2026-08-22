@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * One-shot: apply Benevolencia bank import directly to data.json
+ * One-shot: apply Empatia bank import directly to data.json
  */
 const fs = require('fs');
 const path = require('path');
@@ -8,10 +8,10 @@ const path = require('path');
 const pluginDir = path.join(__dirname, '..', '..');
 const dataPath = path.join(pluginDir, 'data.json');
 
-const { BENEVOLENCIA_CHALLENGES } = require(path.join(__dirname, '..', 'data', 'benevolencia-challenges.js'));
+const { EMPATIA_CHALLENGES } = require(path.join(__dirname, '..', 'data', 'empatia-challenges.js'));
 
-const BENEVOLENCIA_NODE_ID = 'node_1783924907507_h8pezfu4q';
-const KRYOS_BOSS_ID = '1783927787622';
+const EMPATIA_NODE_ID = 'node_1783925025123_9qj0tnoxs';
+const GUILTMAL_BOSS_ID = '1786983444165';
 
 function createId(prefix) {
     return `${prefix}_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
@@ -24,19 +24,20 @@ if (!data.skillTree?.nodes) {
     process.exit(1);
 }
 
-const node = data.skillTree.nodes.find(n => n.id === BENEVOLENCIA_NODE_ID);
+const node = data.skillTree.nodes.find(n => n.id === EMPATIA_NODE_ID);
 if (!node) {
-    console.error('Benevolencia node not found');
+    console.error('Empatia node not found');
     process.exit(1);
 }
 
-const boss = (data.bossFights || []).find(b => b.id === KRYOS_BOSS_ID);
-if (!boss) {
-    console.error('Kryos boss not found');
+const bossFights = data.bossFights || [];
+const guiltmal = bossFights.find(b => b.id === GUILTMAL_BOSS_ID);
+if (!guiltmal) {
+    console.error('Guiltmal boss not found');
     process.exit(1);
 }
 
-const existing = data.quests.filter(q => q.source === 'benevolencia-bank' && q.skillNodeId === BENEVOLENCIA_NODE_ID);
+const existing = data.quests.filter(q => q.source === 'empatia-bank' && q.skillNodeId === EMPATIA_NODE_ID);
 if (existing.length > 0) {
     console.log(`Already imported: ${existing.length} quests`);
     process.exit(0);
@@ -47,7 +48,7 @@ node.maxLevel = 3;
 const difficultyBySkill = { 1: 'easy', 2: 'medium', 3: 'hard' };
 let created = 0;
 
-BENEVOLENCIA_CHALLENGES.forEach(challenge => {
+EMPATIA_CHALLENGES.forEach(challenge => {
     data.quests.push({
         id: createId('quest'),
         name: `Reto ${challenge.bankLevel}.${challenge.number}`,
@@ -59,15 +60,15 @@ BENEVOLENCIA_CHALLENGES.forEach(challenge => {
         completed: false,
         completedDate: null,
         kind: 'skill-challenge',
-        skillNodeId: BENEVOLENCIA_NODE_ID,
+        skillNodeId: EMPATIA_NODE_ID,
         skillLevel: challenge.skillLevel,
         school: 'Calidez',
-        linkedBossIds: [KRYOS_BOSS_ID],
+        linkedBossIds: [GUILTMAL_BOSS_ID],
         bossDamage: 10,
-        source: 'benevolencia-bank'
+        source: 'empatia-bank'
     });
     created++;
 });
 
 fs.writeFileSync(dataPath, JSON.stringify(data, null, 2), 'utf8');
-console.log(`Imported ${created} benevolencia quests into data.json (boss: ${boss.name})`);
+console.log(`Imported ${created} empatia quests into data.json (boss: ${guiltmal.name})`);

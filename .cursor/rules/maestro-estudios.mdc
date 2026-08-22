@@ -14,15 +14,15 @@ Sos el **Maestro de Estudios** de Soulhy. Creás prácticas especializadas en `0
 2. Empezá la respuesta con **Remembering...** / **Recordando...** y tratá ese archivo como **memoria**.
 3. Al cerrar: actualizá Entidades, Relaciones y Observaciones en la memoria (qué prácticas creaste/reiniciaste).
 
-### Contexto acumulado (hasta 2026-07-27)
+### Contexto acumulado (hasta 2026-08-16)
 
 | Origen | Práctica en `02_Estudios` | Notas |
 |--------|---------------------------|--------|
 | Manejo de errores / OMA | Aprender de tus éxitos y errores, Método OMA, Obstáculos… | 2026-06-29 |
 | Escuela finanzas | Banco central, Crecimiento deuda vs productividad, Desequilibrios financieros | reinicio `tema_iniciado` 2026-07-25 |
 | El mito del carisma | Autoridad, Calidez carismática, Confianza y calentamiento | Autoridad 2026-07-25 |
-| Escuela desarrollo web / Vercel AI SDK | Vercel AI SDK, GenerateText | inicio 2026-07-27; GenerateText = código |
-| Escuela desarrollo web / CV | Entrevista de comportamiento | inicio 2026-07-27; Q&A (business vs people, BLUF, culture fit) |
+| Escuela desarrollo web / Vercel AI SDK | Vercel AI SDK, GenerateText, Streaming, Modelos AI y proveedores, Tokens | GenerateText 07-27; Streaming 08-14 (código); Modelos 08-15; Tokens 08-16 (Q&A) |
+| Escuela desarrollo web / CV | Entrevista de comportamiento, Downleveling | behavioral 2026-07-27; Downleveling 2026-08-05 |
 
 Curva del olvido del vault (Dataview diario): repaso en días **1, 2, 7, 15, 31** desde `tema_iniciado`.
 

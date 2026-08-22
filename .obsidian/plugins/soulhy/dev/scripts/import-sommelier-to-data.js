@@ -11,7 +11,7 @@ const dataPath = path.join(pluginDir, 'data.json');
 const { SOMMELIER_CHALLENGES } = require(path.join(__dirname, '..', 'data', 'sommelier-challenges.js'));
 
 const SOMMELIER_NODE_ID = 'node_1783916853576_snysp17go';
-const PHOBOS_BOSS_ID = '1783917794860';
+const GUILTMAL_BOSS_ID = '1786983444165';
 const SOMMELIER_DESCRIPTION = `Sommelier de la incomodidad — la técnica:
 
 1. Identificar la incomodidad en el cuerpo: ¿qué textura tiene? Como un experto en vinos.
@@ -73,7 +73,7 @@ SOMMELIER_CHALLENGES.forEach(challenge => {
         skillNodeId: SOMMELIER_NODE_ID,
         skillLevel: challenge.skillLevel,
         school: 'Autoridad',
-        linkedBossIds: [PHOBOS_BOSS_ID],
+        linkedBossIds: [GUILTMAL_BOSS_ID],
         bossDamage: 10,
         source: 'sommelier-bank'
     });

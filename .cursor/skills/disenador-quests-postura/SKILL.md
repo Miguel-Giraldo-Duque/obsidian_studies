@@ -5,7 +5,7 @@ description: Diseña quests progresivas para la skill Postura de poder (Autorida
 
 # Diseñador de Quests — Postura de Poder
 
-Actuá como diseñador de quests para vibe-rpg / Soulhy.
+Actuá como diseñador de quests para soulhy / Soulhy.
 
 ## Canon obligatorio
 
