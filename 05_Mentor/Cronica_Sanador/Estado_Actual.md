@@ -1,6 +1,6 @@
 ---
 tipo: estado-cronica
-actualizado: 2026-08-17
+actualizado: 2026-10-22
 fuente_juego: .obsidian/plugins/soulhy/data.json
 ---
 
@@ -44,6 +44,8 @@ Tomos en juego: Fire `unlocked` 13 ago · Earth `unlocked` 14 ago · Light `boss
 
 ## Última nota de lore
 
+2026-10-22 — Campaña **Vendedor de calle**: 14 retos (`ventas-bank`, `quest_ventas_d01`–`d14`) y roadmap activo hasta el 1/11. Flor de cierre: **Flor Vereda** (`flower8`), se abre al completar el roadmap. Dañan a Guiltmal. No suben el Árbol. Script: `01_Planificacion/experiments/_inject_ventas_quests.py`.
+2026-08-26 — Campaña **La humildad de volver a empezar**: 30 retos de campo (`humildad-bank`, `quest_humildad_d01`–`d30`) inyectados en `data.json`. Passing → direcciones → false time → conversación. Dañan a Guiltmal. No suben el Árbol. Script: `01_Planificacion/experiments/_inject_humildad_quests.py`.
 2026-08-17 — Quests pendientes de Autoridad/Presencia/Calidez (309) redirigidas a Guiltmal. Backup: `.obsidian/plugins/soulhy/backups/data.json.2026-08-17-pre-guiltmal-quests`. Completadas y EveVacum intactos.
 2026-08-17 — Categoría **Soberano** en el plugin (10000 HP, puede llevar tomo). Guiltmal ficha en arena: 10000/10000, `tome-of-light` vinculado y cerrado. Las 5 secciones de la nube siguen siendo mapa de lore, no fases de juego. No usar `legendary` (300 HP).
 2026-08-17 — **Guiltmal revelado.** Soulhy entra al salón (escaleras negras, tapete rojo, trono). Guiltmal aplaude: arrogante, “realista”, absorbe (nube) en vez de expulsar. Interior: maestro. Mesa: sección por sección, miedo por miedo; liberar la culpa de su carga negativa (martillo de identidad). Ver [[_CANON]].

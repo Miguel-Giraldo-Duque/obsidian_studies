@@ -16,8 +16,9 @@ Procesá el bloque **Cierre del Día** de la nota diaria de hoy. Seguí los paso
 
 Leé frontmatter y cuerpo. Los campos Meta Bind viven en frontmatter:
 
-- `hito1` / `logro1` / `dificultad1` (obligatorio al menos hito1)
-- `hito2`–`hito3` / `logroN` / `dificultadN` (opcionales)
+- `hito1` / `bien1` / `mejorar1` / `proxima1` (obligatorio al menos hito1; escena = qué pasó)
+- `hito2`–`hito5` / `bienN` / `mejorarN` / `proximaN` (opcionales)
+- Legacy: `logroN` / `dificultadN` si aún existen
 - `energia`
 - `hubo_practica_skill` (boolean)
 - `skill`, `evento`, `bien`, `mejorar`, `proxima_mision`

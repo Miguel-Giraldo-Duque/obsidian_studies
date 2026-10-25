@@ -3,7 +3,7 @@ tags:
   - estudio
 tema_iniciado: 2026-08-13
 ---
-Preguntas y respuestas para fijar [[Downleveling]]: qué es, por qué pasa, impacto por nivel, errores, microsignales e investigar empresa/stack. Hermano de [[Entrevista de comportamiento]].
+Preguntas y respuestas para fijar [[02_Estudios/Downleveling]]: qué es, por qué pasa, impacto por nivel, errores, microsignales e investigar empresa/stack. Hermano de [[02_Estudios/Entrevista de comportamiento]].
 
 
 - **¿Qué es downleveling?**-

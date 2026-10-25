@@ -5,5 +5,7 @@
   "templater-obsidian",
   "calendar",
   "obsidian-meta-bind-plugin",
-  "soulhy"
+  "soulhy",
+  "obsidian-chartsview-plugin",
+  "local-dictation"
 ]

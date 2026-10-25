@@ -3,7 +3,7 @@ tags:
   - estudio
 tema_iniciado: 2026-07-25
 ---
-Preguntas y respuestas para fijar los conceptos de [[Autoridad]]: qué es el poder carismático, cómo se percibe y cómo se entrena aunque no se sienta natural.
+Preguntas y respuestas para fijar los conceptos de [[02_Estudios/Autoridad]]: qué es el poder carismático, cómo se percibe y cómo se entrena aunque no se sienta natural.
 
 
 - **¿Qué es la autoridad en el contexto del carisma?**

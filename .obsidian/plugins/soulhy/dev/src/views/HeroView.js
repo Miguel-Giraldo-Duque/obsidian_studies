@@ -5,6 +5,22 @@ class HeroView extends ItemView {
         this.activeTab = 'journal';
         this.activeSubTab = 'habits'; // For Quests Hub sub-tabs
         this.activeArenaTab = 'boss'; // For Arena sub-tabs
+        this.roadmapNestedTab = 'activos'; // activos | hoy | armar | campanas | banco
+        this.roadmapArmarStep = 1;
+        this.roadmapDraft = null;
+        this.roadmapEditingId = null;
+        this.roadmapSelectedId = null;
+        this.roadmapPickerExpanded = {};
+        this.roadmapPickerSearch = '';
+        this.campaignSelectedId = null;
+        this.campaignEditingId = null; // null = list; id = editor; 'new' = create
+        this.campaignListFilter = 'all'; // all | pending | done
+        this.campaignQuestShowDone = true;
+        this.campaignQuestShowPending = true;
+        this.campaignNewQuestDraft = null;
+        this.campaignSkillLinkExpanded = {};
+        this.campaignSkillLinkSelected = new Set();
+        this.campaignSkillLinkSearch = '';
         this.activeSkillTreeSchool = 'Autoridad';
         this.selectedSkillTreeNodeId = null;
         this.selectedVowId = null;
@@ -16,6 +32,9 @@ class HeroView extends ItemView {
         this.questSearchQuery = '';
         this.questSchoolFilter = 'all';
         this._questSearchCursor = null;
+        this.tpnService = new TpnExperimentService(plugin);
+        this.questEventService = new QuestEventService(plugin);
+        this.questCampaignService = new QuestCampaignService(plugin);
     }
 
     getViewType() { return VIEW_TYPE_HERO; }
@@ -1349,14 +1368,23 @@ class HeroView extends ItemView {
             banner.createDiv({ cls: 'rpg-vow-banner-inscription', text: vow.inscription });
         }
         const meta = banner.createDiv({ cls: 'rpg-vow-banner-meta' });
-        const count = service.revealedCount(vow);
+        const count = service.gridRevealedCount(vow);
         const target = service.targetCells(vow);
         meta.createSpan({ text: `${count} / ${target}` });
         meta.createSpan({ cls: 'rpg-vow-stage', text: service.intensityLabel(vow) });
         if (service.isVowComplete(vow)) {
             const schools = Array.isArray(vow.schools) ? vow.schools : [];
-            const pill = schools.length > 0
-                ? `Estandarte activo · ${schools.join(', ')}`
+            const domains = Array.isArray(vow.domains) ? vow.domains : [];
+            const domainLabels = domains.map(id => {
+                const d = (typeof DEFAULT_DOMAINS !== 'undefined' ? DEFAULT_DOMAINS : [])
+                    .find(dom => dom.id === id);
+                return d ? d.name : id;
+            });
+            const parts = [];
+            if (schools.length > 0) parts.push(schools.join(', '));
+            if (domainLabels.length > 0) parts.push(domainLabels.join(', '));
+            const pill = parts.length > 0
+                ? `Estandarte activo · ${parts.join(' · ')}`
                 : 'Estandarte activo';
             meta.createSpan({ cls: 'rpg-vow-estandarte', text: pill });
         }
@@ -1367,7 +1395,7 @@ class HeroView extends ItemView {
         const cols = Math.max(1, Number(vow.cols) || 5);
         const rows = Math.max(1, Number(vow.rows) || 10);
         const target = cols * rows;
-        const revealed = service.revealedCount(vow);
+        const revealed = service.gridRevealedCount(vow);
         const grains = Array.isArray(vow.grains) ? vow.grains : [];
 
         const stage = parentEl.createDiv({
@@ -1475,7 +1503,7 @@ class HeroView extends ItemView {
 
         detail.createEl('p', {
             cls: 'rpg-subtitle',
-            text: 'MVP: mismo grid sobre PNG. Avance real = hitos vinculados.'
+            text: 'Tras completar la grilla podés seguir vinculando evidencias; aparecen acá en el historial (no en el grid).'
         });
     }
 
@@ -1813,10 +1841,18 @@ class HeroView extends ItemView {
     renderQuestsHub(container) {
         container.createEl('h3', { text: '⚔️ Quest Board' });
 
-        // Sub-tab navigation
+        // Migrate legacy Quests top-tab → Roadmap > Banco
+        if (this.activeSubTab === 'quests') {
+            this.activeSubTab = 'roadmap';
+            this.roadmapNestedTab = 'banco';
+        }
+
+        const activeEvents = (this.plugin.settings.questEvents || [])
+            .filter(e => e.status === 'active').length;
+
         const subTabs = [
             { id: 'habits', label: '📅 Daily Rituals', count: this.plugin.settings.habits.length },
-            { id: 'quests', label: '🗡️ Quests', count: this.plugin.settings.quests.filter(q => !q.completed).length },
+            { id: 'roadmap', label: '🗺️ Roadmap de quest', count: activeEvents },
             { id: 'badhabits', label: '💀 Demons', count: this.plugin.settings.badHabits.length }
         ];
 
@@ -1829,16 +1865,127 @@ class HeroView extends ItemView {
             tabBtn.onclick = () => { this.activeSubTab = tab.id; this.render(); };
         });
 
-        // Sub-tab content
         const subContent = container.createDiv({ cls: 'rpg-subtab-content' });
 
         if (this.activeSubTab === 'habits') {
             this.renderHabits(subContent);
-        } else if (this.activeSubTab === 'quests') {
-            this.renderQuests(subContent);
+        } else if (this.activeSubTab === 'roadmap') {
+            this.renderRoadmapHub(subContent);
         } else if (this.activeSubTab === 'badhabits') {
             this.renderBadHabits(subContent);
         }
+    }
+
+    renderRoadmapHub(container) {
+        if (!this.questEventService) {
+            this.questEventService = new QuestEventService(this.plugin);
+        }
+        if (!this.questCampaignService) {
+            this.questCampaignService = new QuestCampaignService(this.plugin);
+        }
+        this.questEventService.ensureTodayBoard();
+
+        const nestedTabs = [
+            { id: 'activos', label: 'Activos' },
+            { id: 'hoy', label: 'Hoy' },
+            { id: 'armar', label: 'Armar' },
+            { id: 'campanas', label: 'Campañas' },
+            { id: 'banco', label: 'Banco' }
+        ];
+
+        const nestedNav = container.createDiv({ cls: 'rpg-subtab-nav rpg-roadmap-nested-nav' });
+        nestedTabs.forEach(tab => {
+            const btn = nestedNav.createEl('button', {
+                cls: `rpg-subtab-btn rpg-nested-btn ${this.roadmapNestedTab === tab.id ? 'active' : ''}`,
+                text: tab.label
+            });
+            btn.onclick = () => {
+                this.roadmapNestedTab = tab.id;
+                this.render();
+            };
+        });
+
+        const body = container.createDiv({ cls: 'rpg-roadmap-body' });
+        if (this.roadmapNestedTab === 'activos') this.renderRoadmapActivos(body);
+        else if (this.roadmapNestedTab === 'hoy') this.renderRoadmapHoy(body);
+        else if (this.roadmapNestedTab === 'armar') this.renderRoadmapArmar(body);
+        else if (this.roadmapNestedTab === 'campanas') this.renderRoadmapCampanas(body);
+        else this.renderQuests(body);
+    }
+
+    /**
+     * Same visual pattern as BossFightModal flower/tome picker.
+     * @param {HTMLElement} parentEl
+     * @param {{ flowerId: string|null, onChange: (id: string) => void, readOnly?: boolean, label?: string }} opts
+     */
+    renderFlowerLootPicker(parentEl, opts = {}) {
+        this.plugin.ensureFlowersCatalog();
+        let flowerId = opts.flowerId || '';
+        const onChange = opts.onChange || (() => {});
+        const readOnly = !!opts.readOnly;
+        const label = opts.label || 'Flor';
+
+        const knowledgeCard = parentEl.createDiv({ cls: 'rpg-boss-knowledge rpg-flower-loot-picker' });
+        knowledgeCard.createEl('h4', { text: `🌸 ${label}` });
+        knowledgeCard.createEl('p', {
+            cls: 'rpg-subtitle',
+            text: readOnly
+                ? 'Recompensa visual del pack / roadmap'
+                : 'Sprites en RpgImages/Loot/Flowers — misma UI que al crear bosses'
+        });
+        const lootPreview = knowledgeCard.createDiv({ cls: 'rpg-boss-tome-preview' });
+        const lootPickerHost = knowledgeCard.createDiv();
+
+        const refreshLootPreview = () => {
+            lootPreview.empty();
+            const loot = this.plugin.getFlowerById(flowerId);
+            if (!loot) {
+                lootPreview.createEl('p', {
+                    cls: 'rpg-subtitle',
+                    text: 'Ninguna flor seleccionada'
+                });
+                return;
+            }
+            const outer = lootPreview.createDiv({ cls: 'rpg-tome-art-outer' });
+            const inner = outer.createDiv({ cls: 'rpg-tome-art-inner' });
+            const file = this.app.vault.getAbstractFileByPath(loot.flatPath);
+            if (file) {
+                const img = inner.createEl('img', { cls: 'rpg-tome-flat-img' });
+                img.src = this.app.vault.adapter.getResourcePath(file.path);
+                img.alt = loot.name;
+            } else {
+                inner.createDiv({ cls: 'rpg-vault-image-placeholder', text: '🌸' });
+            }
+            lootPreview.createDiv({ cls: 'rpg-tome-preview-name', text: loot.name });
+            if (loot.unlocked) {
+                lootPreview.createDiv({ cls: 'rpg-subtitle', text: 'Desbloqueada' });
+            }
+        };
+
+        if (!readOnly) {
+            const available = this.plugin.getAvailableFlowersForLoot
+                ? this.plugin.getAvailableFlowersForLoot(flowerId)
+                : (this.plugin.settings.flowers || []);
+            const row = lootPickerHost.createDiv({ cls: 'rpg-flower-picker-row' });
+            row.createEl('label', { text: 'Flor', cls: 'rpg-flower-picker-label' });
+            const select = row.createEl('select', { cls: 'rpg-roadmap-select' });
+            select.createEl('option', { text: '— Sin flor —', attr: { value: '' } });
+            available.forEach(f => {
+                const opt = select.createEl('option', {
+                    text: f.unlocked ? `${f.name} (unlocked)` : f.name,
+                    attr: { value: f.id }
+                });
+                if (flowerId === f.id) opt.selected = true;
+            });
+            select.onchange = () => {
+                flowerId = select.value || '';
+                onChange(flowerId || null);
+                refreshLootPreview();
+            };
+        }
+
+        refreshLootPreview();
+        return { refreshLootPreview, getFlowerId: () => flowerId };
     }
 
     // ============================================================================
@@ -1891,6 +2038,11 @@ class HeroView extends ItemView {
         });
 
         // Quick Stats Bar
+        const focusPct = this.tpnService.focusPercent(
+            this.tpnService.getEntries(),
+            this.tpnService.latestSnr()
+        );
+        const focusLabel = focusPct == null ? '—' : `${focusPct}%`;
         const statsBar = container.createDiv({ cls: 'rpg-tavern-stats' });
         statsBar.innerHTML = `
             <div class="rpg-tavern-stat">
@@ -1902,6 +2054,11 @@ class HeroView extends ItemView {
                 <span class="icon">⚡</span>
                 <span class="value">${s.energy || 100}/${s.maxEnergy || 100}</span>
                 <span class="label">Energy</span>
+            </div>
+            <div class="rpg-tavern-stat">
+                <span class="icon">🎯</span>
+                <span class="value">${focusLabel}</span>
+                <span class="label">Enfoque</span>
             </div>
             <div class="rpg-tavern-stat">
                 <span class="icon">💰</span>
@@ -2269,6 +2426,7 @@ class HeroView extends ItemView {
     renderHabits(container) {
         const s = this.plugin.settings;
         const skillService = new SkillService(this.plugin);
+        const vowService = new VowService(this.plugin);
         container.createEl("h3", { text: "📅 Daily Habits" });
         const habitsList = container.createDiv({ cls: "rpg-list" });
 
@@ -2304,16 +2462,28 @@ class HeroView extends ItemView {
             const domainIcon = domain ? domain.icon : '📌';
             const multiplier = diff.multiplier;
             const streakBonus = Math.min(habit.streak * 0.1, 1);
-            const finalXp = Math.round(habit.xp * multiplier * (1 + streakBonus));
-            const finalGold = Math.round(habit.gold * multiplier * (1 + streakBonus));
+            const vowXpMult = vowService.getVowXpMultiplier({ domain: habit.domain });
+            const vowDmgMult = vowService.getVowDamageMultiplier({ domain: habit.domain });
+            const finalXp = Math.round(habit.xp * multiplier * (1 + streakBonus) * vowXpMult);
+            const finalGold = Math.round(habit.gold * multiplier * (1 + streakBonus) * vowXpMult);
+            const bossDamage = Math.round((Number(habit.bossDamage) || 10) * vowDmgMult);
             const linkedSkills = (habit.linkedSkillIds || [])
                 .map(skillId => skillService.getSkill(skillId))
                 .filter(Boolean);
 
+            const xpMultLabel = vowService.formatVowMultiplier(vowXpMult);
             infoCol.createDiv({
                 cls: 'rpg-item-meta',
-                text: `${domainIcon} +${finalXp}xp +${finalGold}g`
+                text: `${domainIcon} +${finalXp}xp +${finalGold}g${xpMultLabel ? ` ${xpMultLabel}` : ''}`
             });
+
+            if (vowXpMult !== 1 || vowDmgMult !== 1) {
+                const dmgLabel = vowService.formatVowMultiplier(vowDmgMult);
+                nameRow.createSpan({
+                    cls: 'rpg-difficulty-badge rpg-vow-estandarte-badge',
+                    text: `Estandarte ${xpMultLabel || '×1'}${dmgLabel && dmgLabel !== xpMultLabel ? ` / dmg ${dmgLabel}` : ''}`
+                });
+            }
 
             if (linkedSkills.length > 0) {
                 infoCol.createDiv({
@@ -2329,7 +2499,7 @@ class HeroView extends ItemView {
                 if (bosses.length > 0) {
                     infoCol.createDiv({
                         cls: 'rpg-item-meta',
-                        text: `Boss: ${bosses.join(', ')} (${habit.bossDamage || 10} dmg)`
+                        text: `Boss: ${bosses.join(', ')} (${bossDamage} dmg)`
                     });
                 }
             }
@@ -2360,6 +2530,1415 @@ class HeroView extends ItemView {
         if (!query) return true;
         const hay = `${quest.name || ''} ${quest.description || ''} ${quest.source || ''}`.toLowerCase();
         return hay.includes(query);
+    }
+
+    statusLabelRoadmap(status) {
+        if (status === 'active') return 'Activo';
+        if (status === 'paused') return 'Pausado';
+        return 'Cerrado';
+    }
+
+    ensureRoadmapDraft() {
+        if (this.roadmapDraft) return this.roadmapDraft;
+        const durationDays = 30;
+        const weeks = Math.ceil(durationDays / 7);
+        const weekConstraints = {};
+        for (let w = 1; w <= weeks; w++) {
+            weekConstraints[String(w)] = { campaignIds: [] };
+        }
+        this.roadmapDraft = {
+            editingId: null,
+            name: 'Roadmap — 30 días',
+            startDate: this.questEventService.localIsoDate(),
+            durationDays,
+            dailyQuota: 3,
+            flowerId: '',
+            selectedQuestIds: new Set(),
+            selectedCampaignIds: new Set(),
+            weekConstraints,
+            step: 1
+        };
+        this.roadmapEditingId = null;
+        return this.roadmapDraft;
+    }
+
+    loadRoadmapDraftFromEvent(event) {
+        const svc = this.questEventService;
+        const durationDays = Math.max(1, Number(event.durationDays) || 30);
+        const weekConstraints = JSON.parse(JSON.stringify(event.weekConstraints || {}));
+        const weeks = Math.ceil(durationDays / 7);
+        const existingKeys = Object.keys(weekConstraints)
+            .map(Number)
+            .filter(n => !Number.isNaN(n))
+            .sort((a, b) => a - b);
+        const lastKey = existingKeys.length ? String(existingKeys[existingKeys.length - 1]) : null;
+        const lastCampaignIds = lastKey
+            ? [...(weekConstraints[lastKey].campaignIds || [])]
+            : [];
+        for (let w = 1; w <= weeks; w++) {
+            const key = String(w);
+            if (!weekConstraints[key]) {
+                weekConstraints[key] = { campaignIds: [...lastCampaignIds] };
+            }
+        }
+
+        const selectedQuestIds = new Set(event.poolQuestIds || []);
+        const selectedCampaignIds = new Set();
+        selectedQuestIds.forEach(qid => {
+            const q = svc.getQuestById(qid);
+            if (q?.campaignId) selectedCampaignIds.add(q.campaignId);
+        });
+
+        this.roadmapEditingId = event.id;
+        this.roadmapDraft = {
+            editingId: event.id,
+            name: event.name || 'Roadmap',
+            startDate: event.startDate || svc.localIsoDate(),
+            durationDays,
+            dailyQuota: Math.max(1, Number(event.dailyQuota) || 3),
+            flowerId: event.flowerId || '',
+            selectedQuestIds,
+            selectedCampaignIds,
+            weekConstraints,
+            step: 1
+        };
+        return this.roadmapDraft;
+    }
+
+    clearRoadmapDraft() {
+        this.roadmapDraft = null;
+        this.roadmapEditingId = null;
+        this.roadmapArmarStep = 1;
+    }
+
+    extendWeekConstraints(draft, durationDays) {
+        const weeks = Math.ceil(Math.max(1, durationDays) / 7);
+        const existingKeys = Object.keys(draft.weekConstraints || {})
+            .map(Number)
+            .filter(n => !Number.isNaN(n))
+            .sort((a, b) => a - b);
+        const lastKey = existingKeys.length ? String(existingKeys[existingKeys.length - 1]) : null;
+        const lastCampaignIds = lastKey
+            ? [...(draft.weekConstraints[lastKey].campaignIds || [])]
+            : [];
+        for (let w = 1; w <= weeks; w++) {
+            const key = String(w);
+            if (!draft.weekConstraints[key]) {
+                draft.weekConstraints[key] = { campaignIds: [...lastCampaignIds] };
+            }
+        }
+    }
+
+    calendarEndIso(startDate, durationDays) {
+        const svc = this.questEventService;
+        return svc.addDaysIso(startDate || svc.localIsoDate(), Math.max(1, durationDays) - 1);
+    }
+
+    roadmapPoolEstimate(draft) {
+        const svc = this.questEventService;
+        let pending = 0;
+        let done = 0;
+        (draft?.selectedQuestIds || []).forEach(qid => {
+            const q = svc.getQuestById(qid);
+            if (q && q.completed) done += 1;
+            else pending += 1;
+        });
+        const quota = Math.max(1, Number(draft?.dailyQuota) || 3);
+        const days = pending > 0 ? Math.ceil(pending / quota) : 0;
+        return { pending, done, days };
+    }
+
+    roadmapEstimateLabel(est) {
+        return 'Días estimados: ~' + est.days
+            + ' · ' + est.pending + ' pendientes · '
+            + est.done + ' hechas (no cuentan)';
+    }
+
+    campaignQuestCounts(camp) {
+        const quests = this.questCampaignService.getQuests(camp);
+        const done = quests.filter(q => q.completed).length;
+        return { total: quests.length, done, pending: quests.length - done };
+    }
+
+    buildSkillQuestTree() {
+        const s = this.plugin.settings;
+        const nodes = s.skillTree?.nodes || [];
+        const quests = (s.quests || []).filter(q => !q.completed && q.kind === 'skill-challenge');
+        const taken = this.questEventService.questIdsInOtherActiveEvents();
+
+        const byNode = new Map();
+        quests.forEach(q => {
+            if (!q.skillNodeId) return;
+            if (!byNode.has(q.skillNodeId)) byNode.set(q.skillNodeId, []);
+            byNode.get(q.skillNodeId).push(q);
+        });
+
+        return nodes
+            .map(node => {
+                const nodeQuests = byNode.get(node.id) || [];
+                if (nodeQuests.length === 0) return null;
+                const levelsMap = new Map();
+                nodeQuests.forEach(q => {
+                    const lvl = Number(q.skillLevel) || 1;
+                    if (!levelsMap.has(lvl)) levelsMap.set(lvl, []);
+                    levelsMap.get(lvl).push(q);
+                });
+                const levels = [...levelsMap.entries()]
+                    .sort((a, b) => a[0] - b[0])
+                    .map(([level, qs]) => ({
+                        level,
+                        label: `Nivel ${level}`,
+                        quests: qs.map(q => ({
+                            ...q,
+                            taken: taken.has(q.id)
+                        }))
+                    }));
+                return {
+                    id: node.id,
+                    name: node.name,
+                    school: node.school || 'Autoridad',
+                    levels
+                };
+            })
+            .filter(Boolean);
+    }
+
+    async renderRoadmapActivos(container) {
+        const svc = this.questEventService;
+        const events = svc.listEvents().slice().sort((a, b) => {
+            const order = { active: 0, paused: 1, done: 2 };
+            return (order[a.status] ?? 9) - (order[b.status] ?? 9);
+        });
+        const active = events.filter(e => e.status === 'active');
+
+        container.createEl('h3', { text: '🗺️ Roadmaps' });
+        container.createEl('p', {
+            cls: 'rpg-subtitle',
+            text: 'Varios roadmaps a la vez. Solo los activos alimentan Hoy.'
+        });
+
+        const stats = container.createDiv({ cls: 'rpg-roadmap-stats' });
+        stats.createDiv({ cls: 'rpg-roadmap-stat', text: `${active.length} activos` });
+        stats.createDiv({
+            cls: 'rpg-roadmap-stat',
+            text: `${events.filter(e => e.status === 'paused').length} pausados`
+        });
+        stats.createDiv({
+            cls: 'rpg-roadmap-stat',
+            text: `${events.filter(e => e.status === 'done').length} cerrados`
+        });
+
+        const newBtn = container.createEl('button', {
+            text: '+ Nuevo roadmap',
+            cls: 'rpg-full-width-btn'
+        });
+        newBtn.onclick = () => {
+            this.clearRoadmapDraft();
+            this.roadmapNestedTab = 'armar';
+            this.render();
+        };
+
+        if (events.length === 0) {
+            container.createDiv({
+                cls: 'rpg-empty',
+                text: 'No hay roadmaps. Andá a Armar para crear el primero.'
+            });
+            return;
+        }
+
+        if (!this.roadmapSelectedId || !events.find(e => e.id === this.roadmapSelectedId)) {
+            this.roadmapSelectedId = (active[0] || events[0]).id;
+        }
+        const selected = events.find(e => e.id === this.roadmapSelectedId);
+
+        const layout = container.createDiv({ cls: 'rpg-roadmap-activos-layout' });
+        const list = layout.createDiv({ cls: 'rpg-roadmap-list' });
+        const detail = layout.createDiv({ cls: 'rpg-roadmap-detail' });
+
+        events.forEach(ev => {
+            const prog = svc.progress(ev);
+            const card = list.createDiv({
+                cls: `rpg-roadmap-card ${ev.id === this.roadmapSelectedId ? 'selected' : ''} status-${ev.status}`
+            });
+            card.onclick = () => {
+                this.roadmapSelectedId = ev.id;
+                this.render();
+            };
+
+            const head = card.createDiv({ cls: 'rpg-roadmap-card-head' });
+            head.createSpan({ cls: 'rpg-roadmap-card-name', text: ev.name });
+            head.createSpan({
+                cls: `rpg-roadmap-badge status-${ev.status}`,
+                text: this.statusLabelRoadmap(ev.status)
+            });
+
+            const schools = svc.schoolsInPool(ev);
+            if (schools.length) {
+                const schoolRow = card.createDiv({ cls: 'rpg-roadmap-schools' });
+                schools.forEach(sch => {
+                    schoolRow.createSpan({
+                        cls: `rpg-roadmap-school-chip school-${String(sch).toLowerCase()}`,
+                        text: sch
+                    });
+                });
+            }
+
+            const bar = card.createDiv({ cls: 'rpg-roadmap-progress' });
+            const fill = bar.createDiv({ cls: 'rpg-roadmap-progress-fill' });
+            fill.style.width = `${prog.pct}%`;
+            card.createDiv({
+                cls: 'rpg-roadmap-progress-label',
+                text: `Día ${Math.min(svc.dayNumber(ev), ev.durationDays)}/${ev.durationDays} · ${prog.done}/${prog.total} (${prog.pct}%)`
+            });
+        });
+
+        if (selected) {
+            const prog = svc.progress(selected);
+            detail.createEl('h4', { text: selected.name });
+            detail.createDiv({
+                cls: 'rpg-roadmap-detail-meta',
+                text: `${this.statusLabelRoadmap(selected.status)} · cuota ${selected.dailyQuota}/día · ${prog.done}/${prog.total} quests`
+            });
+
+            if (selected.flowerId) {
+                this.renderFlowerLootPicker(detail, {
+                    flowerId: selected.flowerId,
+                    readOnly: true,
+                    label: selected.flowerUnlocked
+                        ? 'Flor desbloqueada'
+                        : 'Flor de cierre (al 100%)'
+                });
+            } else {
+                detail.createDiv({
+                    cls: 'rpg-roadmap-flower-line muted',
+                    text: 'Sin flor de cierre configurada'
+                });
+            }
+
+            const todayIds = svc.getTodayAssignment(selected);
+            if (selected.status === 'active' && todayIds.length) {
+                const todayQuests = todayIds
+                    .map(qid => svc.getQuestById(qid))
+                    .filter(Boolean);
+                const doneToday = todayQuests.filter(q => q.completed).length;
+                detail.createEl('h5', {
+                    text: `Quests de este roadmap hoy (${doneToday}/${todayQuests.length})`
+                });
+                todayIds.forEach(qid => {
+                    const quest = svc.getQuestById(qid);
+                    if (!quest) return;
+                    const row = detail.createDiv({ cls: 'rpg-list-item quest' });
+                    if (quest.completed) {
+                        row.createSpan({ cls: 'rpg-done-mark', text: '✓' });
+                    }
+                    const info = row.createDiv({ cls: 'rpg-item-info' });
+                    info.createDiv({ cls: 'rpg-item-name', text: quest.name });
+                    if (quest.description) {
+                        info.createDiv({
+                            cls: 'rpg-quest-desc',
+                            text: quest.description
+                        });
+                    }
+                    info.createDiv({
+                        cls: 'rpg-item-meta',
+                        text: `${quest.school || ''} · ${quest.xp || 0} XP`
+                            + (quest.completed ? ' · hecha' : '')
+                    });
+                });
+                if (doneToday >= todayQuests.length) {
+                    detail.createDiv({
+                        cls: 'rpg-roadmap-hoy-done',
+                        text: 'Cuota del día completada'
+                    });
+                }
+            }
+
+            const actions = detail.createDiv({ cls: 'rpg-roadmap-actions' });
+            const editBtn = actions.createEl('button', { text: 'Editar', cls: 'rpg-btn primary' });
+            editBtn.onclick = (e) => {
+                e.stopPropagation();
+                this.loadRoadmapDraftFromEvent(selected);
+                this.roadmapArmarStep = 1;
+                this.roadmapNestedTab = 'armar';
+                this.render();
+            };
+            if (selected.status === 'active') {
+                const pauseBtn = actions.createEl('button', { text: 'Pausar', cls: 'rpg-btn' });
+                pauseBtn.onclick = async (e) => {
+                    e.stopPropagation();
+                    svc.setStatus(selected.id, 'paused');
+                    await this.plugin.saveSettings();
+                    this.render();
+                };
+            }
+            if (selected.status === 'paused') {
+                const resumeBtn = actions.createEl('button', {
+                    text: 'Reanudar',
+                    cls: 'rpg-btn primary'
+                });
+                resumeBtn.onclick = async (e) => {
+                    e.stopPropagation();
+                    svc.setStatus(selected.id, 'active');
+                    await this.plugin.saveSettings();
+                    this.render();
+                };
+            }
+            if (selected.status === 'done') {
+                const reactivateBtn = actions.createEl('button', {
+                    text: 'Reactivar',
+                    cls: 'rpg-btn primary'
+                });
+                reactivateBtn.onclick = async (e) => {
+                    e.stopPropagation();
+                    const taken = svc.questIdsInOtherActiveEvents(selected.id);
+                    const overlap = (selected.poolQuestIds || []).filter(id => taken.has(id)).length;
+                    svc.setStatus(selected.id, 'active');
+                    await this.plugin.saveSettings();
+                    if (overlap > 0) {
+                        const msg = overlap === 1
+                            ? '1 quest ya está en otro roadmap activo y no entra a Hoy'
+                            : overlap + ' quests ya están en otro roadmap activo y no entran a Hoy';
+                        new Notice(msg);
+                    } else {
+                        new Notice('🗺️ Roadmap reactivado: ' + selected.name);
+                    }
+                    this.render();
+                };
+            }
+            if (selected.status !== 'done') {
+                const closeBtn = actions.createEl('button', { text: 'Cerrar roadmap', cls: 'rpg-btn ghost' });
+                closeBtn.onclick = async (e) => {
+                    e.stopPropagation();
+                    const prog = svc.progress(selected);
+                    const grantFlower = prog.total > 0 && prog.done >= prog.total;
+                    const result = svc.completeEvent(selected, { grantFlower });
+                    if (result.flower) {
+                        new Notice(`🌸 Desbloqueaste: ${result.flower.name}`);
+                    } else {
+                        new Notice(`🗺️ Roadmap cerrado: ${selected.name}`);
+                    }
+                    await this.plugin.saveSettings();
+                    this.render();
+                };
+            }
+
+            const goHoy = actions.createEl('button', { text: 'Ver Hoy', cls: 'rpg-btn' });
+            goHoy.onclick = (e) => {
+                e.stopPropagation();
+                this.roadmapNestedTab = 'hoy';
+                this.render();
+            };
+        }
+
+        // Unified today table
+        container.createEl('h4', { text: 'Hoy unificado (activos)' });
+        const unified = svc.getUnifiedTodayBoard();
+        if (unified.length === 0) {
+            container.createDiv({
+                cls: 'rpg-empty',
+                text: 'Ningún roadmap activo con quests hoy.'
+            });
+        } else {
+            const table = container.createEl('table', { cls: 'rpg-roadmap-table' });
+            const thead = table.createEl('thead').createEl('tr');
+            ['Roadmap', 'Escuela', 'Quest', 'XP'].forEach(h => {
+                thead.createEl('th', { text: h });
+            });
+            const tbody = table.createEl('tbody');
+            unified.forEach(({ event, quest }) => {
+                const tr = tbody.createEl('tr');
+                tr.createEl('td', { text: event.name });
+                tr.createEl('td', { text: quest.school || '—' });
+                tr.createEl('td', { text: quest.name });
+                tr.createEl('td', { text: String(quest.xp || 0) });
+            });
+        }
+    }
+
+    async renderRoadmapHoy(container) {
+        const svc = this.questEventService;
+        svc.ensureTodayBoard();
+        const active = svc.getActiveEvents();
+
+        container.createEl('h3', { text: '☀️ Hoy — roadmaps activos' });
+        container.createEl('p', {
+            cls: 'rpg-subtitle',
+            text: `Fecha ${svc.localIsoDate()} · ${active.length} roadmap(s) activo(s)`
+        });
+
+        if (active.length === 0) {
+            container.createDiv({
+                cls: 'rpg-empty',
+                text: 'No hay roadmaps activos. Creá uno en Armar o reanudá uno pausado.'
+            });
+            return;
+        }
+
+        for (const event of active) {
+            const block = container.createDiv({ cls: 'rpg-roadmap-hoy-block' });
+            const head = block.createDiv({ cls: 'rpg-roadmap-hoy-head' });
+            head.createEl('h4', { text: event.name });
+            const prog = svc.progress(event);
+            const dia = svc.dayNumber(event);
+            const pastCalendar = dia > (Number(event.durationDays) || 30);
+            head.createSpan({
+                text: pastCalendar
+                    ? `Calendario ${event.durationDays} días cumplido · siguen las quests abiertas · ${prog.pct}%`
+                    : `Día ${Math.min(dia, event.durationDays)}/${event.durationDays} · Semana ${svc.weekNumber(event)} · ${prog.pct}%`
+            });
+
+            const ids = svc.getTodayAssignment(event);
+            if (ids.length === 0) {
+                block.createDiv({
+                    cls: 'rpg-empty',
+                    text: 'Sin quests asignadas hoy (pool vacío o constraints).'
+                });
+                continue;
+            }
+
+            const todayQuests = ids
+                .map(qid => svc.getQuestById(qid))
+                .filter(Boolean);
+            const doneToday = todayQuests.filter(q => q.completed).length;
+            head.createSpan({
+                text: ` · ${doneToday}/${todayQuests.length} completadas hoy`
+            });
+
+            if (doneToday >= todayQuests.length) {
+                block.createDiv({
+                    cls: 'rpg-roadmap-hoy-done',
+                    text: 'Cuota del día completada'
+                });
+            }
+
+            for (const qid of ids) {
+                const quest = svc.getQuestById(qid);
+                if (!quest) continue;
+                const realIndex = this.plugin.settings.quests.indexOf(quest);
+                const row = block.createDiv({ cls: 'rpg-list-item quest' });
+
+                if (!quest.completed) {
+                    const completeBtn = row.createEl('button', {
+                        cls: 'rpg-complete-btn',
+                        text: '✓'
+                    });
+                    completeBtn.onclick = async () => {
+                        if (realIndex >= 0) {
+                            await this.plugin.completeQuest(realIndex);
+                            this.render();
+                        }
+                    };
+                } else {
+                    row.createSpan({ cls: 'rpg-done-mark', text: '✓' });
+                }
+
+                const info = row.createDiv({ cls: 'rpg-item-info' });
+                info.createDiv({ cls: 'rpg-item-name', text: quest.name });
+                if (quest.description) {
+                    info.createDiv({
+                        cls: 'rpg-quest-desc',
+                        text: quest.description
+                    });
+                }
+                info.createDiv({
+                    cls: 'rpg-item-meta',
+                    text: `${quest.school || ''} · Nv.${quest.skillLevel || 1} · ${quest.xp || 0} XP`
+                });
+            }
+        }
+    }
+
+    triStateForIds(ids, selectedSet) {
+        if (!ids.length) return 'unchecked';
+        const n = ids.filter(id => selectedSet.has(id)).length;
+        if (n === 0) return 'unchecked';
+        if (n === ids.length) return 'checked';
+        return 'indeterminate';
+    }
+
+    applyTriToggle(ids, selectedSet, checked) {
+        ids.forEach(id => {
+            if (checked) selectedSet.add(id);
+            else selectedSet.delete(id);
+        });
+    }
+
+    renderTriCheckbox(parent, state, onToggle) {
+        const btn = parent.createEl('button', {
+            cls: `rpg-tri-check ${state}`,
+            attr: { type: 'button', 'aria-checked': state === 'checked' ? 'true' : state === 'indeterminate' ? 'mixed' : 'false' }
+        });
+        btn.onclick = (e) => {
+            e.stopPropagation();
+            onToggle(state !== 'checked');
+        };
+        return btn;
+    }
+
+
+    renderRoadmapArmar(container) {
+        const draft = this.ensureRoadmapDraft();
+        const isEdit = !!draft.editingId;
+        const step = this.roadmapArmarStep || 1;
+        const svc = this.questEventService;
+        const campSvc = this.questCampaignService;
+        const campaigns = campSvc.list();
+
+        container.createEl('h3', {
+            text: isEdit ? ('Editar: ' + (draft.name || 'Roadmap')) : '🛠️ Armar roadmap'
+        });
+        container.createEl('p', {
+            cls: 'rpg-subtitle',
+            text: isEdit
+                ? 'Calendario, pool y semanas. El progreso y los días ya asignados se conservan.'
+                : 'El pool solo sale de Campañas. Creá packs en la tab Campañas.'
+        });
+
+        if (isEdit) {
+            const cancelTop = container.createEl('button', {
+                text: 'Cancelar edición',
+                cls: 'rpg-btn ghost'
+            });
+            cancelTop.onclick = () => {
+                this.clearRoadmapDraft();
+                this.roadmapNestedTab = 'activos';
+                this.render();
+            };
+        }
+
+        const steps = container.createDiv({ cls: 'rpg-roadmap-steps' });
+        [
+            { n: 1, label: 'Calendario + pool' },
+            { n: 2, label: 'Semanas' },
+            { n: 3, label: 'Resumen' }
+        ].forEach(s => {
+            const pill = steps.createEl('button', {
+                cls: 'rpg-subtab-btn rpg-nested-btn ' + (step === s.n ? 'active' : ''),
+                text: s.n + '. ' + s.label
+            });
+            pill.onclick = () => {
+                this.roadmapArmarStep = s.n;
+                this.render();
+            };
+        });
+
+        if (campaigns.length === 0) {
+            container.createDiv({
+                cls: 'rpg-empty',
+                text: 'No hay campañas. Andá a Campañas para crear una (o recargá para migrar EveVacum).'
+            });
+            const go = container.createEl('button', { text: 'Ir a Campañas', cls: 'rpg-full-width-btn' });
+            go.onclick = () => {
+                this.roadmapNestedTab = 'campanas';
+                this.render();
+            };
+            return;
+        }
+
+        if (step === 1) {
+            const form = container.createDiv({ cls: 'rpg-roadmap-form' });
+            form.createEl('label', { text: 'Nombre' });
+            const nameInput = form.createEl('input', { type: 'text', cls: 'rpg-quest-search-input' });
+            nameInput.value = draft.name;
+            nameInput.oninput = (e) => { draft.name = e.target.value; };
+
+            form.createEl('label', { text: 'Fecha de inicio' });
+            const startInput = form.createEl('input', {
+                type: 'date',
+                cls: 'rpg-quest-search-input'
+            });
+            startInput.value = draft.startDate || svc.localIsoDate();
+            startInput.onchange = (e) => {
+                draft.startDate = e.target.value || svc.localIsoDate();
+                this.render();
+            };
+
+            const row2 = form.createDiv({ cls: 'rpg-roadmap-form-row' });
+            const durWrap = row2.createDiv();
+            durWrap.createEl('label', { text: 'Duración (días)' });
+            const durInput = durWrap.createEl('input', { type: 'number', cls: 'rpg-quest-search-input' });
+            durInput.value = String(draft.durationDays);
+            durInput.onchange = (e) => {
+                draft.durationDays = Math.max(1, Number(e.target.value) || 30);
+                this.extendWeekConstraints(draft, draft.durationDays);
+                this.render();
+            };
+            const quotaWrap = row2.createDiv();
+            quotaWrap.createEl('label', { text: 'Quests / día' });
+            const quotaInput = quotaWrap.createEl('input', { type: 'number', cls: 'rpg-quest-search-input' });
+            quotaInput.value = String(draft.dailyQuota);
+            quotaInput.onchange = (e) => {
+                draft.dailyQuota = Math.max(1, Number(e.target.value) || 3);
+                this.render();
+            };
+
+            const endIso = this.calendarEndIso(draft.startDate, draft.durationDays);
+            const todayIso = svc.localIsoDate();
+            const dayNow = svc.dayNumber({
+                startDate: draft.startDate || todayIso
+            }, todayIso);
+            form.createDiv({
+                cls: 'rpg-picker-meta',
+                text: `Hoy ${todayIso} · día ${dayNow} del roadmap · cierra ${endIso}`
+            });
+            form.createDiv({
+                cls: 'rpg-picker-meta',
+                text: this.roadmapEstimateLabel(this.roadmapPoolEstimate(draft))
+            });
+
+            this.renderFlowerLootPicker(form, {
+                flowerId: draft.flowerId || null,
+                label: 'Flor de cierre del roadmap',
+                onChange: (id) => { draft.flowerId = id || ''; }
+            });
+
+            container.createEl('h4', { text: 'Elegir campañas y quests' });
+            const taken = svc.questIdsInOtherActiveEvents(draft.editingId || null);
+            const picker = container.createDiv({ cls: 'rpg-roadmap-picker' });
+
+            campaigns.forEach(camp => {
+                const allQuests = campSvc.getQuests(camp);
+                const incomplete = allQuests.filter(q => !q.completed);
+                const completedInPool = isEdit
+                    ? allQuests.filter(q => q.completed && draft.selectedQuestIds.has(q.id))
+                    : [];
+                const seen = new Set();
+                const quests = [];
+                [...incomplete, ...completedInPool].forEach(q => {
+                    if (seen.has(q.id)) return;
+                    seen.add(q.id);
+                    quests.push(q);
+                });
+                const availableIds = quests.filter(q => !taken.has(q.id)).map(q => q.id);
+                const open = this.roadmapPickerExpanded[camp.id] !== false;
+                const state = this.triStateForIds(availableIds, draft.selectedQuestIds);
+                const row = picker.createDiv({ cls: 'rpg-picker-row depth-0' });
+
+                const chev = row.createEl('button', {
+                    cls: 'rpg-picker-chevron',
+                    text: open ? '▾' : '▸',
+                    attr: { type: 'button' }
+                });
+                chev.onclick = () => {
+                    this.roadmapPickerExpanded[camp.id] = !open;
+                    this.render();
+                };
+
+                this.renderTriCheckbox(row, state, (checked) => {
+                    this.applyTriToggle(availableIds, draft.selectedQuestIds, checked);
+                    if (checked) draft.selectedCampaignIds.add(camp.id);
+                    else if (![...draft.selectedQuestIds].some(id => {
+                        const q = svc.getQuestById(id);
+                        return q && q.campaignId === camp.id;
+                    })) {
+                        draft.selectedCampaignIds.delete(camp.id);
+                    }
+                    this.render();
+                });
+
+                const info = row.createDiv({ cls: 'rpg-picker-info' });
+                info.createDiv({ cls: 'rpg-picker-title', text: camp.name });
+                const sel = availableIds.filter(id => draft.selectedQuestIds.has(id)).length;
+                info.createDiv({
+                    cls: 'rpg-picker-meta',
+                    text: sel + '/' + availableIds.length + ' quests · ' + (camp.school || 'Campo')
+                });
+
+                if (!open) return;
+                quests.forEach(quest => {
+                    const qRow = picker.createDiv({ cls: 'rpg-picker-row depth-2' });
+                    qRow.createSpan({ cls: 'rpg-picker-chevron-spacer' });
+                    const cb = qRow.createEl('input', { type: 'checkbox', cls: 'rpg-quest-select-checkbox' });
+                    const isTaken = taken.has(quest.id);
+                    cb.checked = draft.selectedQuestIds.has(quest.id);
+                    cb.disabled = isTaken;
+                    cb.onchange = () => {
+                        if (cb.checked) {
+                            draft.selectedQuestIds.add(quest.id);
+                            draft.selectedCampaignIds.add(camp.id);
+                        } else {
+                            draft.selectedQuestIds.delete(quest.id);
+                        }
+                        this.render();
+                    };
+                    const qInfo = qRow.createDiv({ cls: 'rpg-picker-info' });
+                    let label = quest.name;
+                    if (isTaken) label += ' (en otro activo)';
+                    else if (quest.completed) label += ' (hecha)';
+                    qInfo.createDiv({ text: label });
+                    qInfo.createDiv({
+                        cls: 'rpg-picker-meta',
+                        text: (quest.difficulty || 'easy') + ' · ' + (quest.xp || 0) + ' XP'
+                    });
+                });
+            });
+
+            const next = container.createEl('button', {
+                text: 'Siguiente: semanas',
+                cls: 'rpg-full-width-btn'
+            });
+            next.disabled = draft.selectedQuestIds.size === 0;
+            next.onclick = () => {
+                const campIds = new Set();
+                [...draft.selectedQuestIds].forEach(qid => {
+                    const q = svc.getQuestById(qid);
+                    if (q && q.campaignId) campIds.add(q.campaignId);
+                });
+                draft.selectedCampaignIds = campIds;
+                this.extendWeekConstraints(draft, draft.durationDays);
+                const weeks = Math.ceil(draft.durationDays / 7);
+                for (let w = 1; w <= weeks; w++) {
+                    const key = String(w);
+                    if (!(draft.weekConstraints[key].campaignIds || []).length) {
+                        draft.weekConstraints[key].campaignIds = [...campIds];
+                    }
+                }
+                this.roadmapArmarStep = 2;
+                this.render();
+            };
+        }
+
+        if (step === 2) {
+            const campsInPool = campaigns.filter(c =>
+                [...draft.selectedQuestIds].some(qid => {
+                    const q = svc.getQuestById(qid);
+                    return q && q.campaignId === c.id;
+                })
+            );
+            this.extendWeekConstraints(draft, draft.durationDays);
+            const weeks = Math.ceil(draft.durationDays / 7);
+            container.createEl('h4', { text: 'Campañas activas por semana' });
+            const table = container.createEl('table', { cls: 'rpg-roadmap-table' });
+            const thead = table.createEl('thead').createEl('tr');
+            thead.createEl('th', { text: 'Semana' });
+            campsInPool.forEach(c => {
+                const label = (c.name.split('—')[0] || c.name).trim().slice(0, 18);
+                thead.createEl('th', { text: label });
+            });
+            thead.createEl('th', { text: 'Elegibles' });
+            const tbody = table.createEl('tbody');
+            for (let w = 1; w <= weeks; w++) {
+                const key = String(w);
+                if (!draft.weekConstraints[key]) draft.weekConstraints[key] = { campaignIds: [] };
+                const allowed = new Set(draft.weekConstraints[key].campaignIds || []);
+                const tr = tbody.createEl('tr');
+                tr.createEl('td', { text: 'S' + w });
+                campsInPool.forEach(camp => {
+                    const td = tr.createEl('td');
+                    const cb = td.createEl('input', { type: 'checkbox' });
+                    cb.checked = allowed.has(camp.id);
+                    cb.onchange = () => {
+                        const set = new Set(draft.weekConstraints[key].campaignIds || []);
+                        if (cb.checked) set.add(camp.id);
+                        else set.delete(camp.id);
+                        draft.weekConstraints[key].campaignIds = [...set];
+                        this.render();
+                    };
+                });
+                const eligible = [...draft.selectedQuestIds].filter(qid => {
+                    const q = svc.getQuestById(qid);
+                    return q && allowed.has(q.campaignId);
+                }).length;
+                tr.createEl('td', { text: String(eligible) });
+            }
+            const nav = container.createDiv({ cls: 'rpg-roadmap-actions' });
+            nav.createEl('button', { text: 'Volver', cls: 'rpg-btn ghost' }).onclick = () => {
+                this.roadmapArmarStep = 1;
+                this.render();
+            };
+            nav.createEl('button', { text: 'Ver resumen', cls: 'rpg-btn primary' }).onclick = () => {
+                this.roadmapArmarStep = 3;
+                this.render();
+            };
+        }
+
+        if (step === 3) {
+            const flower = draft.flowerId ? this.plugin.getFlowerById(draft.flowerId) : null;
+            const poolEst = this.roadmapPoolEstimate(draft);
+            const endIso = this.calendarEndIso(draft.startDate, draft.durationDays);
+            container.createEl('h4', { text: 'Resumen' });
+            if (draft.flowerId) {
+                this.renderFlowerLootPicker(container, {
+                    flowerId: draft.flowerId,
+                    readOnly: true,
+                    label: 'Flor de cierre'
+                });
+            }
+            const summary = container.createDiv({ cls: 'rpg-roadmap-summary' });
+            summary.createDiv({ text: 'Nombre: ' + draft.name });
+            summary.createDiv({ text: 'Pool: ' + draft.selectedQuestIds.size + ' quests' });
+            summary.createDiv({
+                text: 'Calendario: ' + (draft.startDate || svc.localIsoDate())
+                    + ' → ' + endIso
+                    + ' · ' + draft.durationDays + ' días · cuota ' + draft.dailyQuota + '/día'
+            });
+            summary.createDiv({ text: this.roadmapEstimateLabel(poolEst) });
+            summary.createDiv({ text: flower ? 'Flor: ' + flower.name : 'Flor: ninguna' });
+            const nav = container.createDiv({ cls: 'rpg-roadmap-actions' });
+            nav.createEl('button', { text: 'Ajustar semanas', cls: 'rpg-btn ghost' }).onclick = () => {
+                this.roadmapArmarStep = 2;
+                this.render();
+            };
+            if (isEdit) {
+                nav.createEl('button', { text: 'Cancelar', cls: 'rpg-btn ghost' }).onclick = () => {
+                    this.clearRoadmapDraft();
+                    this.roadmapNestedTab = 'activos';
+                    this.render();
+                };
+            }
+            const saveBtn = nav.createEl('button', {
+                text: isEdit ? 'Guardar cambios' : 'Activar roadmap',
+                cls: 'rpg-full-width-btn'
+            });
+            saveBtn.onclick = async () => {
+                if (isEdit) {
+                    const updated = svc.applyRoadmapEdit(draft.editingId, {
+                        name: draft.name || 'Roadmap',
+                        startDate: draft.startDate || svc.localIsoDate(),
+                        durationDays: draft.durationDays,
+                        dailyQuota: draft.dailyQuota,
+                        poolQuestIds: [...draft.selectedQuestIds],
+                        weekConstraints: draft.weekConstraints,
+                        flowerId: draft.flowerId || null
+                    });
+                    await this.plugin.saveSettings();
+                    this.roadmapSelectedId = draft.editingId;
+                    this.clearRoadmapDraft();
+                    this.roadmapNestedTab = 'activos';
+                    new Notice('🗺️ Roadmap actualizado: ' + (updated?.name || 'Roadmap'));
+                    this.render();
+                    return;
+                }
+                const event = svc.createEvent({
+                    name: draft.name || 'Roadmap',
+                    startDate: draft.startDate || svc.localIsoDate(),
+                    durationDays: draft.durationDays,
+                    dailyQuota: draft.dailyQuota,
+                    poolQuestIds: [...draft.selectedQuestIds],
+                    weekConstraints: draft.weekConstraints,
+                    flowerId: draft.flowerId || null
+                });
+                await this.plugin.saveSettings();
+                this.clearRoadmapDraft();
+                this.roadmapSelectedId = event.id;
+                this.roadmapNestedTab = 'activos';
+                new Notice('🗺️ Roadmap activo: ' + event.name);
+                this.render();
+            };
+        }
+    }
+
+    renderRoadmapCampanas(container) {
+        const campSvc = this.questCampaignService;
+        const campaigns = campSvc.list();
+
+        if (this.campaignEditingId) {
+            this.renderCampaignEditor(container, this.campaignEditingId);
+            return;
+        }
+
+        container.createEl('h3', { text: '📦 Campañas' });
+        container.createEl('p', {
+            cls: 'rpg-subtitle',
+            text: 'Packs de quests (tipo EveVacum). No suben nodos del Árbol. El Roadmap elige desde acá.'
+        });
+
+        const newBtn = container.createEl('button', { text: '+ Nueva campaña', cls: 'rpg-full-width-btn' });
+        newBtn.onclick = () => {
+            this.campaignEditingId = 'new';
+            this.campaignNewQuestDraft = null;
+            this.render();
+        };
+
+        if (campaigns.length === 0) {
+            container.createDiv({ cls: 'rpg-empty', text: 'Sin campañas todavía.' });
+            return;
+        }
+
+        const filterNav = container.createDiv({ cls: 'rpg-subtab-nav rpg-roadmap-nested-nav' });
+        [
+            { id: 'all', label: 'Todas' },
+            { id: 'pending', label: 'Pendientes' },
+            { id: 'done', label: 'Hechas' }
+        ].forEach(f => {
+            const btn = filterNav.createEl('button', {
+                cls: 'rpg-subtab-btn rpg-nested-btn ' + (this.campaignListFilter === f.id ? 'active' : ''),
+                text: f.label
+            });
+            btn.onclick = () => {
+                this.campaignListFilter = f.id;
+                this.render();
+            };
+        });
+
+        const visible = campaigns.filter(camp => {
+            const counts = this.campaignQuestCounts(camp);
+            if (this.campaignListFilter === 'done') return counts.total > 0 && counts.pending === 0;
+            if (this.campaignListFilter === 'pending') return counts.pending > 0 || counts.total === 0;
+            return true;
+        });
+
+        if (visible.length === 0) {
+            container.createDiv({ cls: 'rpg-empty', text: 'Ninguna campaña en este filtro.' });
+            return;
+        }
+
+        visible.forEach(camp => {
+            const counts = this.campaignQuestCounts(camp);
+            const card = container.createDiv({ cls: 'rpg-campaign-card' });
+            const head = card.createDiv({ cls: 'rpg-roadmap-card-head' });
+            head.createSpan({ cls: 'rpg-roadmap-card-name', text: camp.name });
+            head.createSpan({
+                cls: 'rpg-roadmap-badge',
+                text: counts.total + ' quests'
+            });
+            card.createDiv({
+                cls: 'rpg-picker-meta',
+                text: counts.pending + ' pendientes · ' + counts.done + ' hechas'
+            });
+            card.createDiv({
+                cls: 'rpg-picker-meta',
+                text: (camp.school || 'Campo') + ' · ' + (camp.sourceTag || 'campaign')
+            });
+            if (camp.flowerId) {
+                this.renderFlowerLootPicker(card, {
+                    flowerId: camp.flowerId,
+                    readOnly: true,
+                    label: 'Flor del pack'
+                });
+            }
+            const actions = card.createDiv({ cls: 'rpg-roadmap-actions' });
+            actions.createEl('button', { text: 'Editar', cls: 'rpg-btn primary' }).onclick = () => {
+                this.campaignEditingId = camp.id;
+                this.campaignNewQuestDraft = null;
+                this.render();
+            };
+            actions.createEl('button', { text: 'Usar en Armar', cls: 'rpg-btn' }).onclick = () => {
+                this.clearRoadmapDraft();
+                this.roadmapNestedTab = 'armar';
+                this.roadmapArmarStep = 1;
+                const draft = this.ensureRoadmapDraft();
+                campSvc.getQuests(camp).filter(q => !q.completed).forEach(q => {
+                    draft.selectedQuestIds.add(q.id);
+                });
+                draft.selectedCampaignIds.add(camp.id);
+                this.render();
+            };
+        });
+    }
+
+    renderCampaignEditor(container, editingId) {
+        const campSvc = this.questCampaignService;
+        const isNew = editingId === 'new';
+        let campaign = isNew ? null : campSvc.get(editingId);
+
+        if (!isNew && !campaign) {
+            this.campaignEditingId = null;
+            this.render();
+            return;
+        }
+
+        if (!this._campaignEditForm || this._campaignEditForm.id !== editingId) {
+            this._campaignEditForm = {
+                id: editingId,
+                name: campaign ? campaign.name : '',
+                description: campaign ? (campaign.description || '') : '',
+                school: campaign ? (campaign.school || 'Campo') : 'Campo',
+                defaultBossDamage: campaign ? (campaign.defaultBossDamage || 25) : 25,
+                flowerId: campaign ? campaign.flowerId : null,
+                linkedBossIds: campaign ? [...(campaign.linkedBossIds || [])] : []
+            };
+        }
+        const formState = this._campaignEditForm;
+
+        container.createEl('h3', { text: isNew ? 'Nueva campaña' : 'Editar: ' + campaign.name });
+        const back = container.createEl('button', { text: '← Volver', cls: 'rpg-btn ghost' });
+        back.onclick = () => {
+            this.campaignEditingId = null;
+            this._campaignEditForm = null;
+            this.render();
+        };
+
+        const form = container.createDiv({ cls: 'rpg-roadmap-form' });
+        form.createEl('label', { text: 'Nombre' });
+        const nameInput = form.createEl('input', { type: 'text', cls: 'rpg-quest-search-input' });
+        nameInput.value = formState.name;
+        nameInput.oninput = (e) => { formState.name = e.target.value; };
+
+        form.createEl('label', { text: 'Descripción' });
+        const descInput = form.createEl('textarea', { cls: 'rpg-quest-search-input' });
+        descInput.value = formState.description;
+        descInput.rows = 3;
+        descInput.oninput = (e) => { formState.description = e.target.value; };
+
+        const row = form.createDiv({ cls: 'rpg-roadmap-form-row' });
+        const schoolWrap = row.createDiv();
+        schoolWrap.createEl('label', { text: 'Escuela (etiqueta)' });
+        const schoolInput = schoolWrap.createEl('input', { type: 'text', cls: 'rpg-quest-search-input' });
+        schoolInput.value = formState.school;
+        schoolInput.oninput = (e) => { formState.school = e.target.value; };
+
+        const dmgWrap = row.createDiv();
+        dmgWrap.createEl('label', { text: 'Daño boss default' });
+        const dmgInput = dmgWrap.createEl('input', { type: 'number', cls: 'rpg-quest-search-input' });
+        dmgInput.value = String(formState.defaultBossDamage);
+        dmgInput.oninput = (e) => { formState.defaultBossDamage = Number(e.target.value) || 25; };
+
+        form.createEl('label', { text: 'Boss vinculado' });
+        const bosses = this.plugin.settings.bossFights || [];
+        const bossSelect = form.createEl('select', { cls: 'rpg-roadmap-select' });
+        bossSelect.createEl('option', { text: '— Ninguno —', attr: { value: '' } });
+        bosses.forEach(b => {
+            const opt = bossSelect.createEl('option', {
+                text: b.name + (b.defeated ? ' (liberado)' : ''),
+                attr: { value: String(b.id) }
+            });
+            if ((formState.linkedBossIds || []).map(String).includes(String(b.id))) opt.selected = true;
+        });
+        bossSelect.onchange = () => {
+            formState.linkedBossIds = bossSelect.value ? [bossSelect.value] : [];
+        };
+
+        this.renderFlowerLootPicker(form, {
+            flowerId: formState.flowerId,
+            label: 'Flor del pack',
+            onChange: (id) => { formState.flowerId = id; }
+        });
+
+        const saveBtn = form.createEl('button', {
+            text: isNew ? 'Crear campaña' : 'Guardar cambios',
+            cls: 'rpg-full-width-btn'
+        });
+        saveBtn.onclick = async () => {
+            if (!formState.name.trim()) {
+                new Notice('La campaña necesita un nombre');
+                return;
+            }
+            if (isNew) {
+                const created = campSvc.create({
+                    name: formState.name.trim(),
+                    description: formState.description,
+                    school: formState.school,
+                    defaultBossDamage: formState.defaultBossDamage,
+                    flowerId: formState.flowerId,
+                    linkedBossIds: formState.linkedBossIds
+                });
+                await this.plugin.saveSettings();
+                this.campaignEditingId = created.id;
+                this._campaignEditForm = null;
+                new Notice('📦 Campaña creada: ' + created.name);
+            } else {
+                campSvc.update(campaign.id, {
+                    name: formState.name.trim(),
+                    description: formState.description,
+                    school: formState.school,
+                    defaultBossDamage: formState.defaultBossDamage,
+                    flowerId: formState.flowerId,
+                    linkedBossIds: formState.linkedBossIds
+                });
+                await this.plugin.saveSettings();
+                new Notice('Campaña guardada');
+            }
+            this.render();
+        };
+
+        if (!isNew && campaign) {
+            container.createEl('h4', { text: 'Quests del pack' });
+            const quests = campSvc.getQuests(campaign);
+            const showDone = this.campaignQuestShowDone !== false;
+            const showPending = this.campaignQuestShowPending !== false;
+            const filterRow = container.createDiv({ cls: 'rpg-pack-quest-filter' });
+            const doneLabel = filterRow.createEl('label');
+            const doneCb = doneLabel.createEl('input', { type: 'checkbox' });
+            doneCb.checked = showDone;
+            doneLabel.appendText(' Hechos');
+            doneCb.onchange = () => {
+                this.campaignQuestShowDone = doneCb.checked;
+                this.render();
+            };
+            const pendingLabel = filterRow.createEl('label');
+            const pendingCb = pendingLabel.createEl('input', { type: 'checkbox' });
+            pendingCb.checked = showPending;
+            pendingLabel.appendText(' Pendientes');
+            pendingCb.onchange = () => {
+                this.campaignQuestShowPending = pendingCb.checked;
+                this.render();
+            };
+            const visibleQuests = quests.filter(q => {
+                if (q.completed) return showDone;
+                return showPending;
+            });
+            if (quests.length === 0) {
+                container.createDiv({ cls: 'rpg-empty', text: 'Sin quests. Agregá abajo.' });
+            } else if (visibleQuests.length === 0) {
+                container.createDiv({ cls: 'rpg-empty', text: 'Ninguna quest en este filtro.' });
+            }
+            visibleQuests.forEach(q => {
+                const rowQ = container.createDiv({ cls: 'rpg-list-item quest rpg-campaign-quest-row' });
+                const info = rowQ.createDiv({ cls: 'rpg-item-info' });
+                info.createDiv({ cls: 'rpg-item-name', text: q.name });
+                if (q.description) {
+                    info.createDiv({
+                        cls: 'rpg-quest-desc',
+                        text: q.description
+                    });
+                }
+                info.createDiv({
+                    cls: 'rpg-item-meta',
+                    text: (q.completed ? '✓ hecha' : 'pendiente')
+                        + ' · ' + q.xp + ' XP · dmg ' + (q.bossDamage || 0)
+                        + (q.kind === 'skill-challenge' ? ' · skill' : ' · campaña')
+                });
+                const rm = rowQ.createEl('button', { text: 'Quitar', cls: 'rpg-btn ghost' });
+                rm.onclick = async () => {
+                    campSvc.removeQuestFromCampaign(campaign.id, q.id, { deleteQuest: false });
+                    await this.plugin.saveSettings();
+                    this.render();
+                };
+            });
+
+            this.renderCampaignLinkSkillsPicker(container, campaign);
+
+            container.createEl('h4', { text: 'Crear quest nueva (ad-hoc)' });
+            if (!this.campaignNewQuestDraft) {
+                this.campaignNewQuestDraft = { name: '', description: '', xp: 10, difficulty: 'easy' };
+            }
+            const nq = this.campaignNewQuestDraft;
+            const addForm = container.createDiv({ cls: 'rpg-roadmap-form' });
+            addForm.createEl('label', { text: 'Nombre' });
+            const nqName = addForm.createEl('input', { type: 'text', cls: 'rpg-quest-search-input' });
+            nqName.value = nq.name;
+            nqName.oninput = (e) => { nq.name = e.target.value; };
+            addForm.createEl('label', { text: 'Descripción' });
+            const nqDesc = addForm.createEl('textarea', { cls: 'rpg-quest-search-input' });
+            nqDesc.rows = 2;
+            nqDesc.value = nq.description;
+            nqDesc.oninput = (e) => { nq.description = e.target.value; };
+            const nqRow = addForm.createDiv({ cls: 'rpg-roadmap-form-row' });
+            const xpW = nqRow.createDiv();
+            xpW.createEl('label', { text: 'XP' });
+            const xpI = xpW.createEl('input', { type: 'number', cls: 'rpg-quest-search-input' });
+            xpI.value = String(nq.xp);
+            xpI.oninput = (e) => { nq.xp = Number(e.target.value) || 10; };
+            const diffW = nqRow.createDiv();
+            diffW.createEl('label', { text: 'Difficulty' });
+            const diffS = diffW.createEl('select', { cls: 'rpg-roadmap-select' });
+            ['easy', 'medium', 'hard'].forEach(d => {
+                const o = diffS.createEl('option', { text: d, attr: { value: d } });
+                if (nq.difficulty === d) o.selected = true;
+            });
+            diffS.onchange = () => { nq.difficulty = diffS.value; };
+
+            const addBtn = addForm.createEl('button', { text: '+ Añadir quest nueva', cls: 'rpg-full-width-btn' });
+            addBtn.onclick = async () => {
+                if (!nq.name.trim()) {
+                    new Notice('La quest necesita nombre');
+                    return;
+                }
+                campSvc.addQuest(campaign.id, {
+                    name: nq.name.trim(),
+                    description: nq.description,
+                    xp: nq.xp,
+                    difficulty: nq.difficulty
+                });
+                await this.plugin.saveSettings();
+                this.campaignNewQuestDraft = { name: '', description: '', xp: 10, difficulty: 'easy' };
+                new Notice('Quest añadida al pack');
+                this.render();
+            };
+
+            if (!campaign.sourceTag) {
+                const del = container.createEl('button', { text: 'Eliminar campaña', cls: 'rpg-btn ghost' });
+                del.onclick = async () => {
+                    campSvc.delete(campaign.id);
+                    await this.plugin.saveSettings();
+                    this.campaignEditingId = null;
+                    this._campaignEditForm = null;
+                    this.render();
+                };
+            }
+        }
+    }
+
+    /**
+     * Associate existing skill-tree quests into a campaign (skill → level → quest).
+     * Shows name + full description under each quest.
+     */
+    renderCampaignLinkSkillsPicker(container, campaign) {
+        const campSvc = this.questCampaignService;
+        const already = new Set(campaign.questIds || []);
+        const tree = this.buildSkillQuestTree().map(skill => ({
+            ...skill,
+            levels: skill.levels.map(level => ({
+                ...level,
+                quests: level.quests.filter(q => !already.has(q.id))
+            })).filter(level => level.quests.length > 0)
+        })).filter(skill => skill.levels.length > 0);
+
+        container.createEl('h4', { text: 'Asociar quests de skills' });
+        container.createEl('p', {
+            cls: 'rpg-subtitle',
+            text: 'Skill → nivel → quest. Se vinculan al pack sin salir del Árbol (siguen siendo skill-challenge).'
+        });
+
+        if (tree.length === 0) {
+            container.createDiv({
+                cls: 'rpg-empty',
+                text: 'No hay quests de skill pendientes disponibles para asociar.'
+            });
+            return;
+        }
+
+        if (!(this.campaignSkillLinkSelected instanceof Set)) {
+            this.campaignSkillLinkSelected = new Set();
+        }
+
+        const search = container.createEl('input', {
+            type: 'search',
+            cls: 'rpg-quest-search-input',
+            placeholder: 'Buscar por nombre o descripción…'
+        });
+        search.value = this.campaignSkillLinkSearch || '';
+        search.oninput = (e) => {
+            this.campaignSkillLinkSearch = e.target.value;
+            this.render();
+        };
+        const qFilter = (this.campaignSkillLinkSearch || '').trim().toLowerCase();
+
+        const toolbar = container.createDiv({ cls: 'rpg-roadmap-picker-toolbar' });
+        toolbar.createSpan({
+            text: this.campaignSkillLinkSelected.size + ' seleccionadas'
+        });
+        const clearBtn = toolbar.createEl('button', { text: 'Limpiar', cls: 'rpg-btn ghost' });
+        clearBtn.onclick = () => {
+            this.campaignSkillLinkSelected = new Set();
+            this.render();
+        };
+
+        const picker = container.createDiv({ cls: 'rpg-roadmap-picker rpg-campaign-skill-link-picker' });
+
+        tree.forEach(skill => {
+            const allIds = skill.levels.flatMap(l => l.quests.map(q => q.id));
+            if (qFilter) {
+                const hit = skill.name.toLowerCase().includes(qFilter)
+                    || skill.levels.some(l => l.quests.some(q =>
+                        (q.name || '').toLowerCase().includes(qFilter)
+                        || (q.description || '').toLowerCase().includes(qFilter)
+                    ));
+                if (!hit) return;
+            }
+
+            const skillOpen = this.campaignSkillLinkExpanded[skill.id] !== false;
+            const skillState = this.triStateForIds(allIds, this.campaignSkillLinkSelected);
+            const skillRow = picker.createDiv({ cls: 'rpg-picker-row depth-0' });
+
+            const chev = skillRow.createEl('button', {
+                cls: 'rpg-picker-chevron',
+                text: skillOpen ? '▾' : '▸',
+                attr: { type: 'button' }
+            });
+            chev.onclick = () => {
+                this.campaignSkillLinkExpanded[skill.id] = !skillOpen;
+                this.render();
+            };
+
+            this.renderTriCheckbox(skillRow, skillState, (checked) => {
+                this.applyTriToggle(allIds, this.campaignSkillLinkSelected, checked);
+                this.render();
+            });
+
+            const sInfo = skillRow.createDiv({ cls: 'rpg-picker-info' });
+            sInfo.createDiv({ cls: 'rpg-picker-title', text: skill.name });
+            const selCount = allIds.filter(id => this.campaignSkillLinkSelected.has(id)).length;
+            sInfo.createDiv({
+                cls: 'rpg-picker-meta',
+                text: selCount + '/' + allIds.length + ' · ' + (skill.school || '')
+            });
+
+            if (!skillOpen) return;
+
+            skill.levels.forEach(level => {
+                const levelIds = level.quests.map(q => q.id);
+                const levelKey = skill.id + '_l' + level.level;
+                const levelOpen = this.campaignSkillLinkExpanded[levelKey] !== false;
+                const levelState = this.triStateForIds(levelIds, this.campaignSkillLinkSelected);
+                const levelRow = picker.createDiv({ cls: 'rpg-picker-row depth-1' });
+
+                const lChev = levelRow.createEl('button', {
+                    cls: 'rpg-picker-chevron',
+                    text: levelOpen ? '▾' : '▸',
+                    attr: { type: 'button' }
+                });
+                lChev.onclick = () => {
+                    this.campaignSkillLinkExpanded[levelKey] = !levelOpen;
+                    this.render();
+                };
+
+                this.renderTriCheckbox(levelRow, levelState, (checked) => {
+                    this.applyTriToggle(levelIds, this.campaignSkillLinkSelected, checked);
+                    this.render();
+                });
+
+                const lInfo = levelRow.createDiv({ cls: 'rpg-picker-info' });
+                lInfo.createDiv({ text: level.label });
+                lInfo.createDiv({
+                    cls: 'rpg-picker-meta',
+                    text: levelIds.filter(id => this.campaignSkillLinkSelected.has(id)).length
+                        + '/' + level.quests.length
+                });
+
+                if (!levelOpen) return;
+
+                level.quests.forEach(quest => {
+                    if (qFilter) {
+                        const blob = ((quest.name || '') + ' ' + (quest.description || '')).toLowerCase();
+                        if (!blob.includes(qFilter) && !skill.name.toLowerCase().includes(qFilter)) {
+                            return;
+                        }
+                    }
+                    const qRow = picker.createDiv({ cls: 'rpg-picker-row depth-2 rpg-picker-quest-with-desc' });
+                    qRow.createSpan({ cls: 'rpg-picker-chevron-spacer' });
+                    const cb = qRow.createEl('input', {
+                        type: 'checkbox',
+                        cls: 'rpg-quest-select-checkbox'
+                    });
+                    cb.checked = this.campaignSkillLinkSelected.has(quest.id);
+                    cb.onchange = () => {
+                        if (cb.checked) this.campaignSkillLinkSelected.add(quest.id);
+                        else this.campaignSkillLinkSelected.delete(quest.id);
+                        this.render();
+                    };
+                    const qInfo = qRow.createDiv({ cls: 'rpg-picker-info' });
+                    qInfo.createDiv({ cls: 'rpg-picker-title', text: quest.name });
+                    if (quest.description) {
+                        qInfo.createDiv({
+                            cls: 'rpg-quest-desc',
+                            text: quest.description
+                        });
+                    }
+                    qInfo.createDiv({
+                        cls: 'rpg-picker-meta',
+                        text: (quest.difficulty || 'medium') + ' · ' + (quest.xp || 0) + ' XP'
+                    });
+                });
+            });
+        });
+
+        const linkBtn = container.createEl('button', {
+            text: 'Vincular seleccionadas al pack',
+            cls: 'rpg-full-width-btn'
+        });
+        linkBtn.disabled = this.campaignSkillLinkSelected.size === 0;
+        linkBtn.onclick = async () => {
+            const result = campSvc.linkExistingQuests(
+                campaign.id,
+                [...this.campaignSkillLinkSelected]
+            );
+            await this.plugin.saveSettings();
+            this.campaignSkillLinkSelected = new Set();
+            new Notice('Vinculadas: ' + result.linked + (result.skipped ? ' · omitidas: ' + result.skipped : ''));
+            this.render();
+        };
     }
 
     getQuestFilterSchools(quests) {
@@ -3178,6 +4757,8 @@ class HeroView extends ItemView {
             };
         });
 
+        this.renderTpnProtocol(container);
+
         // Inn Section (moved from separate tab)
         container.createEl('h4', { text: '🏨 Rest at Inn' });
         const innGrid = container.createDiv({ cls: 'rpg-inn-grid' });
@@ -3209,6 +4790,214 @@ class HeroView extends ItemView {
                 logSection.createDiv({ cls: 'rpg-mood-log-entry', text: `${mood?.icon || '❓'} ${mood?.label || 'Unknown'} - ${date} ${time}` });
             });
         }
+    }
+
+    tpnField(parent, label, opts = {}) {
+        const row = parent.createDiv({ cls: 'rpg-tpn-field' });
+        row.createEl('label', { text: label });
+        const input = row.createEl('input');
+        input.type = opts.type || 'text';
+        if (opts.step) input.step = opts.step;
+        if (opts.min != null) input.min = String(opts.min);
+        if (opts.max != null) input.max = String(opts.max);
+        if (opts.placeholder) input.placeholder = opts.placeholder;
+        if (opts.value != null && opts.value !== '') input.value = String(opts.value);
+        return input;
+    }
+
+    renderTpnProtocol(container) {
+        const tpn = this.tpnService;
+        const added = tpn.ensureProtocolQuests();
+        tpn.ensureHabit();
+        if (added > 0) this.plugin.saveSettings();
+
+        const today = tpn.localIsoDate();
+        const existingToday = tpn.getEntry(today) || {};
+        const cfg = tpn.ensureState().config;
+        let parsedPvt = null;
+        let csvText = '';
+        let csvName = '';
+
+        if (existingToday.rt_media_ms != null) {
+            parsedPvt = {
+                fecha: existingToday.fecha,
+                hora_pvt: existingToday.hora_pvt,
+                rt_media_ms: existingToday.rt_media_ms,
+                rt_sd_ms: existingToday.rt_sd_ms,
+                lapsos: existingToday.lapsos,
+                anticipaciones: existingToday.anticipaciones,
+                n_ensayos: existingToday.n_ensayos,
+                snr_proxy: existingToday.snr_proxy
+            };
+        }
+
+        const seedFecha = parsedPvt?.fecha || today;
+        const dia = tpn.dayNumber(seedFecha);
+        const meta = tpn.dayMeta(dia);
+
+        const section = container.createDiv({ cls: 'rpg-tpn-section' });
+        section.createEl('h4', { text: 'Protocolo TPN — registrar hoy' });
+        const subtitle = dia >= 1 && dia <= 42
+            ? `Día ${dia}/42 · semana ${meta.semana} · ${meta.fase} · trataka sugerido ${meta.trataka} min`
+            : `Fuera de las 6 semanas (${seedFecha}). Igual podés registrar.`;
+        section.createEl('p', { cls: 'rpg-subtitle', text: subtitle });
+        section.createEl('p', {
+            cls: 'rpg-subtitle',
+            text: 'Subí el CSV de Vigilance Buddy. RT, SD, lapsos, anticipaciones y SNR se calculan solos. Vos solo ponés KSS, horas de sueño y trataka.'
+        });
+
+        const form = section.createDiv({ cls: 'rpg-tpn-form' });
+
+        const drop = form.createDiv({ cls: 'rpg-tpn-field rpg-tpn-wide rpg-tpn-drop' });
+        drop.createEl('label', { text: 'CSV de Vigilance Buddy' });
+        const fileInput = drop.createEl('input');
+        fileInput.type = 'file';
+        fileInput.accept = '.csv,text/csv';
+        const paste = drop.createEl('textarea');
+        paste.rows = 3;
+        paste.placeholder = 'O pegá acá el contenido del CSV (Task, TapTime, Milliseconds)…';
+
+        const preview = form.createDiv({ cls: 'rpg-tpn-wide rpg-tpn-preview' });
+        const hoursHint = form.createDiv({ cls: 'rpg-tpn-wide rpg-subtitle' });
+
+        const kss = this.tpnField(form, 'KSS (1–9)', { type: 'number', min: 1, max: 9, step: '1', value: existingToday.kss });
+        const bed = this.tpnField(form, 'Hora acostarte', { type: 'time', value: existingToday.hora_acostar || cfg.bed || '22:00' });
+        const wake = this.tpnField(form, 'Hora levantarte', { type: 'time', value: existingToday.hora_levantar || cfg.wake || '07:00' });
+        const trataka = this.tpnField(form, 'Trataka (min)', {
+            type: 'number', min: 0, max: 40, step: '1',
+            value: existingToday.trataka_min != null ? existingToday.trataka_min : meta.trataka
+        });
+
+        const rotoRow = form.createDiv({ cls: 'rpg-tpn-field rpg-tpn-check rpg-tpn-wide' });
+        const roto = rotoRow.createEl('input');
+        roto.type = 'checkbox';
+        roto.checked = Boolean(existingToday.protocolo_roto);
+        rotoRow.createEl('label', { text: 'Protocolo roto (PVT fuera de hora, café antes, etc.)' });
+
+        const refreshHints = () => {
+            const horas = tpn.hoursBetween(bed.value, wake.value);
+            hoursHint.setText(horas != null ? `Sueño estimado: ${horas} h (de acostarte a levantarte).` : 'Poné hora de acostarte y de levantarte.');
+            if (!parsedPvt) {
+                preview.setText('Todavía no hay PVT. Subí o pegá el CSV.');
+                return;
+            }
+            preview.setText(tpn.pvtHint(parsedPvt, wake.value));
+        };
+
+        const applyCsv = (text, name) => {
+            try {
+                parsedPvt = tpn.parseVigilanceBuddyCsv(text);
+                csvText = text;
+                csvName = name || parsedPvt.fecha || 'pvt.csv';
+                preview.setText(tpn.pvtHint(parsedPvt, wake.value));
+                new Notice(`CSV leído: SNR ${parsedPvt.snr_proxy} · ${parsedPvt.n_ensayos} ensayos.`);
+            } catch (err) {
+                csvText = '';
+                preview.setText(err.message || String(err));
+                new Notice(`CSV no válido: ${err.message || err}`);
+            }
+        };
+
+        const readFile = (file) => new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.onload = () => resolve(String(reader.result || ''));
+            reader.onerror = () => reject(reader.error || new Error('No pude leer el archivo'));
+            reader.readAsText(file);
+        });
+        fileInput.addEventListener('change', async () => {
+            const file = fileInput.files && fileInput.files[0];
+            if (!file) return;
+            applyCsv(await readFile(file), file.name);
+        });
+        paste.addEventListener('blur', () => {
+            if (!paste.value.trim()) return;
+            applyCsv(paste.value, 'pegado.csv');
+        });
+        drop.addEventListener('dragover', (ev) => {
+            ev.preventDefault();
+            drop.addClass('is-drag');
+        });
+        drop.addEventListener('dragleave', () => drop.removeClass('is-drag'));
+        drop.addEventListener('drop', async (ev) => {
+            ev.preventDefault();
+            drop.removeClass('is-drag');
+            const file = ev.dataTransfer && ev.dataTransfer.files && ev.dataTransfer.files[0];
+            if (!file) return;
+            applyCsv(await readFile(file), file.name);
+        });
+        bed.addEventListener('input', refreshHints);
+        wake.addEventListener('input', refreshHints);
+        refreshHints();
+
+        const actions = section.createDiv({ cls: 'rpg-tpn-actions' });
+        const saveBtn = actions.createEl('button', { text: 'Registrar hoy', cls: 'rpg-tpn-save' });
+        saveBtn.onclick = async () => {
+            saveBtn.disabled = true;
+            try {
+                const result = await tpn.submit({
+                    fecha: parsedPvt?.fecha || today,
+                    csv_text: csvText || undefined,
+                    rt_media_ms: parsedPvt?.rt_media_ms,
+                    rt_sd_ms: parsedPvt?.rt_sd_ms,
+                    lapsos: parsedPvt?.lapsos,
+                    anticipaciones: parsedPvt?.anticipaciones,
+                    n_ensayos: parsedPvt?.n_ensayos,
+                    hora_pvt: parsedPvt?.hora_pvt,
+                    kss: kss.value,
+                    hora_acostar: bed.value,
+                    hora_levantar: wake.value,
+                    trataka_min: trataka.value,
+                    protocolo_roto: roto.checked,
+                    notas: csvName ? `csv:${csvName}` : ''
+                });
+                const snrText = result.snr == null ? 'SNR incompleto' : `SNR ${result.snr}`;
+                new Notice(`Protocolo TPN: ${snrText}. ${result.rpgNote}`);
+                this.render();
+            } catch (err) {
+                new Notice(`No pude guardar el protocolo: ${err.message || err}`);
+                saveBtn.disabled = false;
+            }
+        };
+
+        const week = tpn.weeklySummary();
+        const hist = section.createEl('details', { cls: 'rpg-tpn-history' });
+        hist.createEl('summary', { text: `Historial (${tpn.getEntries().length} días) · ${week.verdict}` });
+        const table = hist.createEl('table', { cls: 'rpg-tpn-table' });
+        const head = table.createEl('thead').createEl('tr');
+        ['Fecha', 'S', 'SNR', 'Lapsos', 'KSS', 'Horas', 'Trataka'].forEach(h => head.createEl('th', { text: h }));
+        const body = table.createEl('tbody');
+        tpn.getEntries().slice().reverse().forEach(entry => {
+            const tr = body.createEl('tr');
+            [
+                entry.fecha,
+                String(entry.semana || ''),
+                entry.snr_proxy == null ? '—' : String(entry.snr_proxy),
+                entry.lapsos == null ? '—' : String(entry.lapsos),
+                entry.kss == null ? '—' : String(entry.kss),
+                entry.horas_sueno == null ? '—' : String(entry.horas_sueno),
+                entry.trataka_min == null ? '—' : String(entry.trataka_min)
+            ].forEach(c => tr.createEl('td', { text: c }));
+        });
+
+        const weekTable = hist.createEl('table', { cls: 'rpg-tpn-table' });
+        const wh = weekTable.createEl('thead').createEl('tr');
+        ['Semana', 'Fase', 'Días válidos', 'SNR', 'Lapsos', 'KSS'].forEach(h => wh.createEl('th', { text: h }));
+        const wb = weekTable.createEl('tbody');
+        week.weeks.forEach(w => {
+            const tr = wb.createEl('tr');
+            [
+                String(w.semana),
+                w.fase,
+                String(w.valid),
+                w.snr == null ? '—' : w.snr.toFixed(3),
+                w.lapsos == null ? '—' : w.lapsos.toFixed(2),
+                w.kss == null ? '—' : w.kss.toFixed(1)
+            ].forEach(c => tr.createEl('td', { text: c }));
+        });
+        hist.createEl('p', {
+            cls: 'rpg-subtitle',
+            text: 'Fuente: 01_Planificacion/experiments/tpn-n1/registro.json · umbral +15% SNR semana 6 vs 1.'
+        });
     }
 
     async logMood(mood) {

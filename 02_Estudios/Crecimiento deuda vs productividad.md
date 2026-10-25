@@ -3,13 +3,13 @@ tags:
   - estudio
 tema_iniciado: 2026-07-25
 ---
-Preguntas y respuestas sobre [[Crecimiento deuda vs productividad]]: dos formas de crecer económicamente y las reglas para hacerlo de forma sana.
+Preguntas y respuestas sobre [[02_Estudios/Crecimiento deuda vs productividad]]: dos formas de crecer económicamente y las reglas para hacerlo de forma sana.
 
 - **¿Cómo funciona el crecimiento por deuda y cuál es su costo?**.-
 
     **Respuesta:**
 
-    Es un crecimiento **rápido**, pero a costa de **pedirle prestado a tu yo del futuro**. Es aún más costoso si pedís crédito en **tiempo de auge** (ver [[Banco central]]), porque cuando llegue la recesión el **interés te golpeará con más intensidad**.
+    Es un crecimiento **rápido**, pero a costa de **pedirle prestado a tu yo del futuro**. Es aún más costoso si pedís crédito en **tiempo de auge** (ver [[02_Estudios/Banco central]]), porque cuando llegue la recesión el **interés te golpeará con más intensidad**.
 
 - **¿Cómo funciona el crecimiento por productividad?**-
 

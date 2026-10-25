@@ -3,7 +3,7 @@ tags:
   - estudio
 tema_iniciado: 2026-07-27
 ---
-Preguntas y respuestas para fijar los conceptos de [[Entrevista de comportamiento]]: qué evalúan, culture fit, errores comunes y tipos de pregunta (negocio vs personas).
+Preguntas y respuestas para fijar los conceptos de [[02_Estudios/Entrevista de comportamiento]]: qué evalúan, culture fit, errores comunes y tipos de pregunta (negocio vs personas).
 
 
 - **¿Qué es una entrevista de comportamiento?**

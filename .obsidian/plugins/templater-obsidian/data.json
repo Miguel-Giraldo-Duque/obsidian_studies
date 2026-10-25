@@ -17,6 +17,46 @@
     {
       "folder": "00_Plantillas",
       "template": "00_Plantillas/Plantilla_Semanal.md"
+    },
+    {
+      "folder": "Escuelas",
+      "template": "00_Plantillas/Plantilla_Sesion_Estudio.md"
+    },
+    {
+      "folder": "Escuela CiberSeguridad",
+      "template": "00_Plantillas/Plantilla_Sesion_Estudio.md"
+    },
+    {
+      "folder": "Escuela de AI",
+      "template": "00_Plantillas/Plantilla_Sesion_Estudio.md"
+    },
+    {
+      "folder": "Escuela de electronica",
+      "template": "00_Plantillas/Plantilla_Sesion_Estudio.md"
+    },
+    {
+      "folder": "Escuela de matematicas",
+      "template": "00_Plantillas/Plantilla_Sesion_Estudio.md"
+    },
+    {
+      "folder": "Escuela de ui e ux",
+      "template": "00_Plantillas/Plantilla_Sesion_Estudio.md"
+    },
+    {
+      "folder": "Escuela desarrollo web",
+      "template": "00_Plantillas/Plantilla_Sesion_Estudio.md"
+    },
+    {
+      "folder": "Escuela finanzas",
+      "template": "00_Plantillas/Plantilla_Sesion_Estudio.md"
+    },
+    {
+      "folder": "Escuela habilidades blandas",
+      "template": "00_Plantillas/Plantilla_Sesion_Estudio.md"
+    },
+    {
+      "folder": "Escuela sexualidad",
+      "template": "00_Plantillas/Plantilla_Sesion_Estudio.md"
     }
   ],
   "enable_file_templates": false,

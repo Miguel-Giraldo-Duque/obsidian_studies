@@ -17,7 +17,11 @@ const BUILD_ORDER = [
     'dev/src/services/SkillService.js', // Skill logic (370 lines)
     'dev/src/services/HabitSkillSyncService.js', // Habit checklist to skill XP sync
     'dev/src/services/SkillTreeService.js', // Skill tree nodes, challenges, boss links
+    'dev/src/services/QuestEventService.js', // Multi-roadmap quest events + daily board
+    'dev/src/services/QuestCampaignService.js', // Campaign packs (EveVacum-style)
     'dev/src/services/VowService.js',   // Belief vows + grid evidence grains
+    'dev/src/services/TpnExperimentService.js', // PVT/sleep N=1 tavern log
+    'dev/src/icons/IbmIcons.js',        // IBM Carbon–style SVG icons
     'dev/src/views/HeroView.js',        // UI code (2261 lines)
     'dev/main-core.js'                  // Everything else
 ];

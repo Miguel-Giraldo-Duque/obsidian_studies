@@ -1,7 +1,7 @@
 ---
 tipo: memoria-mentor
-actualizado: 2026-08-17
-version: 16
+actualizado: 2026-10-22
+version: 17
 ---
 
 # Memoria del Mentor
@@ -64,6 +64,10 @@ version: 16
 - [Hechizo] Flow :: skill Presencia; TPN vs DMN; 60 quests hardware→software social→caos; nodo `node_1785983669892_tu8ccua1d`.
 - [Estado] Flow Q1.7 Gate Ochenta :: 20 min pared, criterio S/R ≥80% (no conteo de pensamientos); pendiente; daña a Guiltmal.
 - [Componente] Banco Flow :: `001 banco de retos de Flow.md` + mapa `02_Estudios/Quests_Flow.md` + script `_inject_flow_quests.py`.
+- [Campaña] Vendedor de calle :: 14 retos de venta en vereda, 22/10–1/11/2026; meta 2 ventas; el no suma; Flor Vereda al cerrar el roadmap.
+- [Patron] Esconder la mano :: ocultar el hecho porque ver la decepción del otro duele más que mentir; origen notas/mamá; voto de transparencia desde la mentira a Salomé.
+- [Evento] Lentejas 2026-10-22 :: a las 6 guardó en silencio las lentejas que no refrigeró; el papá ya lo sabía y esperaba la frase; Soulhy la dijo en la puerta; la culpa siguió y aun así fue a Kikiriquí.
+- [Persona] Papá :: prueba de transparencia en casa; recibió la confesión con gracias y nombró pertenencia, trabajo prometido y escucha.
 
 ## Relaciones
 > Formato: `- Origen --tipoDeRelacion--> Destino  (nota opcional)`
@@ -126,6 +130,12 @@ version: 16
 - Flow --dana--> Kryos
 - Flow Q1.7 Gate Ochenta --mide--> Ratio S/R (señal en el punto vs ruido DMN)
 - Flow Q1.7 Gate Ochenta --dana--> Guiltmal
+- Vendedor de calle --dana--> Guiltmal
+- Vendedor de calle --abre_al_cerrar--> Flor Vereda
+- Esconder la mano --alimenta--> Guiltmal
+- Herida aprobacion mama --eco_en--> Esconder la mano
+- Evento Lentejas 2026-10-22 --expone--> Patron Esconder la mano
+- Evento Lentejas 2026-10-22 --usa--> Tomo Earth  (imperfección dicha en voz alta)
 
 ## Observaciones
 > Datapoints fechados por entidad. Formato: `- [AAAA-MM-DD] Entidad :: observacion`
@@ -174,3 +184,6 @@ version: 16
 - [2026-08-17] Guiltmal :: revelado en salon (trono, aplauso, nube que absorbe, mesa); Phobos y Kryos purificados; Light sigue cerrado.
 - [2026-08-17] Guiltmal HP :: categoria `soberano` (10000 HP, tomo) en plugin soulhy; ficha en arena 10000/10000; 5 fases x 2000 quedan como mapa de lore.
 - [2026-08-17] Flow Q1.7 :: Soulhy registra ~32 y ~35 pensamientos/20 min; estaba usando conteo (menos = mejor) en vez de S/R. Gate = 20 min + ≥80% de pensamientos EN el punto. TSN: no pelear el pensamiento, etiquetar y volver rapido.
+- [2026-10-19] Postura física :: distinta de skill RPG "Postura de poder" (Shine). Patrón: sentado encorvado → al erguirse pelvis adelanta + tronco se encoge. Prioridad: setup escritorio + micro-resets en breaks 10′ deep work; no confundir con RPG clínico Souchard.
+- [2026-10-22] Vendedor de calle :: migrada desde el escritorio al RPG. Roadmap 22/10–1/11 (los días 18–21 ya habían pasado: ensayo+Kikiriki hoy, balance y Flor Vereda el 1/11). Daña a Guiltmal. Dominio livingStandards.
+- [2026-10-22] Esconder la mano :: lentejas. Dijo la frase en la puerta del papá con la presión encima. El papá ya sabía; el gracias cálido aumentó la culpa. Casi llora con lo de la escucha. Reparación que él eligió: una cosa limpia por día, búsqueda de trabajo visible, y Kikiriquí el mismo día. La culpa se quedó y la acción también. Próxima: decir el hecho en una frase antes de sentarse al escritorio.

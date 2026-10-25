@@ -192,7 +192,8 @@ const DEFAULT_SPELL_LIBRARY = {
     'Idiomas': { category: 'mind', spellSchool: 'Lenguaje', description: 'Hechizo de expansión lingüística y comprensión verbal.', effects: ['Aumenta precisión auditiva y verbal.', 'Mejora acceso a nuevas culturas.'], statesApplied: ['Comprensión'], synergyTags: ['Comunicación'], spellPowerBonus: 5 },
     'Presencia Social': { category: 'spirit', spellSchool: 'Presencia', description: 'Hechizo de contacto visual, postura y calma social.', effects: ['Entrena mirada estable.', 'Reduce reactividad ante evaluación externa.'], statesApplied: ['Presencia'], synergyTags: ['Calidez', 'Poder'], spellPowerBonus: 5 },
     'Calidez': { category: 'spirit', spellSchool: 'Calidez', description: 'Hechizo de benevolencia expresada y conexión interpersonal.', effects: ['Suaviza el marco de interacción.', 'Potencia empatía y conexión.'], statesApplied: ['Calidez'], synergyTags: ['Presencia', 'Gratitud'], spellPowerBonus: 5 },
-    'Autocontrol': { category: 'mind', spellSchool: 'Regulación', description: 'Hechizo de pausa consciente antes de responder o reaccionar.', effects: ['Reduce impulsividad.', 'Permite elegir respuesta en vez de reacción.'], statesApplied: ['Templanza'], synergyTags: ['Presencia'], spellPowerBonus: 5 }
+    'Autocontrol': { category: 'mind', spellSchool: 'Regulación', description: 'Hechizo de pausa consciente antes de responder o reaccionar.', effects: ['Reduce impulsividad.', 'Permite elegir respuesta en vez de reacción.'], statesApplied: ['Templanza'], synergyTags: ['Presencia'], spellPowerBonus: 5 },
+    'Organización': { category: 'body', spellSchool: 'Orden', description: 'Hechizo de orden interno y externo: planear, limpiar y conquistar el espacio.', effects: ['Reduce fricción del día.', 'Prepara el terreno para deep work.'], statesApplied: ['Orden'], synergyTags: ['Acción', 'Congruencia'], spellPowerBonus: 5 }
 };
 
 const DEFAULT_NATIVE_HABITS = [
@@ -208,7 +209,9 @@ const DEFAULT_NATIVE_HABITS = [
     { name: '15min glidish', domain: 'education', skillNames: ['Idiomas'], xp: 10, gold: 5, skillXp: 10, difficulty: 'medium' },
     { name: 'Mirar 2 conductores a los ojos mientras espero en la parada del bus, sin reir, ni enconbarme solo mirar.', domain: 'communityVitality', skillNames: ['Presencia Social'], xp: 10, gold: 5, skillXp: 10, difficulty: 'hard' },
     { name: 'Durante la conversación con una persona, decir 3 cosas que agradesco de esa persona.', domain: 'communityVitality', skillNames: ['Calidez', 'Gratitud'], xp: 10, gold: 5, skillXp: 10, difficulty: 'hard' },
-    { name: 'Esperar 2 segundos antes de responder o reaccionar a cualquier comentario', domain: 'psychologicalWellbeing', skillNames: ['Autocontrol'], xp: 10, gold: 5, skillXp: 10, difficulty: 'medium' }
+    { name: 'Esperar 2 segundos antes de responder o reaccionar a cualquier comentario', domain: 'psychologicalWellbeing', skillNames: ['Autocontrol'], xp: 10, gold: 5, skillXp: 10, difficulty: 'medium' },
+    { name: 'Protocolo TPN (PVT + sueño)', domain: 'psychologicalWellbeing', skillNames: ['Meditación'], xp: 10, gold: 5, skillXp: 10, difficulty: 'medium' },
+    { name: 'Organización interna y externa', domain: 'livingStandards', skillNames: ['Organización'], xp: 10, gold: 5, skillXp: 10, difficulty: 'medium' }
 ];
 
 const DEFAULT_SKILLS_SETTINGS = {
@@ -227,6 +230,7 @@ const DEFAULT_HABIT_SKILL_SYNC = {
     mappings: {
         'Meditación Metta': 'Meditación',
         '10min meditación FOM y OM': 'Meditación',
+        'Protocolo TPN (PVT + sueño)': 'Meditación',
         '1 clase de Plazi': 'Learning'
     },
     skillCategories: {
@@ -235,41 +239,68 @@ const DEFAULT_HABIT_SKILL_SYNC = {
     }
 };
 
-/** AM habit → next Toggl project (school-bell chain). Only morning rituals. */
-const DEFAULT_HABIT_TIMER_CHAIN = {
-    '30min ejercicio': {
-        projectName: 'Meditacion',
-        projectId: 207324607,
-        description: 'Atom-FOM',
-        nextHabitName: '10min meditación FOM y OM'
+/**
+ * Legacy per-habit Toggl chain (unused by campana AM).
+ * Kept empty so old data.json merges do not re-arm single-habit Toggl starts.
+ */
+const DEFAULT_HABIT_TIMER_CHAIN = {};
+
+/**
+ * AM block chain: when ALL habits in a block are completed, stop the current
+ * WinClock cycle, start the next, and switch Toggl in parallel.
+ */
+const DEFAULT_HABIT_CYCLE_CHAIN = [
+    {
+        id: 'ejercicio-meditacion',
+        habitNames: ['30min ejercicio', '10min meditación FOM y OM'],
+        stopCycleId: 'meditation-om',
+        nextCycleId: 'gratitud-y-principios',
+        nextToggl: {
+            projectName: 'Gratitud',
+            projectId: 220114890,
+            description: 'diario-principios'
+        }
     },
-    '10min meditación FOM y OM': {
-        projectName: 'Gratitud',
-        projectId: 220114890,
-        description: 'diario-principios',
-        nextHabitName: 'Escribir 5 agradecimientos propios y vision en tercera persona viendome'
+    {
+        id: 'gratitud-principios',
+        habitNames: [
+            'Escribir 5 agradecimientos propios y vision en tercera persona viendome',
+            'Lectura de mis principios'
+        ],
+        stopCycleId: 'gratitud-y-principios',
+        nextCycleId: 'meditacci-n-calidez',
+        nextToggl: {
+            projectName: 'Meditacion',
+            projectId: 221239625,
+            description: 'Metta'
+        }
     },
-    'Escribir 5 agradecimientos propios y vision en tercera persona viendome': {
-        projectName: 'Meditacion',
-        projectId: 221239625,
-        description: 'Metta',
-        nextHabitName: 'Meditación Metta'
+    {
+        id: 'calidez',
+        habitNames: ['Meditación Metta', 'Imaginar mi funeral'],
+        stopCycleId: 'meditacci-n-calidez',
+        nextCycleId: 'organize-and-conquer',
+        nextToggl: {
+            projectName: null,
+            projectId: null,
+            description: 'Organize and conquer'
+        }
     },
-    'Meditación Metta': {
-        projectName: 'Plazi',
-        projectId: 192159466,
-        description: 'Perply',
-        nextHabitName: '15min Perply'
-    },
-    '15min Perply': {
-        projectName: null,
-        projectId: null,
-        description: null,
-        nextHabitName: null
+    {
+        id: 'organizacion',
+        habitNames: ['Organización interna y externa'],
+        stopCycleId: 'organize-and-conquer',
+        nextCycleId: 'deep-work',
+        nextToggl: {
+            projectName: 'Plazi',
+            projectId: 192159466,
+            description: 'Deep Work'
+        }
     }
-};
+];
 
 const DEFAULT_TOGGL_WORKSPACE_ID = '5221214';
+const WIN_CLOCK_API_BASE = 'http://127.0.0.1:3847';
 
 const SKILL_TREE_SCHOOLS = [
     { id: 'Autoridad', name: 'Autoridad', color: '#f5a623', aliases: ['Poder'] },
@@ -294,6 +325,7 @@ const DEFAULT_SEED_VOWS = [
         cols: 5,
         rows: 10,
         schools: ['Autoridad', 'Presencia', 'Calidez'],
+        domains: ['psychologicalWellbeing'],
         xpBonus: 0.2,
         damageBonus: 0.2,
         completedAt: null,
@@ -547,6 +579,61 @@ const DEFAULT_SKILL_TREE_QUEST = {
     bossDamage: 10
 };
 
+/** Multi-roadmap quest event (Evento del Día) */
+const DEFAULT_QUEST_EVENT = {
+    id: '',
+    name: '',
+    status: 'active', // active | paused | done
+    startDate: '',
+    durationDays: 30,
+    dailyQuota: 3,
+    poolQuestIds: [],
+    weekConstraints: {}, // "1".."N" → { campaignIds?: [], skillNodeIds?: [], schoolIds?: [] }
+    assignments: {}, // "YYYY-MM-DD" → questId[]
+    completedInEvent: [],
+    flowerId: null,
+    flowerUnlocked: false,
+    createdAt: null,
+    completedAt: null
+};
+
+/** Campaign pack (EveVacum-style: 1..N quests, no skill-tree node) */
+const DEFAULT_QUEST_CAMPAIGN = {
+    id: '',
+    name: '',
+    description: '',
+    school: 'Campo',
+    linkedBossIds: [],
+    defaultBossDamage: 25,
+    flowerId: null,
+    questIds: [],
+    sourceTag: null,
+    createdAt: null
+};
+
+const DEFAULT_CAMPAIGN_QUEST = {
+    id: '',
+    name: '',
+    description: '',
+    xp: 10,
+    gold: 5,
+    domain: 'psychologicalWellbeing',
+    difficulty: 'easy',
+    completed: false,
+    completedDate: null,
+    kind: 'campaign-challenge',
+    skillNodeId: '',
+    skillLevel: 1,
+    school: 'Campo',
+    linkedBossIds: [],
+    bossDamage: 25,
+    campaignId: '',
+    source: 'campaign'
+};
+
+const EVEVACUM_CAMPAIGN_SOURCE = 'evevacum-bank';
+const EVEVACUM_BOSS_ID = '1785816112558';
+
 // Helper to get chat models for a provider
 function getChatModels(providerId) {
     return (MODELS_BY_PROVIDER[providerId] || []).filter(m => m.type === 'chat');
@@ -587,7 +674,9 @@ module.exports = {
     DEFAULT_SKILLS_SETTINGS,
     DEFAULT_HABIT_SKILL_SYNC,
     DEFAULT_HABIT_TIMER_CHAIN,
+    DEFAULT_HABIT_CYCLE_CHAIN,
     DEFAULT_TOGGL_WORKSPACE_ID,
+    WIN_CLOCK_API_BASE,
     SKILL_TREE_SCHOOLS,
     SKILL_TREE_ORNATE_BORDER_SCHOOLS,
     SKILL_TREE_BORDER_ROOT,
@@ -619,6 +708,11 @@ module.exports = {
     SKILL_TREE_NODE_ROLES,
     DEFAULT_SKILL_TREE,
     DEFAULT_SKILL_TREE_QUEST,
+    DEFAULT_QUEST_EVENT,
+    DEFAULT_QUEST_CAMPAIGN,
+    DEFAULT_CAMPAIGN_QUEST,
+    EVEVACUM_CAMPAIGN_SOURCE,
+    EVEVACUM_BOSS_ID,
     LEGACY_SOMMELIER_NODE_ID,
     SOMMELIER_NODE_ID,
     PHOBOS_BOSS_ID,

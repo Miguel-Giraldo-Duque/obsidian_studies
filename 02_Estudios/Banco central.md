@@ -3,7 +3,7 @@ tags:
   - estudio
 tema_iniciado: 2026-07-25
 ---
-Preguntas y respuestas para fijar los conceptos de [[Banco central]]: su función, el ciclo económico y el crédito como herramienta.
+Preguntas y respuestas para fijar los conceptos de [[02_Estudios/Banco central]]: su función, el ciclo económico y el crédito como herramienta.
 
 
 - **¿Cuál es la función principal de un banco central?** -

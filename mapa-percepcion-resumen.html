@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Mapa de percepción</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,560;9..144,640&family=Outfit:wght@360;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #0c0c0e;
+    --panel: #16161a;
+    --line: #2a2a30;
+    --ink: #f3efe6;
+    --muted: #a39c90;
+    --gold: #d4b483;
+    --fact: #8ea4bc;
+    --perc: #cbbba6;
+    --intent: #e7c98a;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: Outfit, "Segoe UI", sans-serif;
+    font-weight: 360;
+    line-height: 1.5;
+  }
+  header.page, main {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 48px 24px 8px;
+  }
+  main { padding-top: 8px; padding-bottom: 72px; }
+  p.kicker {
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-size: 12px;
+    color: var(--gold);
+    margin: 0 0 8px;
+  }
+  h1 {
+    font-family: Fraunces, Georgia, serif;
+    font-weight: 560;
+    font-size: clamp(32px, 5vw, 48px);
+    line-height: 1.05;
+    margin: 0 0 12px;
+  }
+  h2 {
+    font-family: Fraunces, Georgia, serif;
+    font-weight: 560;
+    font-size: 26px;
+    margin: 0 0 8px;
+  }
+  h3 {
+    font-family: Fraunces, Georgia, serif;
+    font-weight: 560;
+    font-size: 18px;
+    margin: 0 0 6px;
+  }
+  .lead, .note { color: var(--muted); max-width: 68ch; }
+  .card, .sheet {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: 22px;
+    margin: 14px 0;
+  }
+  .sheet {
+    background: #14110c;
+    border-color: #3a3024;
+    border-left: 4px solid var(--gold);
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 12px;
+  }
+  .tag {
+    display: inline-block;
+    color: #1a140c;
+    background: var(--gold);
+    border-radius: 999px;
+    padding: 2px 10px;
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    margin-bottom: 8px;
+  }
+  .tag.quiet {
+    color: var(--gold);
+    background: transparent;
+    border: 1px solid var(--gold-dim, #8a7348);
+  }
+  ol.steps { margin: 8px 0 0; padding-left: 20px; }
+  ol.steps li { margin: 0 0 10px; }
+  .muted { color: var(--muted); }
+  q { color: var(--intent); font-style: normal; }
+  .loop {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    margin-top: 12px;
+  }
+  .loop span {
+    background: #12141a;
+    border: 1px solid #3a342c;
+    border-radius: 999px;
+    padding: 8px 12px;
+  }
+  .loop i {
+    color: var(--gold);
+    font-style: normal;
+  }
+  .firma { border-top: 1px solid var(--line); margin-top: 12px; padding-top: 10px; }
+</style>
+</head>
+<body>
+<header class="page">
+  <p class="kicker">Mapa de percepción</p>
+  <h1>Del hecho al ciclo</h1>
+  <p class="lead">La percepción no es el dato más una emoción. Neisser la describe como un ciclo: un esquema anticipa qué información va a llegar, la persona explora, y lo que encuentra corrige el esquema. El esquema vuelve a dirigir la mirada. Solo datos seríamos autómatas. Solo teoría, soñadores.</p>
+</header>
+<main>
+  <section class="card">
+    <h2>Etapas</h2>
+    <p class="note">Van en este orden para armar el cuadro. En la conversación no se recorren como una lista.</p>
+    <div class="grid">
+      <article>
+        <span class="tag">1 · Metas</span>
+        <h3>El paraguas</h3>
+        <p>Hay metas fisiológicas (hambre, daño, sexo) y tres necesidades psicológicas que Deci y Ryan tratan como innatas: competencia, autonomía y vinculación. No son el tema del relato. Son el paraguas que engendra la meta concreta de ese día: que reconozcan el trabajo, poder decidir, seguir perteneciendo.</p>
+      </article>
+      <article>
+        <span class="tag">2 · Atención</span>
+        <h3>Sensores en el haz</h3>
+        <p>La atención es el conjunto de periféricos que se alinean por una meta. Vista, oído, tacto, temperatura y sensaciones internas son antenas: disparan cuando algo cruza el haz de la meta activa. La fóvea es solo el punto nítido de una de ellas. El perro que parece cargar se vuelve otro hecho cuando se ve la correa: el dato nuevo corrige lo captado si el modelo no está demasiado seguro.</p>
+      </article>
+      <article>
+        <span class="tag">3 · Pasado</span>
+        <h3>El match</h3>
+        <p>Esquemas, creencias, cultura, sesgos y memoria dicen qué se esperaba. Si lo real coincide con el prior, y el prior se siente preciso, el dato casi no corrige. Kenrick: la meta encendida elige a qué rasgo de la escena se le da recurso.</p>
+      </article>
+      <article>
+        <span class="tag">4 · Evaluación</span>
+        <h3>Cinco vectores</h3>
+        <p>Scherer: novedad, consecuencias o implicaciones, capacidad de afrontar, valores y normas. Endsley, nivel 3: la proyección de lo que viene. La emoción es la firma de cuál está vivo, no un vector aparte.</p>
+      </article>
+      <article>
+        <span class="tag">5 · Intención</span>
+        <h3>El remito</h3>
+        <p>No es una capa más de contenido. Es el punto al que apuntan las otras: un deseo más una acción concreta, con fecha y lugar.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Atención</h2>
+    <p class="note">Qué sensor captó qué le dice al oyente cuál era el objetivo que el sistema buscaba. La meta apunta las antenas. El estímulo que cruza ese haz es el que entra.</p>
+    <div class="grid">
+      <article>
+        <span class="tag quiet">Martín · vínculo</span>
+        <h3>La risa y la mirada</h3>
+        <p>En la fiesta, la meta de vínculo enciende el oído y el ojo. Martín nota una risa y, enseguida, una mirada. Esas dos antenas dicen que el sistema buscaba a alguien con quien quedarse.</p>
+      </article>
+      <article>
+        <span class="tag quiet">La misma risa</span>
+        <h3>Si la meta fuera cuidarse</h3>
+        <p>Con autoprotección activa, la misma risa no acerca. Lo hace apartar la vista. El estímulo no cambió. Cambió el haz, y por eso ganó otro sensor: el que busca la salida, no el rostro.</p>
+      </article>
+      <article>
+        <span class="tag quiet">La pregunta</span>
+        <h3>Qué notó primero</h3>
+        <p>«¿Qué fue lo primero que notaste?» revela qué sensor ganó. «Un calor en el pecho» es un sensor interno. «Me erizaron los brazos» es piel. No es el mismo dato, ni la misma meta.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="sheet">
+    <h2>Regla</h2>
+    <p>No se recorren los vectores en orden. La emoción firma el vector vivo.</p>
+    <ul>
+      <li>Sorpresa o interés: novedad.</li>
+      <li>Miedo: implicación adversa, poco poder, futuro incierto.</li>
+      <li>Bronca: otro lo causó, y hay sensación de poder.</li>
+      <li>Tristeza: pérdida y poco control.</li>
+      <li>Vergüenza, culpa u orgullo: normas y valores.</li>
+    </ul>
+    <p>Si una emoción tapa otra, el vector vivo está debajo. La bronca que cubre vergüenza pide valores, no el plan.</p>
+    <p class="muted">Orden de Scherer, cuando varios están callados: relevancia primero (novedad, agrado, meta). Si el hecho no es nuevo ni toca una meta, el resto queda flojo. Después las implicaciones. El afrontamiento solo cuando ya se sabe cuál es la exigencia. Los valores al final, contra el autoconcepto y el grupo. La proyección solo con el sentido presente ya armado. Sin eso, el futuro es una conjetura.</p>
+  </section>
+
+  <section class="card">
+    <h2>Caso</h2>
+    <p class="note">Inés, miércoles por la noche, le cuenta a una amiga lo que pasó en el ensayo del coro. El oyente no abre por el motivo. Entra por lo que la emoción ya está firmando, y completa el resto para cerrar el cuadro.</p>
+
+    <h3>Hecho</h3>
+    <p>En el ensayo, la directora dijo delante de todos: «Esta parte la canta Mara. Vos entrá en el estribillo.»</p>
+
+    <h3>Metas</h3>
+    <p>El paraguas: competencia (que su voz alcance), autonomía (ensayó esa parte toda la semana por su cuenta), vinculación (su lugar en el coro). La meta concreta: que le den el solo del puente en el concierto del sábado.</p>
+
+    <h3>Atención</h3>
+    <p>La meta de competencia alineó las antenas. Ganó el oído: la frase. Después el ojo: la boca de la directora y Mara, que bajó la mirada. La fóvea se quedó ahí. No oyó el compás siguiente. Pregunta del oyente: <q>¿Qué fue lo primero que notaste?</q> Inés: la frase, no el piano. Primero fue un zarpazo. Después vio la correa: la directora sonreía y señalaba la partitura, no a ella. Lo que igual quedó captado fue la frase. Si la meta hubiera sido solo vincularse, el sensor ganador habría sido la mirada de Mara, no la orden.</p>
+    <p class="muted">Emoción de esta etapa: un calor rápido en la cara. Todavía sin nombre.</p>
+
+    <h3>Pasado</h3>
+    <p>Esquema de la escuela: si se destaca, la corren. Creencia: «mi voz no da para un solo». Cultura del coro: no se discute a la directora. Lo esperado y lo oído coincidieron. El prior era muy preciso. La sonrisa casi no lo corrigió.</p>
+    <p class="muted">Emoción: familiaridad amarga. «Otra vez».</p>
+
+    <div class="firma">
+      <h3>La firma</h3>
+      <p>Lo primero que se ve es bronca: otro lo causó. Debajo hay vergüenza: «yo no soy la que canta el solo». El oyente entra por la bronca hacia la implicación, y enseguida por la vergüenza hacia el valor. Los otros vectores se completan después, no antes.</p>
+    </div>
+
+    <ol class="steps">
+      <li>
+        <strong>Implicaciones.</strong>
+        <span class="muted">Firma: bronca, y un miedo de fondo de perder el solo.</span>
+        Pregunta: <q>¿Qué cambia para el puente y para tu lugar el sábado?</q>
+        Inés: la directora se lo sacó en público. El solo ya no es suyo. El lugar en el grupo quedó en duda.
+      </li>
+      <li>
+        <strong>Valores y normas.</strong>
+        <span class="muted">Firma de abajo: vergüenza, y un resto de orgullo por haber ensayado.</span>
+        Pregunta: <q>¿En qué te dejó mal parada eso, con vos o con el coro?</q>
+        Inés: pedir el solo le parece de más. Callarse también le parece traicionarse.
+      </li>
+      <li>
+        <strong>Novedad.</strong>
+        <span class="muted">Firma floja: poca sorpresa. El esquema ya lo esperaba.</span>
+        Pregunta: <q>Contame el segundo en que lo dijo: ¿qué no te esperabas?</q>
+        Inés: no la frase. Le sorprendió que Mara no la mirara.
+      </li>
+      <li>
+        <strong>Afrontamiento.</strong>
+        <span class="muted">La exigencia ya está clara. En la sala, poco poder. Después, algo de margen.</span>
+        Pregunta: <q>¿Qué queda en tus manos antes del sábado?</q>
+        Inés: en el ensayo, nada. Mañana, antes de que lleguen las demás, puede cantarle el puente a la directora.
+      </li>
+      <li>
+        <strong>Proyección.</strong>
+        <span class="muted">El presente ya se entiende. El nudo que queda es el concierto.</span>
+        Pregunta: <q>Si el sábado la directora no cambia nada, ¿qué ves que pasa en el escenario?</q>
+        Inés: entra en el estribillo, y el solo de Mara le va a doler en la tercera fila.
+      </li>
+    </ol>
+
+    <h3>Intención</h3>
+    <p>Deseo: que la directora escuche el puente en su voz antes de cerrar el reparto. Acción: el jueves a las 19, en la sala del ensayo, antes de que llegue el coro, le pide dos minutos y canta el puente.</p>
+  </section>
+
+  <section class="sheet">
+    <h2>El ciclo</h2>
+    <p>Lo que Inés decida el jueves vuelve a ser meta. Esa meta va a dirigir qué mire y qué oiga en la sala. Si la directora dice que sí, o que no, el esquema se corrige. Neisser otra vez.</p>
+    <div class="loop" aria-label="Ciclo de la percepción">
+      <span>Metas</span><i>→</i>
+      <span>Atención</span><i>→</i>
+      <span>Pasado</span><i>→</i>
+      <span>Evaluación</span><i>→</i>
+      <span>Intención</span><i>→</i>
+      <span>Metas</span>
+    </div>
+    <p class="muted">La emoción no es un eslabón. Es la marca que dice en qué vector de la evaluación detenerse.</p>
+  </section>
+
+  <section class="card">
+    <h2>Demo · Pepita</h2>
+    <p class="note">Pepita dice: «Me regalaron un libro y no sé si me gusta». El oyente recorre el mapa. La duda firma el vector: novedad con un toque de valor. Consecuencia y capacidad quedan calladas.</p>
+
+    <h3>Hecho</h3>
+    <p>Le regalaron un libro. Todavía no sabe si le gusta.</p>
+    <p>Pregunta: <q>Contame cómo llegó el libro.</q> Pepita: se lo dio su hermana, ayer, en la cocina.</p>
+
+    <h3>Meta</h3>
+    <p>El paraguas es la vinculación. La meta concreta es seguir cerca de su hermana, no opinar de literatura.</p>
+    <p>Pregunta: <q>Cuando lo recibiste, ¿qué querías que pasara entre ustedes?</q> Pepita: que la hermana viera que el regalo le importaba.</p>
+
+    <h3>Atención</h3>
+    <p>Ganó el ojo. La tapa. Novedad visual: no era el libro que esperaba. El oído de la frase de la hermana quedó atrás.</p>
+    <p>Pregunta: <q>¿Qué fue lo primero que notaste?</q> Pepita: la tapa. El dibujo no era de ella.</p>
+
+    <h3>Pasado</h3>
+    <p>El match es viejo. De chica rompió la cajita de música que le había regalado la misma hermana. El esquema dice: un regalo suyo se malogra en mis manos, y eso nos separa.</p>
+    <p>Pregunta: <q>¿A qué otro regalo te sonó este?</q> Pepita: a esa cajita. La abrió mal y no supo cómo decirlo.</p>
+
+    <h3>Evaluación</h3>
+    <p>La emoción es duda, no bronca ni miedo ni tristeza. Firma: novedad, con un toque de valor. El libro no encaja en lo que ella cree que le gusta, y eso roza quién es para su hermana. No hay exigencia que afrontar ni una consecuencia que esté pesando.</p>
+    <p>Pregunta de novedad: <q>¿Qué de la tapa no te cierra?</q> Pepita: el dibujo es de una casa que no es la de ellas.</p>
+    <p>Pregunta de valor: <q>Si te gusta o no, ¿qué dice de vos con ella?</q> Pepita: si no le gusta, queda como la que rompe lo que la hermana elige.</p>
+    <p class="muted">El oyente no se queda en los otros dos. Una pregunta de consecuencia («¿qué cambia si no te gusta?») vuelve vacía: no cambia nada práctico. Una de capacidad («¿podés leerlo?») también: leer no es el problema. Vuelve a la tapa y al vínculo.</p>
+
+    <h3>Proyección</h3>
+    <p>El presente ya está: un libro raro, de la hermana, que toca el recuerdo de la cajita. Recién ahí el futuro tiene forma.</p>
+    <p>Pregunta: <q>Si esta noche lo abrís, ¿dónde te ves?</q> Pepita: en el sillón, con la manta, la tapa dada vuelta.</p>
+
+    <h3>Intención</h3>
+    <p>Deseo: que el regalo no se malogre como la cajita. Acción: esta noche, en el sillón, lee aunque sea un capítulo.</p>
+    <p>Pregunta: <q>¿Qué vas a hacer con el libro, y cuándo?</q> Pepita: hoy a la noche, un capítulo, ahí.</p>
+  </section>
+</main>
+</body>
+</html>

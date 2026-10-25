@@ -3,7 +3,7 @@ tags:
   - estudio
 tema_iniciado: 2026-07-27
 ---
-Preguntas y respuestas para fijar los conceptos de [[Vercel AI SDK]]: qué es la librería y cómo se parten sus capas (Core, UI, RSC).
+Preguntas y respuestas para fijar los conceptos de [[02_Estudios/Vercel AI SDK]]: qué es la librería y cómo se parten sus capas (Core, UI, RSC).
 
 
 - **¿Qué es el Vercel AI SDK?**

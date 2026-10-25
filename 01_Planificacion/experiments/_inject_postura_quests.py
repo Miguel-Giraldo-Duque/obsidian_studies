@@ -240,38 +240,8 @@ def inject_data() -> None:
     d["habitTimerChainEnabled"] = True if "habitTimerChainEnabled" not in d else d["habitTimerChainEnabled"]
     d.setdefault("togglApiToken", "")
     d.setdefault("togglWorkspaceId", "5221214")
-    d["habitTimerChain"] = {
-        "30min ejercicio": {
-            "projectName": "Meditacion",
-            "projectId": 207324607,
-            "description": "Atom-FOM",
-            "nextHabitName": "10min meditación FOM y OM",
-        },
-        "10min meditación FOM y OM": {
-            "projectName": "Gratitud",
-            "projectId": 220114890,
-            "description": "diario-principios",
-            "nextHabitName": "Escribir 5 agradecimientos propios y vision en tercera persona viendome",
-        },
-        "Escribir 5 agradecimientos propios y vision en tercera persona viendome": {
-            "projectName": "Meditacion",
-            "projectId": 221239625,
-            "description": "Metta",
-            "nextHabitName": "Meditación Metta",
-        },
-        "Meditación Metta": {
-            "projectName": "Plazi",
-            "projectId": 192159466,
-            "description": "Perply",
-            "nextHabitName": "15min Perply",
-        },
-        "15min Perply": {
-            "projectName": None,
-            "projectId": None,
-            "description": None,
-            "nextHabitName": None,
-        },
-    }
+    # Block-based AM chain lives in DEFAULT_HABIT_CYCLE_CHAIN (plugin code), not data.json
+    d["habitTimerChain"] = {}
 
     for node in d.get("skillTree", {}).get("nodes", []):
         if node.get("id") == NODE and not node.get("description"):

@@ -4,7 +4,7 @@ tags:
   - codigo
 tema_iniciado: 2026-07-27
 ---
-Preguntas, respuestas y ejercicios de código para fijar [[GenerateText]] del [[Vercel AI SDK]]: `generateText`, provider y route API.
+Preguntas, respuestas y ejercicios de código para fijar [[02_Estudios/GenerateText]] del [[02_Estudios/Vercel AI SDK]]: `generateText`, provider y route API.
 
 > Curva del olvido del vault: días **1, 2, 7, 15, 31** desde `tema_iniciado`. Cada día de repaso tiene un ejercicio distinto (~60% reto: sin mirar la nota fuente al primer intento).
 

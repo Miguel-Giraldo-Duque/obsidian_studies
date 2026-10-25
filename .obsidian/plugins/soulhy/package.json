@@ -9,6 +9,7 @@
     "dev": "npm run build && npm run watch"
   },
   "devDependencies": {
+    "@carbon/icons": "^11.89.0",
     "nodemon": "^3.0.2"
   },
   "keywords": [

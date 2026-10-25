@@ -3,7 +3,7 @@ tags:
   - estudio
 tema_iniciado: 2026-07-25
 ---
-Preguntas y respuestas para fijar los conceptos de [[Desequilibrios financieros]]: presiones familiares, sociales, del gobierno y siniestros que desequilibran tus finanzas.
+Preguntas y respuestas para fijar los conceptos de [[02_Estudios/Desequilibrios financieros]]: presiones familiares, sociales, del gobierno y siniestros que desequilibran tus finanzas.
 
 
 - **¿De quién es la responsabilidad de tus finanzas?**-

@@ -1,11 +1,19 @@
 ---
 tipo: registro-diario-cronica
-actualizado: 2026-08-17
+actualizado: 2026-10-22
 ---
 
 # Registro diario — Crónica del Sanador
 
 > Entradas cortas, más nuevas arriba. El Historiador agrega una línea cuando cambia canon, tomo o estado relevante de bosses.
+
+## 2026-10-22
+
+- Campaña **Vendedor de calle**: 14 quests (`ventas-bank`) + roadmap 22/10–1/11. Recompensa: Flor Vereda (`flower8`). Daña a Guiltmal.
+
+## 2026-08-26
+
+- Campaña **La humildad de volver a empezar**: 30 quests de campo (`humildad-bank`) → Guiltmal. Script `_inject_humildad_quests.py`.
 
 ## 2026-08-17
 

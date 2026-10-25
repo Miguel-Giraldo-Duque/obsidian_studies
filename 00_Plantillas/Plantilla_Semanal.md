@@ -71,28 +71,32 @@ if (!match) {
     let filas = [];
 
     dias.forEach(p => {
-        // Iteramos sobre los tres posibles hitos por día (hito1, hito2, hito3)
-        // Si un día solo tuvo uno, hito2 y hito3 estarán vacíos y se ignoran
-        [1, 2, 3].forEach(n => {
+        // Hasta 5 hitos por día (hitoN + bienN; legacy logroN / dificultadN)
+        [1, 2, 3, 4, 5].forEach(n => {
             let hito = p[`hito${n}`];
 
-            // Solo agregamos la fila si el campo existe y tiene contenido real
             if (hito && String(hito).trim() !== "") {
+                let bien = p[`bien${n}`] != null && String(p[`bien${n}`]).trim() !== ""
+                    ? String(p[`bien${n}`])
+                    : (p[`logro${n}`] ? String(p[`logro${n}`]) : "—");
+                let proxima = p[`proxima${n}`] != null && String(p[`proxima${n}`]).trim() !== ""
+                    ? String(p[`proxima${n}`])
+                    : "—";
                 filas.push([
                     p.file.link,
                     String(hito),
-                    p[`logro${n}`] ? String(p[`logro${n}`]) : "—",
-                    p[`dificultad${n}`] ? `${p[`dificultad${n}`]}/10` : "—"
+                    bien,
+                    proxima
                 ]);
             }
         });
     });
 
     if (filas.length === 0) {
-        dv.paragraph("Todavía no hay hitos esta semana. Al cerrar cada día completá en la nota diaria el bloque Cierre del Día (frontmatter `hito1` / `logro1` / `dificultad1`, o los campos inline legacy).");
+        dv.paragraph("Todavía no hay hitos esta semana. Completá el cierre con «Cuéntame la historia de hoy» (frontmatter `hito1` / `bien1` / `proxima1`).");
     } else {
         dv.table(
-            ["📅 Día", "🏆 Hito", "💡 Qué hice para lograrlo", "🔥 Dificultad"],
+            ["📅 Día", "🏆 Qué pasó", "💡 Qué hice bien", "🎯 Próxima acción"],
             filas
         );
     }

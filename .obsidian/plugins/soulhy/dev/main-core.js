@@ -2701,6 +2701,72 @@ class ConfirmDeleteHabitModal extends Modal {
     onClose() { this.contentEl.empty(); }
 }
 
+class ConfirmDeleteHitoModal extends Modal {
+    constructor(app, { hitoLabel, clearOnly, onConfirm }) {
+        super(app);
+        this.hitoLabel = hitoLabel;
+        this.clearOnly = clearOnly;
+        this.onConfirm = onConfirm;
+    }
+
+    onOpen() {
+        const { contentEl } = this;
+        contentEl.createEl('h2', { text: this.clearOnly ? 'Vaciar hito' : 'Borrar hito' });
+        contentEl.createEl('p', {
+            text: this.clearOnly
+                ? `¿Vaciar ${this.hitoLabel}? Se borra el contenido; el slot queda en el diario.`
+                : `¿Borrar ${this.hitoLabel}? Esta acción no guarda la nota hasta que pulses Guardar.`
+        });
+        new Setting(contentEl)
+            .addButton(btn => btn
+                .setButtonText('Cancelar')
+                .onClick(() => this.close()))
+            .addButton(btn => btn
+                .setButtonText(this.clearOnly ? 'Vaciar' : 'Borrar')
+                .setWarning()
+                .onClick(() => {
+                    this.onConfirm();
+                    this.close();
+                }));
+    }
+
+    onClose() { this.contentEl.empty(); }
+}
+
+class ConfirmUnsavedHitoEditorModal extends Modal {
+    constructor(app, { onDiscard, onSave }) {
+        super(app);
+        this.onDiscard = onDiscard;
+        this.onSave = onSave;
+    }
+
+    onOpen() {
+        const { contentEl } = this;
+        contentEl.createEl('h2', { text: '¿Salir sin guardar?' });
+        contentEl.createEl('p', {
+            text: 'Hay cambios en la historia de hoy que aún no están en la nota diaria.'
+        });
+        new Setting(contentEl)
+            .addButton(btn => {
+                btn.setButtonText('Salir sin guardar')
+                    .onClick(() => {
+                        this.onDiscard();
+                        this.close();
+                    });
+                btn.buttonEl.addClass('rpg-btn-ghost-danger');
+            })
+            .addButton(btn => btn
+                .setButtonText('Guardar y salir')
+                .setCta()
+                .onClick(async () => {
+                    await this.onSave();
+                    this.close();
+                }));
+    }
+
+    onClose() { this.contentEl.empty(); }
+}
+
 class ConfirmClearActivityLogModal extends Modal {
     constructor(app, plugin, onDone) {
         super(app);
@@ -3014,7 +3080,7 @@ class VowEditorModal extends Modal {
         contentEl.createEl('h2', { text: this.isEdit ? 'Editar vow' : 'Nuevo vow' });
         contentEl.createEl('p', {
             cls: 'rpg-modal-subtitle',
-            text: 'El estandarte aplica ×1.20 a quests de esas escuelas cuando la grilla está 50/50. Cambiar toggles en un vow ya completo vale para la próxima quest (no recalcula las viejas).'
+            text: 'Al completar la grilla, el estandarte multiplica XP (xpBonus) y daño (damageBonus) en quests de las escuelas y en hábitos/quests de los life domains marcados. Podés seguir vinculando evidencias después: el impacto escala en silencio hasta +40%. Cambios en un vow completo valen para la próxima acción (no recalcula las viejas).'
         });
 
         let title = existing?.title || '';
@@ -3023,6 +3089,7 @@ class VowEditorModal extends Modal {
         let cols = existing?.cols || 5;
         let rows = existing?.rows || 10;
         const selectedSchools = new Set(Array.isArray(existing?.schools) ? existing.schools : []);
+        const selectedDomains = new Set(Array.isArray(existing?.domains) ? existing.domains : []);
 
         const banner = contentEl.createDiv({ cls: 'rpg-vow-banner rpg-vow-banner-modal' });
         const imagePreview = contentEl.createDiv({ cls: 'rpg-boss-image-preview' });
@@ -3118,7 +3185,7 @@ class VowEditorModal extends Modal {
         contentEl.createEl('h3', { text: 'Estandarte / escuelas' });
         contentEl.createEl('p', {
             cls: 'rpg-subtitle',
-            text: 'Al completar la grilla, ×1.20 acumulativo en quests futuras de las escuelas marcadas. Cero escuelas = no multiplica nada.'
+            text: 'Al completar la grilla, multiplica quests futuras de las escuelas marcadas. Cero escuelas = no multiplica por escuela.'
         });
         SKILL_TREE_SCHOOLS.forEach(school => {
             new Setting(contentEl)
@@ -3129,6 +3196,24 @@ class VowEditorModal extends Modal {
                     toggle.onChange(value => {
                         if (value) selectedSchools.add(school.id);
                         else selectedSchools.delete(school.id);
+                    });
+                });
+        });
+
+        contentEl.createEl('h3', { text: 'Estandarte / life domains' });
+        contentEl.createEl('p', {
+            cls: 'rpg-subtitle',
+            text: 'Hábitos y quests de estos dominios reciben XP y daño del estandarte. Un vow completo cuenta una sola vez aunque matchee escuela y dominio.'
+        });
+        DEFAULT_DOMAINS.forEach(domain => {
+            new Setting(contentEl)
+                .setName(`${domain.icon} ${domain.name}`)
+                .setDesc(`Hábitos/quests de ${domain.name}`)
+                .addToggle(toggle => {
+                    toggle.setValue(selectedDomains.has(domain.id));
+                    toggle.onChange(value => {
+                        if (value) selectedDomains.add(domain.id);
+                        else selectedDomains.delete(domain.id);
                     });
                 });
         });
@@ -3148,10 +3233,11 @@ class VowEditorModal extends Modal {
                         return;
                     }
                     const schools = Array.from(selectedSchools);
+                    const domains = Array.from(selectedDomains);
                     if (this.isEdit) {
-                        service.updateVow(this.vowId, { title, inscription, imagePath, cols, rows, schools });
+                        service.updateVow(this.vowId, { title, inscription, imagePath, cols, rows, schools, domains });
                     } else {
-                        service.createVow({ title, inscription, imagePath, cols, rows, schools });
+                        service.createVow({ title, inscription, imagePath, cols, rows, schools, domains });
                     }
                     await this.plugin.saveSettings();
                     new Notice(this.isEdit ? 'Vow actualizado' : 'Vow creado');
@@ -3164,12 +3250,592 @@ class VowEditorModal extends Modal {
 }
 
 // ============================================================================
+// HITO STORY EDITOR + VOW REVEAL HELPERS
+// ============================================================================
+const HITO_MAX_COUNT = 5;
+
+function normalizeVowIdsList(raw, legacySingle) {
+    const ids = [];
+    const seen = new Set();
+    const push = (v) => {
+        const id = String(v || '').trim();
+        if (!id || seen.has(id)) return;
+        seen.add(id);
+        ids.push(id);
+    };
+    if (Array.isArray(raw)) raw.forEach(push);
+    else if (raw != null && String(raw).trim()) push(raw);
+    if (legacySingle != null) push(legacySingle);
+    return ids;
+}
+
+function emptyHitoDraft(n = 1) {
+    return {
+        n,
+        paso: '',
+        bien: '',
+        mejorar: '',
+        proxima: '',
+        vowIds: []
+    };
+}
+
+function readHitosFromFrontmatter(fm) {
+    const hitos = [];
+    for (let n = 1; n <= HITO_MAX_COUNT; n++) {
+        const paso = fm[`hito${n}`] != null ? String(fm[`hito${n}`]) : '';
+        const bien = fm[`bien${n}`] != null
+            ? String(fm[`bien${n}`])
+            : (fm[`logro${n}`] != null ? String(fm[`logro${n}`]) : '');
+        const mejorar = fm[`mejorar${n}`] != null ? String(fm[`mejorar${n}`]) : '';
+        const proxima = fm[`proxima${n}`] != null ? String(fm[`proxima${n}`]) : '';
+        const vowIds = normalizeVowIdsList(fm[`vowIds${n}`], fm[`vowId${n}`]);
+        if (n === 1 || paso.trim() || bien.trim() || mejorar.trim() || proxima.trim() || vowIds.length) {
+            hitos.push({ n, paso, bien, mejorar, proxima, vowIds });
+        }
+    }
+    if (hitos.length === 0) hitos.push(emptyHitoDraft(1));
+    return hitos;
+}
+
+function renderVowGridEl(parentEl, vow, service, { highlightIndex = -1, app: appRef = null } = {}) {
+    const cols = Math.max(1, Number(vow.cols) || 5);
+    const rows = Math.max(1, Number(vow.rows) || 10);
+    const target = cols * rows;
+    const revealed = service.gridRevealedCount(vow);
+    const grains = Array.isArray(vow.grains) ? vow.grains : [];
+    const obsidianApp = appRef || (typeof app !== 'undefined' ? app : null);
+
+    const stage = parentEl.createDiv({ cls: 'rpg-vow-stage-art rpg-vow-reveal-stage' });
+    const canvas = stage.createDiv({ cls: 'rpg-vow-canvas rpg-vow-reveal-canvas' });
+    canvas.style.setProperty('--vow-cols', String(cols));
+    canvas.style.setProperty('--vow-rows', String(rows));
+
+    if (obsidianApp && vow.imagePath) {
+        renderVaultImageInModal(obsidianApp, canvas, vow.imagePath, {
+            className: 'rpg-vow-art-wrap',
+            placeholder: '🕯️'
+        });
+    } else {
+        canvas.createDiv({ cls: 'rpg-vault-image-placeholder', text: '🕯️' });
+    }
+
+    const grid = canvas.createDiv({ cls: 'rpg-vow-grid' });
+    for (let i = 0; i < target; i++) {
+        const col = i % cols;
+        const row = Math.floor(i / cols);
+        const isRevealed = i < revealed;
+        const grain = isRevealed ? grains[i] : null;
+        const just = i === highlightIndex;
+        const cell = grid.createDiv({
+            cls: `rpg-vow-cell ${isRevealed ? 'revealed' : 'hidden'}${just ? ' just-revealed' : ''}`,
+            attr: {
+                style: `left:${(col / cols) * 100}%;top:${(row / rows) * 100}%;width:${100 / cols}%;height:${100 / rows}%;`,
+                title: grain
+                    ? `${grain.date || '?'} — ${grain.experience || ''}`
+                    : `Celda ${i + 1}`
+            }
+        });
+        if (just) {
+            // Start covered so the reveal animation peels open onto the image
+            cell.classList.remove('revealed');
+            cell.classList.add('hidden');
+            window.setTimeout(() => {
+                cell.classList.remove('hidden');
+                cell.classList.add('revealed', 'just-revealed-play');
+            }, 40);
+        }
+    }
+    return stage;
+}
+
+async function linkHitoExperienceToVow(plugin, {
+    file,
+    date,
+    hitoIndex,
+    experience,
+    vowId,
+    existingVowIds = []
+}) {
+    const service = new VowService(plugin);
+    const text = String(experience || '').trim();
+    if (!vowId) throw new Error('Creá un vow primero en Hero → Vows.');
+    if (!text) throw new Error('La experiencia del hito está vacía');
+
+    const linked = normalizeVowIdsList(existingVowIds);
+    if (linked.some(id => String(id) === String(vowId))) {
+        throw new Error('Este hito ya está vinculado a este vow');
+    }
+    if (service.hasGrainMatching(vowId, { date, experience: text })) {
+        throw new Error('Este hito ya está vinculado a este vow');
+    }
+
+    service.addGrain(vowId, { date, experience: text });
+    await plugin.saveSettings();
+
+    const nextIds = [...linked, String(vowId)];
+    if (file) {
+        await plugin.app.fileManager.processFrontMatter(file, (frontmatter) => {
+            frontmatter[`vowIds${hitoIndex}`] = nextIds;
+            frontmatter[`vowId${hitoIndex}`] = vowId;
+        });
+    }
+
+    const vow = service.getVow(vowId);
+    const highlightIndex = Math.max(0, service.gridRevealedCount(vow) - 1);
+    plugin.refreshViews?.();
+    return { vow, highlightIndex, vowIds: nextIds };
+}
+
+class HitoStoryEditorModal extends Modal {
+    constructor(app, plugin) {
+        super(app);
+        this.plugin = plugin;
+        this.openIndex = 0;
+        this.screen = 'edit'; // edit | pick | reveal
+        this.pickHitoIndex = 0;
+        this.revealPayload = null;
+        this.hitos = [emptyHitoDraft(1)];
+        this.file = null;
+        this.date = new Date().toISOString().slice(0, 10);
+        this.dirty = false;
+    }
+
+    getActiveDailyMeta() {
+        const file = this.app.workspace.getActiveFile();
+        if (!file) return { file: null, cache: null, date: new Date().toISOString().slice(0, 10) };
+        const cache = this.app.metadataCache.getFileCache(file);
+        const base = file.basename || '';
+        const dateMatch = base.match(/^(\d{4}-\d{2}-\d{2})/);
+        return {
+            file,
+            cache,
+            date: dateMatch ? dateMatch[1] : new Date().toISOString().slice(0, 10)
+        };
+    }
+
+    applyModalChrome() {
+        this.modalEl.addClass('rpg-hito-editor-modal');
+        // Hide Obsidian's default × — we keep a single close in the footer.
+        const defaultClose = this.modalEl.querySelector('.modal-close-button');
+        if (defaultClose) defaultClose.addClass('rpg-hito-hide-default-close');
+
+        const container = this.modalEl.closest('.modal-container');
+        if (container && !this._backdropBound) {
+            this._backdropBound = true;
+            this._onBackdropClick = (e) => {
+                if (e.target === container) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    e.stopImmediatePropagation();
+                }
+            };
+            container.addEventListener('click', this._onBackdropClick, true);
+        }
+    }
+
+    requestClose() {
+        if (!this.dirty) {
+            super.close();
+            return;
+        }
+        new ConfirmUnsavedHitoEditorModal(this.app, {
+            onDiscard: () => {
+                this.dirty = false;
+                super.close();
+            },
+            onSave: async () => {
+                const ok = await this.saveToNote();
+                if (ok) super.close();
+            }
+        }).open();
+    }
+
+    close() {
+        this.requestClose();
+    }
+
+    onOpen() {
+        const { file, cache, date } = this.getActiveDailyMeta();
+        this.file = file;
+        this.date = date;
+        const fm = cache?.frontmatter || {};
+        this.hitos = readHitosFromFrontmatter(fm);
+        this.openIndex = 0;
+        this.screen = 'edit';
+        this.applyModalChrome();
+        this.render();
+    }
+
+    onClose() {
+        const container = this.modalEl?.closest('.modal-container');
+        if (container && this._onBackdropClick) {
+            container.removeEventListener('click', this._onBackdropClick, true);
+            this._backdropBound = false;
+            this._onBackdropClick = null;
+        }
+        this.contentEl.empty();
+        this.modalEl.removeClass('rpg-hito-editor-modal');
+    }
+
+    removeHitoAt(idx) {
+        if (this.hitos.length <= 1) {
+            // Clear the only hito instead of removing the slot
+            this.hitos[0] = emptyHitoDraft(1);
+            this.openIndex = 0;
+            this.dirty = true;
+            this.render();
+            return;
+        }
+        this.hitos.splice(idx, 1);
+        this.renumberHitos();
+        this.openIndex = Math.min(idx, this.hitos.length - 1);
+        this.dirty = true;
+        this.render();
+    }
+
+    renumberHitos() {
+        this.hitos.forEach((h, i) => { h.n = i + 1; });
+    }
+
+    async saveToNote() {
+        if (!this.file) {
+            new Notice('Abrí una nota diaria (YYYY-MM-DD) primero.');
+            return false;
+        }
+        this.renumberHitos();
+        await this.app.fileManager.processFrontMatter(this.file, (fm) => {
+            for (let n = 1; n <= HITO_MAX_COUNT; n++) {
+                delete fm[`hito${n}`];
+                delete fm[`bien${n}`];
+                delete fm[`mejorar${n}`];
+                delete fm[`proxima${n}`];
+                delete fm[`vowIds${n}`];
+                delete fm[`vowId${n}`];
+                delete fm[`logro${n}`];
+            }
+            this.hitos.forEach((h) => {
+                const n = h.n;
+                fm[`hito${n}`] = h.paso || '';
+                fm[`bien${n}`] = h.bien || '';
+                fm[`mejorar${n}`] = h.mejorar || '';
+                fm[`proxima${n}`] = h.proxima || '';
+                const ids = normalizeVowIdsList(h.vowIds);
+                if (ids.length) {
+                    fm[`vowIds${n}`] = ids;
+                    fm[`vowId${n}`] = ids[ids.length - 1];
+                }
+            });
+        });
+        this.dirty = false;
+        new Notice('Historia guardada en el diario');
+        return true;
+    }
+
+    render() {
+        const { contentEl } = this;
+        contentEl.empty();
+        contentEl.addClass('rpg-hito-editor-body');
+
+        if (this.screen === 'pick') {
+            this.renderPickVow();
+            return;
+        }
+        if (this.screen === 'reveal') {
+            this.renderReveal();
+            return;
+        }
+        this.renderEdit();
+    }
+
+    renderTopBar(title) {
+        const bar = this.contentEl.createDiv({ cls: 'rpg-hito-editor-top' });
+        bar.createEl('h2', { text: title, cls: 'rpg-hito-editor-title' });
+        return bar;
+    }
+
+    renderBottomBar({ showSave = true, closeLabel = 'Cerrar' } = {}) {
+        const bar = this.contentEl.createDiv({ cls: 'rpg-hito-editor-bottom' });
+        const closeBtn = bar.createEl('button', { text: closeLabel, cls: 'rpg-btn secondary' });
+        closeBtn.onclick = () => this.close();
+        if (showSave) {
+            const saveBtn = bar.createEl('button', { text: 'Guardar', cls: 'rpg-btn' });
+            saveBtn.onclick = async () => { await this.saveToNote(); };
+        }
+        return bar;
+    }
+
+    renderEdit() {
+        const service = new VowService(this.plugin);
+        this.renderTopBar('Historia de hoy');
+        this.contentEl.createEl('p', {
+            cls: 'rpg-modal-subtitle',
+            text: this.file ? this.date : 'Abrí una nota diaria para poder guardar.'
+        });
+
+        const list = this.contentEl.createDiv({ cls: 'rpg-hito-editor-list rpg-hito-accordion-group' });
+        this.hitos.forEach((hito, idx) => {
+            const isOpen = idx === this.openIndex;
+            const card = list.createDiv({
+                cls: `rpg-hito-editor-card rpg-hito-accordion-item${isOpen ? ' is-open' : ''}`
+            });
+
+            const head = card.createDiv({ cls: 'rpg-hito-accordion-header' });
+
+            const titleRow = head.createDiv({
+                cls: 'rpg-hito-accordion-title',
+                attr: {
+                    role: 'button',
+                    tabindex: '0',
+                    'aria-expanded': isOpen ? 'true' : 'false'
+                }
+            });
+
+            const preview = (hito.paso || '').trim();
+            const hitoTitleLabel = preview
+                ? `Hito ${hito.n} · ${preview.slice(0, 48)}${preview.length > 48 ? '…' : ''}`
+                : `Hito ${hito.n}`;
+
+            const delBtn = titleRow.createEl('button', {
+                cls: 'rpg-hito-icon-btn rpg-hito-trash-btn',
+                attr: {
+                    type: 'button',
+                    title: 'Borrar hito',
+                    'aria-label': `Borrar hito ${hito.n}`
+                }
+            });
+            IbmIcons.mount(delBtn, 'trashCan', { size: 16, className: 'rpg-hito-icon' });
+            delBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                new ConfirmDeleteHitoModal(this.app, {
+                    hitoLabel: hitoTitleLabel,
+                    clearOnly: this.hitos.length <= 1,
+                    onConfirm: () => this.removeHitoAt(idx)
+                }).open();
+            });
+
+            const titleText = titleRow.createDiv({ cls: 'rpg-hito-accordion-title-text' });
+            titleText.createDiv({
+                cls: 'rpg-hito-accordion-label',
+                text: hitoTitleLabel
+            });
+            if (hito.vowIds?.length) {
+                const pills = titleText.createDiv({ cls: 'rpg-hito-accordion-pills' });
+                hito.vowIds.forEach(id => {
+                    const vow = service.getVow(id);
+                    pills.createSpan({
+                        cls: 'rpg-hito-vow-pill',
+                        text: vow ? vow.title : id
+                    });
+                });
+            }
+            const chevronWrap = titleRow.createDiv({ cls: 'rpg-hito-accordion-chevron' });
+            IbmIcons.mount(chevronWrap, isOpen ? 'chevronUp' : 'chevronDown', {
+                size: 16,
+                className: 'rpg-hito-icon'
+            });
+
+            const toggle = (e) => {
+                if (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                }
+                this.openIndex = isOpen ? -1 : idx;
+                this.render();
+            };
+            titleRow.addEventListener('click', toggle);
+            titleRow.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') toggle(e);
+            });
+
+            if (!isOpen) return;
+
+            const body = card.createDiv({ cls: 'rpg-hito-editor-card-body' });
+
+            body.createDiv({ cls: 'rpg-hito-field-label', text: 'Qué pasó' });
+            const pasoArea = body.createEl('textarea', {
+                cls: 'rpg-hito-textarea rpg-hito-textarea-paso',
+                attr: {
+                    spellcheck: 'true',
+                    rows: '8',
+                    placeholder: 'En [lugar], frente a [situación], hice [acción]. Pasó [tropiezo]. Yo [qué hice con eso].'
+                }
+            });
+            pasoArea.value = hito.paso || '';
+            pasoArea.oninput = () => {
+                hito.paso = pasoArea.value;
+                this.dirty = true;
+            };
+
+            const field = (label, key, rows, placeholder) => {
+                body.createDiv({ cls: 'rpg-hito-field-label', text: label });
+                const el = body.createEl('textarea', {
+                    cls: 'rpg-hito-textarea',
+                    attr: { spellcheck: 'true', rows: String(rows), placeholder }
+                });
+                el.value = hito[key] || '';
+                el.oninput = () => {
+                    hito[key] = el.value;
+                    this.dirty = true;
+                };
+            };
+            field('Qué hice bien', 'bien', 2, 'Éxito real o espurio');
+            field('Qué mejorar', 'mejorar', 2, 'Qué falló o sesgo');
+            body.createDiv({ cls: 'rpg-hito-field-label', text: 'Próxima acción' });
+            const prox = body.createEl('input', {
+                cls: 'rpg-hito-input',
+                attr: {
+                    type: 'text',
+                    spellcheck: 'true',
+                    placeholder: 'Cuando X, hago Y'
+                }
+            });
+            prox.value = hito.proxima || '';
+            prox.oninput = () => {
+                hito.proxima = prox.value;
+                this.dirty = true;
+            };
+
+            const row = body.createDiv({ cls: 'rpg-hito-editor-card-actions' });
+            const linkBtn = row.createEl('button', {
+                text: 'Vincular a vow',
+                cls: 'rpg-btn secondary'
+            });
+            linkBtn.onclick = () => {
+                if (!(hito.paso || '').trim()) {
+                    new Notice('Escribí «Qué pasó» antes de vincular');
+                    return;
+                }
+                this.pickHitoIndex = idx;
+                this.screen = 'pick';
+                this.render();
+            };
+        });
+
+        const addRow = this.contentEl.createDiv({ cls: 'rpg-hito-editor-add-row' });
+        const addBtn = addRow.createEl('button', {
+            text: '+ Hito',
+            cls: 'rpg-btn secondary'
+        });
+        addBtn.disabled = this.hitos.length >= HITO_MAX_COUNT;
+        addBtn.onclick = () => {
+            if (this.hitos.length >= HITO_MAX_COUNT) return;
+            this.hitos.push(emptyHitoDraft(this.hitos.length + 1));
+            this.renumberHitos();
+            this.openIndex = this.hitos.length - 1;
+            this.dirty = true;
+            this.render();
+        };
+        addRow.createSpan({
+            cls: 'rpg-modal-subtitle',
+            text: `${this.hitos.length}/${HITO_MAX_COUNT}`
+        });
+
+        this.renderBottomBar({ showSave: true });
+    }
+
+    renderPickVow() {
+        const service = new VowService(this.plugin);
+        const vows = service.listVows();
+        const hito = this.hitos[this.pickHitoIndex];
+        this.renderTopBar('Vincular a vow');
+        this.contentEl.createEl('p', {
+            cls: 'rpg-modal-subtitle',
+            text: (hito?.paso || '').trim().slice(0, 180) || 'Sin escena'
+        });
+
+        if (hito?.vowIds?.length) {
+            const linked = this.contentEl.createDiv({ cls: 'rpg-hito-linked-row' });
+            linked.createSpan({ text: 'Ya vinculado: ', cls: 'rpg-modal-subtitle' });
+            hito.vowIds.forEach(id => {
+                const vow = service.getVow(id);
+                linked.createSpan({
+                    cls: 'rpg-hito-vow-pill',
+                    text: vow ? vow.title : id
+                });
+            });
+        }
+
+        const list = this.contentEl.createDiv({ cls: 'rpg-hito-vow-pick-list' });
+        if (vows.length === 0) {
+            list.createEl('p', { text: 'No hay vows. Creá uno en Hero → Vows.' });
+        } else {
+            vows.forEach(v => {
+                const already = (hito.vowIds || []).some(id => String(id) === String(v.id));
+                const btn = list.createEl('button', {
+                    cls: `rpg-btn secondary rpg-hito-vow-pick-btn${already ? ' is-disabled' : ''}`,
+                    text: `${v.title} (${service.revealedCount(v)}/${service.targetCells(v)})${already ? ' · ya vinculado' : ''}`
+                });
+                btn.disabled = already;
+                btn.onclick = async () => {
+                    try {
+                        const result = await linkHitoExperienceToVow(this.plugin, {
+                            file: this.file,
+                            date: this.date,
+                            hitoIndex: hito.n,
+                            experience: hito.paso,
+                            vowId: v.id,
+                            existingVowIds: hito.vowIds
+                        });
+                        hito.vowIds = result.vowIds;
+                        this.dirty = true;
+                        this.revealPayload = result;
+                        this.screen = 'reveal';
+                        this.render();
+                    } catch (err) {
+                        new Notice(err.message || String(err));
+                    }
+                };
+            });
+        }
+
+        const back = this.contentEl.createDiv({ cls: 'rpg-hito-editor-bottom' });
+        const backBtn = back.createEl('button', { text: 'Volver', cls: 'rpg-btn secondary' });
+        backBtn.onclick = () => {
+            this.screen = 'edit';
+            this.render();
+        };
+    }
+
+    renderReveal() {
+        const service = new VowService(this.plugin);
+        const payload = this.revealPayload;
+        const vow = payload?.vow ? service.getVow(payload.vow.id) || payload.vow : null;
+        this.renderTopBar(vow ? vow.title : 'Celda revelada');
+        this.contentEl.createEl('p', {
+            cls: 'rpg-modal-subtitle',
+            text: 'Nuevo grano en el grid'
+        });
+        if (vow) {
+            renderVowGridEl(this.contentEl, vow, service, {
+                highlightIndex: payload.highlightIndex,
+                app: this.app
+            });
+        }
+        const bar = this.contentEl.createDiv({ cls: 'rpg-hito-editor-bottom' });
+        const cont = bar.createEl('button', { text: 'Seguir escribiendo', cls: 'rpg-btn' });
+        cont.onclick = () => {
+            this.revealPayload = null;
+            this.screen = 'edit';
+            this.render();
+        };
+    }
+}
+
+// ============================================================================
 // LINK HITO → VOW MODAL
 // ============================================================================
 class LinkHitoToVowModal extends Modal {
     constructor(app, plugin) {
         super(app);
         this.plugin = plugin;
+        this.screen = 'pick';
+        this.revealPayload = null;
+        this.hitoIndex = 1;
+        this.file = null;
+        this.date = new Date().toISOString().slice(0, 10);
+        this.fm = {};
     }
 
     getActiveDailyMeta() {
@@ -3186,56 +3852,101 @@ class LinkHitoToVowModal extends Modal {
     }
 
     onOpen() {
+        const { file, cache, date } = this.getActiveDailyMeta();
+        this.file = file;
+        this.date = date;
+        this.fm = cache?.frontmatter || {};
+        this.screen = 'pick';
+        this.modalEl.addClass('rpg-hito-link-modal');
+        this.render();
+    }
+
+    onClose() {
+        this.contentEl.empty();
+        this.modalEl.removeClass('rpg-hito-link-modal');
+    }
+
+    readHitoText(idx) {
+        const raw = this.fm[`hito${idx}`];
+        return raw != null ? String(raw).trim() : '';
+    }
+
+    readVowIds(idx) {
+        return normalizeVowIdsList(this.fm[`vowIds${idx}`], this.fm[`vowId${idx}`]);
+    }
+
+    render() {
         const { contentEl } = this;
+        contentEl.empty();
+        if (this.screen === 'reveal' && this.revealPayload) {
+            const service = new VowService(this.plugin);
+            const vow = service.getVow(this.revealPayload.vow.id) || this.revealPayload.vow;
+            contentEl.createEl('h2', { text: vow.title || 'Celda revelada' });
+            contentEl.createEl('p', { cls: 'rpg-modal-subtitle', text: 'Nuevo grano en el grid' });
+            renderVowGridEl(contentEl, vow, service, {
+                highlightIndex: this.revealPayload.highlightIndex,
+                app: this.app
+            });
+            new Setting(contentEl).addButton(btn => btn
+                .setButtonText('Listo')
+                .setCta()
+                .onClick(() => this.close()));
+            return;
+        }
+
         const service = new VowService(this.plugin);
         const vows = service.listVows();
-        const { file, cache, date } = this.getActiveDailyMeta();
-        const fm = cache?.frontmatter || {};
-
         contentEl.createEl('h2', { text: 'Vincular hito a vow' });
         contentEl.createEl('p', {
             cls: 'rpg-modal-subtitle',
-            text: file
-                ? `Nota: ${file.basename} · fecha ${date}`
-                : 'Abrí una nota diaria primero (o elegí hito vacío y pegá texto luego).'
+            text: this.file
+                ? `Nota: ${this.file.basename} · fecha ${this.date}`
+                : 'Abrí una nota diaria primero.'
         });
 
-        let hitoIndex = 1;
-        let vowId = vows[0]?.id || '';
         const preview = contentEl.createDiv({ cls: 'rpg-vow-hito-preview' });
-
-        const readHitoText = (idx) => {
-            const raw = fm[`hito${idx}`];
-            return raw != null ? String(raw).trim() : '';
-        };
-
         const refreshPreview = () => {
             preview.empty();
-            const text = readHitoText(hitoIndex);
-            preview.createEl('strong', { text: `Hito ${hitoIndex}:` });
+            const text = this.readHitoText(this.hitoIndex);
+            preview.createEl('strong', { text: `Hito ${this.hitoIndex}:` });
             preview.createEl('p', {
-                text: text || '(vacío — escribí el hito en el diario antes de vincular)'
+                text: text || '(vacío — escribí el hito en el diario o usá «Cuéntame la historia de hoy»)'
             });
+            const ids = this.readVowIds(this.hitoIndex);
+            if (ids.length) {
+                const row = preview.createDiv({ cls: 'rpg-hito-linked-row' });
+                ids.forEach(id => {
+                    const vow = service.getVow(id);
+                    row.createSpan({
+                        cls: 'rpg-hito-vow-pill',
+                        text: vow ? vow.title : id
+                    });
+                });
+            }
         };
 
         new Setting(contentEl)
             .setName('Hito')
             .addDropdown(dd => {
-                [1, 2, 3].forEach(n => {
-                    const t = readHitoText(n);
-                    const label = t ? `Hito ${n}: ${t.slice(0, 40)}${t.length > 40 ? '…' : ''}` : `Hito ${n} (vacío)`;
+                for (let n = 1; n <= HITO_MAX_COUNT; n++) {
+                    const t = this.readHitoText(n);
+                    if (n > 1 && !t && !this.readVowIds(n).length) continue;
+                    const label = t
+                        ? `Hito ${n}: ${t.slice(0, 40)}${t.length > 40 ? '…' : ''}`
+                        : `Hito ${n} (vacío)`;
                     dd.addOption(String(n), label);
-                });
-                dd.setValue('1');
+                }
+                dd.setValue(String(this.hitoIndex));
                 dd.onChange(value => {
-                    hitoIndex = parseInt(value, 10) || 1;
+                    this.hitoIndex = parseInt(value, 10) || 1;
                     refreshPreview();
                 });
             });
 
+        let vowId = vows[0]?.id || '';
         new Setting(contentEl)
             .setName('Vow')
-            .setDesc('Lista dinámica desde Hero → Vows')
+            .setDesc('Un hito puede ir a varios vows; no al mismo dos veces')
             .addDropdown(dd => {
                 if (vows.length === 0) {
                     dd.addOption('', '— No hay vows —');
@@ -3243,7 +3954,8 @@ class LinkHitoToVowModal extends Modal {
                     vows.forEach(v => {
                         const n = service.revealedCount(v);
                         const target = service.targetCells(v);
-                        dd.addOption(v.id, `${v.title} (${n}/${target})`);
+                        const already = this.readVowIds(this.hitoIndex).some(id => String(id) === String(v.id));
+                        dd.addOption(v.id, `${v.title} (${n}/${target})${already ? ' · ya vinculado' : ''}`);
                     });
                 }
                 dd.setValue(vowId);
@@ -3260,29 +3972,26 @@ class LinkHitoToVowModal extends Modal {
                 .setButtonText('Vincular')
                 .setCta()
                 .onClick(async () => {
-                    if (!vowId) {
-                        new Notice('Creá un vow primero en Hero → Vows.');
-                        return;
-                    }
-                    const experience = readHitoText(hitoIndex);
                     try {
-                        service.addGrain(vowId, { date, experience });
-                        await this.plugin.saveSettings();
-                        if (file) {
-                            await this.app.fileManager.processFrontMatter(file, (frontmatter) => {
-                                frontmatter[`vowId${hitoIndex}`] = vowId;
-                            });
-                        }
-                        this.plugin.refreshViews?.();
-                        new Notice(`Grano agregado a vow (${hitoIndex})`);
-                        this.close();
+                        const result = await linkHitoExperienceToVow(this.plugin, {
+                            file: this.file,
+                            date: this.date,
+                            hitoIndex: this.hitoIndex,
+                            experience: this.readHitoText(this.hitoIndex),
+                            vowId,
+                            existingVowIds: this.readVowIds(this.hitoIndex)
+                        });
+                        this.fm[`vowIds${this.hitoIndex}`] = result.vowIds;
+                        this.fm[`vowId${this.hitoIndex}`] = vowId;
+                        this.revealPayload = result;
+                        this.screen = 'reveal';
+                        new Notice(`Grano agregado · Hito ${this.hitoIndex}`);
+                        this.render();
                     } catch (err) {
                         new Notice(err.message || String(err));
                     }
                 }));
     }
-
-    onClose() { this.contentEl.empty(); }
 }
 
 // ============================================================================
@@ -4202,12 +4911,12 @@ class LifeRPGSettingTab extends PluginSettingTab {
                     new Notice('🪙 Added 50 gold!');
                 }));
 
-        // Toggl Track — campana AM
-        containerEl.createEl('h3', { text: '🔔 Toggl Track (campana AM)' });
+        // Toggl + WinClock — campana AM por bloques
+        containerEl.createEl('h3', { text: '🔔 Campana AM (WinClock + Toggl)' });
 
         new Setting(containerEl)
-            .setName('Habit timer chain')
-            .setDesc('Al completar un hábito AM: stop timer actual + start del siguiente (API Track).')
+            .setName('Habit cycle chain')
+            .setDesc('Al completar todos los hábitos de un bloque AM: para el ciclo WinClock, arranca el siguiente y cambia Toggl en paralelo.')
             .addToggle(toggle => toggle
                 .setValue(this.plugin.settings.habitTimerChainEnabled !== false)
                 .onChange(async (value) => {
@@ -4298,13 +5007,19 @@ module.exports = class LifeRPG extends Plugin {
         const tomesCatalogChanged = this.ensureTomesCatalog();
         const flowersCatalogChanged = this.ensureFlowersCatalog();
         this.skillTreeService = new SkillTreeService(this);
+        this.questEventService = new QuestEventService(this);
+        this.questCampaignService = new QuestCampaignService(this);
         const skillTreeCleaned = this.skillTreeService.cleanLegacySeed();
+        const campaignsMigrated = this.questCampaignService.ensureEveVacumCampaign();
         this.checkDailyReset();
         this.habitSkillSyncService = new HabitSkillSyncService(this);
 
         this.registerView(VIEW_TYPE_HERO, (leaf) => new HeroView(leaf, this));
         this.addRibbonIcon('swords', 'Open Hero Sheet', () => this.activateView());
         this.addCommand({ id: 'open-hero-sheet', name: 'Open Hero Sheet', callback: () => this.activateView() });
+        this.addCommand({ id: 'hito-story-editor', name: 'Cuéntame la historia de hoy (editor de hitos)', callback: () => {
+            new HitoStoryEditorModal(this.app, this).open();
+        }});
         this.addCommand({ id: 'link-hito-to-vow', name: 'Vincular hito del diario a un vow', callback: () => {
             new LinkHitoToVowModal(this.app, this).open();
         }});
@@ -4367,7 +5082,7 @@ module.exports = class LifeRPG extends Plugin {
 
         this.statusBarItem = this.addStatusBarItem();
         this.updateStatusBar();
-        if (initializedNativeHabits || skillTreeCleaned || tomesCatalogChanged || flowersCatalogChanged) {
+        if (initializedNativeHabits || skillTreeCleaned || tomesCatalogChanged || flowersCatalogChanged || campaignsMigrated) {
             await this.saveSettings();
         }
 
@@ -4506,6 +5221,7 @@ module.exports = class LifeRPG extends Plugin {
                 flatPath: flower.flatPath || '',
                 description: flower.description || '',
                 bossId: flower.bossId || null,
+                roadmapEventId: flower.roadmapEventId || null,
                 unlocked: !!flower.unlocked,
                 unlockedAt: flower.unlockedAt || null,
                 damageReport: flower.damageReport || null
@@ -4579,6 +5295,10 @@ module.exports = class LifeRPG extends Plugin {
             moodLog: saved.moodLog || [],
             lastMoodCheck: saved.lastMoodCheck || null,
             sleepLog: saved.sleepLog || [],
+            tpnExperiment: saved.tpnExperiment || {
+                config: { start: '2026-08-22', wake: '07:00', bed: '22:00' },
+                entries: []
+            },
             // Difficulty
             gameDifficulty: saved.gameDifficulty || 'normal',
             // Daily Summary
@@ -4590,16 +5310,17 @@ module.exports = class LifeRPG extends Plugin {
             habitSkillSync: habitSkillSync,
             // Skill Tree
             skillTree: skillTree,
-            // Toggl AM campana (API Track)
+            // Quest roadmaps / events
+            questEvents: Array.isArray(saved.questEvents) ? saved.questEvents : [],
+            questCampaigns: Array.isArray(saved.questCampaigns) ? saved.questCampaigns : [],
+            // Campana AM (WinClock + Toggl por bloques)
             habitTimerChainEnabled: saved.habitTimerChainEnabled !== undefined
                 ? saved.habitTimerChainEnabled
                 : true,
             togglApiToken: saved.togglApiToken || '',
             togglWorkspaceId: saved.togglWorkspaceId || DEFAULT_TOGGL_WORKSPACE_ID,
-            habitTimerChain: {
-                ...JSON.parse(JSON.stringify(DEFAULT_HABIT_TIMER_CHAIN)),
-                ...(saved.habitTimerChain || {})
-            }
+            // Legacy field kept empty — block chain lives in DEFAULT_HABIT_CYCLE_CHAIN
+            habitTimerChain: {}
         };
 
         if (!Array.isArray(saved.vows) || !saved.vows.some(v => String(v.id) === 'autocompasion')) {
@@ -4652,6 +5373,10 @@ module.exports = class LifeRPG extends Plugin {
             moodLog: [],
             lastMoodCheck: null,
             sleepLog: [],
+            tpnExperiment: {
+                config: { start: '2026-08-22', wake: '07:00', bed: '22:00' },
+                entries: []
+            },
             // Difficulty & Daily
             gameDifficulty: 'normal',
             dailyStats: {},
@@ -4662,11 +5387,13 @@ module.exports = class LifeRPG extends Plugin {
             habitSkillSync: JSON.parse(JSON.stringify(DEFAULT_HABIT_SKILL_SYNC)),
             // Skill Tree
             skillTree: JSON.parse(JSON.stringify(DEFAULT_SKILL_TREE)),
-            // Toggl AM campana
+            questEvents: [],
+            questCampaigns: [],
+            // Campana AM (WinClock + Toggl por bloques)
             habitTimerChainEnabled: true,
             togglApiToken: '',
             togglWorkspaceId: DEFAULT_TOGGL_WORKSPACE_ID,
-            habitTimerChain: JSON.parse(JSON.stringify(DEFAULT_HABIT_TIMER_CHAIN))
+            habitTimerChain: {}
         };
         await this.saveSettings();
         new Notice("🔄 All data has been reset!");
@@ -4697,6 +5424,10 @@ module.exports = class LifeRPG extends Plugin {
 
             this.settings.lastPlayedDate = today;
             this.maybeArchivePreviousMonths();
+            if (!this.questEventService) {
+                this.questEventService = new QuestEventService(this);
+            }
+            this.questEventService.ensureTodayBoard();
             this.saveSettings();
             this.checkAchievements();
             this.checkWeeklyPenalty(); // Check for debt penalty
@@ -4704,6 +5435,12 @@ module.exports = class LifeRPG extends Plugin {
         } else {
             // Still roll up completed months if plugin stayed open across month boundary
             if (this.maybeArchivePreviousMonths()) {
+                this.saveSettings();
+            }
+            if (!this.questEventService) {
+                this.questEventService = new QuestEventService(this);
+            }
+            if (this.questEventService.ensureTodayBoard()) {
                 this.saveSettings();
             }
         }
@@ -5036,8 +5773,12 @@ module.exports = class LifeRPG extends Plugin {
 
     // --- GAME LOGIC ---
 
-    gainXp(xpAmount, goldAmount, domainId = null) {
+    gainXp(xpAmount, goldAmount, domainId = null, options = {}) {
         const s = this.settings;
+        const domainDamageMult = Number(options.domainDamageMult);
+        const safeDomainDamageMult = Number.isFinite(domainDamageMult) && domainDamageMult > 0
+            ? domainDamageMult
+            : 1;
 
         // Apply phase XP multiplier (HUMAN 3.0)
         const currentPhase = determinePhase(s);
@@ -5063,15 +5804,16 @@ module.exports = class LifeRPG extends Plugin {
                     new Notice(`📈 ${domain.icon} ${domain.name} leveled up to ${domain.level}!`);
                 }
 
-                // Damage bosses linked to this domain
-                this.damageBossesForDomain(domainId, 10);
+                // Damage bosses linked to this domain (scaled by vow damage estandarte)
+                const domainHit = Math.round(10 * safeDomainDamageMult);
+                this.damageBossesForDomain(domainId, domainHit);
             }
         }
 
         const xpToNextLevel = s.level * 100;
         if (s.xp >= xpToNextLevel) {
             this.levelUp();
-        } else {
+        } else if (!options.silentNotice) {
             // Show XP with phase multiplier info
             const multiplierText = phaseInfo.xpMultiplier > 1 ? ` (×${phaseInfo.xpMultiplier} ${phaseInfo.name})` : '';
             new Notice(`+${adjustedXP} XP${multiplierText} | +${goldAmount} Gold`);
@@ -5134,6 +5876,65 @@ module.exports = class LifeRPG extends Plugin {
         this.saveSettings();
     }
 
+    showHabitRewardNotice({ xp, damage, contributions = [], vowService }) {
+        const hasDamage = Number(damage) > 0;
+        const hasXp = Number(xp) > 0;
+        if (!hasDamage && !hasXp) return;
+
+        const notice = new Notice('', 7000);
+        const el = notice.noticeEl;
+        el.empty();
+        el.addClass('rpg-reward-notice');
+
+        const formatMult = (m) => vowService.formatContributionLabel(m);
+
+        if (hasDamage) {
+            const block = el.createDiv({ cls: 'rpg-reward-block' });
+            block.createDiv({
+                cls: 'rpg-reward-main',
+                text: `Has hecho ${damage} de daño`
+            });
+            if (contributions.length > 0) {
+                const sub = block.createDiv({ cls: 'rpg-reward-sub' });
+                contributions.forEach((c, i) => {
+                    if (i > 0) sub.createSpan({ text: ', ' });
+                    sub.createSpan({
+                        text: `${c.title} ${formatMult(c.damageMultiplier)}`
+                    });
+                });
+            }
+        }
+
+        if (hasXp) {
+            const block = el.createDiv({ cls: 'rpg-reward-block' });
+            block.createDiv({
+                cls: 'rpg-reward-main',
+                text: `Has ganado ${xp} xp`
+            });
+            if (contributions.length > 0) {
+                const sub = block.createDiv({ cls: 'rpg-reward-sub rpg-reward-sub-banners' });
+                contributions.forEach((c, i) => {
+                    if (i > 0) {
+                        sub.createSpan({ cls: 'rpg-reward-vow-sep', text: ', ' });
+                    }
+                    const chip = sub.createSpan({ cls: 'rpg-reward-vow-chip' });
+                    const path = (c.imagePath || '').trim();
+                    if (path) {
+                        const file = this.app.vault.getAbstractFileByPath(path);
+                        if (file) {
+                            const img = chip.createEl('img', { cls: 'rpg-reward-vow-thumb' });
+                            img.src = this.app.vault.adapter.getResourcePath(file.path);
+                            img.alt = '';
+                        }
+                    }
+                    chip.createSpan({
+                        text: `${c.title} ${formatMult(c.xpMultiplier)}`
+                    });
+                });
+            }
+        }
+    }
+
     async completeHabit(index) {
         const s = this.settings;
         const habit = s.habits[index];
@@ -5144,8 +5945,16 @@ module.exports = class LifeRPG extends Plugin {
 
             const diff = DIFFICULTY[habit.difficulty || 'medium'];
             const streakBonus = Math.min((habit.streak || 0) * 0.1, 1);
-            const finalXp = Math.round(habit.xp * diff.multiplier * (1 + streakBonus));
-            const finalGold = Math.round(habit.gold * diff.multiplier * (1 + streakBonus));
+            let finalXp = Math.round(habit.xp * diff.multiplier * (1 + streakBonus));
+            let finalGold = Math.round(habit.gold * diff.multiplier * (1 + streakBonus));
+
+            const vowService = new VowService(this);
+            const vowXpMult = vowService.getVowXpMultiplier({ domain: habit.domain });
+            const vowDmgMult = vowService.getVowDamageMultiplier({ domain: habit.domain });
+            finalXp = Math.round(finalXp * vowXpMult);
+            finalGold = Math.round(finalGold * vowXpMult);
+            const bossDamage = Math.round((Number(habit.bossDamage) || 10) * vowDmgMult);
+            const contributions = vowService.listMatchingVowContributions({ domain: habit.domain });
 
             // Log activity
             this.logActivity('habit_complete', habit.name, {
@@ -5154,7 +5963,9 @@ module.exports = class LifeRPG extends Plugin {
                 streak: habit.streak || 0,
                 linkedSkillIds: habit.linkedSkillIds || [],
                 linkedBossIds: habit.linkedBossIds || [],
-                bossDamage: habit.bossDamage || 10
+                bossDamage,
+                vowXpMult,
+                vowDmgMult
             });
 
             const skillRewards = [];
@@ -5182,18 +5993,28 @@ module.exports = class LifeRPG extends Plugin {
                 new Notice(`Spell XP: ${rewardText}`);
             }
 
+            let dealtBossDamage = 0;
             if (Array.isArray(habit.linkedBossIds) && habit.linkedBossIds.length > 0) {
-                const damage = Number(habit.bossDamage) || 10;
                 for (const bossId of habit.linkedBossIds) {
                     const bossIndex = (s.bossFights || []).findIndex(boss => boss.id === bossId && !boss.defeated);
                     if (bossIndex >= 0) {
-                        await this.damageBoss(bossIndex, damage);
+                        await this.damageBoss(bossIndex, bossDamage);
+                        dealtBossDamage = bossDamage;
                     }
                 }
             }
 
-            this.gainXp(finalXp, finalGold, habit.domain);
-            await this.chainTogglAfterHabit(habit);
+            this.gainXp(finalXp, finalGold, habit.domain, {
+                domainDamageMult: vowDmgMult,
+                silentNotice: true
+            });
+            this.showHabitRewardNotice({
+                xp: finalXp,
+                damage: dealtBossDamage,
+                contributions,
+                vowService
+            });
+            await this.chainAmAfterHabit(habit);
         }
     }
 
@@ -5279,66 +6100,100 @@ module.exports = class LifeRPG extends Plugin {
         );
     }
 
-    async chainTogglAfterHabit(habit) {
+    async winClockRequest(method, path) {
+        const response = await requestUrl({
+            url: `${WIN_CLOCK_API_BASE}${path}`,
+            method,
+            headers: { 'Content-Type': 'application/json' }
+        });
+        if (response.status >= 400) {
+            const detail = (response.text || '').slice(0, 180);
+            throw new Error(
+                `WinClock ${method} ${path} → ${response.status}${detail ? `: ${detail}` : ''}`
+            );
+        }
+        return response.json;
+    }
+
+    async advanceWinClockCycle(nextCycleId) {
+        try {
+            await this.winClockRequest('POST', '/api/runtime/stop');
+        } catch (e) {
+            // No active runtime is fine
+        }
+        await this.winClockRequest('POST', `/api/cycles/${encodeURIComponent(nextCycleId)}/start`);
+        try {
+            await this.winClockRequest('POST', '/api/desktop/show');
+        } catch (e) {
+            // Window show is best-effort
+        }
+    }
+
+    async chainAmAfterHabit(habit) {
         if (!this.settings.habitTimerChainEnabled) return;
-        if (!this.settings.togglApiToken) return;
 
-        const chain = {
-            ...DEFAULT_HABIT_TIMER_CHAIN,
-            ...(this.settings.habitTimerChain || {})
-        };
-        const step = chain[habit.name];
-        if (!step) return;
+        const chain = Array.isArray(DEFAULT_HABIT_CYCLE_CHAIN) ? DEFAULT_HABIT_CYCLE_CHAIN : [];
+        const block = chain.find(step =>
+            Array.isArray(step.habitNames) && step.habitNames.includes(habit.name)
+        );
+        if (!block) return;
 
-        // Fin de cadena AM (ej. 15min Perply)
-        if (!step.projectId && !step.projectName && !step.description && !step.nextHabitName) {
-            try {
-                const workspaceId = this.settings.togglWorkspaceId || DEFAULT_TOGGL_WORKSPACE_ID;
-                await this.stopCurrentTogglTimer(workspaceId);
-                new Notice('🔔 Cadena AM completa — plan 3 / deep work manual');
-            } catch (e) {
-                console.error('Toggl stop (end chain) failed', e);
-                new Notice(`Toggl: no pude frenar timer (${e.message})`);
-            }
+        const habits = this.settings.habits || [];
+        const allDone = block.habitNames.every(name => {
+            const h = habits.find(x => x.name === name);
+            return h?.completed === true;
+        });
+        if (!allDone) return;
+
+        const nextLabel = block.nextCycleId || 'siguiente';
+        let winClockOk = false;
+        try {
+            await this.advanceWinClockCycle(block.nextCycleId);
+            winClockOk = true;
+            new Notice(`⏱️ WinClock → ${nextLabel}`);
+        } catch (e) {
+            console.error('WinClock chain failed', e);
+            new Notice(`WinClock no respondió — abrí la app (${e.message})`);
+        }
+
+        if (!this.settings.togglApiToken) {
+            if (winClockOk) return;
             return;
         }
 
-        const nextName = step.nextHabitName;
-        if (nextName) {
-            const nextHabit = (this.settings.habits || []).find(h => h.name === nextName);
-            if (nextHabit?.completed) {
-                new Notice(`🔔 ${nextName} ya estaba hecho — sin timer`);
-                return;
-            }
-        }
-
         const workspaceId = this.settings.togglWorkspaceId || DEFAULT_TOGGL_WORKSPACE_ID;
+        const nextToggl = block.nextToggl || {};
         try {
             await this.stopCurrentTogglTimer(workspaceId);
 
-            let projectId = step.projectId || null;
-            if (!projectId && step.projectName) {
-                projectId = await this.resolveTogglProjectId(step.projectName, workspaceId);
+            let projectId = nextToggl.projectId || null;
+            if (!projectId && nextToggl.projectName) {
+                projectId = await this.resolveTogglProjectId(nextToggl.projectName, workspaceId);
             }
-            if (!projectId && step.projectName) {
-                new Notice(`Toggl: no encontré proyecto "${step.projectName}"`);
+            if (!projectId && nextToggl.projectName) {
+                new Notice(`Toggl: no encontré proyecto "${nextToggl.projectName}"`);
                 return;
             }
 
             await this.startTogglTimer({
                 workspaceId,
                 projectId,
-                description: step.description || ''
+                description: nextToggl.description || ''
             });
 
-            const label = step.description
-                ? `${step.projectName || 'Toggl'} / ${step.description}`
-                : (step.projectName || 'siguiente');
-            new Notice(`🔔 Siguiente: ${label}`);
+            const label = nextToggl.description
+                ? `${nextToggl.projectName || 'Toggl'} / ${nextToggl.description}`
+                : (nextToggl.projectName || nextToggl.description || 'siguiente');
+            new Notice(`🔔 Toggl → ${label}`);
         } catch (e) {
             console.error('Toggl chain failed', e);
             new Notice(`Toggl campana falló: ${e.message}`);
         }
+    }
+
+    /** @deprecated Replaced by chainAmAfterHabit (block-based WinClock + Toggl). */
+    async chainTogglAfterHabit(habit) {
+        await this.chainAmAfterHabit(habit);
     }
 
     async removeHabit(index) {
@@ -5373,8 +6228,16 @@ module.exports = class LifeRPG extends Plugin {
             let finalGold = Math.round(quest.gold * diff.multiplier);
 
             const vowService = new VowService(this);
-            const vowMultiplier = vowService.getVowQuestMultiplier(quest.school);
-            finalXp = Math.round(finalXp * vowMultiplier);
+            const vowXpMult = vowService.getVowXpMultiplier({
+                school: quest.school,
+                domain: quest.domain
+            });
+            const vowDmgMult = vowService.getVowDamageMultiplier({
+                school: quest.school,
+                domain: quest.domain
+            });
+            finalXp = Math.round(finalXp * vowXpMult);
+            finalGold = Math.round(finalGold * vowXpMult);
 
             // Check for Flow State bonus (HUMAN 3.0)
             const flowState = checkFlowState(quest.difficulty || 'medium', s.level);
@@ -5384,7 +6247,7 @@ module.exports = class LifeRPG extends Plugin {
             }
 
             const baseBossDamage = Number(quest.bossDamage) || 10;
-            const bossDamage = Math.round(baseBossDamage * vowMultiplier);
+            const bossDamage = Math.round(baseBossDamage * vowDmgMult);
 
             // Log activity
             this.logActivity('quest_complete', quest.name, {
@@ -5397,7 +6260,8 @@ module.exports = class LifeRPG extends Plugin {
                 school: quest.school || null,
                 linkedBossIds: quest.linkedBossIds || [],
                 bossDamage,
-                vowMultiplier
+                vowXpMult,
+                vowDmgMult
             });
 
             if (!this.skillTreeService) {
@@ -5421,11 +6285,24 @@ module.exports = class LifeRPG extends Plugin {
                 }
             }
 
-            this.gainXp(finalXp, finalGold, quest.domain);
+            this.gainXp(finalXp, finalGold, quest.domain, { domainDamageMult: vowDmgMult });
             new Notice(`⚔️ Quest Complete: ${quest.name}!`);
-            if (vowMultiplier !== 1) {
-                new Notice(`Estandarte: ${vowService.formatVowMultiplier(vowMultiplier)} XP y daño`);
+            if (vowXpMult !== 1 || vowDmgMult !== 1) {
+                const xpLabel = vowService.formatVowMultiplier(vowXpMult);
+                const dmgLabel = vowService.formatVowMultiplier(vowDmgMult);
+                new Notice(`Estandarte: ${xpLabel || '×1'} XP · ${dmgLabel || '×1'} daño`);
             }
+
+            if (!this.questEventService) {
+                this.questEventService = new QuestEventService(this);
+            }
+            const closed = this.questEventService.onQuestCompleted(quest.id);
+            if (closed?.flower) {
+                new Notice(`🌸 Desbloqueaste: ${closed.flower.name}`);
+            } else if (closed?.event) {
+                new Notice(`🗺️ Roadmap completado: ${closed.event.name}`);
+            }
+            await this.saveSettings();
         }
     }
 
@@ -5714,6 +6591,7 @@ module.exports = class LifeRPG extends Plugin {
                     flatPath: file.path,
                     description: '',
                     bossId: null,
+                    roadmapEventId: null,
                     unlocked: false,
                     unlockedAt: null,
                     damageReport: null
@@ -5740,6 +6618,16 @@ module.exports = class LifeRPG extends Plugin {
         return (this.settings.flowers || []).filter(flower =>
             !flower.bossId || (bossKey && String(flower.bossId) === bossKey)
         );
+    }
+
+    /** Flowers available for roadmap/campaign picker (not locked to another boss unless already unlocked). */
+    getAvailableFlowersForLoot(currentFlowerId = null) {
+        return (this.settings.flowers || []).filter(flower => {
+            if (currentFlowerId && flower.id === currentFlowerId) return true;
+            if (flower.unlocked) return true;
+            if (!flower.bossId && !flower.roadmapEventId) return true;
+            return false;
+        });
     }
 
     assignFlowerToBoss(bossId, flowerId, description) {

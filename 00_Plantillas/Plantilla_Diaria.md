@@ -1,15 +1,12 @@
 ---
 tags: [diario]
+modo_override: ""
+mision_salida: ""
 hito1: ""
-logro1: ""
-dificultad1: ""
-energia: ""
-hubo_practica_skill: false
-skill: ""
-evento: ""
-bien: ""
-mejorar: ""
-proxima_mision: ""
+bien1: ""
+mejorar1: ""
+proxima1: ""
+vowIds1: []
 ---
 # 🧠 Dashboard Diario: <% tp.file.title %>
 
@@ -96,110 +93,179 @@ if(sem) {
 
 ---
 
-## 🧠 Repasos de Hoy (Curva del Olvido)
+## 🧠 Acciones de estudio
 ```dataviewjs
-let hoyStr = dv.current().file.name;
-let hoy = moment(hoyStr, "YYYY-MM-DD").startOf('day');
+const hoyStr = dv.current().file.name;
+const hoy = moment(hoyStr, "YYYY-MM-DD").startOf("day");
+const cur = dv.current();
+const override = (cur.modo_override != null ? String(cur.modo_override) : "").trim().toLowerCase();
+const mision = (cur.mision_salida != null ? String(cur.mision_salida) : "").trim();
 
+function estadoSesion(p) {
+    return (p.estudio_estado != null ? String(p.estudio_estado) : "").trim().toLowerCase();
+}
+
+function esSesionReal(p) {
+    const path = String(p.file.path).replace(/\\/g, "/");
+    const name = String(p.file.name);
+    if (path.includes("00_Plantillas/")) return false;
+    if (name.startsWith("Plantilla_")) return false;
+    if (name === "Untitled" || name.startsWith("Untitled ")) return false;
+    if (name.startsWith("EJEMPLO_")) return false;
+    const tags = (p.file.tags || []).map(t => String(t).replace(/^#/, ""));
+    if (tags.includes("ejemplo")) return false;
+    return true;
+}
+
+const sesiones = dv.pages("#sesion-estudio").where(esSesionReal);
+const colaCornell = sesiones.where(p => estadoSesion(p) === "raw");
+const colaGenerar = sesiones.where(p => estadoSesion(p) === "cornell");
+
+let repasarHoy = [];
 if (hoy.isValid()) {
-    let paginas = dv.pages("#estudio").where(p => p.tema_iniciado);
-    let repasarHoy = paginas.filter(p => {
-        let inicio = moment(p.tema_iniciado.toString()).startOf('day');
-        let diasTranscurridos = hoy.diff(inicio, 'days');
-        return [1, 2, 7, 15, 31].includes(diasTranscurridos);
+    repasarHoy = dv.pages("#estudio").where(p => p.tema_iniciado).filter(p => {
+        const path = String(p.file.path).replace(/\\/g, "/");
+        if (path.includes("00_Plantillas/") || String(p.file.name).startsWith("EJEMPLO_")) return false;
+        const inicio = moment(p.tema_iniciado.toString()).startOf("day");
+        const d = hoy.diff(inicio, "days");
+        return [1, 2, 7, 15, 31].includes(d);
     });
+}
 
-    if (repasarHoy.length > 0) {
-        dv.list(repasarHoy.map(p => p.file.link));
+// Modo calendario (Plazi | Lectura | Repaso). Override: modo_override
+const validModes = ["plazi", "lectura", "output"];
+let modoKey;
+if (validModes.includes(override)) {
+    modoKey = override;
+} else if (hoy.isValid()) {
+    const iso = hoy.isoWeekday();
+    if (iso === 1 || iso === 4) modoKey = "plazi";
+    else if (iso === 2 || iso === 5) modoKey = "lectura";
+    else modoKey = "output";
+} else {
+    modoKey = "output";
+}
+
+const modoLabel = modoKey === "plazi" ? "Plazi" : modoKey === "lectura" ? "Lectura" : "Repaso";
+const hayBacklog = colaCornell.length > 0 || colaGenerar.length > 0 || repasarHoy.length > 0;
+
+dv.paragraph(`**Modo:** \`${modoLabel}\``);
+
+// Todo lo pendiente, en orden de prioridad dentro de los 20′
+const acciones = [];
+for (const p of colaCornell) acciones.push(`**Cornell** — ${p.file.link}`);
+for (const p of colaGenerar) acciones.push(`**Generar** — ${p.file.link}`);
+for (const p of repasarHoy) acciones.push(`**Repaso** — ${p.file.link}`);
+
+if (modoKey === "plazi" || modoKey === "lectura") {
+    if (hayBacklog) {
+        acciones.push(
+            modoKey === "plazi"
+                ? "_Si sobra tiempo:_ Nuevo Raw Plazi"
+                : "_Si sobra tiempo:_ Nuevo Raw lectura + `mision_salida`"
+        );
     } else {
-        dv.paragraph("✅ ¡No hay repasos pendientes hoy, manito!");
+        acciones.push(
+            modoKey === "plazi"
+                ? "**Input** — Nuevo Raw Plazi"
+                : "**Input** — Nuevo Raw lectura + `mision_salida`"
+        );
     }
+} else if (!hayBacklog) {
+    acciones.push("_Nada en cola — buffer / campaña_");
+}
+
+dv.list(acciones);
+
+if (mision) dv.paragraph(`**misión_salida:** ${mision}`);
+
+const campanas = dv.pages("#campana").where(p => {
+    const path = String(p.file.path).replace(/\\/g, "/");
+    const name = String(p.file.name);
+    if (name.startsWith("_TEMPLATE") || name.startsWith("Plantilla_")) return false;
+    if (path.includes("00_Plantillas/")) return false;
+    const e = p.estado != null ? String(p.estado).toLowerCase() : "";
+    return e === "activa";
+});
+if (campanas.length > 0) {
+    dv.paragraph("**Campañas**");
+    dv.list(campanas.map(p => {
+        const ifThen = p.if_then != null ? String(p.if_then) : "";
+        return ifThen ? `${p.file.link} — ${ifThen}` : p.file.link;
+    }));
 }
 ```
 
----
+```meta-bind-button
+label: Generar estudios de hoy
+style: primary
+tooltip: Solo notas estudio_estado=cornell. Modal Create Chat = seguridad Cursor. Workspace = Notas_plazi-master.
+action:
+  type: open
+  link: cursor://anysphere.cursor-deeplink/prompt?text=%2Fgenerar-estudios-hoy
+```
 
+---
+Los 3 mas importantes
+- [ ] a
+- [ ] b
+- [ ] c
+El mas importante
+- [ ] b
+
+- [ ] Acciones de estudio (20′)
+- [ ] 
+
+1:30H
+- [ ] 30min - a
+- [ ] 1H - a
+
+4:00pm
+- [ ] Plan salida / ejecutar `mision_salida` 
 
 ## Cierre del Día
 
 ### Hitos
 
-> [!hito] Hito 1 — obligatorio
->
-> ```meta-bind
-> INPUT[textArea(title(Qué logré), placeholder(Ej. Alcancé 80% coverage en AUTH), class(meta-bind-full-width), class(meta-bind-hito-area)):hito1]
-> ```
->
-> ```meta-bind
-> INPUT[textArea(title(Cómo lo logré), placeholder(Qué hice concretamente para lograrlo), class(meta-bind-full-width), class(meta-bind-compact-area)):logro1]
-> ```
->
-> ```meta-bind
-> INPUT[slider(title(Dificultad), minValue(1), maxValue(10), addLabels, class(meta-bind-full-width)):dificultad1]
-> ```
-
 ```meta-bind-button
-label: Vincular a vow
-style: default
-tooltip: Abre lista dinámica de vows y suma este hito como grano
+label: Cuéntame la historia de hoy
+style: primary
+tooltip: Abre el editor RPG a pantalla amplia (escribir hitos + vincular vows)
 action:
   type: command
-  command: soulhy:link-hito-to-vow
+  command: soulhy:hito-story-editor
 ```
 
-```meta-bind-button
-label: Agregar hito
-style: default
-tooltip: Inserta el siguiente hito arriba (máx. 3). El botón se mantiene abajo.
-action:
-  type: insertIntoNote
-  line: selfStart
-  value: 00_Plantillas/meta-bind/_snippet_next_hito.md
-  templater: true
+```dataviewjs
+const p = dv.current();
+const filas = [];
+for (let n = 1; n <= 5; n++) {
+    const paso = p[`hito${n}`];
+    if (!paso || String(paso).trim() === "") continue;
+    const bien = p[`bien${n}`] != null && String(p[`bien${n}`]).trim() !== ""
+        ? String(p[`bien${n}`])
+        : "—";
+    const mejorar = p[`mejorar${n}`] != null && String(p[`mejorar${n}`]).trim() !== ""
+        ? String(p[`mejorar${n}`])
+        : "—";
+    const proxima = p[`proxima${n}`] != null && String(p[`proxima${n}`]).trim() !== ""
+        ? String(p[`proxima${n}`])
+        : "—";
+    filas.push([`Hito ${n}`, String(paso), bien, mejorar, proxima]);
+}
+if (filas.length === 0) {
+    dv.paragraph("_Todavía no hay historia. Abrí el editor con el botón de arriba._");
+} else {
+    dv.table(["#", "Qué pasó", "Bien", "Mejorar", "Próxima"], filas);
+}
 ```
-
-### Energía
-
-```meta-bind
-INPUT[slider(title(Energía), minValue(1), maxValue(10), addLabels, class(meta-bind-full-width)):energia]
-```
-
-### Práctica de skill (OMA light)
-
-> [!oma] OMA light
->
-> *Toggle on solo si hubo práctica relevante. Si no, los hitos alcanzan.*
->
-> ```meta-bind
-> INPUT[toggle(title(Hubo práctica de skill)):hubo_practica_skill]
-> ```
->
-> ```meta-bind
-> INPUT[text(title(Skill / quest), placeholder(Ej. 2-segundos_responder), class(meta-bind-full-width)):skill]
-> ```
->
-> ```meta-bind
-> INPUT[textArea(title(Evento), placeholder(Qué pasó - con quién - contexto breve), class(meta-bind-full-width), class(meta-bind-compact-area)):evento]
-> ```
->
-> ```meta-bind
-> INPUT[textArea(title(Qué hice bien), placeholder(Éxito real o espurio), class(meta-bind-full-width), class(meta-bind-compact-area)):bien]
-> ```
->
-> ```meta-bind
-> INPUT[textArea(title(Qué mejorar), placeholder(Un solo ajuste concreto), class(meta-bind-full-width), class(meta-bind-compact-area)):mejorar]
-> ```
->
-> ```meta-bind
-> INPUT[textArea(title(Qué haré la próxima), placeholder(Fortalecer / corregir / repetir secuencia), class(meta-bind-full-width), class(meta-bind-compact-area)):proxima_mision]
-> ```
 
 ```meta-bind-button
 label: Cerrar día
 style: primary
-tooltip: Abre Cursor con /cierre-dia prellenado (confirmá con Enter)
+tooltip: Abre Cursor con /cierre-dia (valida hitos del diario)
 action:
   type: open
-  link: cursor://anysphere.cursor-deeplink/prompt?text=%2Fcierre-dia%0A%0ALee%20la%20nota%20diaria%20de%20hoy%20%2801_Planificacion%2F03_Diario%2F%29%2C%20valida%20hitos%2C%20y%20si%20hubo_practica_skill%20corre%20OMA%20light.%20Confirma%20que%20escribiste%20en%20el%20vault.
+  link: cursor://anysphere.cursor-deeplink/prompt?text=%2Fcierre-dia%0A%0ALee%20la%20nota%20diaria%20de%20hoy%20%2801_Planificacion%2F03_Diario%2F%29%2C%20valida%20hitos%20y%20confirm%C3%A1%20que%20escribiste%20en%20el%20vault.
 ```
 
