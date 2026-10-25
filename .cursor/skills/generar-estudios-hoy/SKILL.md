@@ -69,7 +69,9 @@ Sin confirmación → no generes ni commit.
 
 ## Paso 3 — File diario `02_Estudios/YYYY-MM-DD.md`
 
-Creá o actualizá (`date` del JSON).
+Creá o actualizá (`date` del JSON) en la **raíz** de `02_Estudios`.
+
+`estudiosPath` sigue siendo `02_Estudios/YYYY-MM-DD.md`. No escribas en `02_Estudios/_archivo/`. Al listar cards vigentes, ignorá esa carpeta. No archives un `AAAA-MM-DD` salvo que `hoy > tema_iniciado + 31` (el día 31 todavía se repasa). El diario sigue filtrando `#estudio` en los días 1, 2, 7, 15 y 31. No edites `Plantilla_Diaria` ni las carpetas de mensual, semanal y diario.
 
 ```yaml
 ---

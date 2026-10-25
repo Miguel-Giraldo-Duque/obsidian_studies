@@ -57,6 +57,14 @@ Antes de generar cards o campañas, clasificá cada idea de la fuente:
 8. **Reportar** archivos tocados y cómo practicar.
 9. **Actualizar memoria** del mentor (salvo `/generar-estudios-hoy`, que saltea memoria para el commit).
 
+### Vigentes vs `_archivo`
+
+Al listar lo que se practica ahora, saltá `02_Estudios/_archivo/`. Ahí solo entran files `AAAA-MM-DD.md` con la curva cerrada: `hoy > tema_iniciado + 31`. El día 31 todavía es repaso: no archives ese día.
+
+Las cards nuevas siguen naciendo en `02_Estudios/YYYY-MM-DD.md`, en la raíz de Estudios. `estudiosPath` queda `02_Estudios/${date}.md`. No escribas dentro de `_archivo`.
+
+No quites `#estudio` ni `tema_iniciado` al archivar. El diario lista esos repasos por etiqueta, en los días **1, 2, 7, 15 y 31**. No cambies esa consulta ni `01_Planificacion/01_Mensual`, `02_Semanal` o `03_Diario`.
+
 ### Caps de campañas
 
 - Máx. **1** campaña `#campana` con `estado: activa` y `tipo: social`.

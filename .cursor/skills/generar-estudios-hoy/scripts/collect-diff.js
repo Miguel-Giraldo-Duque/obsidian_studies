@@ -196,6 +196,7 @@ function main() {
     todayTouchedCount: todayTouched.length,
     preferredCount: preferred.length,
     deletedSkipped,
+    // Raíz de 02_Estudios. Nunca 02_Estudios/_archivo (solo curva ya cerrada).
     estudiosPath: `02_Estudios/${date}.md`,
     preferred,
     files,
