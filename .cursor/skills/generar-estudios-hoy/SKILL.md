@@ -13,6 +13,7 @@ Actuá como **Maestro de Estudios**. Pipeline: **Raw → Cornell → Cards** ([[
 1. Leé [`.cursor/rules/maestro-estudios.mdc`](../../rules/maestro-estudios.mdc).
 2. Empezá con **Remembering...** / **Recordando...**.
 3. **NO** actualices `05_Mentor/Memoria_Mentor.md`.
+4. Leé los proyectos con `estado: activo` en `03_Proyectos/` (Resultado, Métricas, Vow).
 
 ## Paso 1 — Diff de Escuela(s) / sesiones
 
@@ -42,11 +43,18 @@ Para cada path en `preferred` (y cualquier `#sesion-estudio` sucia), leé `estud
 - Si **solo** hay `raw` (ninguna `cornell`): AskQuestion avisando *“Pulí Cornell primero (estudio_estado: cornell). ¿Forzar igual?”* — **default: no generar**, pará.
 - Si hay mezcla: proponé solo las `cornell`; listá las `raw` como “pendientes Cornell”.
 
+### Dudas `?`
+
+- Buscá en el diff (y commits de días anteriores) líneas nuevas que empiecen exactamente con `- ?` en `04_Libros/` y sesiones.
+- Formatos: pegadas desde PDF++ como `- ? [[...]] — "texto"` o a mano como `- ? p. 23 ...`.
+- Resuelta = la `?` cambió a `✓` o lleva su respuesta al lado.
+- Una `?` sin resolver al día siguiente de aparecer pasa a pregunta de repaso en el file diario (aunque no haya cornell nuevo).
+
 ## Paso 2 — Leer fuentes cornell y clasificar
 
 1. Leé cada path **cornell** (secciones **Cues / Notas / Summary**; Raw solo apoyo). Preferí bullets de **Cues** como semillas de flashcards. Ignorá `00_Plantillas/`, `Untitled`, `EJEMPLO_*`.
 2. Corregí ortografía en fuente si hace falta.
-3. Filtros Maestro: ¿accionable ≤7 días? ¿teoría/skill? Preguntas: **máx. 6 por tema**, que en total se respondan en **≤15 min**. Deben ser englobadoras: cada una cubre una parte grande del tema (qué, por qué, cómo se relaciona), no un dato suelto. Ante la duda, menos y más claras. El filtro accionable ≤7 días solo decide si se propone campaña; no recorta preguntas.
+3. Filtros Maestro: ¿accionable ≤7 días? ¿teoría/skill? Preguntas: **máx. 6 por tema**, que en total se respondan en **≤15 min**. Deben ser englobadoras: cada una cubre una parte grande del tema (qué, por qué, cómo se relaciona), no un dato suelto. Ante la duda, menos y más claras. El filtro accionable ≤7 días solo decide si se propone campaña; no recorta preguntas. Si la sesión o el libro tiene `proyecto:`, hacé preguntas de escenario/aplicación al Resultado y Vow del proyecto (ej. *¿cómo usarías la autoimagen en tu próxima conversación con un desconocido?*), no definiciones; enlazá el proyecto.
 4. Campañas activas:
 
 ```bash
@@ -66,6 +74,8 @@ AskQuestion **antes** de escribir:
 5. Si ya hay activa del mismo `tipo`: pausar anterior o descartar nueva.
 
 Sin confirmación → no generes ni commit.
+
+En corrida automática (sin Miguel presente), la confirmación se reemplaza por escribir las preguntas directo; las campañas solo se proponen, nunca se crean ni activan.
 
 ## Paso 3 — File diario `02_Estudios/YYYY-MM-DD.md`
 
@@ -93,6 +103,8 @@ tema_iniciado: YYYY-MM-DD
 ## Paso 3b — Campaña / stub (si se aprobó)
 
 Igual que antes: `02_Estudios/Campanas/<slug>.md` desde `_TEMPLATE_campana.md`; técnica → `practicas/<slug>/prompt.md` + `STATUS.md`.
+
+Toda campaña lleva `proyecto: [[...]]`.
 
 ## Paso 3c — Actualizar estado de sesiones (obligatorio)
 
