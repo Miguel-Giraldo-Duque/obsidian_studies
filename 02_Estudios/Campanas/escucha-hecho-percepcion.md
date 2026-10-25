@@ -11,6 +11,7 @@ reps_objetivo: 10
 reps_hechas: 0
 practica_path: ""
 oma_link: ""
+proyecto: ""
 ---
 
 # Campaña: Escucha, del hecho a la percepción
