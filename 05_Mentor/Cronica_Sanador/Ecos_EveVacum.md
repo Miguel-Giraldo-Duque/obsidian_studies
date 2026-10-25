@@ -11,7 +11,7 @@ recompensa_hito: RpgImages/Loot/Flowers/flower10.png
 recompensa_hito_nombre: Centro al sol
 recompensa_final: RpgImages/Loot/Flowers/flower6.png
 recompensa_final_nombre: Flor Rumen
-banco: 001 banco de retos de EveVacum.md
+banco: 001 banco de quest/001 banco de retos de EveVacum.md
 actualizado: 2026-08-04
 ---
 

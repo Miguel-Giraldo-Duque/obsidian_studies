@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 
 const ROOT = path.join(__dirname, '..', '..', '..', '..', '..');
-const IN_MD = path.join(ROOT, '001 banco de retos de benevolencia.md');
+const IN_MD = path.join(ROOT, '001 banco de quest', '001 banco de retos de benevolencia.md');
 const OUT_JSON = path.join(__dirname, '..', 'data', 'benevolencia-challenges.json');
 const OUT_JS = path.join(__dirname, '..', 'data', 'benevolencia-challenges.js');
 

@@ -189,7 +189,7 @@ No son primordiales. No otorgan tomo. Son dolores **concretos** personificados p
 
 ### EveVacum — Historia completa (liberado 2026-08-08)
 
-> Ficha jugable: [[Ecos_EveVacum]] · Banco: `001 banco de retos de EveVacum.md` · HP campo 400 · Alias temprano: Círculo Umbral.
+> Ficha jugable: [[Ecos_EveVacum]] · Banco: `001 banco de quest/001 banco de retos de EveVacum.md` · HP campo 400 · Alias temprano: Círculo Umbral.
 
 #### Origen
 

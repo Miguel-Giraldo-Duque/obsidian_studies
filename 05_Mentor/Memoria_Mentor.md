@@ -63,7 +63,7 @@ version: 17
 - [Tomo] Light :: Guiltmal — vinculado en arena, unlocked false; iluminar la nube seccion a seccion; culpa como martillo no carcel.
 - [Hechizo] Flow :: skill Presencia; TPN vs DMN; 60 quests hardware→software social→caos; nodo `node_1785983669892_tu8ccua1d`.
 - [Estado] Flow Q1.7 Gate Ochenta :: 20 min pared, criterio S/R ≥80% (no conteo de pensamientos); pendiente; daña a Guiltmal.
-- [Componente] Banco Flow :: `001 banco de retos de Flow.md` + mapa `02_Estudios/Quests_Flow.md` + script `_inject_flow_quests.py`.
+- [Componente] Banco Flow :: `001 banco de quest/001 banco de retos de Flow.md` + mapa `02_Estudios/Quests_Flow.md` + script `_inject_flow_quests.py`.
 - [Campaña] Vendedor de calle :: 14 retos de venta en vereda, 22/10–1/11/2026; meta 2 ventas; el no suma; Flor Vereda al cerrar el roadmap.
 - [Patron] Esconder la mano :: ocultar el hecho porque ver la decepción del otro duele más que mentir; origen notas/mamá; voto de transparencia desde la mentira a Salomé.
 - [Evento] Lentejas 2026-10-22 :: a las 6 guardó en silencio las lentejas que no refrigeró; el papá ya lo sabía y esperaba la frase; Soulhy la dijo en la puerta; la culpa siguió y aun así fue a Kikiriquí.

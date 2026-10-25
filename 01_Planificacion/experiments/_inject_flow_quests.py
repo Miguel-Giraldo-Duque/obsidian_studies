@@ -9,7 +9,7 @@ from pathlib import Path
 
 root = Path(__file__).resolve().parents[2]
 data_path = root / ".obsidian/plugins/soulhy/data.json"
-bank_path = root / "001 banco de retos de Flow.md"
+bank_path = root / "001 banco de quest" / "001 banco de retos de Flow.md"
 
 NODE = "node_1785983669892_tu8ccua1d"
 SOURCE = "flow-bank"

@@ -4,7 +4,7 @@ skill: Flow
 school: Presencia
 status: 60-en-juego
 nodo_vibe_rpg: node_1785983669892_tu8ccua1d
-fuente_banco: 001 banco de retos de Flow.md
+fuente_banco: 001 banco de quest/001 banco de retos de Flow.md
 actualizado: 2026-08-05
 ---
 
