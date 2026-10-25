@@ -26,7 +26,7 @@ Es la estructura principal exterior visible del órgano reproductor femenino, de
 Punto G: A unos 3 centimetros del interior de la vagina en la parte superior se encuentra una pequeña prominencia, que hace parte de la red del clotoris tambien referido como el cluster, es muy estimulnte e intenso al tacto. Algunas mujeres lo encuentran cercano a una sensación de orinar, dando como resultado la eyeculación femenina
 
 
-![[Pasted image 20260616145044.png]]![[Pasted image 20260616160301.png]]
+![[Adjuntos/Pasted image 20260616145044.png]]![[Adjuntos/Pasted image 20260616160301.png]]
 
 
 ### Que significa que una mujer este mojada?

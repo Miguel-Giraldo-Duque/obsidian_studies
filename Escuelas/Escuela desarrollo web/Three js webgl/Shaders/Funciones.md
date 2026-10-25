@@ -7,7 +7,7 @@
 
 **Módulo** (o **mod**) es una operación matemática que devuelve el **resto** de la división de un número entre un divisor. En programación, se usa para crear patrones repetitivos, ya que cuando un valor alcanza el límite especificado, vuelve a comenzar desde un valor inicial (generalmente 0). Esto permite definir un rango cíclico de valores.
 
-![[Pasted image 20240924154818.png]]
+![[Adjuntos/Pasted image 20240924154818.png]]
 
 Algo asi se ve la grafica una vez se alcanza un limite se vuelve a cero y se repite
 
@@ -20,7 +20,7 @@ Algo asi se ve la grafica una vez se alcanza un limite se vuelve a cero y se rep
 
 La función **Step** se refiere a una condición que evalúa si un valor está por encima o por debajo de un umbral específico. Si el valor está por debajo del límite, se ajusta a un valor predeterminado (normalmente 0); si está por encima o igual al límite, se ajusta a otro valor (normalmente 1). Es una función escalón que fuerza el valor a uno de los dos extremos más cercanos según la comparación con el umbral.
 
-![[Pasted image 20240924161012.png]]
+![[Adjuntos/Pasted image 20240924161012.png]]
 
 
 
@@ -44,7 +44,7 @@ gl_FragColor = vec4(strength, strength, strength, 1.0);
 ````
 
 
-![[Pasted image 20240925121544.png]]
+![[Adjuntos/Pasted image 20240925121544.png]]
 
 
 
@@ -91,7 +91,7 @@ gl_FragColor = vec4(strength, strength, strength, 1.0);
 
 ```
 
-![[Pasted image 20240925124439.png]]
+![[Adjuntos/Pasted image 20240925124439.png]]
 
 
 ### Floor
@@ -118,7 +118,7 @@ gl_FragColor = vec4(strength, strength, strength, 1.0);
 
 #### "Ramdom" para lograr resultados como este
 
-![[Pasted image 20240925143129.png]]
+![[Adjuntos/Pasted image 20240925143129.png]]
 
 ramdom en [[WebGl]] **no existe**  debemos crear nuestra propia función que realize este tipo de efecto , y es eso un efecto no hay ramdom realmente solo que sus valores son tan impredecibles que dan esa senacion de ramdom
 
@@ -140,7 +140,7 @@ return fract(sin(dot(st.xy,
 
 Devuelve el largo de un elemento puede ser un vec , un uVu etc .
 
-![[Pasted image 20240925150143.png]]
+![[Adjuntos/Pasted image 20240925150143.png]]
 
 
 ```js
@@ -208,7 +208,7 @@ SmoothSteep permite crear un paso suave entre valores de [0,1] su principal bene
 
 la forma de  usarlo es le indicamos un valor del cual es donde queremos hacer la transicion a nuestro segundo valor el limite , mientras no se alcance el valor no se transicionara  hermite
 
-![[Pasted image 20241116141625.png]]
+![[Adjuntos/Pasted image 20241116141625.png]]
 
 como tercer valor le debemos entregar el valor a remapear
 

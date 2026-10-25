@@ -28,18 +28,18 @@ El que proveedor se repite 2 veces se convierte en el paso del tiempo en una pro
 | 1            | Estados unidos |
 ### 2FN Atributos entidad
 
-![[Pasted image 20250509205550.png]]
+![[Adjuntos/Pasted image 20250509205550.png]]
 
 Existen entidades como la del ejemplo donde tenemos atributos que fácilmente podrían ser otras entidades la idea es dividir estos atributos en nuestras entidades o sus propias keys 
 
-![[Pasted image 20250509205705.png]]
+![[Adjuntos/Pasted image 20250509205705.png]]
 
 
 ### 3FN Entidades purista
 
 Todas los atributos que no hagan parte esencial de la entidad deben ser separados como su propia entidad y campos 
-![[Pasted image 20250509205831.png]]
-![[Pasted image 20250509205838.png]]
+![[Adjuntos/Pasted image 20250509205831.png]]
+![[Adjuntos/Pasted image 20250509205838.png]]
 
 
 ### 4FN Datos repetidos
@@ -67,6 +67,6 @@ Carro_Proveedor
 
 
 Ahora agregar un proveedor seria significativamente mas facil ya que para agreuar un nuevo proveedor basta con generarlo con la entidad proveedor y no tendremos problemas
-![[Pasted image 20250509210038.png]]
+![[Adjuntos/Pasted image 20250509210038.png]]
 
- ![[Pasted image 20250509210044.png]]
+ ![[Adjuntos/Pasted image 20250509210044.png]]

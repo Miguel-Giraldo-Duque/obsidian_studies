@@ -14,7 +14,7 @@ const spherical = new THREE.Spherical(
 ```
 
 El radio refriéndose a  la distancia que tenemos desde cualquier borde de la circunferencia en Relacion al centro de esta , PHI se refiere a la linea que recorre verticalmente a la esfera , THETA a la linea que recorre horizontalmente  
-![[Pasted image 20241126171756.png]]
+![[Adjuntos/Pasted image 20241126171756.png]]
 En español podríamos verlo así: PHI recorre verticalmente de polo a polo la esfera funcionando como una naranja cuando la partes a la mitad solo necesita volver a unir los dos lados para crear una naranja completa pues son simétricos ahora para unirlo usamo thteta que recorre toda la circunfencia para juntar ambos lados
 
 Ahora para poder usar esta clase la debemos trasformar a posición  de 3 vectores 

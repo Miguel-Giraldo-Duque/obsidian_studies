@@ -5,9 +5,9 @@
 
 En [[React]] se usa esta herramienta en conjunto con [[Use state compuest]]   para manejar múltiples estados y tendremos algo llamado actions que seran la que le indicaran al estado que estado actualizar 
 
-![[Pasted image 20240913120251.png]]
+![[Adjuntos/Pasted image 20240913120251.png]]
 
-![[Pasted image 20240913120341.png]]
+![[Adjuntos/Pasted image 20240913120341.png]]
 
 La logica general es :
 

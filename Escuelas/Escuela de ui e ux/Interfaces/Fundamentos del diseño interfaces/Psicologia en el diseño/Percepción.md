@@ -5,11 +5,11 @@ En [[UxUi]] cuando interactuamos una interfaz o cualquier elemento de la vida re
 - **Presente** : Lo que estamos viendo y experimentando y su contexto de lo que percibimos
 
 - **Futuro** : Escaneamos el entorno filtrando lo que nos interesa buscando coincidencias para encontrar o interactuar basado un objetivo en mente digamos estoy buscando en mi cja de herramientas en una tijera , cuando la vaya a buscar no notare ni siquiera el resto de elementos presentes.
-![[Pasted image 20250102173351.png]]
+![[Adjuntos/Pasted image 20250102173351.png]]
 
 - **Pasado** : En base a lo que hemos experimentado en otras interfaces o formas exploraremos maneras de interactuar con la interfaz, o incluso con lo que nos dicen que vamos a interactuar interpretaremos las formas , por ejemplo:
   si me dicen que voy a percibir un plano veré la imagen como un plano de cafetería  , sin embargo si me dicen que son letras quizás busque coincidencias que prueben esa "dirección" 
-![[Pasted image 20250102172918.png]]
+![[Adjuntos/Pasted image 20250102172918.png]]
 
 
 Esto es importante entenderlo por que en el diseño buscamos solucionar una problemática y si tenemos en cuenta los anteriores factores podemos usar principios como:

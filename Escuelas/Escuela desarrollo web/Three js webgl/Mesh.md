@@ -67,7 +67,7 @@ renderer.render(scene, camera)
 Y nos aparece nuestro resultado
 
 
-![[Pasted image 20240727175728.png]]
+![[Adjuntos/Pasted image 20240727175728.png]]
 
 
 Nuestro cubo que actualmente

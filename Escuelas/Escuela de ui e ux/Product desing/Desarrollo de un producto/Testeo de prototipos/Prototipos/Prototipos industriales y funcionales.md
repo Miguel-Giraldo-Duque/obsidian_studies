@@ -11,6 +11,6 @@ Por ello en cuadrante debemos seguir priorizando solucionar esos supuestos mas d
 
 En los prototipos industriales , ya variacion es minima en este prototipo buscamos acercanos lo maximo posible al producto final , en esta etapa pasamos pruebas de seguridad , testear logisticas , y practicas 
 
-![[Pasted image 20241129234959.png]]
+![[Adjuntos/Pasted image 20241129234959.png]]
 
-![[Pasted image 20241129235009.png]]
+![[Adjuntos/Pasted image 20241129235009.png]]

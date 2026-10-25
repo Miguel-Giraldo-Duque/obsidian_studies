@@ -8,9 +8,9 @@ El objetivo de este ejercicio es que validemos diferentes ideas con diferentes p
 
 Este tipo de prototipos es especialmente útil cuando queremos verificar o validar interacciones flujos o conceptos en un entorno físico, o con elementos con los que podamos interactuar en la vida real   
 
-![[Pasted image 20241129215632.png]]
+![[Adjuntos/Pasted image 20241129215632.png]]
 
 Por ejemplo como debería organizarse este espacio de hospital para serle mas útil y funcional al usuario , y en base a esa interacción que notamos de los usuario iterar el prototipo a partir del feeback
-![[Pasted image 20241129220043.png]]
+![[Adjuntos/Pasted image 20241129220043.png]]
 
 Si nos saltamos las etapas de prototipo y vamos directo al diseño final suceden casos donde nuestra solución es muy bella , pero ineficaz en cubrir las necesidades principales de nuestro usuario.

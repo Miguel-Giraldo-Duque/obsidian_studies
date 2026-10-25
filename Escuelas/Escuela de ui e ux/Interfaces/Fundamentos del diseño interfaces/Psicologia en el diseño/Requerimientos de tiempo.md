@@ -14,7 +14,7 @@ Algunos elementos claves son :
 - Te informacion sobre que cuanto demorara la interacción
 - te deja hacer otras cosas mientras realiza el proceso
 
-![[Pasted image 20250202130709.png]]
+![[Adjuntos/Pasted image 20250202130709.png]]
 
 
 #### Tiempo de respuesta humanos
@@ -45,7 +45,7 @@ Dado que los seres humanos tenemos una exigencia muy seria por la sensibilidad d
 - **Cancelar proceso** : Parte de una excelente percepción de sensibilidad por parte de los usuarios a un sistema es gracias a la sensación de control que les da poder "cancelar descarga", les da un certeza y tranquilidad frente sus acciones
 
 - **Previzualicion de contenido** : Es muy útil poder crear una previsualización del contenido incluso si no esta del todo cargado ello nos permite que el usuario no vea interrumpida su tarea unitaria permitiéndole planear sus próximas acciones con seguridad , incluso siendo percibido como mejores para las personas que las mismas barras de carga siendo mejor ir mostrando poco a poco que todo el contenido , solucion como el skeeleton.
-![[Pasted image 20250203202628.png]]
+![[Adjuntos/Pasted image 20250203202628.png]]
 
 - **Precarga de acciones o contenido importante**: Si podemos tener una predicción de cual son las acciones mas importantes bajo las cuales un usuario va usar ,  es una manera inteligente preparar estas solicitudes para ser mas rápidas ("una solicitud de documentos" , la [[Apis]] ya precargo parte de los documentos),  o si el usuario requiere una informacion importante tenerla preparada ("estoy leyendo un blog " , la siguiente paginas ya debe estar cargada), esto genera sensación de rapidez .
 

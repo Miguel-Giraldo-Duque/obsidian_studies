@@ -5,7 +5,7 @@
 Es la forma en que podemos tomar una textura e indicarle como queremos que se organice en nuestras [[Geomtrias]] teniendo instrucciones para cada vértice funcionado como envoltura para dulces , estas instrucciones vienen en 2D
 
 
-![[Pasted image 20241001215844.png]]
+![[Adjuntos/Pasted image 20241001215844.png]]
 
 
 Finalmente para que [[Three js]] pueda procesar este imagen , usa el atributo nativo de uv que nos da la lista de la posicones de vertices en plano 2D para poder posicionar la imagen
@@ -21,7 +21,7 @@ textureColor.repeat.x = 2
 
 textureColor.repeat.y = 3
 ```
-![[Pasted image 20241001221842.png]]
+![[Adjuntos/Pasted image 20241001221842.png]]
 
 Sin embargo por defecto  repeat no repite la textura como tal si no que estrecha y apreta en un punto.
 
@@ -48,7 +48,7 @@ textureColor.repeat.y = 3
 
 **MirroredRepeatWrapping** Lo que hace es que repite nuestros elementos sin embargo lo que hace es que invierte la direccion de la textura por cada repticion algo así :
 
-![[Pasted image 20241001224153.png]]
+![[Adjuntos/Pasted image 20241001224153.png]]
 
 ```js
 textureColor.wrapS =  THREE.MirroredRepeatWrapping;
@@ -67,7 +67,7 @@ textureColor.offset.y = 0.40
 ```
 
 
-![[Pasted image 20241001224531.png]]
+![[Adjuntos/Pasted image 20241001224531.png]]
 
 
 **Rotation** lo que hace es que rota la texturas  es un vec2 refriéndose al plano y la orientación de las texturas :
@@ -79,5 +79,5 @@ textureColor.rotation = Math.PI / 4
 textureColor.center.x = 0.5
 textureColor.center.y = 0.5
 ```
-![[Pasted image 20241001225611.png]]
+![[Adjuntos/Pasted image 20241001225611.png]]
 

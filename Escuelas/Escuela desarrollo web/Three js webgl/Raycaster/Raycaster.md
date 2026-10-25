@@ -4,7 +4,7 @@
 
 Es un herramienta que [[Three js]] nos ofrece para poder proyectar en una dirección  un laser que nos otorga información sobre la intercepción de elementos , dándonos la posibilidad de crear eventos de mouse en nuestro canvas a los elementos 3D y demas fetures
 
-![[Pasted image 20241016211055.png]]
+![[Adjuntos/Pasted image 20241016211055.png]]
 
 Un raycater puede pasar múltiples veces sobre una misma [[Geomtrias]]
 

@@ -33,7 +33,7 @@ Identificas:
 **Avanzar**
 - Las personas se educaron con vos, entonces puedes llevarlo en un ciclo de vida para un resultado especifico.
 
-![[Pasted image 20261006144940.png]]
+![[Adjuntos/Pasted image 20261006144940.png]]
 
 
 #### Para que una estrategia de contenidos sea fuerte

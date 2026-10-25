@@ -22,4 +22,4 @@ R: Cuál fue el resultado métrica o éxito en la historia, aunque similar a BLU
 
 L ¿ Cuál es la lección que aprendiste que hubieras hecho diferentes y que acciones tomaste / habilidad aprendida ?
 
-![[Pasted image 20260810223133.png]]
+![[Adjuntos/Pasted image 20260810223133.png]]

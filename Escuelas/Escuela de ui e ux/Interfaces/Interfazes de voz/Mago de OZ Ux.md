@@ -6,8 +6,8 @@ Es una tecnica para el testing de [[Flujos de sistemas de conversacion]] donde e
 Se busca que el entrevistador este en otra habitación simulando los comandos
 
 
-![[Pasted image 20241105235708.png]]
+![[Adjuntos/Pasted image 20241105235708.png]]
 
-![[Pasted image 20241106000356.png]]
+![[Adjuntos/Pasted image 20241106000356.png]]
 
 

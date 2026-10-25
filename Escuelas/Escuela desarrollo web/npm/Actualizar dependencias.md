@@ -11,7 +11,7 @@ npm outdate
 
 Mostrándonos un resultado como este
 
-![[Pasted image 20240307164738.png]]
+![[Adjuntos/Pasted image 20240307164738.png]]
 
 
 Ahora que sabemos que nuestra dependencia de express se encuentra desactualizada optamos por actualizarla con el siguiente comando 

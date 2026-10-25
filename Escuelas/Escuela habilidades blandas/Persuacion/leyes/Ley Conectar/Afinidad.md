@@ -11,9 +11,9 @@ Se refiere a nuestra capacidad de crear una fuerte integración con la otra pers
 
 + Ojos : El contacto visual es clave para establecer una potente conexión con la otra persona , aquellos que optan ignorarla son considerados desconfiados o arrgantes, se demuetra que incluso desconocidos del sexo opuesto cuando se miran pueden generar sentimientos de amor o atracción 
 
-![[Pasted image 20240816110250.png]]
+![[Adjuntos/Pasted image 20240816110250.png]]
 
-![[Pasted image 20240816110302.png]]
+![[Adjuntos/Pasted image 20240816110302.png]]
 - No evitar contacto visual
 - No parpadear tan rápido
 

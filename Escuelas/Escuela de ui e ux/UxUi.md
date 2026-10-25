@@ -34,7 +34,7 @@ PAra logar esto exiten 5 puntos de contacto claves a tener en cuenta
 
 - Canales : Son todos los medios por que comunicamos una informacion : una carta , una pagina , un catalogo o una imagen con respecto a un producto
 
-![[Pasted image 20241021212101.png]]
+![[Adjuntos/Pasted image 20241021212101.png]]
 Una buena experiencia permite el desarrollo de la organización
 
 - Reduce el time to market Permite ahorros a la organización Promueve la transformación

@@ -22,20 +22,20 @@ const material = new THREE.MeshBasicMaterial({
 
 **MeshNormalMaterial**  Es especialmente útil para cuando trabajamos con texturas normals , las normales representa la direccion  que estan apuntando nuestras caras de la geometria .
 
-![[Pasted image 20241002142027.png]]
+![[Adjuntos/Pasted image 20241002142027.png]]
 
 Este material recibe las mismas propiedades como opasity etc. son una nueva que se llama flatShading 
 
 ```js
 material.flatShading = true
 ```
-![[Pasted image 20241002141932.png]]
+![[Adjuntos/Pasted image 20241002141932.png]]
 
 Dándonos esta vision de las caras de nuestra mesh
 
 **MeshMatcapMaterial**  : Es un material que que tomas las caras de una geometria y en base al pixel de la imagen que le pasamos pintara esa cara en relaciona ese pixel de la imagen como un color picker de google pero para cada cara 
 
-![[Pasted image 20241002143010.png]]
+![[Adjuntos/Pasted image 20241002143010.png]]
 
 El problema es que estas luces son artificiales y no podemos controlarlas 
 para usarlo
@@ -59,7 +59,7 @@ const depthMaterial = new THREE.MeshDepthMaterial({
 })  
 ```
 
-![[Pasted image 20241002152129.png]]
+![[Adjuntos/Pasted image 20241002152129.png]]
 
 
 **MeshLambertMaterial** Es un material que utiliza las propias luces presentes en la escena para la crear efectos sobre la geometría de los elementos no es muy realista pero el que tiene mejor perfomance de todos los materiales que usan luces
@@ -79,7 +79,7 @@ scene.add(ambient)
 scene.add(light)
 ```
 
-![[Pasted image 20241002154027.png]]
+![[Adjuntos/Pasted image 20241002154027.png]]
 
 **Mesh Phong** Es como el anterior pero no sufre los problemas de los gliches  y permite crear reflaccion de luz etc.
 
@@ -95,7 +95,7 @@ material.specular = new THREE.Color("black")
 
 
 **MeshToonMaterial** : Proviene de una técnica llamada cellShading que te permite pintar de forma mas tipo caricatura no enfocado tanto en lo real dando resultados como 
-![[Pasted image 20241002155926.png]]
+![[Adjuntos/Pasted image 20241002155926.png]]
 Le pasamos es un gradiente que usara como textura para ponerla sobr eel geometria
 
 ```js
@@ -107,7 +107,7 @@ material.gradientMap = gradientTexture
 gradientTexture.magFilter =  THREE.NearestFilter
 ```
 
-![[Pasted image 20241002160443.png]]
+![[Adjuntos/Pasted image 20241002160443.png]]
 
 
 **MeshStandardMaterial** Es el estándar en cuanto buscamos hacer renders realistas y queremos cumplir el PRB permite modificar propiedades como el metálico la rudeza de los elementos y mas , además permite usar texturas en el para crear efectos aun mas realistas
@@ -121,7 +121,7 @@ material.roughness = 0.2
 
 ```
 
-![[Pasted image 20241002170317.png]]
+![[Adjuntos/Pasted image 20241002170317.png]]
 
 
 
@@ -134,7 +134,7 @@ material.roughness = 0.2
 material.map = doorColorTexture
 ```
 
-![[Pasted image 20241002170538.png]]
+![[Adjuntos/Pasted image 20241002170538.png]]
 
 **Ambient ocluccion**: los bordes negros les otorgara mas sombra o delineado fuerte
 
@@ -144,7 +144,7 @@ material.aoMap = doorAmbientOcclusionTexture
 material.aoMapIntensity = 1
 ```
 
-![[Pasted image 20241002171316.png]]
+![[Adjuntos/Pasted image 20241002171316.png]]
 
 **DisplacementMap**:  Crea profundidad en las geometrías *nota es importante tener múltiples subdivisiones para asegurar que este map sea eficiente* .
 
@@ -156,7 +156,7 @@ material.displacementMap = doorHeightTexture
 material.displacementScale = 0.1
 ````
 
-![[Pasted image 20241002171908.png]]
+![[Adjuntos/Pasted image 20241002171908.png]]
 
 **Roughness y metalness**:
 
@@ -166,7 +166,7 @@ material.roughnessMap  = doorRoughnessTexture
 ```
 
 
-![[Pasted image 20241002173123.png]]
+![[Adjuntos/Pasted image 20241002173123.png]]
 
 
 **Normals** Permite crear detalles en la mesh  sin la necesiad de necesariamente tener muchas subdivisiones permite crear profundidad en los detalles  y es realmente optimo.
@@ -175,7 +175,7 @@ material.roughnessMap  = doorRoughnessTexture
 material.normalMap = doorNormalTexture
 ```
 
-![[Pasted image 20241002173343.png]]
+![[Adjuntos/Pasted image 20241002173343.png]]
 
 
 **Alhpaamp**: permite quitar bordes de la textura.
@@ -186,7 +186,7 @@ material.transparent = true
 material.alphaMap = doorAlphaTexture
 ```
 
-![[Pasted image 20241002173559.png]]
+![[Adjuntos/Pasted image 20241002173559.png]]
 
 
 
@@ -199,7 +199,7 @@ clearCoat
 
 Crea una capa de vidrio alredor del objeto esta capa puede tener sus propias propiedades , este tiene cierto costo en performance.
 
-![[Pasted image 20241002175220.png]]
+![[Adjuntos/Pasted image 20241002175220.png]]
 
 ```js
 const material = new THREE.MeshPhysicalMaterial()
@@ -212,7 +212,7 @@ material.clearcoatRoughness = 0
 
 Sheen : sirve para crear efectos de almuadas sillones dandole esta sensacion a "algodon"
 
-![[Pasted image 20241002175650.png]]
+![[Adjuntos/Pasted image 20241002175650.png]]
 
 ```js
 material.sheen = 1
@@ -244,16 +244,16 @@ gui.add(material.iridescenceThicknessRange, '1').min(1).max(1000).step(1)
 
 ```
 
-![[Pasted image 20241002221432.png]]
+![[Adjuntos/Pasted image 20241002221432.png]]
 
-![[Pasted image 20241002223156.png]]
-![[Pasted image 20241002223615.png]]
+![[Adjuntos/Pasted image 20241002223156.png]]
+![[Adjuntos/Pasted image 20241002223615.png]]
 
 
 
 Transmisiion : Sirve para crear nuestros materiales tipo vidrios a los cuales queremos atravesar visualmente 
 
-![[Pasted image 20241002181314.png]] 
+![[Adjuntos/Pasted image 20241002181314.png]] 
 
 ```js
 const material = new THREE.MeshPhysicalMaterial()

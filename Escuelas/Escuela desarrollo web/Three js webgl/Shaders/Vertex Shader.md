@@ -27,7 +27,7 @@ void main(){
 }
 ```
 
-![[Pasted image 20240920163955.png]]
+![[Adjuntos/Pasted image 20240920163955.png]]
 
 
 
@@ -185,5 +185,5 @@ void main(){
 }
 ```
 
-![[Pasted image 20240920191155.png]]
+![[Adjuntos/Pasted image 20240920191155.png]]
 

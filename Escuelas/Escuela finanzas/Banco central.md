@@ -23,7 +23,7 @@ Tenemos 4 etapas
 
 **Recuperación**: La economia crece, de a poco, y el banco central abaratese la tasa de interes.
 
-![[Pasted image 20260624231652.png]]
+![[Adjuntos/Pasted image 20260624231652.png]]
 
 
 #### Crédito la herramienta
@@ -48,6 +48,6 @@ La deuda entrega liquidez, pero en rápidos instantes se convierte, a perder pro
 **GASTAR PARA LO QUE ME ALCANZA** El crédito no es una extensión de mi dinero. 
 compras con el tiempo de tu vida que tuviste que gastar para conseguir ese dinero
 
-![[Pasted image 20260624232705.png]]
+![[Adjuntos/Pasted image 20260624232705.png]]
  
-![[Pasted image 20260624232317.png]]
+![[Adjuntos/Pasted image 20260624232317.png]]

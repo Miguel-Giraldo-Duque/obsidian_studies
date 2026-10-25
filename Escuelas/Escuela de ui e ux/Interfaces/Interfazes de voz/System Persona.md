@@ -10,7 +10,7 @@ System Persona asistente para la cocina :
 
 **Descripción**
 
-![[v1_cookie_asitente.png]]
+![[Adjuntos/v1_cookie_asitente.png]]
 
 Cookie , es ayudante atento y confiable mantiene una personalidad dulce pero sin salirse de su misión de ayudarte a cocinar tus mejores recetas
 
@@ -22,5 +22,5 @@ Frase celebre:
 
 3.  Cual será su tono de voz ?: Voz pregrabada 
 
-	![[Pasted image 20241110120938.png]]
+	![[Adjuntos/Pasted image 20241110120938.png]]
 	

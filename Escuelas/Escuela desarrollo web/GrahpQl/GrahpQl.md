@@ -27,4 +27,4 @@ query MyQuery {
 
 GrahpQl es mas como intermediario entre el cliente y el servidor, no busca conectarse directamente a los servicios en su lugar funciona como un sistema de consulta que reúne todo el poder y conocimiento que se le integra.
 
-![[Pasted image 20251222222540.png]]
+![[Adjuntos/Pasted image 20251222222540.png]]

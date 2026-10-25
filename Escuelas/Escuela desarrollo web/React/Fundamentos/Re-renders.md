@@ -3,7 +3,7 @@
 ### Que es un render?
 
 En [[React]] al renderizar nos referimos a ejecutar una serie de funciones(Componentes) y ejecutar las funciones anidadas es decir decir los componentes hijos, dependiendo del tipo de los [[Elementos y componentes]]  determinara que debe renderizar si es component o un etiqueta normal.
-![[Pasted image 20260321104034.png]]
+![[Adjuntos/Pasted image 20260321104034.png]]
 
 Y hara esto recursivamente hasta que todo el DOOM este completo.
 
@@ -55,7 +55,7 @@ return <>
 Inicia desde el punto origen del cambio en react y  baja en el arbol haciendo lo siguiente
 
 1. Reconstruye los objetos de element  
-![[Pasted image 20260321105805.png]]
+![[Adjuntos/Pasted image 20260321105805.png]]
 2. Va a revisar con verificación shallow que las referencias entre el anterior objeto y nuevo objeto element sean la misma referencia sin ver los valores internos
    
  3.  Si la referencia es la misma react no re-renderiza ese componente y se salta todo los componentes internos a su vez 

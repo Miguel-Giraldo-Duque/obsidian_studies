@@ -8,6 +8,6 @@ Pueden existir voltajes estáticos que cuando les pasamos corriente se empiezan 
 
 El voltaje por intesidad nos da potencia , la carga electrica en un sistema puede ser igual pero si en un sistema presionamos mas o tenemos mas potencia podremos generar mas voltaje 
 
-![[Pasted image 20241205230510.png]]
+![[Adjuntos/Pasted image 20241205230510.png]]
 
 El voltaje es la diferencia potencial que existe en un circuito representando en general la fuerza con la que se mueven los electrones en el circuito

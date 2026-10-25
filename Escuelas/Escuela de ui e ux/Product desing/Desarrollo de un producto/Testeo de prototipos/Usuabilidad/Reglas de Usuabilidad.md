@@ -2,7 +2,7 @@
 ## Cuales son?
 
 Las personas no son tontas pro no saber usar una interfaz , es la interfaz la tonta por no ayudar a la persona a usarlo , todas las interfaces con las que interactuamos en nuestra vida diaria siendo la "psicologia de lo cotidiano" , tienen ciertas implicaciones algunas de ella nos resulta mas difícil de usar que otras , pero normalmente las mejores [[Interfaz]]  son aquellas que nos permiten
-![[Pasted image 20241201181454.png]]
+![[Adjuntos/Pasted image 20241201181454.png]]
 
 #### Exploración y interacción
 
@@ -14,7 +14,7 @@ Las personas exploramos una interfaz de modo tal que buscamos relacionarlo  a do
 ### Prestaciones
 
 Son las guías visuales de un elemento que nos permiten saber o almenos darnos una idea de como debemos usarlos 
-![[Pasted image 20241201181913.png]]
+![[Adjuntos/Pasted image 20241201181913.png]]
 
 Una interfaz tiene una serie de principios que lo componen y forman como elemento
 
@@ -38,4 +38,4 @@ A mayor la cantidad de opciones en un sistema , mas complejo se vuelve la intera
 
 
 El diseño centrado en los usuarios
-![[Pasted image 20241201184609.png]]
+![[Adjuntos/Pasted image 20241201184609.png]]

@@ -11,7 +11,7 @@ Es mas común en la vida moderna usar los conos que nos permiten identificar los
 -  **Frecuencia Media (o longitud de onda media):** Esta categoría se refiere a los **M-conos**, que son más sensibles a longitudes de onda **medias**, correspondientes a colores **verdes** y algunos amarillos. Los colores en este rango tienen longitudes de onda de aproximadamente **495-570 nm**. La sensibilidad a la luz verde es mayor en estos conos, pero también perciben algo de colores como el amarillo y el rojo, aunque no con la misma intensidad.
     
 - **Frecuencia Alta (o longitud de onda corta):** Los **S-conos** son los que perciben colores de **alta frecuencia**, correspondientes a colores **azules y violetas**. Su rango de longitud de onda está entre **420-495 nm**. Estos conos son muy sensibles a la luz azul y violeta, pero tienen una menor capacidad para percibir colores como el verde o el rojo.
-![[Pasted image 20250105172750.png]]
+![[Adjuntos/Pasted image 20250105172750.png]]
 
 
 **Canales de conos** : Nuestras neuronas usan el metodo de la subtraccion de colores para identificar los intermedios entre los colores como verdes aqumarinos etc usando los 3 canales para lograrlo.
@@ -37,18 +37,18 @@ El contraste aquí juega un papel muy importante los seres humanos evolucionamos
 Existen tres factores que causan un reto amplio para reconocer un color entre ellos son : 
 
  - **Saturación de la paleta** : Entre mas saturado(que tiende mas al gris/blanco) dos colores mas difícil es distinguir entre ellos 
- ![[Pasted image 20250106204410.png]]
+ ![[Adjuntos/Pasted image 20250106204410.png]]
 Colores muy poco saturados , lo que impide la diferenciación entre links .
 
 - **Tamaño del color** : Entre mas pequeña la paleta de color que vemos mas difícil resulta percibir la diferencia entre los colores
-![[Pasted image 20250106204336.png]]
+![[Adjuntos/Pasted image 20250106204336.png]]
 - **Distancia** : Entre mas separados dos colores mas difícil es diferenciar la diferencia entre ambos 
-![[Pasted image 20250106204453.png]]
+![[Adjuntos/Pasted image 20250106204453.png]]
 
 
 Por ello en [[UxUi]] debemos buscar los siguiente principios:
 
-- Los colores deben tener diferencias claras entre ellos y su saturación lo suficientemente contrastante usar los colore principales que nuestros canales de visión es clave para entender su división- ![[Pasted image 20250106212243.png]]
+- Los colores deben tener diferencias claras entre ellos y su saturación lo suficientemente contrastante usar los colore principales que nuestros canales de visión es clave para entender su división- ![[Adjuntos/Pasted image 20250106212243.png]]
 
 
 - Evitar el uso de colores rojos oscuros, azul oscuro contra violetas,  rojo oscuro sobre verde oscuro,  verde oscuro en fondo blanco , es importante evitarlos y siempre checkear el nivel de contraste de fondo para evitar excluir personas con problemas para identificar colores 
@@ -57,8 +57,8 @@ Por ello en [[UxUi]] debemos buscar los siguiente principios:
 
 - Nunca usar pares de colores oponentes uno al lado de otro esto causa una sensación extraña , 
 
-![[Pasted image 20250106212338.png]]
+![[Adjuntos/Pasted image 20250106212338.png]]
 
 
 Un buen ejemplo seria :
-![[Pasted image 20250106212519.png]]
+![[Adjuntos/Pasted image 20250106212519.png]]

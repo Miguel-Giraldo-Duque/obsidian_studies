@@ -30,7 +30,7 @@ Buscar socios : Una prueba de ususabilidad acompañado de un técnico o alguien 
 Priorizar objetivos : lo ideal son solo tres objetivos para mantener la facilidad , perso si digamos hay muchos debemos priorizar lo mas importantes para el producto
 
 
-La forma en que podmeos formular estos objetivos es similar a los [[Supuestos]] ![[Pasted image 20241209222302.png]]
+La forma en que podmeos formular estos objetivos es similar a los [[Supuestos]] ![[Adjuntos/Pasted image 20241209222302.png]]
 
 Buscamos pensar sera que...
 
@@ -92,7 +92,7 @@ Vienes cansado de tu trabajo tienes unas pocas horas libres y quieres buscar una
 Le indicamos una **Necesidad** , un **objetivo** 
 
 **Evitar pistas** Si somos demasiado especifico con la tarea y dejamos al usuario a explorar como puede realizar ese escenario no obtendremos la misma calidad de datos 
-![[Pasted image 20241211170006.png]]
+![[Adjuntos/Pasted image 20241211170006.png]]
 
 
 ### Reclutamiento participantes

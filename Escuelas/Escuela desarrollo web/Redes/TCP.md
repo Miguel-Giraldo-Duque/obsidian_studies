@@ -4,7 +4,7 @@
 
 Es un modelo de [[Redes computaciones]] altamente común que usa paquetes para la transmiccion de información basada en la conexion donde se busca asegurar el buen estado de la informacion enviada a la otra computadora , udp en el contrario prioriza el envio de datos con rapides y sin conexion : 
 
-![[Pasted image 20240918185758.png]]
+![[Adjuntos/Pasted image 20240918185758.png]]
 
 
 La mayor parte del tiempo cuando entramos a una pagina web usamos el modelo DNS que se encarga de traducir ese dominio en una ip a la que nos podemos conectar

@@ -8,7 +8,7 @@ Un buen problema consta de una investigación hecha a través de técnicas de em
 
 ### Definición de retos  
 
-![[Pasted image 20241228190107.png]]
+![[Adjuntos/Pasted image 20241228190107.png]]
 Para definir un reto lo creamos a partir de un problema que  desde la empatía encontramos lo definimos desde el **como podríamos  x …**, lo hacemos así para que estos ejercicios los llevemos a cabo con el equipo desde técnicos , ventas y diseño y las ideas sean mas simples de salir 
 
 Luego de crear los retos los podemos ubicar en cuadrantes para entender que y que nos esta impidiendo solucionarlo .

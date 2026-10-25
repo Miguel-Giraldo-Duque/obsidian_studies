@@ -39,7 +39,7 @@ etc. Definir las partes del exito es clave para maximo enfoque.
 “a target of 20% in criterion X means Y
 
 ##### Metodología evaluación exito 
-![[Pasted image 20260628233610.png|682]]
+![[Adjuntos/Pasted image 20260628233610.png|682]]
 
 1. **Definición criterios de exito**: Deben haber metricas target que queremos alcanzar deben ser muy claras ejmplo "Alcanzar un 80% de interacciones iniciadas", esto debe ser claro para que el exito pueda ser evaluado
 2. Definición metodologías de evaluación 

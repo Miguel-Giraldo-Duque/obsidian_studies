@@ -8,4 +8,4 @@ Los layout son partes de UI que queremos que [[Next.js]] mantenga sin importar e
 
 **Layout locales** : Son Archivos de nievel local que solo tendran en cuenta el scope de la ruta donde creamos esos layout es decir  solo el contexto de lo hijos de agrupacion tendran en cuenta ese la layout 
 
-![[Pasted image 20250909224801.png]]
+![[Adjuntos/Pasted image 20250909224801.png]]

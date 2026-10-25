@@ -5,7 +5,7 @@
 
 El crecimiento por productividad es lento, tiene unas gastos, pero aumenta progresivamente en la medida, que desarrollamos expertise, somos mas creativos, expandimos nuestras oportunidades inversiones y capacitad para llevar a cabo planes.
 
-![[Pasted image 20260701144825.png]]
+![[Adjuntos/Pasted image 20260701144825.png]]
 
 ### Regla general
 

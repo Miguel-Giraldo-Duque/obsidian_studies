@@ -25,7 +25,7 @@ camera.position.z = 1
 
 me resulta en que 
 
-![[Pasted image 20240727183818.png]]
+![[Adjuntos/Pasted image 20240727183818.png]]
 
 
 pero estos valores son albitrarios cambian dependiendo de donde esta la cámara ubicada el efecto de estos valores se intercambiaran 

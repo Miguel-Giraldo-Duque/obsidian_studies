@@ -7,7 +7,7 @@ La estructura back for fronted busca proponer una forma nueva para trabajar de f
  - Rutas internas: Enpoints reales de nuestra aplicación  
 
 
-Es importante aclarar que el back for fronted es util para los compoenntes de tipo cliente , pues los del servidor nunca exponen sus request ![[Pasted image 20250914060927.png]]
+Es importante aclarar que el back for fronted es util para los compoenntes de tipo cliente , pues los del servidor nunca exponen sus request ![[Adjuntos/Pasted image 20250914060927.png]]
 
  ```cpp title:"Proxy API for client"  
  import { getProducts } from "app/services/shopify/products";`

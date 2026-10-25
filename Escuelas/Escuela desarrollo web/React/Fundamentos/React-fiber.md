@@ -10,7 +10,7 @@ React-Fiber es un nuevo sistema de reconciliación que permite gran mejora, su p
 
 Imaginando el main thread como un solo trabajador fullstack y nuestro codigo como el lead
 
-![[Pasted image 20260415201906.png]]
+![[Adjuntos/Pasted image 20260415201906.png]]
 
 
 Este comportamiento implica una antigua limitación muy importante de React, y es que en su stack de reconciliación no podia priorizar cambios urgentes, como:
@@ -24,7 +24,7 @@ Quedando envueltos en algunos casos en trabajos de baja prioridad creando una ma
 
 Fiber utiliza el `requestIdleCallback` del navegador que entrega React un espacio pequeño en el thread para que React procese la reconciliación
 
-![[Pasted image 20260415202331.png]]
+![[Adjuntos/Pasted image 20260415202331.png]]
 
 Es en esos pequeños espacios donde Fiber entra en juego.
 
@@ -33,10 +33,10 @@ Un **Fiber es una unidad de trabajo, asociada a una instancia de un componente o
 - **Padre**: Este es el punto mas alto de todo el three o Subthree
 - **Child**: Los hijos del padre
 - **Siblings**: Los hermanos que básicamente son hijos del mismo padre  
-![[Pasted image 20260415205655.png]]
+![[Adjuntos/Pasted image 20260415205655.png]]
 Si el hijo no tiene mas hijos, entonces se marca como CompleteWork() y se mueve hacia el silbing repitiendo este 
 Fiber ira de arriba hacia abajo 
-![[Pasted image 20260415203807.png]]
+![[Adjuntos/Pasted image 20260415203807.png]]
 
 1. Recorre el `<Continer />` tiene al hijo `<Card />`
 2. `<Card />`  tiene un hermano `<Input />` 
@@ -57,7 +57,7 @@ Fiber inicia así
 
 Cuando indicamos un cambio de alta prioridad Fiber moverá rápidamente a todos de la fila, y llevara los cambios urgentes al incio, lanzando todo el previo trabajo por el workInProgress y priorizando generar los cambios para este cambio para que se reflejen tan pronto como sea posible.
 
-![[Pasted image 20260415204125.png]]
+![[Adjuntos/Pasted image 20260415204125.png]]
 
 
 En esencia Fiber es una arquitectura mas eficiente para trabajar el proceso de reconciliación de React, dando la opción de parar interrumpir y continuar.

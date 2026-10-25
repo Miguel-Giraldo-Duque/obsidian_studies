@@ -21,6 +21,6 @@ Grafos : Se utilizan para representar la información almacenada en forma de con
 
 
 Este tipo de bases de datos no relacionales permiten tener una estructura como esta 
-![[Pasted image 20240308164302.png]]
+![[Adjuntos/Pasted image 20240308164302.png]]
 
 EL punto central se le conoce como load balance  asigna las peticiones a cada uno de los nodos de una forma ordenada , además tiene la ventaja que si uno de sus hijos cae o muere las replicas podrán cubrirlo y mantener en pie el funcionamiento de la base datos  

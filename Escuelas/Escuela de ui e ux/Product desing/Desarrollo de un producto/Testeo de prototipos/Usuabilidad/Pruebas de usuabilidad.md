@@ -10,7 +10,7 @@ Y buscamos con estas pruebas buscar oportunidades hacerlo mas sencillo y claro .
 Existen dos tipo de pruebas de ususabilidad la prueba Actitudinal y conductual ,
 en la pruebas actitudinales analizamos que dicen las personas y en la conductual como usan la interfaz
 
-![[Pasted image 20241208164336.png]]
+![[Adjuntos/Pasted image 20241208164336.png]]
 
 **La actitudinal** incluye métodos como
 - **Reviews**
@@ -35,9 +35,9 @@ Desde las mismas pruebas tenemos diferentes tipos
 
 **las hibridas** que permiten incluir ambos métodos como mapas de calor mientras se hace un entrevista etc.
 
-![[Pasted image 20241208164900.png]]
+![[Adjuntos/Pasted image 20241208164900.png]]
 
-![[Pasted image 20241208165543.png]]
+![[Adjuntos/Pasted image 20241208165543.png]]
 
 ---
 **Pruebas cualitativas** se usan , cuando buscamos informacion mas de la experiencia e interacción
@@ -46,7 +46,7 @@ Desde las mismas pruebas tenemos diferentes tipos
 
 Lo que importa cuando usamos una y la otra no 
 
-![[Pasted image 20241208165826.png]]
+![[Adjuntos/Pasted image 20241208165826.png]]
  
 
 ### pruebas moderadas VS pruebas no moderadas

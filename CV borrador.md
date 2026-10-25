@@ -215,7 +215,7 @@ Optimicé un 70% de la búsqueda del sistema para más de 10.000 transacciones, 
 
 
 
-![[Pasted image 20260722194433.png]]
+![[Adjuntos/Pasted image 20260722194433.png]]
 
 **Desarrollé un sistema personalizado de autenticación y autorización que protege los microcréditos de República Dominicana.**
 

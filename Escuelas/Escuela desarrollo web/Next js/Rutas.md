@@ -15,7 +15,7 @@
  
  **Rutas fijas** : Una ruta fija se refiere a un ruta que en tiempo no deberia cambiar ejemplo "home" o "products", para que next js pueda reconocer el contenido basta con agregar el nombre page y el [[React]] que queremos renderizar 
 
-![[Pasted image 20250909205653.png]]
+![[Adjuntos/Pasted image 20250909205653.png]]
 
 
 **Rutas dinamicas** : Son utiles cuando sabemos que una ruta no es estática y vamos a necesitar que se este actualizando consistentemente ejemplo en un log post seria el "blog" , o una "categoria" , para usarlas hacemos uso de [rutaDinamica] y con este mismo nonmbre podemos acceder a los valores ingresados en la ruta 

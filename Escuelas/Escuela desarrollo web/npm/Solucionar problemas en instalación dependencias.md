@@ -1,6 +1,6 @@
 
 En [[npm]] a menudo podemos llegar a obtener errores como el siguiente 
-![[Pasted image 20240307180313.png]]
+![[Adjuntos/Pasted image 20240307180313.png]]
 
 
 Estos errores deben abordarse con urgencia, ya que pueden representar graves riesgos de seguridad y afectar la compatibilidad de nuestra aplicación. Además, pueden provocar un funcionamiento incorrecto o una disminución del rendimiento. Resolver estos problemas no solo es crucial para la salud de nuestra aplicación, sino que también mejora la mantenibilidad del código a largo plazo.

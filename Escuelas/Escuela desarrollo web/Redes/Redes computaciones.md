@@ -5,10 +5,10 @@
 
 Una computadora puede ser multiples eleementos pero en esencia son objetos que pueden recibir señales , por ejemplo celulares , tvs "inteligentes" , relojs etc
 
-![[Pasted image 20240918184247.png]]
+![[Adjuntos/Pasted image 20240918184247.png]]
 
-![[Pasted image 20240918184300.png]]
-![[Pasted image 20240918184822.png]]
+![[Adjuntos/Pasted image 20240918184300.png]]
+![[Adjuntos/Pasted image 20240918184822.png]]
 
 
 

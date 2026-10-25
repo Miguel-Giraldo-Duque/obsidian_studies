@@ -18,6 +18,6 @@ Dependiendo del caso nos puede ser útil para debugear dándonos informacion pro
 
 Vemos que todas las normales apuntan hacia afuera por el verde representación de `y`
 
-![[Pasted image 20241223183452.png]]
+![[Adjuntos/Pasted image 20241223183452.png]]
 
 

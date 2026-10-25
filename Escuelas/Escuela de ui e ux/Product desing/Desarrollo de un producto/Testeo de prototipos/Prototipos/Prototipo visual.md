@@ -7,9 +7,9 @@ Un [[Prototipos]] visual funciona de tal manera en que buscamos plasmar una idea
 Un wireframe 
 
 Un [[Moodboard]]
-![[Pasted image 20241127225253.png]]
+![[Adjuntos/Pasted image 20241127225253.png]]
 
 Un dibujo 
 
-![[Pasted image 20241127225131.png]]
+![[Adjuntos/Pasted image 20241127225131.png]]
 

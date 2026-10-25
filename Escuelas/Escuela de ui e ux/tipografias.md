@@ -1,5 +1,5 @@
 
 ## Como usarlas
 
-![[Pasted image 20240322190622.png]]
+![[Adjuntos/Pasted image 20240322190622.png]]
 

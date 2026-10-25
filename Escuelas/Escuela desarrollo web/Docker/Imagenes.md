@@ -1,5 +1,5 @@
 
-![[Pasted image 20240926214934.png]]
+![[Adjuntos/Pasted image 20240926214934.png]]
 
 ### Como crea el proceso de deploy?
 

@@ -59,7 +59,7 @@ El motivo por el que Math.ramdom() da esta forma de cubo es causado por que se d
 
 podemos agregarle [[Texturas]] a nuestras particulas aunque van a existir problemas con los bordes presentes en nuestras particulas pues alugnas de estas ocultaran lo que esta detras de ellas dado su psocicion en el alfa
 
-![[Pasted image 20240917171325.png]]
+![[Adjuntos/Pasted image 20240917171325.png]]
 
 
 En el map "normal" se tienen estos bordes que ocultan lo que esta detrás de nuestra partícula restándole realismo incluso si le decimos al 
@@ -100,7 +100,7 @@ particlesMaterial.blending = THREE.AdditiveBlending
 
 crea un efecto de bloom  en nuestros elementos
 
-![[Pasted image 20240917185813.png]]
+![[Adjuntos/Pasted image 20240917185813.png]]
 
 ### Blending techines
 

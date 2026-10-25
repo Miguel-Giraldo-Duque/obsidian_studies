@@ -8,7 +8,7 @@ El proceso de una iteración se ve algo así:
 
 Creación --> Análisis/Medición --> Aprendizaje 
 
-![[Pasted image 20241203201840.png]]
+![[Adjuntos/Pasted image 20241203201840.png]]
 
 En este proceso debemos buscar un equilibrio entre lo que nuestra intuición creativa nos dice y la verdadera data , nuestro trabajo creativo puede darnos acercamientos a soluciones muy efectivas , pero es  mejor hacer uso del método científico que nos es útil para evitar tomar decisiones basadas en el "yo creo" .
 
@@ -25,9 +25,9 @@ Analizo: Reviso y mido los resultados ejemplo : Parece que si 5/6 de mis cliente
 
 Conclusiones :  Con que me quedo con mi experimentación : Que fue clave mejorar la explicación 
 
-![[Pasted image 20241203211145.png]]
+![[Adjuntos/Pasted image 20241203211145.png]]
 
-![[Pasted image 20241203211357.png]]
+![[Adjuntos/Pasted image 20241203211357.png]]
 
 
 ### Experimentación Consideraciones 
@@ -58,5 +58,5 @@ En el proceso de testeo es asi
 
 Si cuando corremos un experimento este lo concluimos  que tiene éxito lo podemos continuar con otro experimento diferente , de otro modo si no lo consideramos un éxito podemos volver a correr otro testeo variando el supuesto y en base a la experiencia lo podemos ajustar hasta que lo consideremos éxito ,  si tras varios intentos y ajustes seguimos sin ver el éxito podemos hacer pivot que seria cambiar de dirección y comprobar una perspectiva diferente tomando nuevas desiones estratégicas basadas en lo aprendido
 
-![[Pasted image 20241203213613.png]]
+![[Adjuntos/Pasted image 20241203213613.png]]
 

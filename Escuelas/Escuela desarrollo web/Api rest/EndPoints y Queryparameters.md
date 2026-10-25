@@ -29,4 +29,4 @@ Al igual que con los EndPoints los Queryparameters dependerán de la documentaci
 
 
 
-![[Pasted image 20230715095622.png]]
+![[Adjuntos/Pasted image 20230715095622.png]]

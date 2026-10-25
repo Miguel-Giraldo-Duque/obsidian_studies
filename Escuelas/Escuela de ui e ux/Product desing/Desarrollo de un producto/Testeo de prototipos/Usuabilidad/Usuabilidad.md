@@ -3,13 +3,13 @@
 
 
 La usabilidad se podría ver como el conjunto de nuestra experiencia en una interfaz desde como aprendemos a interactuar con ella  , como manjea los errores, y en general como de satisfechos estamos cuando la estamos usando 
-![[Pasted image 20241201165204.png]]
+![[Adjuntos/Pasted image 20241201165204.png]]
 
 Jacob Nielsen nos habla que existen estos 5 componentes de una interfaz usuable , un aprendizaje sencillo y rapido que nos pemrita dominar rapido las tareas que tenemos , la eficiencia de la  interfaz  que todo funcione como deberia y con alta velocidad  , una interfaz cuando se vuelve a usar la memoria deberia ser simple y facil de usar ,los errores deben ser manejados para ayudar al usuario a indicarle como salir de estos y  como en los [[Principios heurísticos]]  indicarle de forma precisa como superarlos  , la satisfacción que tan bien termina el usuairo de sentirse cuando usa una interfaz 
 
-![[Pasted image 20241201165901.png]]
+![[Adjuntos/Pasted image 20241201165901.png]]
 
-![[Pasted image 20241201170020.png]]
+![[Adjuntos/Pasted image 20241201170020.png]]
 
 ### Cuando es hacer una prueba de usuabilidad?
 

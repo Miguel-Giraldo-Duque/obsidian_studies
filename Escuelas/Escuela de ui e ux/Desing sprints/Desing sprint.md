@@ -9,7 +9,7 @@ Es útil si queremos probar una idea , estamos cortos de tiempo ,alto riesgo.
 *demasiado seguros de cómo las comprenderán los clientes o de lo bien que las*
 *recibirán.*
 
-![[Pasted image 20241101204234.png]]
+![[Adjuntos/Pasted image 20241101204234.png]]
 
 
 Como convencer?

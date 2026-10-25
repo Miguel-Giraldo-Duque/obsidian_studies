@@ -9,7 +9,7 @@ En el [[UX writing]] tenemos distintas etapas donde desarrollamos un [[Tono]] di
 **Payment** : Esta es la acción donde requerimos el compromiso del usuario aquí prima la claridad y paciencia con el usuario cosas como:  Terminar una acción , realizar un pago , descargar algo 
 
 Para cada etapa no podemos hacer las siguientes preguntas para crear diálogos mas claros:
-![[Pasted image 20250624005442.png]]
+![[Adjuntos/Pasted image 20250624005442.png]]
 - Cual es la meta de mi usuario?
 - Que siente en la etapa actual ?
 - Que le gustaría sentir?

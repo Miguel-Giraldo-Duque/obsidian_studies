@@ -6,7 +6,7 @@
 Mongo DB es una [[Bases de datos]] no relacional que se organiza de manera tal en que en vez de utilizar el modelo relacional que únicamente usa columnas y filas utiliza el campo-valor o clave-valor lo que  le permite una mayor flexibilidad y eficiencia , Mongo DB usa los "documentos" que no son mas que un conjunto de datos similar a JSON donde se guarda la información con el campo-valor ejm:
 
 
-![[Pasted image 20240308170927.png]]
+![[Adjuntos/Pasted image 20240308170927.png]]
 
 Donde por ejemplo "id" funcionaria como nuestro campo   y   su valor seria el seguido por los dos puntos 
 
@@ -16,7 +16,7 @@ Donde por ejemplo "id" funcionaria como nuestro campo   y   su valor seria el se
 
 Una colección es la que almacena los documentos con campos comunes entre si por ejemplo  podríamos tener una colección de productos  donde cada documento representaría un producto 
 
-![[Pasted image 20240308172548.png]]
+![[Adjuntos/Pasted image 20240308172548.png]]
 
 
 

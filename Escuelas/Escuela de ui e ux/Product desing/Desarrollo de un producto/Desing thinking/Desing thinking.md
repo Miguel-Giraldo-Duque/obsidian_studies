@@ -17,5 +17,5 @@ Además uno de sus principales objetivos es que se basa en el diseño iterativo 
 
 En el diamante del desing thinking ambas acciones pasan cuando estamos descubriendo el producto y el problema , hasta cuando tenemos un delvery donde llevamos a cabo estas ideas a prototipos que nos permitan definir en precisión la solución
 
-![[Pasted image 20241230211532.png]]
+![[Adjuntos/Pasted image 20241230211532.png]]
 

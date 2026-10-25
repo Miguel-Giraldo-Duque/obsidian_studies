@@ -21,7 +21,7 @@ Esta etapa es critica, una métrica de éxito mal dirigida, puede causar aauto-c
    
    otros casos requerían medidas mas cuantitativas.
 
-![[Pasted image 20260629024225.png]]
+![[Adjuntos/Pasted image 20260629024225.png]]
 
 *Feedback loop*  
 **Paso 3: Método de análisis** (Se requiere al menos 15 muestras antes de usar el analisis para evitar juzgar precipitadamente )

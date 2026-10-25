@@ -8,5 +8,5 @@
 
 3. Escalabilidad  : Se refiere a que una vez que hemos desarrollado una y idea y el mercado se ve interesado por ella lo que podemos hacer es expandirla a otras industrias y ampliar nuestro rango en el mercado
 
-![[Pasted image 20241201210633.png]]
+![[Adjuntos/Pasted image 20241201210633.png]]
 

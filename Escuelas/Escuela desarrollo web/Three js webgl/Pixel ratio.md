@@ -5,11 +5,11 @@
 Reasenta la cantidad de pixeles por sección de pixel en el render dependiendo de la cantidad del pixel ratio se dibujaran mas micro pixeles por unidad de pixel
 donde si es uno solo se ve asi:
 
-![[Pasted image 20240813205357.png]]
+![[Adjuntos/Pasted image 20240813205357.png]]
 
 Se pinta únicamente ese pixel  pero digamos que tengo un pixel ratio de 2
 obtienes 4 pixeles por unidad de pixel entre mas se aumenta mas el ratio mas difícil resulta para la gpu el render de estos elementos 
-![[Pasted image 20240813205454.png]]
+![[Adjuntos/Pasted image 20240813205454.png]]
 
 y consecutivamente ira aumento dependiendo del ratio de pixeles 
 la forma en que se dibujan estos pixeles pude resultar engorrosa y algo fea  para solventar este problema

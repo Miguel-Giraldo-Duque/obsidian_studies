@@ -54,7 +54,7 @@ La mejor es mas especifica y al toque
 
 ### Tipos de hipotesis 
 
-![[Pasted image 20241203222916.png]]
+![[Adjuntos/Pasted image 20241203222916.png]]
 
 
 Tenemos hipotesis de exploracion donde estamos explorando posibiilidades una investigacion de necesiades objetivos etc, y tenemos las de evaluacion que nos permiten buscar comprobar informacion mas especifica  como factores de supuestos desconocidos y mas importantes

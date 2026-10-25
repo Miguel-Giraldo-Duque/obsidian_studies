@@ -7,4 +7,4 @@ Por ello nacen los tools, su objetivo es simple,  otorgar a la AI herramientas p
 
 ¿Como funciona? 
 
-![[Pasted image 20260907132719.png]]
+![[Adjuntos/Pasted image 20260907132719.png]]

@@ -2,7 +2,7 @@
 
 Es un personaje ficticio de nuestro usuario los creamos a partir de la informacion que recolectamos de [[Entrevistas usuarias]] y con el creamos un perfil que identifica los dolores que este vive en su día a dia  específicamente con nuestro producto 
 
-![[Pasted image 20241222193522.png]]
+![[Adjuntos/Pasted image 20241222193522.png]]
 
 es util para la [[Empatia]] y entender a profundidad que estamos solucionando
 

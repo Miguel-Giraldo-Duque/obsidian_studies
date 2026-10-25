@@ -13,14 +13,14 @@ Son imágenes que podemos poner sobre nuestras [[Mesh]] para darles efectos de t
 
 Es una textura que solamente toma el color de una imagen 
 
-![[Pasted image 20241001185723.png]]
+![[Adjuntos/Pasted image 20241001185723.png]]
 
 
 ## Alhpa
 
 Es un grey scale con blanoc sy negrso , depediendo del color la textura se pintara diferente  si es blanco se pintara y lo negro no y sies gris sera medianamente visible
 
-![[Pasted image 20241001190022.png]]
+![[Adjuntos/Pasted image 20241001190022.png]]
 
 
 ### Height map
@@ -28,36 +28,36 @@ Es un grey scale con blanoc sy negrso , depediendo del color la textura se pinta
 
 Se basa en crear detalles para una geometría dada la cantidad de subdiviones que esta tiene , generando movimientos en los vértices del plano por ello  entre mas vértices mas se podrá ver los detalles de la textura el movimiento estara determinado por el color  si es color blanco los vértices irán arriba , si son negros hacia abajo , si son grises permeasen quietos 
 
-![[Pasted image 20241001190552.png]]
+![[Adjuntos/Pasted image 20241001190552.png]]
 Creando un reliebe
-![[Pasted image 20241001190632.png]]
+![[Adjuntos/Pasted image 20241001190632.png]]
 
 
 ### Normals 
 
 Los normals no usan subdiviones se le pasar a un objeto un noral como texura a un plano sin subdiviones por medio de las luces de la esena este tipo de textura de agrega a las diferentes partes de la textura la sencion de profundidad
-![[Pasted image 20241001190929.png]]
+![[Adjuntos/Pasted image 20241001190929.png]]
 
 
 ### Ambient oclucion
 
 Es un grey scalae que toma ángulos pintados en negro y les sombreado a estas zonas mientras que al blanco no lo tocara
 
-![[Pasted image 20241001191643.png]]
+![[Adjuntos/Pasted image 20241001191643.png]]
 
 
 ### Metalness
 
 Se al efecto metálico de nuestras texturas por que  toma que solo colores blancos el negro no conciderara metálico , siendo mas metalico tendrás refracción de lo que tiene su entorno 
 
-![[Pasted image 20241001191852.png]]
+![[Adjuntos/Pasted image 20241001191852.png]]
 
 	
 ### Roughness
 
 Se refiere a la dispersión de la luz en la superficie de un material. A mayor **roughness** (rugosidad), la luz se difumina más y refleja menos, dando como resultado un aspecto mate, como el de un metal oxidado o envejecido. A menor roughness, la luz se refleja de manera más precisa, resultando en una superficie más brillante o pulida.
 
-![[Pasted image 20241001192347.png]]
+![[Adjuntos/Pasted image 20241001192347.png]]
 
 
 #### PRB

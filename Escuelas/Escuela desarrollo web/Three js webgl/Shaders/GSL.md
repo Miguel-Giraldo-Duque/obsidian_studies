@@ -5,7 +5,7 @@ Es un lenguaje para la creación de [[Shaders]]  , que se comunica directamente 
 
 
 - *Posicionar*: Se encarga de posicionar nuestros vértices en el render como la imagen que vimos en  [[WebGl]]
-![[Pasted image 20240709182831.png]]
+![[Adjuntos/Pasted image 20240709182831.png]]
 
 - Colorear : Se encarga de pintar cada fragmento de las [[Geomtrias]] que le pasamos , decimos fragmento por que en webgl un fragmento  es la representación del render de los "pixeles"  
 

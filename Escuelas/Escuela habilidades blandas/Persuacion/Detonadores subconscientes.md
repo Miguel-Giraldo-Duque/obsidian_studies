@@ -12,7 +12,7 @@ Por ello pensar resulta un gasto energético muy potente , la [[Persuacion]]  se
 Como persuasores es clave entender la persuasión como un iceberg donde la tapa que sobresale es la lógica , sin embargo gran parte del iceberg esta sumergido hablando de la emoción
 
 
-![[Pasted image 20240813121140.png]]
+![[Adjuntos/Pasted image 20240813121140.png]]
 
 
 La gente tiende pensar que no sos persuadidos pero experimentos como The Monkey Business Ilusión demuestra que nuestro cerebro inocentemente al estar en una sola actividad ignora el resto

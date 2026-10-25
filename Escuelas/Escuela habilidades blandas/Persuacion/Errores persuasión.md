@@ -36,7 +36,7 @@ No basta con imitar técnicas , lo que a uno le funciono es por la forma en que 
 #####  Determinar el tiempo a impactar
 
 Dependiendo que tan rápido quieras ver tus resultados hay zonas en donde uno se debe enfocar pues el nivel de entendimiento profundo de la persona 
-![[Pasted image 20240812183545.png]]
+![[Adjuntos/Pasted image 20240812183545.png]]
 
 en la base se encuentra lo que mas rápido impacta pero  a su vez desaparece con el tiempo mecanismos como el miedo, amenazas y autoridad eventualmente generan desconfianza , rencor ,rebelion
 

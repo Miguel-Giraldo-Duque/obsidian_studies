@@ -9,7 +9,7 @@ La autentificación es el proceso donde verificamos quien es el que ingresa y la
 
 Imaginemos un guardia que vigila la entrada a una estructura : 
 
-![[Pasted image 20240326084347.png]]
+![[Adjuntos/Pasted image 20240326084347.png]]
 
 Cuando intentemos ingresar este guardián nos va a pedir que le entreguemos alguna credencial para poder ingresar , si logramos exitosamente ingresar el guardián nos entrega una llave en este caso una api key que me otorgara ciertos permisos para acceder a diferentes contenidos dándome una  autorización para manipular ciertos elementos y otros no
 

@@ -35,4 +35,4 @@ Por ello en la materia del testing tenemos 3 niveles donde buscamos probar nuest
 
 Cada uno de estos escalones de pruebas nos dan cada vez mas confianza de nuestro producto y entre mas orientados nuestros reales objetivos y el usuario mejor.
 
-![[Pasted image 20250614165046.png]]
+![[Adjuntos/Pasted image 20250614165046.png]]

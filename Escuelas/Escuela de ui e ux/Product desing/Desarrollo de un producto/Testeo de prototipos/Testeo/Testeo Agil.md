@@ -17,11 +17,11 @@ Semana 1 : Planeación del experimento, Logística del experimento , asignación
 
 Semana 2 : Testeo llevamos a cabo la prueba con los usuarios  , aprendizaje que cosas aprendimos durante el testeo, hacemos retrospectiva para realizar conlcuiones tras el testeo
 
-![[Pasted image 20241205190040.png]]
+![[Adjuntos/Pasted image 20241205190040.png]]
 
 #### Reuniones / Division semanal
 
-![[Pasted image 20241205190208.png]]
+![[Adjuntos/Pasted image 20241205190208.png]]
 
 
 Stand up Diario
@@ -58,6 +58,6 @@ Que podmeos mejorar de nuestro proceso?
 #### Creación de equipo 
 
 Cuando estamos haciendo estos testeos lo mas importante es diversificar las perpectivas cuando vamos a testear el producto , ingenieros que nos ayuden a validar [[Supuestos]] de factibilidad, ventas o comercial viabilidad, para  una deseabilidad los diseñadores seran nuestra mejor opcion 
-![[Pasted image 20241205192100.png]]
+![[Adjuntos/Pasted image 20241205192100.png]]
 
 Si bien lo ideal es tener el 100% del tiempo de estas personas , en muchos casos no es lo que siempre sucede , por lo que debemos priozar los experimentos mas cruciales y trabajar como una célula de trabajo en conjunto y obtener perspectivas desde los diferentes ángulos del equipo 

@@ -17,18 +17,18 @@ Nombre del experimento, Fecha de inicio , fecha de finalización , Hipótesis, e
 
 Opcionales : Inversión o costo, Aliados ,  
 
-![[Pasted image 20241203224836.png]]
+![[Adjuntos/Pasted image 20241203224836.png]]
 
 Podemos tener diferentes experimentos desde los diferentes [[Supuestos]] ya sea de viabilidad , deseabilidad , factibilidad  y los podemos posicionar en la matrix de supuestos para definir su importancia y  nivel de conocimiento
 
-![[Pasted image 20241203225057.png]]
+![[Adjuntos/Pasted image 20241203225057.png]]
 
 Estos experimentos los podemos organizar en estructuras que conocemos kanban
 que dividen en 
 
 Catalogo de experimentos , Planeación , Activos , Análisis.
 
-![[Pasted image 20241203225547.png]]
+![[Adjuntos/Pasted image 20241203225547.png]]
 
 
 En la etapa de catalogo recopilamos todos esos experimentos importantes y desconocidos luego en planeación son como estamos  justamente planeado ese experimento y el activo  los que estamos llevando a cabo es importante limitar la cantidad de experimentos que hacemos al tiempo para no sobrecargar la capacidad mental y por ultimo el análisis donde son esos experimentos que estamos comprobando 
@@ -49,5 +49,5 @@ Podemos usar las métricas piratas (AARRR)
 - Revenue
 
 
-![[Pasted image 20241203231410.png]]
+![[Adjuntos/Pasted image 20241203231410.png]]
 

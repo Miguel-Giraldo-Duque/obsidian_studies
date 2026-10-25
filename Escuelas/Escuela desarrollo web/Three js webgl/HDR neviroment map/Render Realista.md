@@ -19,7 +19,7 @@ renderer.toneMappingExposure = 3;
 ```
 
 
-![[Pasted image 20241022201925.png]]
+![[Adjuntos/Pasted image 20241022201925.png]]
 
 Sin embargo existen  mas tone mapping de forma preterminada tenemos un NoToneMapping , pero podemos elegir opciones como 
 
@@ -27,18 +27,18 @@ Sin embargo existen  mas tone mapping de forma preterminada tenemos un NoToneMap
  ``Linear`` : THREE.LinearToneMapping : es igual al HDR por default
 
   ``Reinhard``: THREE.ReinhardToneMapping : un efecto grisáceo como foto de no muy buena calidad. 
- ![[Pasted image 20241022202352.png]]
+ ![[Adjuntos/Pasted image 20241022202352.png]]
  
   ``Cineon``: THREE.CineonToneMapping : mas cámara antigua  con luces muy ricas .
- ![[Pasted image 20241022202433.png]]
+ ![[Adjuntos/Pasted image 20241022202433.png]]
 
 #### Que es Alasing?
 
 
 El aling es un efecto que sucede cuando la GPU  pinta los bordes de una geometría esto pasa por que la gpu solo pinta los pixeles que esten dentro del limite de la geometría de otro modo no lo hace, dando una pintado con forma de de cuadricula  
 
-![[Pasted image 20241023122402.png]]
-![[Pasted image 20241023123354.png]]
+![[Adjuntos/Pasted image 20241023122402.png]]
+![[Adjuntos/Pasted image 20241023123354.png]]
 
 
 Este efecto solo sucede en pantallas de un [[Pixel ratio]]  de 1 , en adelante este efecto no será muy necesario solucionar este problema pues los pixeles serán prácticamente imperceptibles  .
@@ -51,7 +51,7 @@ Este efecto solo sucede en pantallas de un [[Pixel ratio]]  de 1 , en adelante e
 
 2. Multi smapling : Es una técnica de anti-aliasing que se centra específicamente en los bordes de los objetos. En lugar de renderizar toda la escena a una resolución mayor como en SSAA, MSAA identifica las áreas donde hay transiciones o bordes geométricos y solo aplica el suavizado en esos píxeles pero no hace esto en el interior de la geometría.
 
-![[Pasted image 20241023123916.png]]
+![[Adjuntos/Pasted image 20241023123916.png]]
 
 
 ```js
@@ -69,10 +69,10 @@ const renderer = new THREE.WebGLRenderer({
 
 [[Shadows]] pueden presentar un problema como este en nuestro proyecto cuando nuestra superficie castea sombra sobre si misma debido que cuando la sombra calcula la profundiad entre pixeles dara este efecto:
 
-![[Pasted image 20241023234509.png]]
+![[Adjuntos/Pasted image 20241023234509.png]]
 Y en esos espacios existiran esas sombras dando el efecto sahdow acne
 
-![[Pasted image 20241023234059.png]]
+![[Adjuntos/Pasted image 20241023234059.png]]
 para solcuionarlo usamos bias y normal bias
 
 ```js

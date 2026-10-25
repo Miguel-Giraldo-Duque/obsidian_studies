@@ -4,7 +4,7 @@
 
 En los seres humanos, la interacción se basa en un proceso cíclico: primero tenemos un pensamiento, luego emitimos ese pensamiento a través de un mensaje (habla, gestos, etc.) que es recibido por un interlocutor. Este receptor procesa el mensaje con la ayuda de sus otros sentidos, genera una respuesta mental y finalmente la emite.
 
-![[Pasted image 20241021181252.png]]
+![[Adjuntos/Pasted image 20241021181252.png]]
 
 Este flujo de interacción es crucial porque refleja cómo nos comunicamos de manera natural. Si lo aplicamos al diseño de una interfaz de usuario, podríamos replicar esta dinámica humana para hacer la interacción con el sistema más intuitiva y cercana al usuario.
 
@@ -17,7 +17,7 @@ Primero inicialmente necesitamos reconocer la voz
 
 Luego aplicamos un NLP permite entender el contexto y incluso un analisis de emociones
 
-![[Pasted image 20241021182728.png]]
+![[Adjuntos/Pasted image 20241021182728.png]]
 
 
 1.  Usuario inicia una instruccion
@@ -34,7 +34,7 @@ El sistema de voz debe sentirse cooperativo , para que percibamos algo cooperati
 
 El uso de un lenguaje claro y sencillo permite que la interfaz sea accesible para un mayor número de personas, asegurando que las respuestas sean comprensibles para todo tipo de usuario, independientemente de su nivel de conocimiento o experiencia.
 
-![[Pasted image 20241021190629.png]]
+![[Adjuntos/Pasted image 20241021190629.png]]
 
 #### Apoyo
 Las respuestas cortas y secas, como un simple **"no"**, pueden resultar frustrantes. En su lugar, ofrecer respuestas más completas, como **"No, pero creo que..."**.
@@ -43,7 +43,7 @@ Las respuestas cortas y secas, como un simple **"no"**, pueden resultar frustran
 #### No entregar toda la información
 
 Para evitar la **sobrecarga mental**, es esencial que, cuando la respuesta sea extensa, la interfaz ofrezca opciones para ver más información si el usuario lo desea, en lugar de abrumarlo con todo el contenido de una sola vez.
-![[Pasted image 20241021190254.png]]
+![[Adjuntos/Pasted image 20241021190254.png]]
 
 #### Veracidad 
 El sistema debe proporcionar información **veraz y comprobable**. La entrega de datos inexactos o falsos impacta negativamente en la confianza del usuario
@@ -57,7 +57,7 @@ Es importante que el sistema permita al usuario interrumpir el flujo de la conve
 
 Cuando la instrucción del usuario no es del todo clara, el sistema debe indagar con preguntas adicionales. Preguntar de forma adecuada ayuda a cubrir las necesidades del usuario sin confusión.
 
-![[Pasted image 20241021190502.png]]
+![[Adjuntos/Pasted image 20241021190502.png]]
 
 
 #### RePreguntar
@@ -67,7 +67,7 @@ Es común que existan situaciones impredecibles, como ruido ambiental o el uso d
 #### Personalización
 
 La interfaz debe recordar quién está hablando y otros datos básicos de contexto, lo que genera una experiencia más cercana y personalizada. Esto ayuda al usuario a sentirse más comprendido y valorado por el sistema.
-![[Pasted image 20241021191546.png]]
+![[Adjuntos/Pasted image 20241021191546.png]]
 
 
 Creo además que podría ser una buena idea que la interfaz repita parte de la instrucción que le dices esto genera una sensación de empatía y confianza en el receptor motivándolo a seguir hablando  , como dice el libro de Chris Voss "rompe la barrera de No"

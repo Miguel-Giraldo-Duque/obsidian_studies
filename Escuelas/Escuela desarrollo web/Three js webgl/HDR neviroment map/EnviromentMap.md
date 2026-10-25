@@ -47,7 +47,7 @@ scene.backgroundIntensity = 1; // la intesidad del fondo a menor mas ocuro
 scene.environmentRotation.y = Math.PI * 0.5; // Desde donde pegan las luces en rotacion.
 ```
 
-![[Pasted image 20241019160055.png]]
+![[Adjuntos/Pasted image 20241019160055.png]]
 
 SI quieramos que nuestro ambiente este pegado al suelo podemos : 
 
@@ -66,9 +66,9 @@ import { GroundedSkybox } from 'three/addons/objects/GroundedSkybox.j
 ```
 
 
-![[Pasted image 20241020170952.png]]
+![[Adjuntos/Pasted image 20241020170952.png]]
 
 Funcionando como circulo applacando en la parte inferior :
 
-![[Pasted image 20241020171120.png]]
+![[Adjuntos/Pasted image 20241020171120.png]]
 

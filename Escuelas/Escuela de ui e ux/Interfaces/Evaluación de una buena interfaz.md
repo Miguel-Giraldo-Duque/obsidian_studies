@@ -20,5 +20,5 @@ Para lograr esto debemos cumplir ciertas etapas claves antes de avanzar
 
 Todos estos niveles son un escalonado uno no puede existir sin el otro necesitamos de funcionalidad antes de la usabilidad , luego confianza y luego una interfaz placentera 
 
-![[Pasted image 20240322171457.png]]
+![[Adjuntos/Pasted image 20240322171457.png]]
 

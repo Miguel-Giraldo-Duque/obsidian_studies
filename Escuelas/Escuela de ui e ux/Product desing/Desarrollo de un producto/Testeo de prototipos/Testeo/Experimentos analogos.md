@@ -31,7 +31,7 @@ Aqui buscamos validar la experiencia con el producto con un "cliente informante"
 
 #### Prototipo escala real
 
-Ponemos nuestro producto en una situacion donde queremos validarlo a un punto mas alto buscamos somneterlo a prubas que implican viabiliad ,deseabilidad, factibilidad , pues simulamos todo un entorno e interaccion  frente a los clientes sin tener necesariamnete un porducto 100% funcional![[Pasted image 20241204193342.png]]
+Ponemos nuestro producto en una situacion donde queremos validarlo a un punto mas alto buscamos somneterlo a prubas que implican viabiliad ,deseabilidad, factibilidad , pues simulamos todo un entorno e interaccion  frente a los clientes sin tener necesariamnete un porducto 100% funcional![[Adjuntos/Pasted image 20241204193342.png]]
 
 
 #### Prueba con experto 

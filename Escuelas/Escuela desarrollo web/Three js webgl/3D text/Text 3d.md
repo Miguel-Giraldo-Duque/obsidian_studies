@@ -66,7 +66,7 @@ fontLoader.load(
 )
 ```
 
-![[Pasted image 20241003195009.png]]
+![[Adjuntos/Pasted image 20241003195009.png]]
 De forma preterminada nuestro texto no esta centrado. existen diferentes métodos que nos permiten lograr centrar nuestro texto por ejemplo
 
 
@@ -75,7 +75,7 @@ De forma preterminada nuestro texto no esta centrado. existen diferentes método
 El **bounding** es una caja invisible que utiliza Three.js para gestionar el **frustum culling**, es decir, un renderizado inteligente de los objetos en nuestra escena. El bounding funciona como una caja o esfera alrededor de nuestros objetos, que Three.js emplea para calcular la posición de estos elementos. Basado en si los objetos son visibles o no desde la perspectiva de nuestra cámara, el motor decide renderizarlos o no, optimizando así el rendimiento.
 
 
-![[Pasted image 20241003195457.png]]
+![[Adjuntos/Pasted image 20241003195457.png]]
 
 
 ```js

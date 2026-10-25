@@ -12,7 +12,7 @@ Deseabilidad: Sera que a las personas si les interesa la idea ? sera que el merc
 
  viabilidad: Sera que la gente me acepta 400 lucas mi producto ? 
  
-![[Pasted image 20241122111503.png]]![[Pasted image 20241122111628.png]]
+![[Adjuntos/Pasted image 20241122111503.png]]![[Adjuntos/Pasted image 20241122111628.png]]
 
 
 ### Practica
@@ -22,7 +22,7 @@ Sera que el conocimiento necesarios?
 	Sera que las personas me aceptan el servicio a 1000 dólares el mes?
 Sera que la interacción de voz que a las personas les parece util a las personas?
 sera que la gente le guste elementos 3D a  la pagina?
-![[Pasted image 20241122114208.png]]
+![[Adjuntos/Pasted image 20241122114208.png]]
 
 
 | Viabilidad                                                   | Deseabilidad                                                                      | Factibilidad                                                        | Idea |

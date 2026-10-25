@@ -10,12 +10,12 @@ Una vez que realizamos la [[Planeación test usabilidad]] y la [[Moderación de 
 - **Recomendaciones Precisas** : Debemos ser precisos en base a los problemas identificados en la prueba debemos entregar una solución posible a estos problemas
 
 -  **Agrupación de problemas** : Crear grupos que nos permitan identificar los problemas o observaciones , es clave para entender que problemas críticos debemos resolver y que problemas se repiten en la interfaz 
-![[Pasted image 20241219191418.png]]
+![[Adjuntos/Pasted image 20241219191418.png]]
 
 - **Recopilación de data** :  Son tablas que demuestran el rendimiento de las tareas desde la dificultad percibida éxito o no y la velocidad que toma realizar la prueba 
 
 
-![[Pasted image 20241219191436.png]]
+![[Adjuntos/Pasted image 20241219191436.png]]
 
 #### Como presentar el informe?
 

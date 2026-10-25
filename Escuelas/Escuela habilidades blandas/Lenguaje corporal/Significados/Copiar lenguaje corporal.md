@@ -5,7 +5,7 @@
 Cuando se menciona en las leyes de la persuasión uno de los factores mas determinantes para construir conexión rápidamente con alguien es [[Similitud]]  , si nuestro lenguaje corporal  le hace espejo al del otro ejemplo:
 
 persona 1:  Se sienta cruzando las piernas  
-![[Pasted image 20250503140915.png]]
+![[Adjuntos/Pasted image 20250503140915.png]]
 
 Nosotros : Después de un tiempo 4 a 5 segundos si nos cruzamos de pierna, estamos creando un mayor nivel de "afinidad" con la persona , generando mas conexión 
 

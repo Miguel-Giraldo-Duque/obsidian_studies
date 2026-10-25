@@ -3,7 +3,7 @@
 
 
 Las keys en [[React]], tienen la función de identificar componentes dentro de el [[Virtual DOM]], y poder comparar de forma segura, el nuevo arbol y sus elementos con los anteriores.
-![[Pasted image 20260414184717.png]]
+![[Adjuntos/Pasted image 20260414184717.png]]
 ejemplo 
 
 ```js

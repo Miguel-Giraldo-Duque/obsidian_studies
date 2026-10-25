@@ -22,7 +22,7 @@ pero el resto del código no podrá acceder a la variable
 
 Let y const solo funcionaran con un Scope de bloque es decir solo podrán ser accedidos en el entorno donde se encuentren y no afuera ejem
 
-![[Pasted image 20230907114650.png]]
+![[Adjuntos/Pasted image 20230907114650.png]]
 
 Donde si mis variables let y const están dentro del if si yo intentara acceder a ellas desde el Scope de  la función me aparecería error pero si dado casi usara el var todo la función y sus funciones anidadas podrían acceder a el incluso con el Scope de bloque 
 

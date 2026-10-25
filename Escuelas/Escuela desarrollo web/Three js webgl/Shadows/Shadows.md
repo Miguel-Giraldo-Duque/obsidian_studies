@@ -9,7 +9,7 @@ Cuando habilitamos **sombras** en [[Three js]] lo que realmente está sucediendo
 
 Este proceso de renderizado de sombras ocurre **antes** del renderizado final de la escena, lo que implica que en cada frame en el que las sombras están habilitadas, Three.js realiza un render adicional específicamente para calcular las sombras. Este es el motivo por el cual el uso de sombras puede impactar el rendimiento, ya que esencialmente se están realizando dos renderizados: uno para generar las sombras y otro para renderizar la escena final con las sombras aplicadas.
 
-![[Pasted image 20241006174242.png]]
+![[Adjuntos/Pasted image 20241006174242.png]]
 
 
 Para emepezar a usar sombras demos tener en cuenta dos elementos claves : castShadow y receiveShadow , cuando usamos cast le indicamos que este elemento puede emitir sombra a los demas elementos en la esena , cuando le decimos receive le decimos que el objeto puede recibir sombras
@@ -44,7 +44,7 @@ directionalLight.castShadow = true;
 scene.add(directionalLight);
 ```
 
-![[Pasted image 20241006181014.png]]
+![[Adjuntos/Pasted image 20241006181014.png]]
 
 Solo exiten tres tipos de [[Lights]] que permiten el manejo con sombras spotlight, pointLight , directionalLightt
 
@@ -68,7 +68,7 @@ directionalLight.shadow.mapSize.height = 800;
 
 **Camera** :  Dependiendo de la luz , tendrá una cámara  interna  distinta en este caso directionalLight usa una ortográfica para  mantener su luz paralela , podemos evitar bugs si configuramos bien el near y far  para que cubran solo necesario de nuestra esena. Sin configurar normalmente se veria asi :
 
-![[Pasted image 20241006183718.png]]
+![[Adjuntos/Pasted image 20241006183718.png]]
 un far muy alejado para configrar esto podemos accder a shadow.camera y usar un helper de camera para ver su funcionamiento.
 
 
@@ -90,10 +90,10 @@ const cameraShadowHelper = new THREE.CameraHelper(
 scene.add(cameraShadowHelper);
 ```
 
-![[Pasted image 20241006183857.png]]
+![[Adjuntos/Pasted image 20241006183857.png]]
 
 **Amplitude** : Como podemos ver nuestra [[Cámara ortográfica]] es demasiado amplia lo que causa que perdamos detalle de la sombra de la esfera pues la sombra terminan viéndose demasiado pequeña en comparación de lo que la cámara esta tomando si reducimos el tamaño permitimos ver mas detalles de sombra quitando un poco los bordes blurry
-![[Pasted image 20241006185347.png]]
+![[Adjuntos/Pasted image 20241006185347.png]]
 
 
 ```js
@@ -106,9 +106,9 @@ directionalLight.shadow.camera.right = 2;
 directionalLight.shadow.camera.bottom = -2;
 ```
 
-![[Pasted image 20241006185307.png]]
+![[Adjuntos/Pasted image 20241006185307.png]]
 Nuestros bordes mejoraron : 
-![[Pasted image 20241006185430.png]]
+![[Adjuntos/Pasted image 20241006185430.png]]
 
 Podríamos usar radius si quisiéramos bordes mas suaves , tener en cuenta que esto borde no toman en cuenta la luz son generados artificialmente .
 
@@ -116,7 +116,7 @@ Podríamos usar radius si quisiéramos bordes mas suaves , tener en cuenta que e
 directionalLight.shadow.radius = 10;
 ```
 
-![[Pasted image 20241006185553.png]]
+![[Adjuntos/Pasted image 20241006185553.png]]
 ### Cambiar el punto de target de la luz
 
 Normalmente el target de la luz esta en el centro de la escena por que para algunos contextos se requiera mover este target para ello podemos:
@@ -131,7 +131,7 @@ scene.add(directionalLight.target)
 directionalLight.target.updateMatrixWorld();
 
 ```
-![[Pasted image 20241023223138.png]]
+![[Adjuntos/Pasted image 20241023223138.png]]
 
 #### Algoritmos de shadowMap
 
@@ -148,7 +148,7 @@ Es el que usamos preterminado y nos pemite que nos permite una sombra un poco ma
 renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 ```
 
-![[Pasted image 20241006191554.png]]
+![[Adjuntos/Pasted image 20241006191554.png]]
 
 **Spot Light**
 Al igual que con el directional podemos crear nuestras sombras a partir de este 
@@ -190,13 +190,13 @@ scene.add(spotLight);
 
 ```
 
-![[Pasted image 20241006224017.png]]
+![[Adjuntos/Pasted image 20241006224017.png]]
 
 **Point light** : Es como los anteriores con cierta diferencia , spot light emite una luz en todas las direcciones  y por cada una de estas direccion 6 en total va crear un render por cada una. Cuando queremos ver la camara o la direccion de esta veremos la ultima posicion de emision la que ve hacia abajo 
 
 Nota: no es recomendable manipular el fov , pues afectaríamos no solo a la cámara visible si no a todas las demás.
 
-![[Pasted image 20241006225624.png]]
+![[Adjuntos/Pasted image 20241006225624.png]]
 
 ```js
   
@@ -232,7 +232,7 @@ scene.add(pointLightShadowCamera);
 scene.add(pointLight);
 ```
 
-![[Pasted image 20241006230507.png]]
+![[Adjuntos/Pasted image 20241006230507.png]]
 
 
 ### Baking shadows
@@ -251,7 +251,7 @@ const plane = new THREE.Mesh(
 
 );
 ```
-![[Pasted image 20241006233055.png]]
+![[Adjuntos/Pasted image 20241006233055.png]]
 
 
 2. **Metodo 2** : Le pasamos un alhpa map a un segundo plano a una altura levemente mayor a la de nuestro plano de suelo y asi lo podremos mover dinámicamente en la escena: 
@@ -285,4 +285,4 @@ const plane2 = new THREE.Mesh(
 
 ```
 
-![[Pasted image 20241006235358.png]]
+![[Adjuntos/Pasted image 20241006235358.png]]

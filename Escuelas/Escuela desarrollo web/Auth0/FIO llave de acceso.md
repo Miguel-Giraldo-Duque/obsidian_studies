@@ -7,7 +7,7 @@ Si usamos el [[Multifactor authentication]] podemos usar una herramienta llamada
   - El server crearía dos elementos la llave publica y privada 
   - Por ultimo devolvemos el challenge con la llave privada y el challenge firmado 
   - El server no guardaría la llave privada , solo la llave publica que mas tarde se usa para verificar la validez de una firma
-    ![[Pasted image 20250824231500.png]]
+    ![[Adjuntos/Pasted image 20250824231500.png]]
      
   1. Ahora  si no queremos logger  usamos password y la llave de acceso que contendrá la clave privada, cuando hagamos esto el servidor recibirá un challenge firmado por nuestra llave privada y revisara la validez de la firma.
    

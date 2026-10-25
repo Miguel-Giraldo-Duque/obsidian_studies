@@ -5,6 +5,6 @@ En [[React]] usamos el single page aplication donde creamos una renderización s
 
 
 Pero que pasaria si combinamos ambas?
-![[Pasted image 20250122194852.png]]
+![[Adjuntos/Pasted image 20250122194852.png]]
 
 Entonces el flujo seria tenemos una carga inicial que nos trae el HTML completo de backend y a ese HTML es que empezamos a modificar dinámicamente convirtiéndolo en un SPA , esto con el objetivo de tener velocidad en la carga inicial y uso inteligente de la modificación con js para reducir mucho mas el tiempo 

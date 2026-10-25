@@ -7,9 +7,9 @@ Los prototipos personales se basan en  nuestra propia ideación , nos permite cr
 de prototipos personales nacen ideas como :
 
 Xbox
-![[Pasted image 20241129222519.png]]ç
+![[Adjuntos/Pasted image 20241129222519.png]]ç
 
-![[Pasted image 20241129222627.png]]
+![[Adjuntos/Pasted image 20241129222627.png]]
 
 
 Estos [[Prototipos]] requieren de un poco mas de esfuerzo para ser llevados cabo pues aquí validamos un poco la funcionalidad de estos antes de terminarlos

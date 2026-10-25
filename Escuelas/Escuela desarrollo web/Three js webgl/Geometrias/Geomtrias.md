@@ -5,7 +5,7 @@
 
 Una geometría esta compuesta por vertices  o conexiones que permiten crear nuestras figuras , en los medio de estos verticen estan las caras o tringulos como lo vimos en [[WebGl]] son estas caras o triangulos las que le dan forma a nuestros elementos 
 
-![[Pasted image 20240903210747.png]]
+![[Adjuntos/Pasted image 20240903210747.png]]
 
 
 Cuando se trabaja con partículas se trabaja es con los vértices del elemento en cuestión , con los vertices podemos conocer informacion de su posicion uv normalsizes etc
@@ -24,9 +24,9 @@ const planeGeometry = new THREE.PlaneGeometry(1, 1, 16, 64);
 planeGeometry.translate(0, 0.5, 0.0);
 ```
 
-![[Pasted image 20241114213430.png]]
+![[Adjuntos/Pasted image 20241114213430.png]]
 Movimos la geometria pero el origen de nuestra mesh sigue estando en el origen
-![[Pasted image 20241114213513.png]]
+![[Adjuntos/Pasted image 20241114213513.png]]
 
 Para ello debemos mover la posicion de la mesh con una [[Operaciones de transformacion]] de posicion para estar en el mismo punto y asi obtenemos un punto de origen reposicionado
 
@@ -40,6 +40,6 @@ planeGeometry.scale(1.5, 6, 1.5);
 
 ```
 
-![[Pasted image 20241114213720.png]]
+![[Adjuntos/Pasted image 20241114213720.png]]
 
 

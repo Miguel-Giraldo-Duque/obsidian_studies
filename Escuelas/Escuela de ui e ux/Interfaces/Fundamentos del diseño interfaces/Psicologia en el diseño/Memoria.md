@@ -9,7 +9,7 @@ La memoria en psicología humana funciona como dos partes que nos permiten almac
 
 
 **Memoria a largo plazo** : Es aquella en la que podemos reunir una informacion y con el tiempo recordarla con facilidad esta memoria se fortalece en la medida que es estimulada entre mas estimulada se encuentre mas probable que se pueda guardar informacion a largo plazo  .
-![[Pasted image 20250111202243.png]]
+![[Adjuntos/Pasted image 20250111202243.png]]
 
 Normalmente cuando estamos interactuando con una interfaz , nuestra memoria de trabajo de corto plazo buscara almacenar informacion  del contexto actual de lo que estamos experimentando ,  George Miller  un investigar encontró que la memoria tiene un limite de items que puede almcenar
 
@@ -23,11 +23,11 @@ Si queremos trabajar con la memoria a corto plazo debemos buscar que la persona 
 **Debemos asegurarnos de que la memoria de la persona tenga la menor carga que podamos . En una interfaz ello implica:**
 
 - **Claridad en modos**: Si existen modos para una interfaz por ejemplo
-![[Pasted image 20250111214604.png]]
+![[Adjuntos/Pasted image 20250111214604.png]]
 debemos buscar mantener al tanto al usuario en que modo estar y no recaer en toda la informacion en el almacenamiento de la memoria a corto plazo
 
 - **Instrucciones** : Las instrucciones siempre deben estar  visibles para el usuario cundo estamos buscando llegar  a la casa de un amigo hay un set de indicaciones que nos mantienen al tanto de que decisiones debemos tomar para llegar ahí , confiar en que nuestra memoria de trabajo pueda tomar todos estos elementos es poco viable , probablemente usemos direcciones como Google maps 
-![[Pasted image 20250111215036.png]]
+![[Adjuntos/Pasted image 20250111215036.png]]
 
 Google maps no te fuerza a recordar que pasos tienes que tomar, te mantiene presente las instrucciones funcionando en armonía con la memoria de corto plazo
 
@@ -51,7 +51,7 @@ Una interfaz que en sus [[Principios de diseño]] practica la consistencia le pe
 
 **Dado que la memoria a largo plazo no es un foto presisa de la realidad** , lo que si es una memoria procedural fuerte que dependiendo de lo constante o no de una funcion le cuesta mas o menor tiempo aprender por ejemplo :
 
-![[Pasted image 20250111220111.png]]
+![[Adjuntos/Pasted image 20250111220111.png]]
 
 Aprenderemos significativamente mas rápido la opción A y sera la que menos errores tengamos en el futuro, cuando un patron es repetitivo no es fácil entenderlo y replicarlo permitiéndonos adaptar a este.
 

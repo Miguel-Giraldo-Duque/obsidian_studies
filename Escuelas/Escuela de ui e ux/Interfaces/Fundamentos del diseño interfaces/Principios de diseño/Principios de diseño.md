@@ -19,24 +19,24 @@ Escala : Dependiendo de que tan grande es un elemento en nuestra inferaz podremo
 
 Claridad : En la medida que reducimos la complejidad para el usuario de llevar a cabo una acción mejoramos su experiencia al momento de usar la interfaz , si el usuario tiene que tomar desiciones creamos mucha friccion para cuando el usario va usar la aplicacion 
 
-![[Pasted image 20241122172659.png]]
+![[Adjuntos/Pasted image 20241122172659.png]]
 
 Muchos de esos campos seguramente no sean tan necesarios como la direccion o telefono y podriamos quitarlos y solicitarlos quizas en otro momento por ello si reducimos las acciones mejoramos significativamente la experiencia :
-![[Pasted image 20241122172825.png]]
+![[Adjuntos/Pasted image 20241122172825.png]]
 
 Podemos separar un contenido en secciones para darle mayor claridad , si colapsamos mucha información de golpe al usuario este tendrá problemas para poderla leer , después de todo las personas no leemos todo escaneamos , si dividimos la informacioon en secciones hacemos mas dirigible el mismo contenido
 
-![[Pasted image 20241122174158.png]]
+![[Adjuntos/Pasted image 20241122174158.png]]
 
 
-![[Pasted image 20241122174254.png]]
+![[Adjuntos/Pasted image 20241122174254.png]]
 
 
 También para crear una muy buena claridad cuando requerimos mucha interacción del usuario o requerimos llevar a cabo una acción compleja podemos dividirla en varias partes como un pantalla de pago dividimos el proceso de pagar en pequeños pasos 1 a la vez sin crear sobrecarga cognitiva
 
-![[Pasted image 20241122174342.png]]
+![[Adjuntos/Pasted image 20241122174342.png]]
 
-![[Pasted image 20241122174403.png]]
+![[Adjuntos/Pasted image 20241122174403.png]]
 
 > [Le sui]
 > 
@@ -44,9 +44,9 @@ También para crear una muy buena claridad cuando requerimos mucha interacción 
 
 
 Alineación es importante mantener la alineación en nuestros diseños para poder asegurar una buena experiencia en el usuario a reconocer patrones de lectura familiares y contantes . 
-![[Pasted image 20241124210227.png]]
+![[Adjuntos/Pasted image 20241124210227.png]]
 Una mala alineación dificulta como en el [[UxUi]] le damos la opción al usuario de seguir la interfaz 
-![[Pasted image 20241124212207.png]]
+![[Adjuntos/Pasted image 20241124212207.png]]
 
 
 ### Balance 

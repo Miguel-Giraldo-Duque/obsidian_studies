@@ -17,4 +17,4 @@ Su principal fortaleza reside en el
 - **CSR (Client-Side Rendering)**: Renderizado en el navegador (como [[React]] tradicional)
 
 
-![[deepseek_mermaid_20250909_05f9a7.png]]
+![[Adjuntos/deepseek_mermaid_20250909_05f9a7.png]]

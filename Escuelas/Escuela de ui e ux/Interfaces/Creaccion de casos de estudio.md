@@ -86,4 +86,4 @@ Puedes dar un acceso directo a tu plan de investigación por si la persona que e
 Puedes usar esta sección para cerrar tu caso de estudio y reflexionar acerca de lo que aprendiste en este proceso: A qué retos te enfrentaste, qué fortalezas tuviste, y qué harías diferente en un futuro (proceso).
 
 Puedes también describir cuáles serían los siguientes pasos para tu propuesta
-![[Pasted image 20241107154458.png]]
+![[Adjuntos/Pasted image 20241107154458.png]]

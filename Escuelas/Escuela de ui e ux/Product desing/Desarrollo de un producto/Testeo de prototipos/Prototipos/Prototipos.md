@@ -12,7 +12,7 @@ el prototipo existe para enfrentar varias problemáticas cuando tenemos una nuev
 
 4 . Permite fallar rápido y barato para cambiar y estar preparados para el momento del lanzamiento real 
 
-![[Pasted image 20241122105319.png]]
+![[Adjuntos/Pasted image 20241122105319.png]]
 
 
 

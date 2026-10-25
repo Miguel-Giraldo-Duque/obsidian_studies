@@ -48,13 +48,13 @@ En sentidos de estructura la segunda versión es significativamente mas fácil d
 
 - **Texto no centrado**: Los seres humanos normalmente estamos habituados a que una vez terminado una linea esperamos volver a empezar nuevamente en la próxima linea de forma horizontal, del siguiente renglón si esto no sucede asi y obligamos a la persona a realizar saltos impredecibles dado que su reconocimiento automático no los llevo de forma efectiva a la siguiente linea obligándolos a moverse conscientemente a esta .
 
-![[Pasted image 20250102174943.png]]
+![[Adjuntos/Pasted image 20250102174943.png]]
 
 
 **Precisión y claridad del texto** :  Entre menos texto obligamos a nuestro usuario a consumir es mejor para mejorar su experiencia un exceso de texto que aporta a la claridad en general de este solo lo estamos alargando el tiempo en que logra terminar una acción
 
 
-![[Pasted image 20250102175243.png]]
+![[Adjuntos/Pasted image 20250102175243.png]]
 
 
 **Priorizar el contraste entre el fondo y texto** : Si el texto resulta poco claro o difícil de identificar en el fondo puede dificultar en gran medida como la persona percibe la interfaz debemos mantener un buen contraste que le permita a la persona  identificar rápidamente  el texto

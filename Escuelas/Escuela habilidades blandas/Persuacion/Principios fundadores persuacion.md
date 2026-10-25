@@ -20,7 +20,7 @@ Cuando las personas sentimos emoción por algo , y cuando nos persuaden se puede
 
 
 ## 12 leyes persuasión
-![[Pasted image 20240813122502.png]]
+![[Adjuntos/Pasted image 20240813122502.png]]
 
 
 

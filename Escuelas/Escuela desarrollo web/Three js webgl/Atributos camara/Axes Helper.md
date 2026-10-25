@@ -13,4 +13,4 @@ const helperAxios = new THREE.AxesHelper()
 scene.add(helperAxios)
 ````
 
-![[Pasted image 20240806180159.png]]
+![[Adjuntos/Pasted image 20240806180159.png]]

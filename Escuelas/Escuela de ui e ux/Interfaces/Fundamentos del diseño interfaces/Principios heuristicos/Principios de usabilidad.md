@@ -36,7 +36,7 @@ Es clave indicarle al usuario exactamente que esperamos que haga en nuestro elem
 Debemos asegurarnos que nuestros elementos tramitan la intension queremos trasmitir con el elemento
 
 Podemos bloquear los elementos que no son requeridos
-![[Pasted image 20241201191856.png]]
+![[Adjuntos/Pasted image 20241201191856.png]]
 
 
 ### 6 Reconocer , no recordar
@@ -46,7 +46,7 @@ Es importante que el usuario no tenga que recordar información de previas panta
 Integrar pasos actuales 
 Campos de ayuda cuando necesitemos informacion
 
-![[Pasted image 20241201191919.png]]
+![[Adjuntos/Pasted image 20241201191919.png]]
 
 ### 7 Flexibilidad en el sistema
 
@@ -62,13 +62,13 @@ Debmos evitar elementos que no cumplan una funcion especifica y que no trasmitan
 Evitar la complejidad inesesaria
 
 Eliminar lo que puede ser una distracción para cumplir una acción
-![[Pasted image 20241201192006.png]]
+![[Adjuntos/Pasted image 20241201192006.png]]
 
 
 ### 9 Documentación y enseñanza
 
 Cuando nuestras interfaces son muy complejas conviene hacer uso de una documentación de su uso ,  cosas como un chat en vivo para solucionar dudas, un documento donde se explique como usar la aplicación  , preguntas frecuentes todo para que llevar facilitar la curva de aprendizaje del usuario 
-![[Pasted image 20241201192049.png]]
+![[Adjuntos/Pasted image 20241201192049.png]]
 
 ### 10 Ayudar al recocimiento y diagnostico de errores
 

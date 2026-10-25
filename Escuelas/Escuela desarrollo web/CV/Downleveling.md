@@ -53,6 +53,6 @@ Para senior+: coding no es la causa principal del downlevel. Lo más pesado es *
 
 Downleveling es negociación agresiva. Se gana en **pulgadas**: hábitos que señalan seniority (impacto, scope, límites, BATNA fuerte, “I don’t know” bien usado).
 
-![[Pasted image 20260805223726.png]]
-![[Pasted image 20260805223718.png]]
-![[Pasted image 20260805223850.png]]
+![[Adjuntos/Pasted image 20260805223726.png]]
+![[Adjuntos/Pasted image 20260805223718.png]]
+![[Adjuntos/Pasted image 20260805223850.png]]

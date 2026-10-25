@@ -5,7 +5,7 @@
 Es una herramienta de 3 generación para un mejor experiencia de desarrollo fronted , ofreciendo rapidez y versatilidad al momento de desarrollar aplicativos , una delos principales beneficios del uso de vite es su capaciad de realizar buldles
 
 
-![[Pasted image 20240924173542.png]]
+![[Adjuntos/Pasted image 20240924173542.png]]
 
 Lo que hace es minizar tu código en un gran archivo principal el cual mediante diferentes procesos habrá eliminado todos los espacios y otros elementos  que le permiten al motor trabajar mas eficientemente 
 
@@ -65,14 +65,14 @@ import.meta.hot.prune( () => __vite__removeStyle(__vite__id))
 ```
 
 Dando este tipo de estructuras , es importante tener en cuenta que vite usa cache por lo que si en nuestro codigo no llegamos a ver nuestros cambios debemos ir a
-![[Pasted image 20240924184212.png]]
+![[Adjuntos/Pasted image 20240924184212.png]]
 
 Vite crea archivos de cache para no tner que recargar todos los archivos previos dandoles un t
 
-![[Pasted image 20240924191017.png]]
+![[Adjuntos/Pasted image 20240924191017.png]]
 
 Y si creamos un cambio solo reejecuta lo diferente 
-![[Pasted image 20240924191136.png]]
+![[Adjuntos/Pasted image 20240924191136.png]]
 
 Lo que nos termina dando un chache en general con su identificador por cambio
 

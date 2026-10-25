@@ -6,17 +6,17 @@ En los seres humanos tenemos en nuestra retina conos que nos permiten percibir e
 
 **En realidad** **no** los ojos escanea el entorno  de manera increíblemente rápida lo que da la iluccion de un entorno gracias a una predicción que nuestro cerebro hace de este  y son permite tener cierta visión de este pero , realmente nuestra visión funciona como un túnel que nos permite enfocarnos en un punto y el fondo o entorno obtener un efecto borroso , de ahí
 que cuando nos concentremos tengamos una visión de túnel. 
-![[Pasted image 20250109220244.png]]
+![[Adjuntos/Pasted image 20250109220244.png]]
 
 
 Esto sucede por que tenemos algo llamado "fovea" que es una parte de nuestra retina que percibe los bordes de nuestro entorno siendo una pequeña parte de nuestra retina,
 
 
-![[Pasted image 20250109215817.png]]
+![[Adjuntos/Pasted image 20250109215817.png]]
 
 Dado que nuestra vision tienede a ser un tunel con un entorno borroso una posible apreciaccion de como podira funcionar la fovea seria  asi , nuestra atencion en el boton nos hace tener cierto rango de detección  a la redonda
 
-![[Pasted image 20250109221108.png]]
+![[Adjuntos/Pasted image 20250109221108.png]]
 
 Ello que implica ? :
 
@@ -27,7 +27,7 @@ Que los mensajes o cambios muy alejados de donde tenemos la visión impedirán s
 - **Movimiento** : La fovea en el tiempo previo si bien borrosa es muy sensible al movimiento , lo que antes nos permitía sobrevivir a los depredadores  , por tanto cuando algo se mueve o cambia de estado capta rápidamente nuestra atención, estos no tienen que ser cambios muy bruscos como para ser notados basta un tembleque o algo y moveremos nuestra atención allí.
 
 - **Cercanía** : Los cambios que queramos que sean visibles deben estar cerca de la fovea (donde estamos mirando )actualmente para que le permitamos identificarlo si esta muy lejos incluso con movimiento es poco claro
-![[Pasted image 20250110210037.png]]
+![[Adjuntos/Pasted image 20250110210037.png]]
 - **Colores**: Existen colores que por costumbre los usuarios hemos aprendido a usar **Rojos como error , peligro etc** y **Verde como éxito** el uso del [[Color]] nos permite darle cierto grado de intensidad lo que atrae mas fácilmente la visión del usuario
 
 - **Símbolos** : Podemos usar símbolos para  indicar a un mas atención a un punto en especifico 

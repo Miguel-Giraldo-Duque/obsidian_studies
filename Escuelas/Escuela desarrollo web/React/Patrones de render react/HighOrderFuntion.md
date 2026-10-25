@@ -16,7 +16,7 @@ funtion highOrderFuntion (){
 ```
 
 
-![[Pasted image 20231004112138.png]]
+![[Adjuntos/Pasted image 20231004112138.png]]
 
 
 

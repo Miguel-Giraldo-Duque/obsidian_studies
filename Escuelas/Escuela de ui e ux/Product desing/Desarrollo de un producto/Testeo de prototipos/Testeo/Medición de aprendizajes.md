@@ -14,12 +14,12 @@ Estos aprendizajes los debemos organizar en el Kanban como una sección nueva de
 Durante la entrevista o situación análoga y nuestra interacción con el usuario es breve lo que podemos hacer para asegurarnos de obtener insights es usar la matriz de captura rápida:
 
 Que le gusto? , Que no le gusto? , Que le cambiaria? , Que dudas le quedan?
-![[Pasted image 20241204194843.png]]
+![[Adjuntos/Pasted image 20241204194843.png]]
 
 
 o también podemos usar los [[Mapa de empatia]] 
 
-![[Pasted image 20241204194932.png]]
+![[Adjuntos/Pasted image 20241204194932.png]]
 
 
 #### Métodos para recolección de aprendizaje 
@@ -64,19 +64,19 @@ Video explicativo
 
 Podemos tomar el [[Story board]] como referencia aqui tomar un video y mostrarlo en la medida que la personas lo entiendan o les interese podemos medirlo como un exito
 
-![[Pasted image 20241204211152.png]]
+![[Adjuntos/Pasted image 20241204211152.png]]
 
 MVP de una sola funcionalidad
 
 Buscamos priorizar en el [[MVP]] la funcionalidad mas clave y es la que usamos para demostrar la idea mas importante del producto
-![[Pasted image 20241204210802.png]]
+![[Adjuntos/Pasted image 20241204210802.png]]
 
 
 Collage 
 
 Tomamos diferentes partes delproducto y creamos una nueva propuesta y se la presentamos al usuario, es un poco mas costoso pues neceistamos de otros departamentos para poder desarrollar la idea
 
-![[Pasted image 20241204210850.png]]
+![[Adjuntos/Pasted image 20241204210850.png]]
 
 
 
@@ -84,7 +84,7 @@ A o B encuentas:
 
 Nos permiten conocer en base a la preferencia de las personas unas opciones y podemos validar que de la opcion mas elegida es seguramente la desicion que debamos tomar 
 
-![[Pasted image 20241204211123.png]]
+![[Adjuntos/Pasted image 20241204211123.png]]
 
 Campaña 
 
@@ -95,11 +95,11 @@ Crowfounding y precompra
 
 Son sitios donde podemos poner nuestras ideas y invericionistas nos dan su dinero si en la exprecion de nuestra idea se ven cautivados aqui podemos ver la desabilidad del producto frente a personas interesadas o posibles compradores
 
-![[Pasted image 20241204210747.png]]
+![[Adjuntos/Pasted image 20241204210747.png]]
 
 
 
 Landing page
 
 Creamos una pagina donde esperamos obtener una informacion sobre el usuario , especificamente si se ve cautivado con la propuesta de valor presentada en el landing page , por cantidad registros y otras métricas podemos analizar si las personas se ven interesadas 
-![[Pasted image 20241204211104.png]]
+![[Adjuntos/Pasted image 20241204211104.png]]

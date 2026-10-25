@@ -12,7 +12,7 @@ crea una coarta que no permite crear soluciones nuevas , pues estamos con un ses
 
 *Problema* 
 "Los usuario sienten que no pasan tiempo de calidad y van al cine con el fin de crear ese tiempo"
-![[Pasted image 20241222191318.png]]
+![[Adjuntos/Pasted image 20241222191318.png]]
 
 En la segunda versión implica un problema que cuando hagamos un [[Desing sprint]] con un crazy eight  obtengamos ideas innovadoras , que es importantísimo estas ideas deben estar orientadas a solucionar el problema que identificamos  .
 

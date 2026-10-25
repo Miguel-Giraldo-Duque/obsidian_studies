@@ -8,19 +8,19 @@ Los prototipos de alta fidelidad se enfocan en lo funcional que es el producto ,
 
  
 Tipos de prototipos  cada uno de ellos se adapta a la industria y contexto donde queremos usar el prototipo es importante entender que lo mas importante es diseñar el 20% mas importante de mis funcionalidades y el 80% no prestarle tanta atención
-![[Pasted image 20241125224444.png]]
-![[Pasted image 20241125224600.png]]
+![[Adjuntos/Pasted image 20241125224444.png]]
+![[Adjuntos/Pasted image 20241125224600.png]]
 
 - Nivel 0: Prototipo de concepto : Es un prototipo que prioriza lo simple solo toma elementos que nos permitan trasmitir una idea como lo puede ser [[Story board]] o dibujos 
 
 - Nivel 1: Prototipo liviano  : Se refiere a como desde una idea creamos un flujo un wireframe por ejemplo que representa interacciones y  formas mas complejas  sin funcionalidades en especifico
-- ![[Pasted image 20241125224704.png]]
-![[Pasted image 20241125224727.png]]
+- ![[Adjuntos/Pasted image 20241125224704.png]]
+![[Adjuntos/Pasted image 20241125224727.png]]
 - Nivel 2 prototipo funcional : Buscamos evaluar que el prototipo funciona y que a nivel tecnico es algo que podemos llevar a cabo a nivel muy crudo
- ![[Pasted image 20241125224801.png]]
+ ![[Adjuntos/Pasted image 20241125224801.png]]
 
 - Nivel produccion se preuba en testeos mas rigurosos un producto que esta proximo a salir al mercado cosas como por ejemplo el uso de los clientes, luagres de enotrno , usos y demas busca probar el protoipo en un entorno mas real.
-- ![[Pasted image 20241125224947.png]]
+- ![[Adjuntos/Pasted image 20241125224947.png]]
 Me permite validar la idea antes de escalar.
 
 

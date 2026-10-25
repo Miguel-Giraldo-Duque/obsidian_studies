@@ -11,7 +11,7 @@ Nace con el propósito de solucionar que en muchos casos el codigo que nos funci
 #### Contenedores vs maquinas virtuales
 
 
-![[Pasted image 20240925190135.png]]
+![[Adjuntos/Pasted image 20240925190135.png]]
 
 
 ## **Máquinas Virtuales (VM):**

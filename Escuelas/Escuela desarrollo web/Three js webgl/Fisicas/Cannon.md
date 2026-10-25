@@ -161,7 +161,7 @@ bodySphere.applyForce(new CANNON.Vec3(150, 0, 0), new CANNON.Vec3(0, 0, 0));
 ````
 
 
-![[Pasted image 20241009205659.png]]
+![[Adjuntos/Pasted image 20241009205659.png]]
 
 
 
@@ -172,7 +172,7 @@ Es importante ner en cuenta que las fisicas son trabajadas por la cpu no la gpu 
 
 cannon usa de forma pro dafult native, que lo hace es que testea cada objeto con todos los demas sin importar la distancia para analizar si exite un colisión o interacción esto lo llamamos broadPhase
 
-![[Pasted image 20241009210057.png]]
+![[Adjuntos/Pasted image 20241009210057.png]]
 
 Esto es util si en nuestra esena existen elementos que viajan a muy alta velocidad y aun asi queremos ver la colisión de estos con nuestros elementos . Sin emebargo de otro modo a solucion nativa no es buena para performance
 
@@ -181,7 +181,7 @@ Esto es util si en nuestra esena existen elementos que viajan a muy alta velocid
 
 GridBroadphase : crea una grilla donde por secciona agrupara nuestros objetos entonces en la misma celda evaluara a si misma y junto la celda de al lado y la de la parte superior  pero las que esten muy lejos no las testeara .
 
-![[Pasted image 20241009210619.png]]
+![[Adjuntos/Pasted image 20241009210619.png]]
 
 
 	SAPBroadphase: Es muchisimo mejor que native y GridBroadphase

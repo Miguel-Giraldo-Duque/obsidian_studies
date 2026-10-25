@@ -4,10 +4,10 @@
 
 mergeVertices(): Normalente cuando tenemos una geometria en three js la cuadricula de vertices que tiene se va lgo asi
 
-![[Pasted image 20240930205253.png]]
+![[Adjuntos/Pasted image 20240930205253.png]]
 
 Tenemos muchos vertices superpuestos unos ensima de otros lo que nos puede dar raros resultados,  el buffer nos otorga el mergeVertice() para que la grilla se vea asi:
-![[Pasted image 20240930205349.png]]
+![[Adjuntos/Pasted image 20240930205349.png]]
 
 ```js
 // Geometry

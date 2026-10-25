@@ -25,9 +25,9 @@ pero por que un virtual Dom? , tradicionalmente crear un componente y modificar 
 React compara por posicion en el arbol de objetos entonces, de forma ordenada uno con otro.
 ![[Pasted image 20260331115404.png]]
 Entonces  al comparar el nuevo arbol con el anterior el modal no esta en la misma posición entonces  ¡Ah!, `<Modal/>` ya no esta!, lo desmonta y elimina directamente del arbol de objetos.
-![[Pasted image 20260331115623.png]]
+![[Adjuntos/Pasted image 20260331115623.png]]
 
-![[Pasted image 20260331120049.png]]
+![[Adjuntos/Pasted image 20260331120049.png]]
 **[[Re-renders]]**:  Al Cambiar un estado o una prop React disparara una orden para reconstruir el arbol completo desde el punto donde se inicio el trigger, comparando sus valores internos y finalmente determinar si debe desmontarlos, montar, o solo actualizar  es la intension original de los rerenders.
 
 React comparara por posición los componentes y elementos el array, si:
@@ -37,9 +37,9 @@ React comparara por posición los componentes y elementos el array, si:
 
 
 
-![[Pasted image 20260414160214.png]]
+![[Adjuntos/Pasted image 20260414160214.png]]
 
-![[Pasted image 20260414160153.png]]
+![[Adjuntos/Pasted image 20260414160153.png]]
 
 
 

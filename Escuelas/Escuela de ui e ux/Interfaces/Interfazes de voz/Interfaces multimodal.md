@@ -7,15 +7,15 @@ La integracion de un interfaz de voz puede suceder en repoductores de video chat
 
 La idea es que las respuestas del la voz se vean apoyadas por la interfaz donde esta puede explayarse un poco mas que la interfaz de voz entregando ese extra para evitar se redundantes  con la información que entregamos .
 
-![[Pasted image 20241107143610.png]]
+![[Adjuntos/Pasted image 20241107143610.png]]
 
-![[Pasted image 20241107143636.png]]
+![[Adjuntos/Pasted image 20241107143636.png]]
 
-![[Pasted image 20241107143807.png]]
+![[Adjuntos/Pasted image 20241107143807.png]]
 
 Botones que guían al usuario si no puede escuchar a la interfaz , donde si bien se invita a la usario a participar de la interfaz puede usar un "menu de opciones"  en cuanto lo que puede hacer el asistente como vimos en [[Dialogos]] 
 
-![[Pasted image 20241107144135.png]]
+![[Adjuntos/Pasted image 20241107144135.png]]
 
 Por ello una interfaz visual puede ser una forma clave para mejorar en la definición  de expectativas  y correcto entendimiento del usuario de estas. 
 

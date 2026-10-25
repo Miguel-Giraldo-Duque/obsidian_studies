@@ -17,7 +17,7 @@ La jerarquía bajo la cuales damos importancia a elementos es
 4. Formas: Tendemos a buscar las formas mas simples , son las primeras que captan nuestra atención 
 
 
-![[Pasted image 20250219215225.png]]
+![[Adjuntos/Pasted image 20250219215225.png]]
 
 
 Uno de los elementos incluso puede decirse mas claves en un diseño es el movimiento cuando un elemento se mueve capta toda nuestra atención pues nuestra [[Fovea]] sensible al movimiento capta nuestra atención mas que cualquiera de  las anteriores 
