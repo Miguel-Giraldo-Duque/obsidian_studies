@@ -19,6 +19,7 @@ const BUILD_ORDER = [
     'dev/src/services/SkillTreeService.js', // Skill tree nodes, challenges, boss links
     'dev/src/services/QuestEventService.js', // Multi-roadmap quest events + daily board
     'dev/src/services/QuestCampaignService.js', // Campaign packs (EveVacum-style)
+    'dev/src/services/QuestSuggestionService.js', // Maestro suggestions (vault JSON files)
     'dev/src/services/VowService.js',   // Belief vows + grid evidence grains
     'dev/src/services/TpnExperimentService.js', // PVT/sleep N=1 tavern log
     'dev/src/icons/IbmIcons.js',        // IBM Carbon–style SVG icons

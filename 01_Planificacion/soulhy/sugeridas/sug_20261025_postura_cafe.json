@@ -1,0 +1,41 @@
+{
+  "schema": "soulhy.suggestion/v1",
+  "id": "sug_20261025_postura_cafe",
+  "estado": "rechazada",
+  "creado": "2026-10-25T15:00:00.000Z",
+  "nombre": "Postura de poder en el café",
+  "descripcion": "Instalar la postura de poder en un contexto social cotidiano: pedir en el mostrador sosteniendo mirada y voz lenta.",
+  "tipo": "social",
+  "skill": "Postura de poder",
+  "skillNodeId": "node_1784952949938_smn8n1yyu",
+  "boss": "1786983444165",
+  "fuente": "02_Notas/Postura de poder - Amy Cuddy.md",
+  "if_then": "Si siento el impulso de encorvarme al hacer el pedido → abro el pecho, bajo los hombros y hago una pausa de 2 s antes de hablar.",
+  "fase": "instalacion",
+  "metrica": "Pedidos hechos con postura sostenida (autorreporte 1-5 ≥ 4)",
+  "reto_objetivo": "≈60% de éxito: 3 de 5 pedidos con postura sostenida",
+  "escuela": null,
+  "danio_boss": 25,
+  "flor": null,
+  "misiones": [
+    {
+      "dia": 1,
+      "titulo": "Pedido con pausa",
+      "criterio_exito": "Hice 1 pedido con pausa de 2 s antes de hablar y mirada al barista."
+    },
+    {
+      "dia": 2,
+      "titulo": "Pedido + pregunta",
+      "criterio_exito": "Pedí y además hice 1 pregunta sobre el producto sin encorvarme."
+    },
+    {
+      "dia": 3,
+      "titulo": "Espera erguido",
+      "criterio_exito": "Esperé el pedido 2 min de pie, sin celular, postura abierta."
+    }
+  ],
+  "decision": {
+    "estado": "rechazada",
+    "at": "2026-10-25T16:13:48.020Z"
+  }
+}

@@ -14,13 +14,17 @@ class HeroView extends ItemView {
         this.roadmapPickerSearch = '';
         this.campaignSelectedId = null;
         this.campaignEditingId = null; // null = list; id = editor; 'new' = create
-        this.campaignListFilter = 'all'; // all | pending | done
+        this.campaignListFilter = 'all'; // all | pending | done | suggested
         this.campaignQuestShowDone = true;
         this.campaignQuestShowPending = true;
         this.campaignNewQuestDraft = null;
         this.campaignSkillLinkExpanded = {};
         this.campaignSkillLinkSelected = new Set();
         this.campaignSkillLinkSearch = '';
+        this.suggestionsCache = null; // null = sin cargar; [] = entradas de QuestSuggestionService.loadAll()
+        this.suggestionsLoading = false;
+        this.suggestionsError = null;
+        this.suggestionEditingId = null; // path del .json abierto en el editor de sugeridas
         this.activeSkillTreeSchool = 'Autoridad';
         this.selectedSkillTreeNodeId = null;
         this.selectedVowId = null;
@@ -35,6 +39,7 @@ class HeroView extends ItemView {
         this.tpnService = new TpnExperimentService(plugin);
         this.questEventService = new QuestEventService(plugin);
         this.questCampaignService = new QuestCampaignService(plugin);
+        this.questSuggestionService = new QuestSuggestionService(plugin);
     }
 
     getViewType() { return VIEW_TYPE_HERO; }
@@ -3432,6 +3437,11 @@ class HeroView extends ItemView {
         const campSvc = this.questCampaignService;
         const campaigns = campSvc.list();
 
+        if (this.suggestionEditingId) {
+            this.renderSuggestionEditor(container, this.suggestionEditingId);
+            return;
+        }
+
         if (this.campaignEditingId) {
             this.renderCampaignEditor(container, this.campaignEditingId);
             return;
@@ -3450,16 +3460,16 @@ class HeroView extends ItemView {
             this.render();
         };
 
-        if (campaigns.length === 0) {
-            container.createDiv({ cls: 'rpg-empty', text: 'Sin campañas todavía.' });
-            return;
-        }
+        // Sugeridas: carga async una vez (el contador aparece cuando termina)
+        this.ensureSuggestionsLoaded();
+        const suggestedCount = this.pendingSuggestions().length;
 
         const filterNav = container.createDiv({ cls: 'rpg-subtab-nav rpg-roadmap-nested-nav' });
         [
             { id: 'all', label: 'Todas' },
             { id: 'pending', label: 'Pendientes' },
-            { id: 'done', label: 'Hechas' }
+            { id: 'done', label: 'Hechas' },
+            { id: 'suggested', label: 'Sugeridas' + (suggestedCount ? ' (' + suggestedCount + ')' : '') }
         ].forEach(f => {
             const btn = filterNav.createEl('button', {
                 cls: 'rpg-subtab-btn rpg-nested-btn ' + (this.campaignListFilter === f.id ? 'active' : ''),
@@ -3470,6 +3480,16 @@ class HeroView extends ItemView {
                 this.render();
             };
         });
+
+        if (this.campaignListFilter === 'suggested') {
+            this.renderSuggestedList(container);
+            return;
+        }
+
+        if (campaigns.length === 0) {
+            container.createDiv({ cls: 'rpg-empty', text: 'Sin campañas todavía.' });
+            return;
+        }
 
         const visible = campaigns.filter(camp => {
             const counts = this.campaignQuestCounts(camp);
@@ -3560,50 +3580,7 @@ class HeroView extends ItemView {
         };
 
         const form = container.createDiv({ cls: 'rpg-roadmap-form' });
-        form.createEl('label', { text: 'Nombre' });
-        const nameInput = form.createEl('input', { type: 'text', cls: 'rpg-quest-search-input' });
-        nameInput.value = formState.name;
-        nameInput.oninput = (e) => { formState.name = e.target.value; };
-
-        form.createEl('label', { text: 'Descripción' });
-        const descInput = form.createEl('textarea', { cls: 'rpg-quest-search-input' });
-        descInput.value = formState.description;
-        descInput.rows = 3;
-        descInput.oninput = (e) => { formState.description = e.target.value; };
-
-        const row = form.createDiv({ cls: 'rpg-roadmap-form-row' });
-        const schoolWrap = row.createDiv();
-        schoolWrap.createEl('label', { text: 'Escuela (etiqueta)' });
-        const schoolInput = schoolWrap.createEl('input', { type: 'text', cls: 'rpg-quest-search-input' });
-        schoolInput.value = formState.school;
-        schoolInput.oninput = (e) => { formState.school = e.target.value; };
-
-        const dmgWrap = row.createDiv();
-        dmgWrap.createEl('label', { text: 'Daño boss default' });
-        const dmgInput = dmgWrap.createEl('input', { type: 'number', cls: 'rpg-quest-search-input' });
-        dmgInput.value = String(formState.defaultBossDamage);
-        dmgInput.oninput = (e) => { formState.defaultBossDamage = Number(e.target.value) || 25; };
-
-        form.createEl('label', { text: 'Boss vinculado' });
-        const bosses = this.plugin.settings.bossFights || [];
-        const bossSelect = form.createEl('select', { cls: 'rpg-roadmap-select' });
-        bossSelect.createEl('option', { text: '— Ninguno —', attr: { value: '' } });
-        bosses.forEach(b => {
-            const opt = bossSelect.createEl('option', {
-                text: b.name + (b.defeated ? ' (liberado)' : ''),
-                attr: { value: String(b.id) }
-            });
-            if ((formState.linkedBossIds || []).map(String).includes(String(b.id))) opt.selected = true;
-        });
-        bossSelect.onchange = () => {
-            formState.linkedBossIds = bossSelect.value ? [bossSelect.value] : [];
-        };
-
-        this.renderFlowerLootPicker(form, {
-            flowerId: formState.flowerId,
-            label: 'Flor del pack',
-            onChange: (id) => { formState.flowerId = id; }
-        });
+        this.renderCampaignPackFields(form, formState);
 
         const saveBtn = form.createEl('button', {
             text: isNew ? 'Crear campaña' : 'Guardar cambios',
@@ -3758,6 +3735,365 @@ class HeroView extends ItemView {
                 };
             }
         }
+    }
+
+    /** Campos editables de un pack (compartidos por el editor de campañas y el de sugeridas). */
+    renderCampaignPackFields(form, formState) {
+        form.createEl('label', { text: 'Nombre' });
+        const nameInput = form.createEl('input', { type: 'text', cls: 'rpg-quest-search-input' });
+        nameInput.value = formState.name;
+        nameInput.oninput = (e) => { formState.name = e.target.value; };
+
+        form.createEl('label', { text: 'Descripción' });
+        const descInput = form.createEl('textarea', { cls: 'rpg-quest-search-input' });
+        descInput.value = formState.description;
+        descInput.rows = 3;
+        descInput.oninput = (e) => { formState.description = e.target.value; };
+
+        const row = form.createDiv({ cls: 'rpg-roadmap-form-row' });
+        const schoolWrap = row.createDiv();
+        schoolWrap.createEl('label', { text: 'Escuela (etiqueta)' });
+        const schoolInput = schoolWrap.createEl('input', { type: 'text', cls: 'rpg-quest-search-input' });
+        schoolInput.value = formState.school;
+        schoolInput.oninput = (e) => { formState.school = e.target.value; };
+
+        const dmgWrap = row.createDiv();
+        dmgWrap.createEl('label', { text: 'Daño boss default' });
+        const dmgInput = dmgWrap.createEl('input', { type: 'number', cls: 'rpg-quest-search-input' });
+        dmgInput.value = String(formState.defaultBossDamage);
+        dmgInput.oninput = (e) => { formState.defaultBossDamage = Number(e.target.value) || 25; };
+
+        form.createEl('label', { text: 'Boss vinculado' });
+        const bosses = this.plugin.settings.bossFights || [];
+        const bossSelect = form.createEl('select', { cls: 'rpg-roadmap-select' });
+        bossSelect.createEl('option', { text: '— Ninguno —', attr: { value: '' } });
+        bosses.forEach(b => {
+            const opt = bossSelect.createEl('option', {
+                text: b.name + (b.defeated ? ' (liberado)' : ''),
+                attr: { value: String(b.id) }
+            });
+            if ((formState.linkedBossIds || []).map(String).includes(String(b.id))) opt.selected = true;
+        });
+        bossSelect.onchange = () => {
+            formState.linkedBossIds = bossSelect.value ? [bossSelect.value] : [];
+        };
+
+        this.renderFlowerLootPicker(form, {
+            flowerId: formState.flowerId,
+            label: 'Flor del pack',
+            onChange: (id) => { formState.flowerId = id; }
+        });
+    }
+
+    // ------------------------------------------------------------------
+    // Campañas sugeridas (Maestro de Estudios) — QuestSuggestionService
+    // ------------------------------------------------------------------
+
+    /** Carga async (una vez) las sugeridas del vault; re-renderiza al terminar. */
+    ensureSuggestionsLoaded(force = false) {
+        if (!this.questSuggestionService) {
+            this.questSuggestionService = new QuestSuggestionService(this.plugin);
+        }
+        if (force) this.suggestionsCache = null;
+        if (this.suggestionsCache !== null || this.suggestionsLoading) return;
+        this.suggestionsLoading = true;
+        this.questSuggestionService.loadAll()
+            .then(list => {
+                this.suggestionsCache = list;
+                this.suggestionsError = null;
+            })
+            .catch(e => {
+                console.error('[Soulhy] Error leyendo sugeridas', e);
+                this.suggestionsCache = [];
+                this.suggestionsError = e && e.message ? e.message : String(e);
+            })
+            .finally(() => {
+                this.suggestionsLoading = false;
+                if (this._suggestionsReloadPending) {
+                    // Cambió un archivo mientras leíamos: releer en la próxima vista de la lista.
+                    this._suggestionsReloadPending = false;
+                    this.suggestionsCache = null;
+                }
+                this.render();
+            });
+    }
+
+    pendingSuggestions() {
+        if (!this.questSuggestionService || !Array.isArray(this.suggestionsCache)) return [];
+        return this.questSuggestionService.pending(this.suggestionsCache);
+    }
+
+    isSuggestedListVisible() {
+        return this.activeTab === 'quests'
+            && this.activeSubTab === 'roadmap'
+            && this.roadmapNestedTab === 'campanas'
+            && this.campaignListFilter === 'suggested'
+            && !this.campaignEditingId
+            && !this.suggestionEditingId;
+    }
+
+    /** Llamado por el plugin cuando cambia un archivo de la carpeta de sugeridas. */
+    onSuggestionsChanged() {
+        if (this.suggestionsLoading) {
+            this._suggestionsReloadPending = true;
+            return;
+        }
+        this.suggestionsCache = null;
+        // Solo re-renderiza si el usuario está mirando la lista (no interrumpe editores ni otras pestañas).
+        if (this.isSuggestedListVisible()) this.ensureSuggestionsLoaded();
+    }
+
+    suggestionDisplayName(entry) {
+        const d = entry && entry.data;
+        if (d && typeof d === 'object') {
+            if (typeof d.nombre === 'string' && d.nombre.trim()) return d.nombre.trim();
+            const derived = [d.skill, d.fase].filter(x => typeof x === 'string' && x).join(' · ');
+            if (derived) return derived;
+            if (typeof d.id === 'string' && d.id) return d.id;
+        }
+        return entry && entry.file ? entry.file.basename : 'Sugerida';
+    }
+
+    renderSuggestedList(container) {
+        const svc = this.questSuggestionService;
+        const toolbar = container.createDiv({ cls: 'rpg-roadmap-picker-toolbar' });
+        toolbar.createSpan({ cls: 'rpg-picker-meta', text: '📂 ' + SUGGESTIONS_FOLDER + '/' });
+        const reload = toolbar.createEl('button', { text: '↻ Recargar', cls: 'rpg-btn ghost' });
+        reload.onclick = () => {
+            this.ensureSuggestionsLoaded(true);
+            this.render();
+        };
+
+        if (this.suggestionsCache === null) {
+            container.createDiv({ cls: 'rpg-empty', text: 'Cargando sugeridas…' });
+            return;
+        }
+        if (this.suggestionsError) {
+            container.createDiv({ cls: 'rpg-empty rpg-suggestion-errors', text: 'Error leyendo sugeridas: ' + this.suggestionsError });
+        }
+
+        const list = this.pendingSuggestions();
+        if (list.length === 0) {
+            container.createDiv({
+                cls: 'rpg-empty',
+                text: 'Sin campañas sugeridas pendientes. El Maestro de Estudios las deja en ' + SUGGESTIONS_FOLDER + '/'
+            });
+            return;
+        }
+
+        list.forEach(entry => {
+            const d = (entry.data && typeof entry.data === 'object') ? entry.data : null;
+            const invalid = entry.errors.length > 0;
+            const card = container.createDiv({ cls: 'rpg-campaign-card rpg-suggestion-card' + (invalid ? ' is-invalid' : '') });
+            const head = card.createDiv({ cls: 'rpg-roadmap-card-head' });
+            head.createSpan({ cls: 'rpg-roadmap-card-name', text: this.suggestionDisplayName(entry) });
+            if (d && Array.isArray(d.misiones)) {
+                head.createSpan({ cls: 'rpg-roadmap-badge', text: d.misiones.length + ' misiones' });
+            }
+            head.createSpan({
+                cls: 'rpg-roadmap-badge ' + (invalid ? 'status-paused' : 'status-active'),
+                text: invalid ? 'inválida' : 'propuesta'
+            });
+            if (d) {
+                card.createDiv({
+                    cls: 'rpg-picker-meta',
+                    text: [d.tipo, d.fase, d.skill].filter(x => typeof x === 'string' && x).join(' · ')
+                });
+                const boss = svc.findBoss(d.boss);
+                card.createDiv({
+                    cls: 'rpg-picker-meta',
+                    text: 'Boss: ' + (boss ? boss.name + (boss.defeated ? ' (liberado)' : '') : (d.boss ? String(d.boss) + ' (?)' : '—'))
+                });
+                if (typeof d.descripcion === 'string' && d.descripcion) {
+                    card.createDiv({ cls: 'rpg-quest-desc', text: d.descripcion });
+                }
+            }
+            card.createDiv({ cls: 'rpg-picker-meta', text: entry.path });
+            if (invalid) this.renderSuggestionMessages(card, entry.errors, 'rpg-suggestion-errors');
+
+            const actions = card.createDiv({ cls: 'rpg-roadmap-actions' });
+            if (d) {
+                actions.createEl('button', { text: 'Revisar', cls: 'rpg-btn primary' }).onclick = () => {
+                    this.suggestionEditingId = entry.path;
+                    this._campaignEditForm = null;
+                    this.render();
+                };
+            }
+        });
+    }
+
+    renderSuggestionMessages(parent, messages, cls) {
+        if (!messages || messages.length === 0) return;
+        const box = parent.createDiv({ cls: cls });
+        const ul = box.createEl('ul');
+        messages.forEach(m => ul.createEl('li', { text: m }));
+    }
+
+    renderSuggestionEditor(container, path) {
+        if (this.suggestionsCache === null) {
+            container.createDiv({ cls: 'rpg-empty', text: 'Cargando sugerida…' });
+            this.ensureSuggestionsLoaded();
+            return;
+        }
+        const entry = this.suggestionsCache.find(e => e.path === path);
+        const backToList = () => {
+            this.suggestionEditingId = null;
+            this._campaignEditForm = null;
+            this.render();
+        };
+        if (!entry || !entry.data || typeof entry.data !== 'object') {
+            this.suggestionEditingId = null;
+            this._campaignEditForm = null;
+            container.createDiv({ cls: 'rpg-empty', text: 'La sugerida ya no está disponible.' });
+            container.createEl('button', { text: '← Volver', cls: 'rpg-btn ghost' }).onclick = backToList;
+            return;
+        }
+
+        const svc = this.questSuggestionService;
+        const s = entry.data;
+        const formKey = 'sug:' + path;
+        if (!this._campaignEditForm || this._campaignEditForm.id !== formKey) {
+            let base = null;
+            try {
+                base = svc.toCampaignPayload(s).campaign;
+            } catch (e) {
+                console.error('[Soulhy] toCampaignPayload', e);
+            }
+            this._campaignEditForm = {
+                id: formKey,
+                name: base ? base.name : '',
+                description: base ? base.description : '',
+                school: base ? base.school : 'Campo',
+                defaultBossDamage: base ? base.defaultBossDamage : 25,
+                flowerId: base ? base.flowerId : null,
+                linkedBossIds: base ? [...base.linkedBossIds] : []
+            };
+        }
+        const formState = this._campaignEditForm;
+        const invalid = entry.errors.length > 0;
+
+        container.createEl('h3', { text: 'Sugerida: ' + this.suggestionDisplayName(entry) });
+        container.createEl('button', { text: '← Volver', cls: 'rpg-btn ghost' }).onclick = backToList;
+
+        this.renderSuggestionMessages(container, entry.errors, 'rpg-suggestion-errors');
+        this.renderSuggestionMessages(container, entry.warnings, 'rpg-suggestion-warnings');
+
+        const meta = container.createDiv({ cls: 'rpg-campaign-card rpg-suggestion-meta' });
+        const node = svc.findNode(s.skillNodeId);
+        const metaRows = [
+            ['Tipo', s.tipo],
+            ['Fase', s.fase],
+            ['Skill', [s.skill, node ? '(nodo: ' + node.name + ', no sube el Árbol)' : ''].filter(Boolean).join(' ')],
+            ['Fuente', s.fuente],
+            ['Si→entonces', s.if_then],
+            ['Métrica', s.metrica],
+            ['Reto objetivo', s.reto_objetivo],
+            ['Archivo', entry.path]
+        ];
+        metaRows.forEach(([k, v]) => {
+            if (v === undefined || v === null || v === '') return;
+            const r = meta.createDiv({ cls: 'rpg-picker-meta' });
+            r.createEl('strong', { text: k + ': ' });
+            r.appendText(String(v));
+        });
+
+        const form = container.createDiv({ cls: 'rpg-roadmap-form' });
+        this.renderCampaignPackFields(form, formState);
+
+        let preview = { quests: [] };
+        try {
+            preview = svc.toCampaignPayload(s, formState);
+        } catch (e) {
+            console.error('[Soulhy] toCampaignPayload', e);
+        }
+        container.createEl('h4', { text: 'Misiones → quests del pack (' + preview.quests.length + ')' });
+        if (preview.quests.length === 0) {
+            container.createDiv({ cls: 'rpg-empty', text: 'Sin misiones.' });
+        }
+        preview.quests.forEach(q => {
+            const rowQ = container.createDiv({ cls: 'rpg-list-item quest rpg-campaign-quest-row' });
+            const info = rowQ.createDiv({ cls: 'rpg-item-info' });
+            info.createDiv({ cls: 'rpg-item-name', text: q.name });
+            info.createDiv({ cls: 'rpg-quest-desc', text: q.description });
+            info.createDiv({
+                cls: 'rpg-item-meta',
+                text: 'día ' + q.maestroDia + ' · ' + q.xp + ' XP · ' + q.difficulty + ' · dmg ' + q.bossDamage + ' · campaña'
+            });
+        });
+
+        const actions = container.createDiv({ cls: 'rpg-roadmap-actions' });
+        if (!invalid) {
+            const acceptBtn = actions.createEl('button', { text: '✔ Aceptar', cls: 'rpg-btn primary' });
+            acceptBtn.onclick = async () => {
+                if (!String(formState.name || '').trim()) {
+                    new Notice('La campaña necesita un nombre');
+                    return;
+                }
+                acceptBtn.disabled = true;
+                let res;
+                try {
+                    res = await svc.accept(entry, {
+                        name: formState.name.trim(),
+                        description: formState.description,
+                        school: formState.school,
+                        defaultBossDamage: formState.defaultBossDamage,
+                        flowerId: formState.flowerId,
+                        linkedBossIds: formState.linkedBossIds
+                    });
+                } catch (e) {
+                    console.error('[Soulhy] accept', e);
+                    new Notice('❌ No se pudo aceptar: ' + (e && e.message ? e.message : e));
+                    acceptBtn.disabled = false;
+                    return;
+                }
+                if (!res.ok) {
+                    new Notice('❌ Sugerida inválida: ' + res.errors.join('; '));
+                    acceptBtn.disabled = false;
+                    return;
+                }
+                new Notice((res.created ? '📦 Campaña creada: ' : '📦 Campaña actualizada: ')
+                    + res.campaign.name + ' (' + res.questsCreated + ' quests nuevas)');
+                if (!res.fileMarked) {
+                    new Notice('⚠️ No se pudo marcar el archivo como activa: ' + res.markError);
+                }
+                this.suggestionEditingId = null;
+                this._campaignEditForm = null;
+                this.suggestionsCache = null;
+                this.campaignListFilter = 'all';
+                this.campaignEditingId = res.campaign.id;
+                this.campaignNewQuestDraft = null;
+                this.render();
+            };
+        }
+
+        const discardBtn = actions.createEl('button', { text: 'Descartar', cls: 'rpg-btn ghost' });
+        let armed = false;
+        discardBtn.onclick = async () => {
+            if (!armed) {
+                armed = true;
+                discardBtn.setText('¿Seguro? Descartar');
+                return;
+            }
+            discardBtn.disabled = true;
+            try {
+                const res = await svc.discard(entry);
+                if (!res.ok) {
+                    new Notice('❌ ' + res.errors.join('; '));
+                    discardBtn.disabled = false;
+                    return;
+                }
+                new Notice('Sugerida descartada');
+            } catch (e) {
+                console.error('[Soulhy] discard', e);
+                new Notice('❌ No se pudo descartar: ' + (e && e.message ? e.message : e));
+                discardBtn.disabled = false;
+                return;
+            }
+            this.suggestionEditingId = null;
+            this._campaignEditForm = null;
+            this.suggestionsCache = null;
+            this.render();
+        };
     }
 
     /**

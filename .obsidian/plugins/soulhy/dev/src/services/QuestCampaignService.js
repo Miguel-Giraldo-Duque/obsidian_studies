@@ -68,7 +68,7 @@ class QuestCampaignService {
 
         const quest = {
             ...JSON.parse(JSON.stringify(DEFAULT_CAMPAIGN_QUEST)),
-            id: `quest_${Date.now()}_${Math.random().toString(36).slice(2, 9)}`,
+            id: fields.id || `quest_${Date.now()}_${Math.random().toString(36).slice(2, 9)}`,
             name: fields.name || 'Nueva quest',
             description: fields.description || '',
             xp: Number(fields.xp) || 10,
@@ -81,7 +81,7 @@ class QuestCampaignService {
                 : [...(campaign.linkedBossIds || [])],
             bossDamage: Number(fields.bossDamage) || campaign.defaultBossDamage || 25,
             campaignId: campaign.id,
-            source: campaign.sourceTag || 'campaign',
+            source: fields.source || campaign.sourceTag || 'campaign',
             kind: 'campaign-challenge',
             skillNodeId: '',
             skillLevel: 1,

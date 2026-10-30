@@ -211,7 +211,7 @@ Los 3 mas importantes
 - [ ] b
 - [ ] c
 El mas importante
-- [ ] b
+- [ ] Peromance react en contrcut,  solventar vizualizaccion de redes en contrcut integrar un proyecto propio
 
 - [ ] Acciones de estudio (20′)
 - [ ] 

@@ -1,7 +1,7 @@
 ---
 tipo: memoria-mentor
-actualizado: 2026-10-22
-version: 17
+actualizado: 2026-10-26
+version: 18
 ---
 
 # Memoria del Mentor
@@ -68,6 +68,7 @@ version: 17
 - [Patron] Esconder la mano :: ocultar el hecho porque ver la decepción del otro duele más que mentir; origen notas/mamá; voto de transparencia desde la mentira a Salomé.
 - [Evento] Lentejas 2026-10-22 :: a las 6 guardó en silencio las lentejas que no refrigeró; el papá ya lo sabía y esperaba la frase; Soulhy la dijo en la puerta; la culpa siguió y aun así fue a Kikiriquí.
 - [Persona] Papá :: prueba de transparencia en casa; recibió la confesión con gracias y nombró pertenencia, trabajo prometido y escucha.
+- [Meta] Primer sitio web antes del 31 :: oferta en persona a locales; freno = incomodidad leída como cobardía y “si no me siento bien no actúo”. Contenidos de la semana: Maltz cap. 3 (ensayo mental del guion) y Voss cap. 3 (label).
 
 ## Relaciones
 > Formato: `- Origen --tipoDeRelacion--> Destino  (nota opcional)`
@@ -136,6 +137,9 @@ version: 17
 - Herida aprobacion mama --eco_en--> Esconder la mano
 - Evento Lentejas 2026-10-22 --expone--> Patron Esconder la mano
 - Evento Lentejas 2026-10-22 --usa--> Tomo Earth  (imperfección dicha en voz alta)
+- Primer sitio web antes del 31 --ensaya_con--> Psycho-Cybernetics cap. 3
+- Primer sitio web antes del 31 --escucha_con--> Voss cap. 3 (label)
+- Primer sitio web antes del 31 --comparte_plazo_con--> Vendedor de calle
 
 ## Observaciones
 > Datapoints fechados por entidad. Formato: `- [AAAA-MM-DD] Entidad :: observacion`
@@ -187,3 +191,4 @@ version: 17
 - [2026-10-19] Postura física :: distinta de skill RPG "Postura de poder" (Shine). Patrón: sentado encorvado → al erguirse pelvis adelanta + tronco se encoge. Prioridad: setup escritorio + micro-resets en breaks 10′ deep work; no confundir con RPG clínico Souchard.
 - [2026-10-22] Vendedor de calle :: migrada desde el escritorio al RPG. Roadmap 22/10–1/11 (los días 18–21 ya habían pasado: ensayo+Kikiriki hoy, balance y Flor Vereda el 1/11). Daña a Guiltmal. Dominio livingStandards.
 - [2026-10-22] Esconder la mano :: lentejas. Dijo la frase en la puerta del papá con la presión encima. El papá ya sabía; el gracias cálido aumentó la culpa. Casi llora con lo de la escucha. Reparación que él eligió: una cosa limpia por día, búsqueda de trabajo visible, y Kikiriquí el mismo día. La culpa se quedó y la acción también. Próxima: decir el hecho en una frase antes de sentarse al escritorio.
+- [2026-10-26] Primer sitio web :: dos contenidos para llegar al 31: Psycho-Cybernetics cap. 3 pp. 61–70 (role-play del guion, 10–15 min) y Never Split the Difference cap. 3 (label “parece que / suena a”). Platzi, el resumen de YouTube y los 3 libros del short de Miner quedan como mapa. Quests aún no armadas.

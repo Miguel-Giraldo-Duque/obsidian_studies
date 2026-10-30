@@ -57,6 +57,10 @@
     {
       "folder": "Escuela sexualidad",
       "template": "00_Plantillas/Plantilla_Sesion_Estudio.md"
+    },
+    {
+      "folder": "04_Libros",
+      "template": "00_Plantillas/Plantilla_Libro.md"
     }
   ],
   "enable_file_templates": false,

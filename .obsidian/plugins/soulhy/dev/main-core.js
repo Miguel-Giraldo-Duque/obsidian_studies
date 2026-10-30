@@ -5087,9 +5087,33 @@ module.exports = class LifeRPG extends Plugin {
         }
 
         this.registerEvent(this.app.workspace.on('editor-change', (editor, info) => this.handleQuestCompletion(editor)));
+
+        // Campañas sugeridas (Maestro de Estudios): avisar a la vista si cambian archivos de SUGGESTIONS_FOLDER.
+        // Se registra tras onLayoutReady para no recibir los 'create' de la indexación inicial del vault.
+        this.app.workspace.onLayoutReady(() => {
+            const inFolder = (p) => typeof p === 'string'
+                && (p === SUGGESTIONS_FOLDER || p.startsWith(SUGGESTIONS_FOLDER + '/'));
+            const onSuggestionFile = (file, oldPath) => {
+                if (!inFolder(file && file.path) && !inFolder(oldPath)) return;
+                if (this._suggestionRefreshTimer) window.clearTimeout(this._suggestionRefreshTimer);
+                this._suggestionRefreshTimer = window.setTimeout(() => {
+                    this._suggestionRefreshTimer = null;
+                    this.app.workspace.getLeavesOfType(VIEW_TYPE_HERO).forEach((leaf) => {
+                        if (leaf.view instanceof HeroView && typeof leaf.view.onSuggestionsChanged === 'function') {
+                            leaf.view.onSuggestionsChanged();
+                        }
+                    });
+                }, 400);
+            };
+            this.registerEvent(this.app.vault.on('create', (f) => onSuggestionFile(f)));
+            this.registerEvent(this.app.vault.on('modify', (f) => onSuggestionFile(f)));
+            this.registerEvent(this.app.vault.on('delete', (f) => onSuggestionFile(f)));
+            this.registerEvent(this.app.vault.on('rename', (f, oldPath) => onSuggestionFile(f, oldPath)));
+        });
     }
 
     async onunload() {
+        if (this._suggestionRefreshTimer) window.clearTimeout(this._suggestionRefreshTimer);
         this.app.workspace.detachLeavesOfType(VIEW_TYPE_HERO);
     }
 

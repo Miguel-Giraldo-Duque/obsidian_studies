@@ -12,5 +12,22 @@
       ],
       "key": "-"
     }
+  ],
+  "pdf-plus:toggle-auto-copy": [
+    {
+      "modifiers": [
+        "Shift"
+      ],
+      "key": "="
+    }
+  ],
+  "pdf-plus:copy-link-to-selection": [
+    {
+      "modifiers": [
+        "Mod",
+        "Shift"
+      ],
+      "key": "A"
+    }
   ]
 }

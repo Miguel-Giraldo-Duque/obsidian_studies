@@ -634,6 +634,9 @@ const DEFAULT_CAMPAIGN_QUEST = {
 const EVEVACUM_CAMPAIGN_SOURCE = 'evevacum-bank';
 const EVEVACUM_BOSS_ID = '1785816112558';
 
+/** Campañas sugeridas por el Maestro de Estudios: un .json por sugerida (soulhy.suggestion/v1) */
+const SUGGESTIONS_FOLDER = '01_Planificacion/soulhy/sugeridas';
+
 // Helper to get chat models for a provider
 function getChatModels(providerId) {
     return (MODELS_BY_PROVIDER[providerId] || []).filter(m => m.type === 'chat');
@@ -713,6 +716,7 @@ module.exports = {
     DEFAULT_CAMPAIGN_QUEST,
     EVEVACUM_CAMPAIGN_SOURCE,
     EVEVACUM_BOSS_ID,
+    SUGGESTIONS_FOLDER,
     LEGACY_SOMMELIER_NODE_ID,
     SOMMELIER_NODE_ID,
     PHOBOS_BOSS_ID,

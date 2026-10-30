@@ -1,20 +1,20 @@
 {
   "level": 18,
-  "xp": 398,
+  "xp": 686,
   "hp": 280,
   "maxHp": 280,
-  "gold": 10551,
-  "totalGoldEarned": 5851,
-  "totalHabitsCompleted": 699,
-  "totalQuestsCompleted": 114,
-  "lastPlayedDate": "Sun Oct 25 2026",
+  "gold": 10672,
+  "totalGoldEarned": 5972,
+  "totalHabitsCompleted": 715,
+  "totalQuestsCompleted": 116,
+  "lastPlayedDate": "Fri Oct 30 2026",
   "domains": [
     {
       "id": "psychologicalWellbeing",
       "name": "Psychological Well-being",
       "score": 83,
       "level": 17,
-      "xp": 474,
+      "xp": 695,
       "icon": "🧠",
       "color": "#9b59b6"
     },
@@ -23,7 +23,7 @@
       "name": "Health",
       "score": 75,
       "level": 10,
-      "xp": 347,
+      "xp": 368,
       "icon": "💪",
       "color": "#e74c3c"
     },
@@ -41,7 +41,7 @@
       "name": "Education",
       "score": 64,
       "level": 9,
-      "xp": 0,
+      "xp": 31,
       "icon": "📚",
       "color": "#f39c12"
     },
@@ -86,7 +86,7 @@
       "name": "Living Standards",
       "score": 37,
       "level": 7,
-      "xp": 253,
+      "xp": 268,
       "icon": "💰",
       "color": "#16a085"
     }
@@ -105,7 +105,7 @@
       "completed": false,
       "streak": 0,
       "bestStreak": 12,
-      "lastCompletedDate": "Thu Oct 22 2026",
+      "lastCompletedDate": "Tue Oct 27 2026",
       "id": "habit_1785588794845_0_5401ak",
       "linkedBossIds": [
         "1783917794860",
@@ -125,9 +125,9 @@
       ],
       "skillXp": 10,
       "completed": false,
-      "streak": 1,
+      "streak": 0,
       "bestStreak": 20,
-      "lastCompletedDate": "Sat Oct 24 2026",
+      "lastCompletedDate": "Tue Oct 27 2026",
       "id": "habit_1785588794845_1_aitecv",
       "linkedBossIds": [
         "1786983444165"
@@ -145,9 +145,9 @@
       ],
       "skillXp": 10,
       "completed": false,
-      "streak": 1,
+      "streak": 0,
       "bestStreak": 20,
-      "lastCompletedDate": "Sat Oct 24 2026",
+      "lastCompletedDate": "Tue Oct 27 2026",
       "id": "habit_1785588794845_2_p1xxd7",
       "linkedBossIds": [
         "1783917794860",
@@ -169,7 +169,7 @@
       "completed": false,
       "streak": 0,
       "bestStreak": 12,
-      "lastCompletedDate": "Thu Oct 22 2026",
+      "lastCompletedDate": "Tue Oct 27 2026",
       "id": "habit_1785588794845_3_jhrj2u",
       "linkedBossIds": [
         "1783917794860",
@@ -209,7 +209,7 @@
       "completed": false,
       "streak": 0,
       "bestStreak": 12,
-      "lastCompletedDate": "Thu Oct 22 2026",
+      "lastCompletedDate": "Tue Oct 27 2026",
       "id": "habit_1785588794845_6_ipm0v7",
       "linkedBossIds": [
         "1786983444165"
@@ -245,9 +245,9 @@
       ],
       "skillXp": 10,
       "completed": false,
-      "streak": 0,
+      "streak": 2,
       "bestStreak": 7,
-      "lastCompletedDate": "Thu Oct 22 2026",
+      "lastCompletedDate": "Thu Oct 29 2026",
       "id": "habit_1785588794845_8_10weyf",
       "linkedBossIds": [],
       "bossDamage": 10
@@ -290,7 +290,7 @@
       "completed": false,
       "streak": 0,
       "bestStreak": 9,
-      "lastCompletedDate": "Thu Oct 22 2026",
+      "lastCompletedDate": "Mon Oct 26 2026",
       "id": "habit_1785588794845_13_gk42or",
       "linkedBossIds": [],
       "bossDamage": 10
@@ -303,10 +303,10 @@
       "difficulty": "medium",
       "linkedSkillIds": [],
       "skillXp": 10,
-      "completed": false,
+      "completed": true,
       "streak": 0,
       "bestStreak": 7,
-      "lastCompletedDate": "Thu Oct 22 2026",
+      "lastCompletedDate": "Fri Oct 30 2026",
       "id": "habit_1785611046950_carrera_2555",
       "linkedBossIds": [
         "1783917794860",
@@ -350,7 +350,7 @@
       "completed": false,
       "streak": 0,
       "bestStreak": 11,
-      "lastCompletedDate": "Thu Oct 22 2026"
+      "lastCompletedDate": "Tue Oct 27 2026"
     },
     {
       "id": "habit_1789466781987_b6skiv10p",
@@ -9357,8 +9357,8 @@
       "gold": 5,
       "domain": "psychologicalWellbeing",
       "difficulty": "hard",
-      "completed": false,
-      "completedDate": null,
+      "completed": true,
+      "completedDate": "2026-10-27T17:27:46.727Z",
       "kind": "campaign-challenge",
       "skillNodeId": "",
       "skillLevel": 3,
@@ -9378,8 +9378,8 @@
       "gold": 5,
       "domain": "psychologicalWellbeing",
       "difficulty": "hard",
-      "completed": false,
-      "completedDate": null,
+      "completed": true,
+      "completedDate": "2026-10-27T17:27:45.551Z",
       "kind": "campaign-challenge",
       "skillNodeId": "",
       "skillLevel": 3,
@@ -10029,13 +10029,624 @@
   },
   "aiQuestsGenerated": 0,
   "currentPhase": "dissonance",
-  "psychicEntropy": 100,
+  "psychicEntropy": 95,
   "lastWisdomDate": "Thu Oct 22 2026",
   "dailyWisdom": {
     "text": "When you are in the Dissonance phase, search for excitement and enthusiasm and pursue that without shame.",
     "category": "dissonance"
   },
   "activityLog": [
+    {
+      "id": "1793377176556",
+      "timestamp": "2026-10-30T16:19:36.556Z",
+      "category": "boss_damage",
+      "description": "Dealt 10 damage to Guiltmal",
+      "details": {
+        "damage": 10,
+        "remaining": 1417
+      }
+    },
+    {
+      "id": "1793377176556",
+      "timestamp": "2026-10-30T16:19:36.556Z",
+      "category": "habit_complete",
+      "description": "15min carrera (apply/connect)",
+      "details": {
+        "xp": 15,
+        "gold": 5,
+        "streak": 0,
+        "linkedSkillIds": [],
+        "linkedBossIds": [
+          "1783917794860",
+          "1786983444165"
+        ],
+        "bossDamage": 10,
+        "vowXpMult": 1,
+        "vowDmgMult": 1
+      }
+    },
+    {
+      "id": "1793305229552",
+      "timestamp": "2026-10-29T20:20:29.552Z",
+      "category": "habit_complete",
+      "description": "20min estudio",
+      "details": {
+        "xp": 11,
+        "gold": 6,
+        "streak": 1,
+        "linkedSkillIds": [
+          "skill_1782598763683_06ikkboio"
+        ],
+        "linkedBossIds": [],
+        "bossDamage": 10,
+        "vowXpMult": 1,
+        "vowDmgMult": 1
+      }
+    },
+    {
+      "id": "1793127616637",
+      "timestamp": "2026-10-27T19:00:16.637Z",
+      "category": "boss_damage",
+      "description": "Dealt 12 damage to Guiltmal",
+      "details": {
+        "damage": 12,
+        "remaining": 1427
+      }
+    },
+    {
+      "id": "1793127616636",
+      "timestamp": "2026-10-27T19:00:16.636Z",
+      "category": "habit_complete",
+      "description": "Imaginar mi funeral",
+      "details": {
+        "xp": 13,
+        "gold": 7,
+        "streak": 1,
+        "linkedSkillIds": [
+          "skill_1782600801284_710kzzmwo"
+        ],
+        "linkedBossIds": [],
+        "bossDamage": 12,
+        "vowXpMult": 1.2,
+        "vowDmgMult": 1.2
+      }
+    },
+    {
+      "id": "1793127611548",
+      "timestamp": "2026-10-27T19:00:11.548Z",
+      "category": "boss_damage",
+      "description": "Dealt 12 damage to Guiltmal",
+      "details": {
+        "damage": 12,
+        "remaining": 1439
+      }
+    },
+    {
+      "id": "1793127611533",
+      "timestamp": "2026-10-27T19:00:11.533Z",
+      "category": "boss_damage",
+      "description": "Dealt 12 damage to Guiltmal",
+      "details": {
+        "damage": 12,
+        "remaining": 1451
+      }
+    },
+    {
+      "id": "1793127611533",
+      "timestamp": "2026-10-27T19:00:11.533Z",
+      "category": "habit_complete",
+      "description": "Meditación Metta",
+      "details": {
+        "xp": 13,
+        "gold": 7,
+        "streak": 1,
+        "linkedSkillIds": [
+          "skill_1782596299032_o0ambkloe"
+        ],
+        "linkedBossIds": [
+          "1783917794860",
+          "1783927787622",
+          "1786983444165"
+        ],
+        "bossDamage": 12,
+        "vowXpMult": 1.2,
+        "vowDmgMult": 1.2
+      }
+    },
+    {
+      "id": "1793127355180",
+      "timestamp": "2026-10-27T18:55:55.180Z",
+      "category": "boss_damage",
+      "description": "Dealt 12 damage to Guiltmal",
+      "details": {
+        "damage": 12,
+        "remaining": 1463
+      }
+    },
+    {
+      "id": "1793127355165",
+      "timestamp": "2026-10-27T18:55:55.165Z",
+      "category": "boss_damage",
+      "description": "Dealt 12 damage to Guiltmal",
+      "details": {
+        "damage": 12,
+        "remaining": 1475
+      }
+    },
+    {
+      "id": "1793127355164",
+      "timestamp": "2026-10-27T18:55:55.164Z",
+      "category": "habit_complete",
+      "description": "Lectura de mis principios",
+      "details": {
+        "xp": 13,
+        "gold": 7,
+        "streak": 1,
+        "linkedSkillIds": [
+          "skill_1782600801284_g84pfxiy7"
+        ],
+        "linkedBossIds": [
+          "1786983444165"
+        ],
+        "bossDamage": 12,
+        "vowXpMult": 1.2,
+        "vowDmgMult": 1.2
+      }
+    },
+    {
+      "id": "1793127352179",
+      "timestamp": "2026-10-27T18:55:52.179Z",
+      "category": "boss_damage",
+      "description": "Dealt 12 damage to Guiltmal",
+      "details": {
+        "damage": 12,
+        "remaining": 1487
+      }
+    },
+    {
+      "id": "1793127352164",
+      "timestamp": "2026-10-27T18:55:52.164Z",
+      "category": "boss_damage",
+      "description": "Dealt 12 damage to Guiltmal",
+      "details": {
+        "damage": 12,
+        "remaining": 1499
+      }
+    },
+    {
+      "id": "1793127352164",
+      "timestamp": "2026-10-27T18:55:52.164Z",
+      "category": "habit_complete",
+      "description": "Escribir 5 agradecimientos propios y vision en tercera persona viendome",
+      "details": {
+        "xp": 13,
+        "gold": 7,
+        "streak": 1,
+        "linkedSkillIds": [
+          "skill_1782600801284_710kzzmwo"
+        ],
+        "linkedBossIds": [
+          "1783917794860",
+          "1783927787622",
+          "1786983444165"
+        ],
+        "bossDamage": 12,
+        "vowXpMult": 1.2,
+        "vowDmgMult": 1.2
+      }
+    },
+    {
+      "id": "1793126810832",
+      "timestamp": "2026-10-27T18:46:50.832Z",
+      "category": "boss_damage",
+      "description": "Dealt 12 damage to Guiltmal",
+      "details": {
+        "damage": 12,
+        "remaining": 1511
+      }
+    },
+    {
+      "id": "1793126810806",
+      "timestamp": "2026-10-27T18:46:50.806Z",
+      "category": "boss_damage",
+      "description": "Dealt 12 damage to Guiltmal",
+      "details": {
+        "damage": 12,
+        "remaining": 1523
+      }
+    },
+    {
+      "id": "1793126810806",
+      "timestamp": "2026-10-27T18:46:50.806Z",
+      "category": "habit_complete",
+      "description": "10min meditación FOM y OM",
+      "details": {
+        "xp": 13,
+        "gold": 7,
+        "streak": 1,
+        "linkedSkillIds": [
+          "skill_1782596299032_o0ambkloe"
+        ],
+        "linkedBossIds": [
+          "1783917794860",
+          "1783927787622",
+          "1786983444165"
+        ],
+        "bossDamage": 12,
+        "vowXpMult": 1.2,
+        "vowDmgMult": 1.2
+      }
+    },
+    {
+      "id": "1793124138454",
+      "timestamp": "2026-10-27T18:02:18.454Z",
+      "category": "habit_complete",
+      "description": "20min estudio",
+      "details": {
+        "xp": 10,
+        "gold": 5,
+        "streak": 0,
+        "linkedSkillIds": [
+          "skill_1782598763683_06ikkboio"
+        ],
+        "linkedBossIds": [],
+        "bossDamage": 10,
+        "vowXpMult": 1,
+        "vowDmgMult": 1
+      }
+    },
+    {
+      "id": "1793122066742",
+      "timestamp": "2026-10-27T17:27:46.742Z",
+      "category": "boss_damage",
+      "description": "Dealt 12 damage to Guiltmal",
+      "details": {
+        "damage": 12,
+        "remaining": 1535
+      }
+    },
+    {
+      "id": "1793122066727",
+      "timestamp": "2026-10-27T17:27:46.727Z",
+      "category": "boss_damage",
+      "description": "Dealt 36 damage to Guiltmal",
+      "details": {
+        "damage": 36,
+        "remaining": 1547
+      }
+    },
+    {
+      "id": "1793122066727",
+      "timestamp": "2026-10-27T17:27:46.727Z",
+      "category": "quest_complete",
+      "description": "Reto 29 [Ensayo general: estructura completa]",
+      "details": {
+        "xp": 48,
+        "gold": 12,
+        "difficulty": "hard",
+        "kind": "campaign-challenge",
+        "skillNodeId": null,
+        "school": "Campo",
+        "linkedBossIds": [
+          "1786983444165"
+        ],
+        "bossDamage": 36,
+        "vowXpMult": 1.2,
+        "vowDmgMult": 1.2
+      }
+    },
+    {
+      "id": "1793122065573",
+      "timestamp": "2026-10-27T17:27:45.573Z",
+      "category": "boss_damage",
+      "description": "Dealt 12 damage to Guiltmal",
+      "details": {
+        "damage": 12,
+        "remaining": 1583
+      }
+    },
+    {
+      "id": "1793122065552",
+      "timestamp": "2026-10-27T17:27:45.552Z",
+      "category": "boss_damage",
+      "description": "Dealt 36 damage to Guiltmal",
+      "details": {
+        "damage": 36,
+        "remaining": 1595
+      }
+    },
+    {
+      "id": "1793122065551",
+      "timestamp": "2026-10-27T17:27:45.551Z",
+      "category": "quest_complete",
+      "description": "Reto 30 [Celebración final]",
+      "details": {
+        "xp": 48,
+        "gold": 12,
+        "difficulty": "hard",
+        "kind": "campaign-challenge",
+        "skillNodeId": null,
+        "school": "Campo",
+        "linkedBossIds": [
+          "1786983444165"
+        ],
+        "bossDamage": 36,
+        "vowXpMult": 1.2,
+        "vowDmgMult": 1.2
+      }
+    },
+    {
+      "id": "1793112446533",
+      "timestamp": "2026-10-27T14:47:26.533Z",
+      "category": "boss_damage",
+      "description": "Dealt 10 damage to Guiltmal",
+      "details": {
+        "damage": 10,
+        "remaining": 1631
+      }
+    },
+    {
+      "id": "1793112446532",
+      "timestamp": "2026-10-27T14:47:26.532Z",
+      "category": "habit_complete",
+      "description": "30min ejercicio",
+      "details": {
+        "xp": 11,
+        "gold": 6,
+        "streak": 1,
+        "linkedSkillIds": [
+          "skill_1782600801284_anttohfwh"
+        ],
+        "linkedBossIds": [
+          "1786983444165"
+        ],
+        "bossDamage": 10,
+        "vowXpMult": 1,
+        "vowDmgMult": 1
+      }
+    },
+    {
+      "id": "1793029463382",
+      "timestamp": "2026-10-26T15:44:23.382Z",
+      "category": "habit_complete",
+      "description": "15min Perply",
+      "details": {
+        "xp": 10,
+        "gold": 5,
+        "streak": 0,
+        "linkedSkillIds": [
+          "skill_1782600801285_xfjqocoem"
+        ],
+        "linkedBossIds": [],
+        "bossDamage": 10,
+        "vowXpMult": 1,
+        "vowDmgMult": 1
+      }
+    },
+    {
+      "id": "1793028187448",
+      "timestamp": "2026-10-26T15:23:07.448Z",
+      "category": "boss_damage",
+      "description": "Dealt 12 damage to Guiltmal",
+      "details": {
+        "damage": 12,
+        "remaining": 1641
+      }
+    },
+    {
+      "id": "1793028187446",
+      "timestamp": "2026-10-26T15:23:07.446Z",
+      "category": "habit_complete",
+      "description": "Imaginar mi funeral",
+      "details": {
+        "xp": 12,
+        "gold": 6,
+        "streak": 0,
+        "linkedSkillIds": [
+          "skill_1782600801284_710kzzmwo"
+        ],
+        "linkedBossIds": [],
+        "bossDamage": 12,
+        "vowXpMult": 1.2,
+        "vowDmgMult": 1.2
+      }
+    },
+    {
+      "id": "1793028184936",
+      "timestamp": "2026-10-26T15:23:04.936Z",
+      "category": "boss_damage",
+      "description": "Dealt 12 damage to Guiltmal",
+      "details": {
+        "damage": 12,
+        "remaining": 1653
+      }
+    },
+    {
+      "id": "1793028184911",
+      "timestamp": "2026-10-26T15:23:04.911Z",
+      "category": "boss_damage",
+      "description": "Dealt 12 damage to Guiltmal",
+      "details": {
+        "damage": 12,
+        "remaining": 1665
+      }
+    },
+    {
+      "id": "1793028184910",
+      "timestamp": "2026-10-26T15:23:04.910Z",
+      "category": "habit_complete",
+      "description": "Meditación Metta",
+      "details": {
+        "xp": 12,
+        "gold": 6,
+        "streak": 0,
+        "linkedSkillIds": [
+          "skill_1782596299032_o0ambkloe"
+        ],
+        "linkedBossIds": [
+          "1783917794860",
+          "1783927787622",
+          "1786983444165"
+        ],
+        "bossDamage": 12,
+        "vowXpMult": 1.2,
+        "vowDmgMult": 1.2
+      }
+    },
+    {
+      "id": "1793027617330",
+      "timestamp": "2026-10-26T15:13:37.330Z",
+      "category": "boss_damage",
+      "description": "Dealt 12 damage to Guiltmal",
+      "details": {
+        "damage": 12,
+        "remaining": 1677
+      }
+    },
+    {
+      "id": "1793027617304",
+      "timestamp": "2026-10-26T15:13:37.304Z",
+      "category": "boss_damage",
+      "description": "Dealt 12 damage to Guiltmal",
+      "details": {
+        "damage": 12,
+        "remaining": 1689
+      }
+    },
+    {
+      "id": "1793027617302",
+      "timestamp": "2026-10-26T15:13:37.302Z",
+      "category": "habit_complete",
+      "description": "Lectura de mis principios",
+      "details": {
+        "xp": 12,
+        "gold": 6,
+        "streak": 0,
+        "linkedSkillIds": [
+          "skill_1782600801284_g84pfxiy7"
+        ],
+        "linkedBossIds": [
+          "1786983444165"
+        ],
+        "bossDamage": 12,
+        "vowXpMult": 1.2,
+        "vowDmgMult": 1.2
+      }
+    },
+    {
+      "id": "1793027615592",
+      "timestamp": "2026-10-26T15:13:35.592Z",
+      "category": "boss_damage",
+      "description": "Dealt 12 damage to Guiltmal",
+      "details": {
+        "damage": 12,
+        "remaining": 1701
+      }
+    },
+    {
+      "id": "1793027615559",
+      "timestamp": "2026-10-26T15:13:35.559Z",
+      "category": "boss_damage",
+      "description": "Dealt 12 damage to Guiltmal",
+      "details": {
+        "damage": 12,
+        "remaining": 1713
+      }
+    },
+    {
+      "id": "1793027615558",
+      "timestamp": "2026-10-26T15:13:35.558Z",
+      "category": "habit_complete",
+      "description": "Escribir 5 agradecimientos propios y vision en tercera persona viendome",
+      "details": {
+        "xp": 12,
+        "gold": 6,
+        "streak": 0,
+        "linkedSkillIds": [
+          "skill_1782600801284_710kzzmwo"
+        ],
+        "linkedBossIds": [
+          "1783917794860",
+          "1783927787622",
+          "1786983444165"
+        ],
+        "bossDamage": 12,
+        "vowXpMult": 1.2,
+        "vowDmgMult": 1.2
+      }
+    },
+    {
+      "id": "1793026988546",
+      "timestamp": "2026-10-26T15:03:08.546Z",
+      "category": "boss_damage",
+      "description": "Dealt 12 damage to Guiltmal",
+      "details": {
+        "damage": 12,
+        "remaining": 1725
+      }
+    },
+    {
+      "id": "1793026988520",
+      "timestamp": "2026-10-26T15:03:08.520Z",
+      "category": "boss_damage",
+      "description": "Dealt 12 damage to Guiltmal",
+      "details": {
+        "damage": 12,
+        "remaining": 1737
+      }
+    },
+    {
+      "id": "1793026988518",
+      "timestamp": "2026-10-26T15:03:08.518Z",
+      "category": "habit_complete",
+      "description": "10min meditación FOM y OM",
+      "details": {
+        "xp": 12,
+        "gold": 6,
+        "streak": 0,
+        "linkedSkillIds": [
+          "skill_1782596299032_o0ambkloe"
+        ],
+        "linkedBossIds": [
+          "1783917794860",
+          "1783927787622",
+          "1786983444165"
+        ],
+        "bossDamage": 12,
+        "vowXpMult": 1.2,
+        "vowDmgMult": 1.2
+      }
+    },
+    {
+      "id": "1793026985762",
+      "timestamp": "2026-10-26T15:03:05.762Z",
+      "category": "boss_damage",
+      "description": "Dealt 10 damage to Guiltmal",
+      "details": {
+        "damage": 10,
+        "remaining": 1749
+      }
+    },
+    {
+      "id": "1793026985751",
+      "timestamp": "2026-10-26T15:03:05.751Z",
+      "category": "habit_complete",
+      "description": "30min ejercicio",
+      "details": {
+        "xp": 10,
+        "gold": 5,
+        "streak": 0,
+        "linkedSkillIds": [
+          "skill_1782600801284_anttohfwh"
+        ],
+        "linkedBossIds": [
+          "1786983444165"
+        ],
+        "bossDamage": 10,
+        "vowXpMult": 1,
+        "vowDmgMult": 1
+      }
+    },
     {
       "id": "1792852431931",
       "timestamp": "2026-10-24T14:33:51.931Z",
@@ -15406,7 +16017,7 @@
       "imagePath": "RpgImages/bosses/Icon12.png",
       "tier": "soberano",
       "maxHp": 10000,
-      "currentHp": 1759,
+      "currentHp": 1417,
       "domain": "psychologicalWellbeing",
       "defeated": false,
       "createdAt": "2026-08-17T16:17:24.165Z",
@@ -15857,9 +16468,9 @@
       "flatPath": "RpgImages/Loot/Flowers/flower7.png",
       "description": "",
       "bossId": null,
-      "roadmapEventId": null,
-      "unlocked": false,
-      "unlockedAt": null,
+      "roadmapEventId": "qevent_1787780558961_tkpnz2",
+      "unlocked": true,
+      "unlockedAt": "2026-10-27T17:27:46.755Z",
       "damageReport": null
     },
     {
@@ -16614,6 +17225,24 @@
           "experience": "Esto es una prueba"
         }
       ]
+    },
+    {
+      "id": "vow_1793036367734_6yudibduu",
+      "title": "Soy vendedor",
+      "inscription": "Escucho necesidades y ofresco soluciones especificas",
+      "imagePath": "RpgImages/vows/Ventas.jpg",
+      "cols": 5,
+      "rows": 10,
+      "schools": [
+        "Autoridad"
+      ],
+      "domains": [
+        "livingStandards"
+      ],
+      "xpBonus": 0.2,
+      "damageBonus": 0.2,
+      "completedAt": null,
+      "grains": []
     }
   ],
   "activeDungeon": null,
@@ -17222,13 +17851,13 @@
         "name": "Meditación",
         "category": "mind",
         "level": 7,
-        "xp": 191,
+        "xp": 231,
         "xpToNextLevel": 1139,
         "description": "Hechizo de canalización activa el (presente)\n\n- Mecánica: Mientras canalizas el Presente, cargas un multiplicador de energía. Al terminar la canalización, el siguiente hechizo lanzado de la escuela de Calidez (conexión, escucha) o Poder (acción, autoridad) se ejecuta con máxima potencia.\n\n- Foco laser y monitoreo abierto permite maxima persepción sin generar reacciones por estimulo.\n\n- Disipa (ansiedad bruma del futuro, sindrome del impostor) permite el estado [Armonia] \nque convierte cualquier hechizo bloqueante de vision en nubes inocentes.",
         "discoveredFrom": "manual",
         "discoveredDate": "2026-06-27T21:38:19.032Z",
-        "lastPracticed": "2026-10-24T14:33:51.908Z",
-        "totalPracticeCount": 189,
+        "lastPracticed": "2026-10-27T19:00:11.533Z",
+        "totalPracticeCount": 193,
         "kind": "spell",
         "spellSchool": "Presencia",
         "effects": [
@@ -17251,13 +17880,13 @@
         "name": "Learning",
         "category": "mind",
         "level": 4,
-        "xp": 195,
+        "xp": 215,
         "xpToNextLevel": 337,
         "description": "Hechizo de adquisición de conocimiento y avance intelectual.",
         "discoveredFrom": "habit-checklist",
         "discoveredDate": "2026-06-27T22:19:23.683Z",
-        "lastPracticed": "2026-10-23T02:38:30.940Z",
-        "totalPracticeCount": 67,
+        "lastPracticed": "2026-10-29T20:20:29.552Z",
+        "totalPracticeCount": 69,
         "kind": "spell",
         "spellSchool": "Aprendizaje",
         "effects": [
@@ -17279,7 +17908,7 @@
         "kind": "spell",
         "spellSchool": "Vitalidad",
         "level": 5,
-        "xp": 58,
+        "xp": 78,
         "xpToNextLevel": 506,
         "description": "Hechizo corporal que fortalece energía, resistencia y presencia física.",
         "effects": [
@@ -17295,8 +17924,8 @@
         "spellPowerBonus": 5,
         "discoveredFrom": "native-habit",
         "discoveredDate": "2026-06-27T22:53:21.284Z",
-        "lastPracticed": "2026-10-24T14:09:29.668Z",
-        "totalPracticeCount": 87
+        "lastPracticed": "2026-10-27T14:47:26.532Z",
+        "totalPracticeCount": 89
       },
       {
         "id": "skill_1782600801284_710kzzmwo",
@@ -17305,7 +17934,7 @@
         "kind": "spell",
         "spellSchool": "Disipación",
         "level": 7,
-        "xp": 201,
+        "xp": 241,
         "xpToNextLevel": 1139,
         "description": "Hechizo de disipación para ansiedad o apego al resultado.",
         "effects": [
@@ -17325,8 +17954,8 @@
         "spellPowerBonus": 10,
         "discoveredFrom": "native-habit",
         "discoveredDate": "2026-06-27T22:53:21.284Z",
-        "lastPracticed": "2026-10-23T02:38:30.940Z",
-        "totalPracticeCount": 165
+        "lastPracticed": "2026-10-27T19:00:16.637Z",
+        "totalPracticeCount": 169
       },
       {
         "id": "skill_1782600801284_e4lh9515p",
@@ -17389,7 +18018,7 @@
         "kind": "spell",
         "spellSchool": "Congruencia",
         "level": 4,
-        "xp": 295,
+        "xp": 315,
         "xpToNextLevel": 337,
         "description": "Hechizo de energía que activa el estado Congruencia.",
         "effects": [
@@ -17408,8 +18037,8 @@
         "spellPowerBonus": 10,
         "discoveredFrom": "native-habit",
         "discoveredDate": "2026-06-27T22:53:21.284Z",
-        "lastPracticed": "2026-10-22T11:34:03.837Z",
-        "totalPracticeCount": 77
+        "lastPracticed": "2026-10-27T18:55:55.164Z",
+        "totalPracticeCount": 79
       },
       {
         "id": "skill_1782600801285_jj0fzwy4u",
@@ -17444,7 +18073,7 @@
         "kind": "spell",
         "spellSchool": "Lenguaje",
         "level": 4,
-        "xp": 95,
+        "xp": 105,
         "xpToNextLevel": 337,
         "description": "Hechizo de expansión lingüística y comprensión verbal.",
         "effects": [
@@ -17460,8 +18089,8 @@
         "spellPowerBonus": 5,
         "discoveredFrom": "native-habit",
         "discoveredDate": "2026-06-27T22:53:21.285Z",
-        "lastPracticed": "2026-10-22T11:54:57.276Z",
-        "totalPracticeCount": 57
+        "lastPracticed": "2026-10-26T15:44:23.382Z",
+        "totalPracticeCount": 58
       },
       {
         "id": "skill_1782600801285_36i7nyml0",
@@ -17742,7 +18371,7 @@
     {
       "id": "qevent_1787780558961_tkpnz2",
       "name": "Sanar al calor",
-      "status": "active",
+      "status": "done",
       "startDate": "2026-08-26",
       "durationDays": 60,
       "dailyQuota": 3,
@@ -18044,6 +18673,14 @@
         "2026-10-25": [
           "quest_humildad_d29",
           "quest_humildad_d30"
+        ],
+        "2026-10-26": [
+          "quest_humildad_d29",
+          "quest_humildad_d30"
+        ],
+        "2026-10-27": [
+          "quest_humildad_d29",
+          "quest_humildad_d30"
         ]
       },
       "completedInEvent": [
@@ -18090,12 +18727,14 @@
         "quest_humildad_d26",
         "quest_humildad_d27",
         "quest_humildad_d28",
-        "quest_1785985318532_ngvk7evcp"
+        "quest_1785985318532_ngvk7evcp",
+        "quest_humildad_d30",
+        "quest_humildad_d29"
       ],
       "flowerId": "flower7",
-      "flowerUnlocked": false,
+      "flowerUnlocked": true,
       "createdAt": "2026-08-26T21:42:38.961Z",
-      "completedAt": null
+      "completedAt": "2026-10-27T17:27:46.755Z"
     },
     {
       "id": "qevent_ventas_calle",
