@@ -17,3 +17,15 @@ package-lock.json
 
 # Backups locales de este incidente
 *.broken-2026-08-12
+
+# Capturas pegadas (respaldo aparte; no van al historial)
+Adjuntos/
+
+# Binarios del dictado local (el plugin se reinstala)
+.obsidian/plugins/local-dictation/bin/
+
+# Copias locales del plugin soulhy
+.obsidian/plugins/soulhy/backups/
+
+# PDFs de libros
+**/*.pdf
