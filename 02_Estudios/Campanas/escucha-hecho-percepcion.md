@@ -2,7 +2,7 @@
 tags:
   - campana
 tipo: social
-estado: activa
+estado: pausada
 skill: escucha
 if_then: "Si me cuentan un hecho, nombro la emoción o digo «suena como si…» antes de pedir más datos del hecho."
 iniciada: 2026-10-22

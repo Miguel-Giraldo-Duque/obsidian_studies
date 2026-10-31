@@ -2,7 +2,7 @@
 tags:
   - campana
 tipo: social
-estado: activa
+estado: pausada
 skill: negociacion
 if_then: "Cuando el manager me conteste, entonces le devuelvo un espejo o una etiqueta y me callo 3 segundos antes de pedir algo más."
 iniciada: 2026-10-26
