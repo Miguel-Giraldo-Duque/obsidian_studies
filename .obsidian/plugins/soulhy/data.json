@@ -7,7 +7,7 @@
   "totalGoldEarned": 5977,
   "totalHabitsCompleted": 716,
   "totalQuestsCompleted": 116,
-  "lastPlayedDate": "Sun Nov 01 2026",
+  "lastPlayedDate": "Mon Nov 02 2026",
   "domains": [
     {
       "id": "psychologicalWellbeing",
@@ -14081,6 +14081,10 @@
           "quest_ventas_d12"
         ],
         "2026-11-01": [
+          "quest_ventas_d13",
+          "quest_ventas_d14"
+        ],
+        "2026-11-02": [
           "quest_ventas_d13",
           "quest_ventas_d14"
         ]
