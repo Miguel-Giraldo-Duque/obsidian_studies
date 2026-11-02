@@ -4,14 +4,14 @@ tags:
 tipo: social
 estado: bloqueada
 skill: accion-masiva
-if_then: "Cuando sienta la presión en el pecho, entonces me digo 'esto es la señal de arrancar' y digo la próxima frase antes de contar hasta 5."
+if_then: Cuando sienta la presión en el pecho, entonces me digo 'esto es la señal de arrancar' y digo la próxima frase antes de contar hasta 5.
 iniciada: 2026-10-28
 fase: instalacion
 reps_objetivo: 23
 reps_hechas: 0
 practica_path: ""
 oma_link: ""
-proyecto: "[[Voy a conseguir vender mi primer sitio web antes del 31]]"
+proyecto: "[[Voy a conseguir vender mi primer sitio web antes del 31 2]]"
 ---
 
 # Campaña: Vendedor · Fase 2, Acción masiva

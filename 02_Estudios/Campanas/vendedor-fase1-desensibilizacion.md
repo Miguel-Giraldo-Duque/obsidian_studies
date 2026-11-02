@@ -4,14 +4,14 @@ tags:
 tipo: social
 estado: activa
 skill: desensibilizacion
-if_then: "Cuando sienta la presión en el pecho, entonces me digo 'esto es la señal de arrancar' y digo la próxima frase antes de contar hasta 5."
+if_then: Cuando sienta la presión en el pecho, entonces me digo 'esto es la señal de arrancar' y digo la próxima frase antes de contar hasta 5.
 iniciada: 2026-10-26
 fase: instalacion
 reps_objetivo: 8
 reps_hechas: 0
 practica_path: ""
 oma_link: ""
-proyecto: "[[Voy a conseguir vender mi primer sitio web antes del 31]]"
+proyecto: "[[Voy a conseguir vender mi primer sitio web antes del 31 2]]"
 ---
 
 # Campaña: Vendedor · Fase 1, Desensibilización

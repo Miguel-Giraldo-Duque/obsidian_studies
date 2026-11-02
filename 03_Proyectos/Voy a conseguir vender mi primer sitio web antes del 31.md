@@ -193,3 +193,114 @@ if (!label) {
     }
 }
 ```
+
+
+Resultados
+
+- 3 leads: Toto, 8onzas, dueño local por Instagram 
+- Superado retos: 
+	- Miedo a preguntar el dueño
+	- Entrar al local
+	- Ofrecer mis servicios
+	- Pensamientos linea de "no podre hacerlo", "voy a abandonar", "No soy tan ambicioso", "tengo miedo", "voy a molestar", "si me siento incomodo no puedo actuar"
+
+- Una oportunidad de negocio grande en un mercado para agendar cita la manejar secretaria con Grok bot como servicio nuevo + el sitio
+
+- Integración de reviews reales, contacto por email funcional en el sitio web, google search console del sitio, creacción de cuenta profesional
+
+- La experiencia de haber ausmido este reto de la forma en que lo asumi me deja Me da una sensación de mucha satisfacción como si durante mucho tiempo yo estuviera esperando esto, la verdad. El reto superar cada 1 de esos pasos dividiéndolos. Me hizo sentir poderoso. Siento ahora una sensación y una fortaleza de que puedo liderar mi vida, puedo ganar mi propia vida, puedo ganar mi propio dinero con mis propias habilidades Que tengo capacidad. Me da esperanza y me da fortaleza porque me da cierta tranquilidad de que mi interior puedo sobrevivir en este mundo 
+
+- Tambien me da orgullo, proq ue siento que mi entrenameinto en habilidades sociales no fracaso y pude transladar lo aprendido a estas areas para mejorar mi mensajaes 
+
+- Pude encontrar una Linea de pensamientos anit-compasivos "Solo hay una vida Miguel", "Sos un cobarde", "No podrás hacerlo con esa emoción, te rechazaran si vas con esa energía", "Criticarme por sentirme mal, por sentir dolor en mi pecho", "Criticarme por que no estoy fluyendo", "Criticarme por la sensación de presión en el cuelo de nudo en el torso" por 
+	1. "Estoy viendo una nube que dice x, no lo habla de mis capacidades, ni de quien soy, ni lo que voy a hacer, ni resultados" -->
+	2. Esta sensación es normal y compartida entre los mejores en el mundo
+	3. Es parte del proceso
+	4. Migue te amo incondicionalmente independiente de hoy
+	5. Lo voy a lograr, VAMOS, VAMOS, visualizo las sonrisas y buena vibra
+	6. Tomo aire profundo suelto y empiezo a moverme
+	   
+- Aprendí la importancia de dividir un reto no te hace debil o evitativo, no quiere decir que por dividr si o si lo repartes en el tiempo, se refiere mas a partri de la torta en partes manejables, que te terminan llevando a puntos mas alla de lo que esperas
+	
+	-  Inicie con la misión ofrecer mis servicios, es un objetivo grande antes habían componentes que debían ser integrados  
+		1.  Me daba incomodidad física preguntar por el dueño, NO era miedo, solo incomodidad natural de un sistema nervioso que no tiene registro para esta situación.
+		
+		2. Enfocar mi entrenamiento en mostrare con amor y entrega a mi sistema nervioso y acción masiva que preguntar por el dueño no era peligroso
+		
+		3.  Solo por pregutnar por el dueño temrinaba encima de una bola de neive que me llevaa directamente un msimo da ofrecer el sitio web, conseguir mi primer lead, y afrontar la siguiente parte, en esencia solo tomar el primer paso te termiana en algunos casos llevando a nuevos retos, es como descubrir un nuevo mapa 
+		
+		4. En este nuevo mapa me sentia mas tranquilo, en el moemnto seurmedio en la incomodidad afrontada mis sentidos se afinan, y mi mente esta ams presente por que ya en agua cálida resulta mas facil seguir explorando por que ya estas ahi. 
+		
+		5. Se trata descomponer los retos en pasos manejables, todo dependiendo de neustra capcidad persiciba, afrotnar un reto por toda la torta directa me abruma, bloquea y me tiende llevar a la autocritica
+		
+		6. Una idea que me ocurre, es en lugar de plantear y dividir el reto en los proximos dias, se toam en el momento el reto, se dividen en compoenntes manejable socn pregutnas como
+			-  Que tan capaz me siento de hacer esto x que me incomoda?
+			-  Si el reto es mayor a 6 lo partimos a los componentes de la acción ejemplo  
+			  "El estilo mariposa de natación" suponiendo que la incomodidad de toda la acción es 8, lo paratimos en subcompeontes:  patada de mariposa, brazada, cadera, y creamos un plan de acción masiva para poner en practica los componentes, que en cada pequeña victoria cosntirbuye en el aprendizaje rápido
+			- Celebramos cada subcomponente completado como si ganáramos un campeonato, la inercia llevara a mas acción --> mas rapido el resultado deseado 
+			 	
+- Aprendí la importancia de priorizar y su relevancia, la presión es un factor impresionante fuerza a limpiar distracciones y acciones que no nos llevan al objetivo.  Priozar se edifico en este proceso en entender que:
+	-  Que tanto me acerca esta acción a mi meta?
+	-  Que tan fácil de hacer es?
+Bajo la regla  "hacer menos pero con mayor impacto", son estas acciones pequeñas, en algunos casos incomodas las que mas mueven el peso y permiten focalizar la mente esto aplica en 
+
+- **Aprendizaje**: El objetivo de aprender no es la acumulacción de conocimiento, pero la aborción de conocimientos que nos acerquen al objetivo.
+  "Si quiero mejorar mi CEO en 20%", mi intension de aprendizaje no es "ver todo el curso de CEO" pero ver la clases o conocimiento especifico para yo aplicarlo y acercarme a mi objetivo
+
+- **Reducir distracciones**: En orden de aplicar la priorización delegamos, automatizamos, quitamos espacios de tiempo en actividades que no nos acercan al objetivo
+  
+- **El poder de los objetivos significativos**, como este de octubre se siente como uno de los mayores progresos por que en esencia, tenia claro su para que, su intención, y por el fin del objetivo esos pensamientos que me limitaban simplemente se  hacían mas claros, tenían un contraste claro para ver que tanto me acercaba
+
+- **Una sensación nueva de confianza como ME lidero**, VIVO la vida que quiero y si soy capaz. 
+
+
+- Siento que gane mucha adaptabilidad, recibia un feedback y en minutos ya lo estaba implementando mi padre se enojaba por que no estaba limpiando la casa, y en lugar de esperar al día siguiente tome 1 acción para limpiar algo de casa, recibia el feedback sobre moverme mas con mi negocio y actue. Menos tiempo entre feedback y señal, el motivo? principalmente por que en esencia  la autoacomapdcción me dbaa ancho de banda, me sentaba a pesnar justamente ¿Que peudo ahcer minima acción? y ejecutar.
+
+- En 1 semana cerca al deadline avance mucho mas que en el mes.  Simular esta prección seria ideal,  se me ocurre capaz. Usar la vizualizacción para precionarme? 
+
+	- Compromisos a familias
+	- A mi mismo en videos. 
+	- Escribir. 
+ Un objetivo y la capcidad de lgoralo se fortalezen en el dia dia en el creer y tomar acción.
+
+- Tomar onwnership de tu vida, 100% responsbale de lo que tus acciones hacen, y dejan de hacer, 1000% de tu vida.
+
+
+- El apredizaje absado en rpoyectos se plasma mejor que el aprendizaje en solo aborsion el aprendizaje rapido, esta pensado apr aacercarte a un resultado especifico mas rapido, no para capturar mayor cantidad de ifnromacción
+
+-  Alienar la autoamtigen es clave para que tus acciones y habitos menstales, predicciónes se alineen con que quieres de tu vida, se siente satisfactorio por que emepzas a vivir por tu propio obejtivo las acciones cobran fuerza proq eu te acercan a un fin, no simplemente estan por estar
+  
+  - Gratitud es una herramienta para reconocer los regalos o potenciales regalos de la vida, para encontrar oportunidades, para reonocer el esfuerzo de otros se ocmpone de: 
+	-  Reconcoer lo que ya te beneficia, reconocer que esta garantizado
+	-  Reconocer su origen y agradecer
+
+- Tène un "para que" en las cosas, es CLAVE, para que esa acción prevalezca como significativa para nostros en el camino a un objetivo. 
+
+ Que mejorar
+
+- Reducir distracciones mchas veces termiaba callendo en salidas de fiesta, peliculas, videos, conocimiento y tareas, que en esencia no tenian ninguna relacción con mi objetivo de forma directa
+  
+- Neceito planear con detalle pensando priemro en todas las ideas, en juntarlas, centralizar y priorizar.
+
+- Remplzaar el "Si no em siento bien no saldra bien" por "Esta incomodidad es temproal y es una señal proa celerar" o encotnra run mejro remplazo
+
+- Es importante: Domir mejor, no tomar azucar.
+
+- Planear no es procastinar. Es plantear una estrategia frente un reto
+
+- Me paso esta situacción deonde depeusd el exito con 8onzas me delvi a casa incluso pudiendo haber seguido vendiendo, con la "excusa de no tengo bateria", me quede en casa y no sali, podria haber obtenido mas leads, pero no fui ambisoso como para seguir hacia el objetivo. 
+
+- Es importnate rempalzar  mi habito de cuando me siento mal veo anime, peliculas o demas  
+
+- Tengo cierto habito a criticarme cuando me siento incomodo.
+
+- No compartir a los que me rodean mi sutacción actual, especialmente a ellos queiens tienen gran relevancia  me limita. Y quita acceso ainformacción relevante. 
+
+- Es improtnate integrar una forma mas clara de intregrar o gamificar la creacción de la auto imagen n eprters mas completas hmm.- 
+
+- Sacrfiique muchas vece smi rutina d ela amñaan y salud de vida contauran apra pdoer compesnar el tiempo  que no habia organizado antes. 
+
+
+Esta vez no se llego a los 2mil dolares.
+
+#### 
