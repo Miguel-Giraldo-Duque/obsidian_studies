@@ -1,13 +1,13 @@
 {
   "level": 18,
-  "xp": 696,
+  "xp": 706,
   "hp": 280,
   "maxHp": 280,
-  "gold": 10677,
-  "totalGoldEarned": 5977,
-  "totalHabitsCompleted": 716,
+  "gold": 10682,
+  "totalGoldEarned": 5982,
+  "totalHabitsCompleted": 717,
   "totalQuestsCompleted": 116,
-  "lastPlayedDate": "Mon Nov 02 2026",
+  "lastPlayedDate": "Wed Nov 04 2026",
   "domains": [
     {
       "id": "psychologicalWellbeing",
@@ -41,7 +41,7 @@
       "name": "Education",
       "score": 64,
       "level": 9,
-      "xp": 41,
+      "xp": 51,
       "icon": "📚",
       "color": "#f39c12"
     },
@@ -245,9 +245,9 @@
       ],
       "skillXp": 10,
       "completed": false,
-      "streak": 0,
+      "streak": 1,
       "bestStreak": 7,
-      "lastCompletedDate": "Sun Nov 01 2026",
+      "lastCompletedDate": "Tue Nov 03 2026",
       "id": "habit_1785588794845_8_10weyf",
       "linkedBossIds": [],
       "bossDamage": 10
@@ -10037,6 +10037,24 @@
   },
   "activityLog": [
     {
+      "id": "1793756778317",
+      "timestamp": "2026-11-04T01:46:18.317Z",
+      "category": "habit_complete",
+      "description": "20min estudio",
+      "details": {
+        "xp": 10,
+        "gold": 5,
+        "streak": 0,
+        "linkedSkillIds": [
+          "skill_1782598763683_06ikkboio"
+        ],
+        "linkedBossIds": [],
+        "bossDamage": 10,
+        "vowXpMult": 1,
+        "vowDmgMult": 1
+      }
+    },
+    {
       "id": "1793571473486",
       "timestamp": "2026-11-01T22:17:53.486Z",
       "category": "habit_complete",
@@ -12078,6 +12096,11 @@
           "id": "grain_1792109683807_m568g42b6",
           "date": "2026-10-15",
           "experience": "En principio del día recordé que Priscila no me respondió el mensaje sentí en el momento que era un reflejo de lo incapaz que socialmente y como relacionaba mi desempeño con el amor que creía merecer, antes este solo pensamiento me dejaba aburrido todo el día y terminaba jugando para escapar hoy agradezco esos días de meditación y autocomposición, por que me sostuve...pare me recordé que era un pensamiento, que el que Prisilla no me respondiera no implicaba que seria todo mi vida así, me quemaba el pecho y me puse la mano, me dije \"Voy a lograr crear este proyecto de ventas y estoy contigo independiente de las circunstancias\", al final me agradecí por acompañarme."
+        },
+        {
+          "id": "grain_1793756768355_jxpc2evii",
+          "date": "2026-11-03",
+          "experience": "Siento que me he convertido en un hombre Mucho más adaptable Que ahora, antes las circunstancias. Me recupero mas rápido, hoy llore en frustracción pensando, en que no habia podido completar mi palabra con mi padre sobre el trabajo y me dolió, al final un cobarde ¿no?, me abraze y cuide como pude, entendi esto como un regalo, pero a veces tambien siento que yo mismo...no podre cambiarlo, quiero mirar al mañana y asumirlo fuerza, pude no criticarme ni sanizarme aunque ahora no entiendo mucho, sobre lo que me cuesta no actuar, sobre lo que no he hecho,  a veces me pregunto si la dureza de mi padre es solo reflejo de la decepción que resulto, me destroza el alma, por que me siento como un tipo que no ha podido cumplir la promesa, temo, tambien perder las relaciones que he contruido con Alejo, Vicky y las chicas temo volver a ser el hombre que pierde las personas, que al final nunca es suficiente para ser amado. \n\nMe amo, y cuido, me sorprendo a veces con mi fortaleza apra asumir los dolores, ayer fui reclamado sobre que habia dejado pasar mi trabjo en Qnow durante dias tenia 3 dias sin publicar nada, lo asumi y me movi a corregirlo ese mismo dia y entregue los resultados esperados. Quizas nunca sea suficente para papa.\n\nPero esta promesa no es mas para el. Es para cumplirme a mi mismo"
         }
       ]
     },
@@ -13156,13 +13179,13 @@
         "name": "Learning",
         "category": "mind",
         "level": 4,
-        "xp": 225,
+        "xp": 235,
         "xpToNextLevel": 337,
         "description": "Hechizo de adquisición de conocimiento y avance intelectual.",
         "discoveredFrom": "habit-checklist",
         "discoveredDate": "2026-06-27T22:19:23.683Z",
-        "lastPracticed": "2026-11-01T22:17:53.486Z",
-        "totalPracticeCount": 70,
+        "lastPracticed": "2026-11-04T01:46:18.317Z",
+        "totalPracticeCount": 71,
         "kind": "spell",
         "spellSchool": "Aprendizaje",
         "effects": [
@@ -14085,6 +14108,14 @@
           "quest_ventas_d14"
         ],
         "2026-11-02": [
+          "quest_ventas_d13",
+          "quest_ventas_d14"
+        ],
+        "2026-11-03": [
+          "quest_ventas_d13",
+          "quest_ventas_d14"
+        ],
+        "2026-11-04": [
           "quest_ventas_d13",
           "quest_ventas_d14"
         ]
