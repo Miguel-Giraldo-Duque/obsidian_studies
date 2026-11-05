@@ -112,7 +112,7 @@ Cuando vea el pensameinto "no puedo" entonces dire estoy viendo un pensamiento q
 		- Cuando alguien le dice de su sufrienmeitno trata de ponerse en lugar en de donde vino, que le duele, su hsitoria
 		- Cuando ve el enojo de otros los imagina en su lecho de muerte cuales serian sus ultimas plabras sus arrepentimientos y atenderia.
 		- Cuando se despide de cualquier persona les desea un feliz dia, en su mente dice "Ojala le vaya bien", " que se mejore"
-
+	  Hábitos físicos
 4. Implementarlos hoy. 
 
 

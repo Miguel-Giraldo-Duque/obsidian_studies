@@ -7,7 +7,7 @@
   "totalGoldEarned": 6028,
   "totalHabitsCompleted": 725,
   "totalQuestsCompleted": 116,
-  "lastPlayedDate": "Wed Nov 04 2026",
+  "lastPlayedDate": "Thu Nov 05 2026",
   "domains": [
     {
       "id": "psychologicalWellbeing",
@@ -102,8 +102,8 @@
         "skill_1782596299032_o0ambkloe"
       ],
       "skillXp": 10,
-      "completed": true,
-      "streak": 0,
+      "completed": false,
+      "streak": 1,
       "bestStreak": 12,
       "lastCompletedDate": "Wed Nov 04 2026",
       "id": "habit_1785588794845_0_5401ak",
@@ -124,8 +124,8 @@
         "skill_1782600801284_anttohfwh"
       ],
       "skillXp": 10,
-      "completed": true,
-      "streak": 0,
+      "completed": false,
+      "streak": 1,
       "bestStreak": 20,
       "lastCompletedDate": "Wed Nov 04 2026",
       "id": "habit_1785588794845_1_aitecv",
@@ -144,8 +144,8 @@
         "skill_1782596299032_o0ambkloe"
       ],
       "skillXp": 10,
-      "completed": true,
-      "streak": 0,
+      "completed": false,
+      "streak": 1,
       "bestStreak": 20,
       "lastCompletedDate": "Wed Nov 04 2026",
       "id": "habit_1785588794845_2_p1xxd7",
@@ -166,8 +166,8 @@
         "skill_1782600801284_710kzzmwo"
       ],
       "skillXp": 10,
-      "completed": true,
-      "streak": 0,
+      "completed": false,
+      "streak": 1,
       "bestStreak": 12,
       "lastCompletedDate": "Wed Nov 04 2026",
       "id": "habit_1785588794845_3_jhrj2u",
@@ -206,8 +206,8 @@
         "skill_1782600801284_g84pfxiy7"
       ],
       "skillXp": 10,
-      "completed": true,
-      "streak": 0,
+      "completed": false,
+      "streak": 1,
       "bestStreak": 12,
       "lastCompletedDate": "Wed Nov 04 2026",
       "id": "habit_1785588794845_6_ipm0v7",
@@ -244,8 +244,8 @@
         "skill_1782598763683_06ikkboio"
       ],
       "skillXp": 10,
-      "completed": true,
-      "streak": 1,
+      "completed": false,
+      "streak": 2,
       "bestStreak": 7,
       "lastCompletedDate": "Wed Nov 04 2026",
       "id": "habit_1785588794845_8_10weyf",
@@ -287,8 +287,8 @@
         "skill_1782600801285_xfjqocoem"
       ],
       "skillXp": 10,
-      "completed": true,
-      "streak": 0,
+      "completed": false,
+      "streak": 1,
       "bestStreak": 9,
       "lastCompletedDate": "Wed Nov 04 2026",
       "id": "habit_1785588794845_13_gk42or",
@@ -347,8 +347,8 @@
       "linkedBossIds": [],
       "bossDamage": 10,
       "skillXp": 10,
-      "completed": true,
-      "streak": 0,
+      "completed": false,
+      "streak": 1,
       "bestStreak": 11,
       "lastCompletedDate": "Wed Nov 04 2026"
     },
@@ -10029,7 +10029,7 @@
   },
   "aiQuestsGenerated": 0,
   "currentPhase": "dissonance",
-  "psychicEntropy": 60,
+  "psychicEntropy": 100,
   "lastWisdomDate": "Thu Oct 22 2026",
   "dailyWisdom": {
     "text": "When you are in the Dissonance phase, search for excitement and enthusiasm and pursue that without shame.",
@@ -14376,6 +14376,10 @@
           "quest_ventas_d14"
         ],
         "2026-11-04": [
+          "quest_ventas_d13",
+          "quest_ventas_d14"
+        ],
+        "2026-11-05": [
           "quest_ventas_d13",
           "quest_ventas_d14"
         ]
