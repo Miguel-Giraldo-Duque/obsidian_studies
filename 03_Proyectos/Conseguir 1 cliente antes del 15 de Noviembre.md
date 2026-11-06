@@ -124,16 +124,16 @@ dv.table(
 ```
 
 ### 2026-11-05
-- [ ] role · Role-play guion 30s + seña
-- [ ] local · Local 1 (dueño + pitch)
-- [ ] local · Local 2
+- [x] role · Role-play guion 30s + seña
+- [x] local · Local 1 (dueño + pitch)
+- [x] local · Local 2
 - [ ] local · Local 3
 - [ ] local · Local 4
-- [ ] review · Aplicar una corrección
-- [ ] habito · Teatro 10 min
-- [ ] habito · Cuando sienta incomodidad me dire es parte del proceso
+- [x] review · Aplicar una corrección
+- [x] habito · Teatro 10 min
+- [x] habito · Cuando sienta incomodidad me dire es parte del proceso
 - [ ] habito · Noche éxito + corrección
-- [ ] habito · Cuando tome acción por un objetivo me voy a celebrar levantando los brazos y decir "1M de 10"
+- [x] habito · Cuando tome acción por un objetivo me voy a celebrar levantando los brazos y decir "1M de 10"
 
 ### 2026-11-06
 - [ ] role · Role-play guion 30s + seña

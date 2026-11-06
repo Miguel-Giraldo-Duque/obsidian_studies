@@ -14100,16 +14100,18 @@ class ConfirmDeleteHabitModal extends Modal {
 }
 
 class ConfirmDeleteHitoModal extends Modal {
-    constructor(app, { hitoLabel, clearOnly, onConfirm }) {
+    constructor(app, { hitoLabel, clearOnly, onConfirm, entityName = 'hito' }) {
         super(app);
         this.hitoLabel = hitoLabel;
         this.clearOnly = clearOnly;
         this.onConfirm = onConfirm;
+        this.entityName = entityName || 'hito';
     }
 
     onOpen() {
         const { contentEl } = this;
-        contentEl.createEl('h2', { text: this.clearOnly ? 'Vaciar hito' : 'Borrar hito' });
+        const name = this.entityName;
+        contentEl.createEl('h2', { text: this.clearOnly ? `Vaciar ${name}` : `Borrar ${name}` });
         contentEl.createEl('p', {
             text: this.clearOnly
                 ? `¿Vaciar ${this.hitoLabel}? Se borra el contenido; el slot queda en el diario.`
@@ -14651,6 +14653,7 @@ class VowEditorModal extends Modal {
 // HITO STORY EDITOR + VOW REVEAL HELPERS
 // ============================================================================
 const HITO_MAX_COUNT = 5;
+const AAR_MAX_COUNT = 5;
 
 function normalizeVowIdsList(raw, legacySingle) {
     const ids = [];
@@ -14667,10 +14670,90 @@ function normalizeVowIdsList(raw, legacySingle) {
     return ids;
 }
 
+function emptyAccionDraft() {
+    return {
+        id: `a-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`,
+        texto: '',
+        impacto: 3,
+        esfuerzo: 3,
+        elegida: false
+    };
+}
+
+function emptyAarDraft(n = 1) {
+    return {
+        n,
+        titulo: '',
+        intent: '',
+        hechos: '',
+        gap: '',
+        whys: '',
+        acciones: [emptyAccionDraft(), emptyAccionDraft(), emptyAccionDraft()]
+    };
+}
+
+function scoreAccionDraft(a) {
+    const impacto = Math.max(1, Math.min(5, Number(a.impacto) || 3));
+    const esfuerzo = Math.max(1, Math.min(5, Number(a.esfuerzo) || 3));
+    return impacto * (6 - esfuerzo);
+}
+
+function readAarsFromFrontmatter(fm) {
+    const aars = [];
+    for (let n = 1; n <= AAR_MAX_COUNT; n++) {
+        const titulo = fm[`evento${n}`] != null ? String(fm[`evento${n}`]) : '';
+        const intent = fm[`intent${n}`] != null ? String(fm[`intent${n}`]) : '';
+        const hechos = fm[`hechos${n}`] != null ? String(fm[`hechos${n}`]) : '';
+        const gap = fm[`gap${n}`] != null ? String(fm[`gap${n}`]) : '';
+        const whys = fm[`whys${n}`] != null ? String(fm[`whys${n}`]) : '';
+        const inm = fm[`accion_inm${n}`] != null ? String(fm[`accion_inm${n}`]) : '';
+        const sis = fm[`accion_sis${n}`] != null ? String(fm[`accion_sis${n}`]) : '';
+        const parking = fm[`accion_parking${n}`] != null ? String(fm[`accion_parking${n}`]) : '';
+        if (n === 1 || titulo.trim() || intent.trim() || hechos.trim() || gap.trim() || whys.trim() || inm.trim() || sis.trim()) {
+            const acciones = [];
+            if (inm.trim()) {
+                acciones.push({
+                    id: `a-inm-${n}`,
+                    texto: inm,
+                    impacto: 5,
+                    esfuerzo: 2,
+                    elegida: true,
+                    tipo: 'inmediata'
+                });
+            }
+            if (sis.trim()) {
+                acciones.push({
+                    id: `a-sis-${n}`,
+                    texto: sis,
+                    impacto: 5,
+                    esfuerzo: 3,
+                    elegida: true,
+                    tipo: 'sistematica'
+                });
+            }
+            parking.split('\n').map(s => s.trim()).filter(Boolean).forEach((texto, i) => {
+                acciones.push({
+                    id: `a-park-${n}-${i}`,
+                    texto,
+                    impacto: 3,
+                    esfuerzo: 3,
+                    elegida: false
+                });
+            });
+            while (acciones.length < 2) acciones.push(emptyAccionDraft());
+            aars.push({ n, titulo, intent, hechos, gap, whys, acciones });
+        }
+    }
+    if (aars.length === 0) aars.push(emptyAarDraft(1));
+    return aars;
+}
+
 function emptyHitoDraft(n = 1) {
     return {
         n,
-        paso: '',
+        paso: '', // legacy alias: qué pasó / qué logré
+        logre: '',
+        influi: '',
         bien: '',
         mejorar: '',
         proxima: '',
@@ -14682,14 +14765,27 @@ function readHitosFromFrontmatter(fm) {
     const hitos = [];
     for (let n = 1; n <= HITO_MAX_COUNT; n++) {
         const paso = fm[`hito${n}`] != null ? String(fm[`hito${n}`]) : '';
+        const logre = fm[`logre${n}`] != null ? String(fm[`logre${n}`]) : '';
+        const influi = fm[`influi${n}`] != null ? String(fm[`influi${n}`]) : '';
         const bien = fm[`bien${n}`] != null
             ? String(fm[`bien${n}`])
             : (fm[`logro${n}`] != null ? String(fm[`logro${n}`]) : '');
         const mejorar = fm[`mejorar${n}`] != null ? String(fm[`mejorar${n}`]) : '';
         const proxima = fm[`proxima${n}`] != null ? String(fm[`proxima${n}`]) : '';
         const vowIds = normalizeVowIdsList(fm[`vowIds${n}`], fm[`vowId${n}`]);
-        if (n === 1 || paso.trim() || bien.trim() || mejorar.trim() || proxima.trim() || vowIds.length) {
-            hitos.push({ n, paso, bien, mejorar, proxima, vowIds });
+        const logreFinal = (logre || paso || '').trim() ? (logre || paso) : '';
+        const influiFinal = (influi || bien || '').trim() ? (influi || bien) : '';
+        if (n === 1 || logreFinal || influiFinal || paso.trim() || bien.trim() || mejorar.trim() || proxima.trim() || vowIds.length) {
+            hitos.push({
+                n,
+                paso: logreFinal || paso,
+                logre: logreFinal || paso,
+                influi: influiFinal,
+                bien: influiFinal || bien,
+                mejorar,
+                proxima,
+                vowIds
+            });
         }
     }
     if (hitos.length === 0) hitos.push(emptyHitoDraft(1));
@@ -14790,9 +14886,12 @@ class HitoStoryEditorModal extends Modal {
         super(app);
         this.plugin = plugin;
         this.openIndex = 0;
+        this.aarOpenIndex = 0;
+        this.step = 'aar'; // aar | hito
         this.screen = 'edit'; // edit | pick | reveal
         this.pickHitoIndex = 0;
         this.revealPayload = null;
+        this.aars = [emptyAarDraft(1)];
         this.hitos = [emptyHitoDraft(1)];
         this.file = null;
         this.date = new Date().toISOString().slice(0, 10);
@@ -14858,8 +14957,11 @@ class HitoStoryEditorModal extends Modal {
         this.file = file;
         this.date = date;
         const fm = cache?.frontmatter || {};
+        this.aars = readAarsFromFrontmatter(fm);
         this.hitos = readHitosFromFrontmatter(fm);
         this.openIndex = 0;
+        this.aarOpenIndex = 0;
+        this.step = 'aar';
         this.screen = 'edit';
         this.applyModalChrome();
         this.render();
@@ -14878,7 +14980,6 @@ class HitoStoryEditorModal extends Modal {
 
     removeHitoAt(idx) {
         if (this.hitos.length <= 1) {
-            // Clear the only hito instead of removing the slot
             this.hitos[0] = emptyHitoDraft(1);
             this.openIndex = 0;
             this.dirty = true;
@@ -14892,8 +14993,38 @@ class HitoStoryEditorModal extends Modal {
         this.render();
     }
 
+    removeAarAt(idx) {
+        if (this.aars.length <= 1) {
+            this.aars[0] = emptyAarDraft(1);
+            this.aarOpenIndex = 0;
+            this.dirty = true;
+            this.render();
+            return;
+        }
+        this.aars.splice(idx, 1);
+        this.renumberAars();
+        this.aarOpenIndex = Math.min(idx, this.aars.length - 1);
+        this.dirty = true;
+        this.render();
+    }
+
     renumberHitos() {
         this.hitos.forEach((h, i) => { h.n = i + 1; });
+    }
+
+    renumberAars() {
+        this.aars.forEach((a, i) => { a.n = i + 1; });
+    }
+
+    pickElegidasAcciones(acciones) {
+        const elegidas = (acciones || []).filter(a => a.elegida && String(a.texto || '').trim());
+        const ranked = [...elegidas].sort((a, b) => scoreAccionDraft(b) - scoreAccionDraft(a));
+        const inm = ranked[0] || null;
+        const sis = ranked[1] || null;
+        const parking = (acciones || [])
+            .filter(a => !a.elegida && String(a.texto || '').trim())
+            .map(a => String(a.texto).trim());
+        return { inm, sis, parking };
     }
 
     async saveToNote() {
@@ -14902,6 +15033,7 @@ class HitoStoryEditorModal extends Modal {
             return false;
         }
         this.renumberHitos();
+        this.renumberAars();
         await this.app.fileManager.processFrontMatter(this.file, (fm) => {
             for (let n = 1; n <= HITO_MAX_COUNT; n++) {
                 delete fm[`hito${n}`];
@@ -14911,13 +15043,42 @@ class HitoStoryEditorModal extends Modal {
                 delete fm[`vowIds${n}`];
                 delete fm[`vowId${n}`];
                 delete fm[`logro${n}`];
+                delete fm[`logre${n}`];
+                delete fm[`influi${n}`];
             }
+            for (let n = 1; n <= AAR_MAX_COUNT; n++) {
+                delete fm[`evento${n}`];
+                delete fm[`fecha_aar${n}`];
+                delete fm[`intent${n}`];
+                delete fm[`hechos${n}`];
+                delete fm[`gap${n}`];
+                delete fm[`whys${n}`];
+                delete fm[`accion_inm${n}`];
+                delete fm[`accion_sis${n}`];
+                delete fm[`accion_parking${n}`];
+            }
+            this.aars.forEach((aar) => {
+                const n = aar.n;
+                const { inm, sis, parking } = this.pickElegidasAcciones(aar.acciones);
+                fm[`evento${n}`] = aar.titulo || '';
+                fm[`fecha_aar${n}`] = this.date || '';
+                fm[`intent${n}`] = aar.intent || '';
+                fm[`hechos${n}`] = aar.hechos || '';
+                fm[`gap${n}`] = aar.gap || '';
+                fm[`whys${n}`] = aar.whys || '';
+                fm[`accion_inm${n}`] = inm ? String(inm.texto || '').trim() : '';
+                fm[`accion_sis${n}`] = sis && sis !== inm ? String(sis.texto || '').trim() : '';
+                if (parking.length) fm[`accion_parking${n}`] = parking.join('\n');
+            });
             this.hitos.forEach((h) => {
                 const n = h.n;
-                fm[`hito${n}`] = h.paso || '';
-                fm[`bien${n}`] = h.bien || '';
-                fm[`mejorar${n}`] = h.mejorar || '';
-                fm[`proxima${n}`] = h.proxima || '';
+                const logre = (h.logre || h.paso || '').trim();
+                const influi = (h.influi || h.bien || '').trim();
+                fm[`logre${n}`] = logre;
+                fm[`influi${n}`] = influi;
+                // Compat: hito/bien siguen llenos para dataview viejo
+                fm[`hito${n}`] = logre;
+                fm[`bien${n}`] = influi;
                 const ids = normalizeVowIdsList(h.vowIds);
                 if (ids.length) {
                     fm[`vowIds${n}`] = ids;
@@ -14926,7 +15087,7 @@ class HitoStoryEditorModal extends Modal {
             });
         });
         this.dirty = false;
-        new Notice('Historia guardada en el diario');
+        new Notice('After Review + hitos guardados en el diario');
         return true;
     }
 
@@ -14943,7 +15104,11 @@ class HitoStoryEditorModal extends Modal {
             this.renderReveal();
             return;
         }
-        this.renderEdit();
+        if (this.step === 'aar') {
+            this.renderAarStep();
+            return;
+        }
+        this.renderHitoStep();
     }
 
     renderTopBar(title) {
@@ -14963,9 +15128,274 @@ class HitoStoryEditorModal extends Modal {
         return bar;
     }
 
-    renderEdit() {
-        const service = new VowService(this.plugin);
-        this.renderTopBar('Historia de hoy');
+    renderStepPills(active) {
+        const row = this.contentEl.createDiv({ cls: 'rpg-hito-step-pills' });
+        const aarPill = row.createEl('button', {
+            text: '1 · After Review',
+            cls: `rpg-btn secondary rpg-hito-step-pill${active === 'aar' ? ' is-active' : ''}`
+        });
+        aarPill.onclick = () => {
+            this.step = 'aar';
+            this.render();
+        };
+        const hitoPill = row.createEl('button', {
+            text: '2 · Hito',
+            cls: `rpg-btn secondary rpg-hito-step-pill${active === 'hito' ? ' is-active' : ''}`
+        });
+        hitoPill.onclick = () => {
+            this.step = 'hito';
+            this.render();
+        };
+        return row;
+    }
+
+    renderScoreRow(parent, accion) {
+        const row = parent.createDiv({ cls: 'rpg-aar-score-row' });
+        const mk = (label, key) => {
+            const col = row.createDiv({ cls: 'rpg-aar-score-col' });
+            col.createDiv({
+                cls: 'rpg-hito-field-label',
+                text: `${label}: ${accion[key]}/5`
+            });
+            const btns = col.createDiv({ cls: 'rpg-aar-score-btns' });
+            for (let n = 1; n <= 5; n++) {
+                const b = btns.createEl('button', {
+                    text: String(n),
+                    cls: `rpg-btn secondary rpg-aar-score-btn${accion[key] === n ? ' is-active' : ''}`
+                });
+                b.onclick = () => {
+                    accion[key] = n;
+                    this.dirty = true;
+                    this.render();
+                };
+            }
+        };
+        mk('Impacto', 'impacto');
+        mk('Esfuerzo', 'esfuerzo');
+        return row;
+    }
+
+    renderAarStep() {
+        this.renderTopBar('After Action Review');
+        this.renderStepPills('aar');
+        this.contentEl.createEl('p', {
+            cls: 'rpg-modal-subtitle',
+            text: this.file
+                ? `Fecha AAR automática: ${this.date}`
+                : 'Abrí una nota diaria para poder guardar.'
+        });
+
+        const list = this.contentEl.createDiv({ cls: 'rpg-hito-editor-list rpg-hito-accordion-group' });
+        this.aars.forEach((aar, idx) => {
+            const isOpen = idx === this.aarOpenIndex;
+            const card = list.createDiv({
+                cls: `rpg-hito-editor-card rpg-hito-accordion-item${isOpen ? ' is-open' : ''}`
+            });
+
+            const head = card.createDiv({ cls: 'rpg-hito-accordion-header' });
+            const titleRow = head.createDiv({
+                cls: 'rpg-hito-accordion-title',
+                attr: {
+                    role: 'button',
+                    tabindex: '0',
+                    'aria-expanded': isOpen ? 'true' : 'false'
+                }
+            });
+
+            const preview = (aar.titulo || '').trim();
+            const aarTitleLabel = preview
+                ? `Evento ${aar.n} · ${preview.slice(0, 48)}${preview.length > 48 ? '…' : ''}`
+                : `Evento ${aar.n}`;
+
+            const delBtn = titleRow.createEl('button', {
+                cls: 'rpg-hito-icon-btn rpg-hito-trash-btn',
+                attr: {
+                    type: 'button',
+                    title: 'Borrar evento',
+                    'aria-label': `Borrar evento ${aar.n}`
+                }
+            });
+            IbmIcons.mount(delBtn, 'trashCan', { size: 16, className: 'rpg-hito-icon' });
+            delBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                new ConfirmDeleteHitoModal(this.app, {
+                    hitoLabel: aarTitleLabel,
+                    clearOnly: this.aars.length <= 1,
+                    entityName: 'evento',
+                    onConfirm: () => this.removeAarAt(idx)
+                }).open();
+            });
+
+            const titleText = titleRow.createDiv({ cls: 'rpg-hito-accordion-title-text' });
+            if (isOpen) {
+                const titleInput = titleText.createEl('input', {
+                    cls: 'rpg-hito-input rpg-aar-evento-title',
+                    attr: {
+                        type: 'text',
+                        spellcheck: 'true',
+                        placeholder: `Evento ${aar.n} · nombre…`
+                    }
+                });
+                titleInput.value = aar.titulo || '';
+                titleInput.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                });
+                titleInput.oninput = () => {
+                    aar.titulo = titleInput.value;
+                    this.dirty = true;
+                };
+            } else {
+                titleText.createDiv({
+                    cls: 'rpg-hito-accordion-label',
+                    text: aarTitleLabel
+                });
+            }
+
+            const chevronWrap = titleRow.createDiv({ cls: 'rpg-hito-accordion-chevron' });
+            IbmIcons.mount(chevronWrap, isOpen ? 'chevronUp' : 'chevronDown', {
+                size: 16,
+                className: 'rpg-hito-icon'
+            });
+
+            const toggle = (e) => {
+                if (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                }
+                this.aarOpenIndex = isOpen ? -1 : idx;
+                this.render();
+            };
+            titleRow.addEventListener('click', toggle);
+            titleRow.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') toggle(e);
+            });
+
+            if (!isOpen) return;
+
+            const body = card.createDiv({ cls: 'rpg-hito-editor-card-body' });
+            body.createDiv({
+                cls: 'rpg-modal-subtitle',
+                text: `Fecha ${this.date} (automática)`
+            });
+
+            const field = (label, key, rows, placeholder) => {
+                body.createDiv({ cls: 'rpg-hito-field-label', text: label });
+                const el = body.createEl('textarea', {
+                    cls: 'rpg-hito-textarea',
+                    attr: { spellcheck: 'true', rows: String(rows), placeholder }
+                });
+                el.value = aar[key] || '';
+                el.oninput = () => {
+                    aar[key] = el.value;
+                    this.dirty = true;
+                };
+            };
+
+            field('1. ¿Qué pretendíamos lograr?', 'intent', 3, 'Estrategia, objetivos, criterio de éxito');
+            field('2. ¿Qué pasó en realidad?', 'hechos', 4, 'Hechos y evidencias · no la novela');
+            field('3. Gap (intent vs hechos)', 'gap', 2, '¿Cuál fue la diferencia?');
+            field('3b. ¿Por qué? (5 Whys en un solo texto)', 'whys', 7, '1. …\n2. …\nRaíz accionable:');
+
+            body.createDiv({
+                cls: 'rpg-hito-field-label',
+                text: '4. ¿Qué haremos la próxima vez?'
+            });
+            body.createDiv({
+                cls: 'rpg-modal-subtitle',
+                text: 'Impacto × esfuerzo · elegí máximo 2'
+            });
+
+            if (!Array.isArray(aar.acciones) || aar.acciones.length === 0) {
+                aar.acciones = [emptyAccionDraft(), emptyAccionDraft()];
+            }
+
+            const ranked = [...aar.acciones].sort(
+                (a, b) => scoreAccionDraft(b) - scoreAccionDraft(a)
+            );
+            const elegidasCount = aar.acciones.filter(a => a.elegida).length;
+            const topIds = new Set(ranked.slice(0, 2).map(a => a.id));
+
+            ranked.forEach((accion) => {
+                const box = body.createDiv({
+                    cls: `rpg-aar-accion-card${topIds.has(accion.id) ? ' is-suggested' : ''}${accion.elegida ? ' is-chosen' : ''}`
+                });
+                const area = box.createEl('textarea', {
+                    cls: 'rpg-hito-textarea',
+                    attr: {
+                        spellcheck: 'true',
+                        rows: '2',
+                        placeholder: 'Acción concreta…'
+                    }
+                });
+                area.value = accion.texto || '';
+                area.oninput = () => {
+                    accion.texto = area.value;
+                    this.dirty = true;
+                };
+                this.renderScoreRow(box, accion);
+                const chooseRow = box.createDiv({ cls: 'rpg-aar-accion-choose' });
+                const chooseBtn = chooseRow.createEl('button', {
+                    text: accion.elegida ? '✓ Elegida' : 'Elegir',
+                    cls: `rpg-btn secondary${accion.elegida ? ' is-active' : ''}`
+                });
+                chooseBtn.onclick = () => {
+                    if (!accion.elegida && elegidasCount >= 2) {
+                        new Notice('Máximo 2 acciones por evento');
+                        return;
+                    }
+                    accion.elegida = !accion.elegida;
+                    this.dirty = true;
+                    this.render();
+                };
+            });
+
+            const addAccionRow = body.createDiv({ cls: 'rpg-hito-editor-card-actions' });
+            const addAccionBtn = addAccionRow.createEl('button', {
+                text: '+ Acción',
+                cls: 'rpg-btn secondary'
+            });
+            addAccionBtn.onclick = () => {
+                aar.acciones.push(emptyAccionDraft());
+                this.dirty = true;
+                this.render();
+            };
+        });
+
+        const addRow = this.contentEl.createDiv({ cls: 'rpg-hito-editor-add-row' });
+        const addBtn = addRow.createEl('button', {
+            text: '+ Evento',
+            cls: 'rpg-btn secondary'
+        });
+        addBtn.disabled = this.aars.length >= AAR_MAX_COUNT;
+        addBtn.onclick = () => {
+            if (this.aars.length >= AAR_MAX_COUNT) return;
+            this.aars.push(emptyAarDraft(this.aars.length + 1));
+            this.renumberAars();
+            this.aarOpenIndex = this.aars.length - 1;
+            this.dirty = true;
+            this.render();
+        };
+        addRow.createSpan({
+            cls: 'rpg-modal-subtitle',
+            text: `${this.aars.length}/${AAR_MAX_COUNT}`
+        });
+
+        const bottom = this.renderBottomBar({ showSave: true });
+        const nextBtn = bottom.createEl('button', {
+            text: 'Siguiente · Hito',
+            cls: 'rpg-btn'
+        });
+        nextBtn.onclick = () => {
+            this.step = 'hito';
+            this.render();
+        };
+    }
+
+    renderHitoStep() {
+        this.renderTopBar('Hito · reconocer');
+        this.renderStepPills('hito');
         this.contentEl.createEl('p', {
             cls: 'rpg-modal-subtitle',
             text: this.file ? this.date : 'Abrí una nota diaria para poder guardar.'
@@ -14979,7 +15409,6 @@ class HitoStoryEditorModal extends Modal {
             });
 
             const head = card.createDiv({ cls: 'rpg-hito-accordion-header' });
-
             const titleRow = head.createDiv({
                 cls: 'rpg-hito-accordion-title',
                 attr: {
@@ -14989,7 +15418,7 @@ class HitoStoryEditorModal extends Modal {
                 }
             });
 
-            const preview = (hito.paso || '').trim();
+            const preview = (hito.logre || hito.paso || '').trim();
             const hitoTitleLabel = preview
                 ? `Hito ${hito.n} · ${preview.slice(0, 48)}${preview.length > 48 ? '…' : ''}`
                 : `Hito ${hito.n}`;
@@ -15009,6 +15438,7 @@ class HitoStoryEditorModal extends Modal {
                 new ConfirmDeleteHitoModal(this.app, {
                     hitoLabel: hitoTitleLabel,
                     clearOnly: this.hitos.length <= 1,
+                    entityName: 'hito',
                     onConfirm: () => this.removeHitoAt(idx)
                 }).open();
             });
@@ -15018,16 +15448,6 @@ class HitoStoryEditorModal extends Modal {
                 cls: 'rpg-hito-accordion-label',
                 text: hitoTitleLabel
             });
-            if (hito.vowIds?.length) {
-                const pills = titleText.createDiv({ cls: 'rpg-hito-accordion-pills' });
-                hito.vowIds.forEach(id => {
-                    const vow = service.getVow(id);
-                    pills.createSpan({
-                        cls: 'rpg-hito-vow-pill',
-                        text: vow ? vow.title : id
-                    });
-                });
-            }
             const chevronWrap = titleRow.createDiv({ cls: 'rpg-hito-accordion-chevron' });
             IbmIcons.mount(chevronWrap, isOpen ? 'chevronUp' : 'chevronDown', {
                 size: 16,
@@ -15051,63 +15471,28 @@ class HitoStoryEditorModal extends Modal {
 
             const body = card.createDiv({ cls: 'rpg-hito-editor-card-body' });
 
-            body.createDiv({ cls: 'rpg-hito-field-label', text: 'Qué pasó' });
-            const pasoArea = body.createEl('textarea', {
-                cls: 'rpg-hito-textarea rpg-hito-textarea-paso',
-                attr: {
-                    spellcheck: 'true',
-                    rows: '8',
-                    placeholder: 'En [lugar], frente a [situación], hice [acción]. Pasó [tropiezo]. Yo [qué hice con eso].'
-                }
+            body.createDiv({ cls: 'rpg-hito-field-label', text: '1. ¿Qué logré?' });
+            const logreArea = body.createEl('textarea', {
+                cls: 'rpg-hito-textarea',
+                attr: { spellcheck: 'true', rows: '3', placeholder: 'Logro concreto…' }
             });
-            pasoArea.value = hito.paso || '';
-            pasoArea.oninput = () => {
-                hito.paso = pasoArea.value;
+            logreArea.value = hito.logre || hito.paso || '';
+            logreArea.oninput = () => {
+                hito.logre = logreArea.value;
+                hito.paso = logreArea.value;
                 this.dirty = true;
             };
 
-            const field = (label, key, rows, placeholder) => {
-                body.createDiv({ cls: 'rpg-hito-field-label', text: label });
-                const el = body.createEl('textarea', {
-                    cls: 'rpg-hito-textarea',
-                    attr: { spellcheck: 'true', rows: String(rows), placeholder }
-                });
-                el.value = hito[key] || '';
-                el.oninput = () => {
-                    hito[key] = el.value;
-                    this.dirty = true;
-                };
-            };
-            field('Qué hice bien', 'bien', 2, 'Éxito real o espurio');
-            field('Qué mejorar', 'mejorar', 2, 'Qué falló o sesgo');
-            body.createDiv({ cls: 'rpg-hito-field-label', text: 'Próxima acción' });
-            const prox = body.createEl('input', {
-                cls: 'rpg-hito-input',
-                attr: {
-                    type: 'text',
-                    spellcheck: 'true',
-                    placeholder: 'Cuando X, hago Y'
-                }
+            body.createDiv({ cls: 'rpg-hito-field-label', text: '2. ¿Cómo influí en ello?' });
+            const influiArea = body.createEl('textarea', {
+                cls: 'rpg-hito-textarea',
+                attr: { spellcheck: 'true', rows: '3', placeholder: 'Tu influencia / gesto…' }
             });
-            prox.value = hito.proxima || '';
-            prox.oninput = () => {
-                hito.proxima = prox.value;
+            influiArea.value = hito.influi || hito.bien || '';
+            influiArea.oninput = () => {
+                hito.influi = influiArea.value;
+                hito.bien = influiArea.value;
                 this.dirty = true;
-            };
-
-            const row = body.createDiv({ cls: 'rpg-hito-editor-card-actions' });
-            const linkBtn = row.createEl('button', {
-                text: 'Vincular a vow',
-                cls: 'rpg-btn secondary'
-            });
-            linkBtn.onclick = () => {
-                if (!(hito.paso || '').trim()) {
-                    new Notice('Escribí «Qué pasó» antes de vincular');
-                    return;
-                }
-                this.pickHitoIndex = idx;
-                this.screen = 'pick';
-                this.render();
             };
         });
 
@@ -15130,7 +15515,17 @@ class HitoStoryEditorModal extends Modal {
             text: `${this.hitos.length}/${HITO_MAX_COUNT}`
         });
 
-        this.renderBottomBar({ showSave: true });
+        const bottom = this.renderBottomBar({ showSave: true });
+        const backBtn = bottom.createEl('button', {
+            text: 'Volver al AAR',
+            cls: 'rpg-btn secondary'
+        });
+        // Move back before close/save visually: prepend by reordering
+        bottom.insertBefore(backBtn, bottom.firstChild);
+        backBtn.onclick = () => {
+            this.step = 'aar';
+            this.render();
+        };
     }
 
     renderPickVow() {
@@ -16415,7 +16810,7 @@ module.exports = class LifeRPG extends Plugin {
         this.registerView(VIEW_TYPE_HERO, (leaf) => new HeroView(leaf, this));
         this.addRibbonIcon('swords', 'Open Hero Sheet', () => this.activateView());
         this.addCommand({ id: 'open-hero-sheet', name: 'Open Hero Sheet', callback: () => this.activateView() });
-        this.addCommand({ id: 'hito-story-editor', name: 'Cuéntame la historia de hoy (editor de hitos)', callback: () => {
+        this.addCommand({ id: 'hito-story-editor', name: 'Cuéntame la historia de hoy (After Review + hitos)', callback: () => {
             new HitoStoryEditorModal(this.app, this).open();
         }});
         this.addCommand({ id: 'link-hito-to-vow', name: 'Vincular hito del diario a un vow', callback: () => {

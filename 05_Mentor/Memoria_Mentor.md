@@ -1,7 +1,7 @@
 ---
 tipo: memoria-mentor
-actualizado: 2026-10-26
-version: 18
+actualizado: 2026-11-05
+version: 19
 ---
 
 # Memoria del Mentor
@@ -69,6 +69,10 @@ version: 18
 - [Evento] Lentejas 2026-10-22 :: a las 6 guardó en silencio las lentejas que no refrigeró; el papá ya lo sabía y esperaba la frase; Soulhy la dijo en la puerta; la culpa siguió y aun así fue a Kikiriquí.
 - [Persona] Papá :: prueba de transparencia en casa; recibió la confesión con gracias y nombró pertenencia, trabajo prometido y escucha.
 - [Meta] Primer sitio web antes del 31 :: oferta en persona a locales; freno = incomodidad leída como cobardía y “si no me siento bien no actúo”. Contenidos de la semana: Maltz cap. 3 (ensayo mental del guion) y Voss cap. 3 (label).
+- [Persona] Vicky / Victoria :: interes romantico activo nov 2026; cita plaza; mensaje hechizos/historia; silencio post-cita genera rumiacion.
+- [Patron] Rumiacion post-evento :: rejugando citas/chats buscando prueba de rechazo; confunde hechos con interpretaciones; pila de "situciones por analizar".
+- [Patron] Intimidad como metrica :: beso/avance fisico tratado como KPI de "no perde tiempo"; self-monitoring en vivo ("cuando la beso", "se aburre").
+- [Estado] Habito hitos :: 2026-11-04 y 11-05 vacios; 11-03 = dump emocional sin mejorar/proxima; hito se usa como desahogo no como O-M-H.
 
 ## Relaciones
 > Formato: `- Origen --tipoDeRelacion--> Destino  (nota opcional)`
@@ -140,6 +144,11 @@ version: 18
 - Primer sitio web antes del 31 --ensaya_con--> Psycho-Cybernetics cap. 3
 - Primer sitio web antes del 31 --escucha_con--> Voss cap. 3 (label)
 - Primer sitio web antes del 31 --comparte_plazo_con--> Vendedor de calle
+- Soulhy --desea_conectar_con--> Persona Vicky / Victoria
+- Patron Rumiacion post-evento --alimenta--> Guiltmal
+- Patron Intimidad como metrica --alimenta--> CritisimGhost
+- Habito hitos --deberia_alimentar--> Sistema OMA  (hoy se corta en emocion sin parche)
+- YouTube/cafe --evita--> ventas locales + dolor post-cita  (regulacion de verguenza)
 
 ## Observaciones
 > Datapoints fechados por entidad. Formato: `- [AAAA-MM-DD] Entidad :: observacion`
@@ -192,3 +201,7 @@ version: 18
 - [2026-10-22] Vendedor de calle :: migrada desde el escritorio al RPG. Roadmap 22/10–1/11 (los días 18–21 ya habían pasado: ensayo+Kikiriki hoy, balance y Flor Vereda el 1/11). Daña a Guiltmal. Dominio livingStandards.
 - [2026-10-22] Esconder la mano :: lentejas. Dijo la frase en la puerta del papá con la presión encima. El papá ya sabía; el gracias cálido aumentó la culpa. Casi llora con lo de la escucha. Reparación que él eligió: una cosa limpia por día, búsqueda de trabajo visible, y Kikiriquí el mismo día. La culpa se quedó y la acción también. Próxima: decir el hecho en una frase antes de sentarse al escritorio.
 - [2026-10-26] Primer sitio web :: dos contenidos para llegar al 31: Psycho-Cybernetics cap. 3 pp. 61–70 (role-play del guion, 10–15 min) y Never Split the Difference cap. 3 (label “parece que / suena a”). Platzi, el resumen de YouTube y los 3 libros del short de Miner quedan como mapa. Quests aún no armadas.
+- [2026-11-05] Soulhy :: volcado largo cita Vicky + papa + 2/4 locales + YouTube. Diagnostico research: rumiacion post-evento + atencion autofocalizada + outcome monitoring; no "falta de carisma" como rasgo fijo.
+- [2026-11-05] Vicky :: hechos: cita 11am, ella llego tarde arrepentida, se divertieron, abrazo mutuo, beso cuello (ella dijo lindo primer beso), avance fisico en publico → rechazo + el pidio perdon; ella habia dicho "me gusto la cita"; ahora silencio. Interpretacion dominante: "arruino / no me escribe / soy amigo".
+- [2026-11-05] Habito hitos :: hoy y ayer vacios; el texto del chat es materia prima de 1 hito (hechos) + 1 OMA o thought record, no de 8 parches. Regla OMA: un parche a la vez; cola de situaciones = inbox, no analisis simultaneo.
+- [2026-11-05] Grabacion :: util en role-play/practica con rubrica strengths-first (VERP); no grabar citas reales sin consentimiento; no usar video para cazar defectos (aumenta self-focus).

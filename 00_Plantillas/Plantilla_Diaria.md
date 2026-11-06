@@ -2,10 +2,18 @@
 tags: [diario]
 modo_override: ""
 mision_salida: ""
+evento1: ""
+fecha_aar1: ""
+intent1: ""
+hechos1: ""
+gap1: ""
+whys1: ""
+accion_inm1: ""
+accion_sis1: ""
+logre1: ""
+influi1: ""
 hito1: ""
 bien1: ""
-mejorar1: ""
-proxima1: ""
 vowIds1: []
 ---
 # 🧠 Dashboard Diario: <% tp.file.title %>
@@ -225,12 +233,12 @@ El mas importante
 
 ## Cierre del Día
 
-### Hitos
+### After Review + Hitos
 
 ```meta-bind-button
 label: Cuéntame la historia de hoy
 style: primary
-tooltip: Abre el editor RPG a pantalla amplia (escribir hitos + vincular vows)
+tooltip: Abre After Review (eventos) + Hitos (qué logré / cómo influí)
 action:
   type: command
   command: soulhy:hito-story-editor
@@ -238,25 +246,39 @@ action:
 
 ```dataviewjs
 const p = dv.current();
+const aars = [];
+for (let n = 1; n <= 5; n++) {
+    const evento = p[`evento${n}`];
+    if (!evento || String(evento).trim() === "") continue;
+    const intent = p[`intent${n}`] != null && String(p[`intent${n}`]).trim() !== "" ? String(p[`intent${n}`]) : "—";
+    const hechos = p[`hechos${n}`] != null && String(p[`hechos${n}`]).trim() !== "" ? String(p[`hechos${n}`]) : "—";
+    const inm = p[`accion_inm${n}`] != null && String(p[`accion_inm${n}`]).trim() !== "" ? String(p[`accion_inm${n}`]) : "—";
+    const sis = p[`accion_sis${n}`] != null && String(p[`accion_sis${n}`]).trim() !== "" ? String(p[`accion_sis${n}`]) : "—";
+    aars.push([`E${n}`, String(evento), intent, hechos, inm, sis]);
+}
+if (aars.length === 0) {
+    dv.paragraph("_Sin After Review aún. Abrí el editor con el botón de arriba._");
+} else {
+    dv.header(4, "After Review");
+    dv.table(["#", "Evento", "Intent", "Hechos", "Acción inmediata", "Acción sistemática"], aars);
+}
+
 const filas = [];
 for (let n = 1; n <= 5; n++) {
-    const paso = p[`hito${n}`];
-    if (!paso || String(paso).trim() === "") continue;
-    const bien = p[`bien${n}`] != null && String(p[`bien${n}`]).trim() !== ""
-        ? String(p[`bien${n}`])
-        : "—";
-    const mejorar = p[`mejorar${n}`] != null && String(p[`mejorar${n}`]).trim() !== ""
-        ? String(p[`mejorar${n}`])
-        : "—";
-    const proxima = p[`proxima${n}`] != null && String(p[`proxima${n}`]).trim() !== ""
-        ? String(p[`proxima${n}`])
-        : "—";
-    filas.push([`Hito ${n}`, String(paso), bien, mejorar, proxima]);
+    const logre = (p[`logre${n}`] != null && String(p[`logre${n}`]).trim() !== "")
+        ? String(p[`logre${n}`])
+        : (p[`hito${n}`] != null ? String(p[`hito${n}`]) : "");
+    if (!logre || logre.trim() === "") continue;
+    const influi = (p[`influi${n}`] != null && String(p[`influi${n}`]).trim() !== "")
+        ? String(p[`influi${n}`])
+        : (p[`bien${n}`] != null && String(p[`bien${n}`]).trim() !== "" ? String(p[`bien${n}`]) : "—");
+    filas.push([`Hito ${n}`, logre, influi]);
 }
 if (filas.length === 0) {
-    dv.paragraph("_Todavía no hay historia. Abrí el editor con el botón de arriba._");
+    dv.paragraph("_Sin hitos aún._");
 } else {
-    dv.table(["#", "Qué pasó", "Bien", "Mejorar", "Próxima"], filas);
+    dv.header(4, "Hitos");
+    dv.table(["#", "Qué logré", "Cómo influí"], filas);
 }
 ```
 
