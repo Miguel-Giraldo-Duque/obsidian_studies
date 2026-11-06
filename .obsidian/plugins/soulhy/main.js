@@ -15279,30 +15279,10 @@ class HitoStoryEditorModal extends Modal {
             });
 
             const titleText = titleRow.createDiv({ cls: 'rpg-hito-accordion-title-text' });
-            if (isOpen) {
-                const titleInput = titleText.createEl('input', {
-                    cls: 'rpg-hito-input rpg-aar-evento-title',
-                    attr: {
-                        type: 'text',
-                        spellcheck: 'true',
-                        placeholder: `Evento ${aar.n} · nombre…`
-                    }
-                });
-                titleInput.value = aar.titulo || '';
-                titleInput.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
-                });
-                titleInput.oninput = () => {
-                    aar.titulo = titleInput.value;
-                    this.dirty = true;
-                };
-            } else {
-                titleText.createDiv({
-                    cls: 'rpg-hito-accordion-label',
-                    text: aarTitleLabel
-                });
-            }
+            const headerLabelEl = titleText.createDiv({
+                cls: 'rpg-hito-accordion-label',
+                text: aarTitleLabel
+            });
 
             const chevronWrap = titleRow.createDiv({ cls: 'rpg-hito-accordion-chevron' });
             IbmIcons.mount(chevronWrap, isOpen ? 'chevronUp' : 'chevronDown', {
@@ -15315,11 +15295,18 @@ class HitoStoryEditorModal extends Modal {
                     e.preventDefault();
                     e.stopPropagation();
                 }
+                // Never toggle while typing in a field inside the card
+                const t = e?.target;
+                if (t && (t.closest?.('input, textarea, button, .rpg-hito-icon-btn') ||
+                    t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.tagName === 'BUTTON')) {
+                    return;
+                }
                 this.aarOpenIndex = isOpen ? -1 : idx;
                 this.render();
             };
             titleRow.addEventListener('click', toggle);
             titleRow.addEventListener('keydown', (e) => {
+                if (e.target !== titleRow) return;
                 if (e.key === 'Enter' || e.key === ' ') toggle(e);
             });
 
@@ -15330,6 +15317,31 @@ class HitoStoryEditorModal extends Modal {
                 cls: 'rpg-modal-subtitle',
                 text: `Fecha ${this.date} (automática)`
             });
+
+            const syncHeaderTitle = (raw) => {
+                const preview = String(raw || '').trim();
+                headerLabelEl.setText(
+                    preview
+                        ? `Evento ${aar.n} · ${preview.slice(0, 48)}${preview.length > 48 ? '…' : ''}`
+                        : `Evento ${aar.n}`
+                );
+            };
+
+            body.createDiv({ cls: 'rpg-hito-field-label', text: 'Nombre del evento' });
+            const titleInput = body.createEl('input', {
+                cls: 'rpg-hito-input rpg-aar-evento-title',
+                attr: {
+                    type: 'text',
+                    spellcheck: 'true',
+                    placeholder: 'Cita, pitch, lanzamiento…'
+                }
+            });
+            titleInput.value = aar.titulo || '';
+            titleInput.oninput = () => {
+                aar.titulo = titleInput.value;
+                this.dirty = true;
+                syncHeaderTitle(titleInput.value);
+            };
 
             const field = (label, key, rows, placeholder) => {
                 body.createDiv({ cls: 'rpg-hito-field-label', text: label });
@@ -15521,7 +15533,7 @@ class HitoStoryEditorModal extends Modal {
             });
 
             const titleText = titleRow.createDiv({ cls: 'rpg-hito-accordion-title-text' });
-            titleText.createDiv({
+            const hitoHeaderLabelEl = titleText.createDiv({
                 cls: 'rpg-hito-accordion-label',
                 text: hitoTitleLabel
             });
@@ -15546,11 +15558,17 @@ class HitoStoryEditorModal extends Modal {
                     e.preventDefault();
                     e.stopPropagation();
                 }
+                const t = e?.target;
+                if (t && (t.closest?.('input, textarea, button, .rpg-hito-icon-btn') ||
+                    t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.tagName === 'BUTTON')) {
+                    return;
+                }
                 this.openIndex = isOpen ? -1 : idx;
                 this.render();
             };
             titleRow.addEventListener('click', toggle);
             titleRow.addEventListener('keydown', (e) => {
+                if (e.target !== titleRow) return;
                 if (e.key === 'Enter' || e.key === ' ') toggle(e);
             });
 
@@ -15568,6 +15586,12 @@ class HitoStoryEditorModal extends Modal {
                 hito.logre = logreArea.value;
                 hito.paso = logreArea.value;
                 this.dirty = true;
+                const preview = logreArea.value.trim();
+                hitoHeaderLabelEl.setText(
+                    preview
+                        ? `Hito ${hito.n} · ${preview.slice(0, 48)}${preview.length > 48 ? '…' : ''}`
+                        : `Hito ${hito.n}`
+                );
             };
 
             body.createDiv({ cls: 'rpg-hito-field-label', text: '2. ¿Cómo influí en ello?' });
