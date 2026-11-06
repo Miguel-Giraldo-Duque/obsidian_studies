@@ -6571,48 +6571,79 @@ button.rpg-btn-ghost-danger:hover {
 .rpg-aar-accion-card {
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    padding: 10px;
-    margin: 8px 0;
-    border-radius: 8px;
+    gap: 4px;
+    padding: 6px 8px;
+    margin: 4px 0;
+    border-radius: 6px;
     border: 1px solid var(--background-modifier-border);
     background: var(--background-primary);
 }
 
-.rpg-aar-accion-card.is-suggested {
+.rpg-aar-accion-card.is-chosen {
+    background: var(--background-modifier-hover);
     border-color: var(--interactive-accent);
 }
 
-.rpg-aar-accion-card.is-chosen {
-    background: var(--background-modifier-hover);
+.rpg-aar-accion-texto {
+    min-height: 0;
+    resize: vertical;
 }
 
 .rpg-aar-score-row {
     display: flex;
     flex-wrap: wrap;
-    gap: 12px;
-    align-items: flex-start;
+    gap: 6px 10px;
+    align-items: center;
 }
 
 .rpg-aar-score-col {
-    flex: 1;
-    min-width: 140px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    flex: 0 0 auto;
+}
+
+.rpg-aar-score-label {
+    font-size: 0.75em;
+    color: var(--text-muted);
+    white-space: nowrap;
 }
 
 .rpg-aar-score-btns {
     display: flex;
-    flex-wrap: wrap;
-    gap: 4px;
+    flex-wrap: nowrap;
+    gap: 2px;
 }
 
 .rpg-aar-score-btn {
-    min-width: 28px;
-    padding: 2px 6px;
+    min-width: 22px;
+    height: 22px;
+    padding: 0 4px;
+    font-size: 0.8em;
+    line-height: 1;
+}
+
+.rpg-aar-rapida-btn {
+    min-height: 22px;
+    height: 22px;
+    padding: 0 7px;
+    font-size: 0.75em;
+    line-height: 1;
+    white-space: nowrap;
 }
 
 .rpg-aar-accion-choose {
     display: flex;
-    justify-content: flex-end;
+    flex-wrap: nowrap;
+    gap: 4px;
+    align-items: center;
+    margin-left: auto;
+}
+
+.rpg-aar-elegir-btn {
+    min-height: 22px;
+    padding: 0 8px;
+    font-size: 0.8em;
 }
 
 .rpg-hito-editor-bottom {

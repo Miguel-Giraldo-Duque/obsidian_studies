@@ -14676,6 +14676,7 @@ function emptyAccionDraft() {
         texto: '',
         impacto: 3,
         esfuerzo: 3,
+        rapida: false, // prueba en <7 días → boost en score
         elegida: false
     };
 }
@@ -14686,16 +14687,26 @@ function emptyAarDraft(n = 1) {
         titulo: '',
         intent: '',
         hechos: '',
-        gap: '',
-        whys: '',
+        gap: '', // gap + por qué (5 Whys) en un solo campo
         acciones: [emptyAccionDraft(), emptyAccionDraft(), emptyAccionDraft()]
     };
+}
+
+/** Merge legacy gap${n} + whys${n} into one campo 3. */
+function mergeAarGapWhys(gap, whys) {
+    const g = (gap || '').trim();
+    const w = (whys || '').trim();
+    if (!w) return gap || '';
+    if (!g) return whys || '';
+    if (g.includes(w)) return gap || '';
+    return `${g}\n\n${w}`;
 }
 
 function scoreAccionDraft(a) {
     const impacto = Math.max(1, Math.min(5, Number(a.impacto) || 3));
     const esfuerzo = Math.max(1, Math.min(5, Number(a.esfuerzo) || 3));
-    return impacto * (6 - esfuerzo);
+    const rapida = !!a.rapida;
+    return impacto * (6 - esfuerzo) * (rapida ? 1.5 : 1);
 }
 
 function readAarsFromFrontmatter(fm) {
@@ -14704,12 +14715,13 @@ function readAarsFromFrontmatter(fm) {
         const titulo = fm[`evento${n}`] != null ? String(fm[`evento${n}`]) : '';
         const intent = fm[`intent${n}`] != null ? String(fm[`intent${n}`]) : '';
         const hechos = fm[`hechos${n}`] != null ? String(fm[`hechos${n}`]) : '';
-        const gap = fm[`gap${n}`] != null ? String(fm[`gap${n}`]) : '';
-        const whys = fm[`whys${n}`] != null ? String(fm[`whys${n}`]) : '';
+        const gapRaw = fm[`gap${n}`] != null ? String(fm[`gap${n}`]) : '';
+        const whysRaw = fm[`whys${n}`] != null ? String(fm[`whys${n}`]) : '';
+        const gap = mergeAarGapWhys(gapRaw, whysRaw);
         const inm = fm[`accion_inm${n}`] != null ? String(fm[`accion_inm${n}`]) : '';
         const sis = fm[`accion_sis${n}`] != null ? String(fm[`accion_sis${n}`]) : '';
         const parking = fm[`accion_parking${n}`] != null ? String(fm[`accion_parking${n}`]) : '';
-        if (n === 1 || titulo.trim() || intent.trim() || hechos.trim() || gap.trim() || whys.trim() || inm.trim() || sis.trim()) {
+        if (n === 1 || titulo.trim() || intent.trim() || hechos.trim() || gap.trim() || inm.trim() || sis.trim()) {
             const acciones = [];
             if (inm.trim()) {
                 acciones.push({
@@ -14717,6 +14729,7 @@ function readAarsFromFrontmatter(fm) {
                     texto: inm,
                     impacto: 5,
                     esfuerzo: 2,
+                    rapida: true,
                     elegida: true,
                     tipo: 'inmediata'
                 });
@@ -14727,6 +14740,7 @@ function readAarsFromFrontmatter(fm) {
                     texto: sis,
                     impacto: 5,
                     esfuerzo: 3,
+                    rapida: false,
                     elegida: true,
                     tipo: 'sistematica'
                 });
@@ -14737,11 +14751,12 @@ function readAarsFromFrontmatter(fm) {
                     texto,
                     impacto: 3,
                     esfuerzo: 3,
+                    rapida: false,
                     elegida: false
                 });
             });
             while (acciones.length < 2) acciones.push(emptyAccionDraft());
-            aars.push({ n, titulo, intent, hechos, gap, whys, acciones });
+            aars.push({ n, titulo, intent, hechos, gap, acciones });
         }
     }
     if (aars.length === 0) aars.push(emptyAarDraft(1));
@@ -15065,7 +15080,7 @@ class HitoStoryEditorModal extends Modal {
                 fm[`intent${n}`] = aar.intent || '';
                 fm[`hechos${n}`] = aar.hechos || '';
                 fm[`gap${n}`] = aar.gap || '';
-                fm[`whys${n}`] = aar.whys || '';
+                // whys${n} queda borrado arriba: campo 3 unificado en gap
                 fm[`accion_inm${n}`] = inm ? String(inm.texto || '').trim() : '';
                 fm[`accion_sis${n}`] = sis && sis !== inm ? String(sis.texto || '').trim() : '';
                 if (parking.length) fm[`accion_parking${n}`] = parking.join('\n');
@@ -15149,29 +15164,65 @@ class HitoStoryEditorModal extends Modal {
         return row;
     }
 
+    /** Re-render without jumping the AAR/hito list scroll to the top. */
+    renderKeepingListScroll() {
+        const list = this.contentEl.querySelector('.rpg-hito-editor-list');
+        const top = list ? list.scrollTop : 0;
+        this.render();
+        const next = this.contentEl.querySelector('.rpg-hito-editor-list');
+        if (next) next.scrollTop = top;
+    }
+
     renderScoreRow(parent, accion) {
         const row = parent.createDiv({ cls: 'rpg-aar-score-row' });
         const mk = (label, key) => {
             const col = row.createDiv({ cls: 'rpg-aar-score-col' });
-            col.createDiv({
-                cls: 'rpg-hito-field-label',
-                text: `${label}: ${accion[key]}/5`
+            const labelEl = col.createSpan({
+                cls: 'rpg-aar-score-label',
+                text: `${label}: ${accion[key]}`
             });
             const btns = col.createDiv({ cls: 'rpg-aar-score-btns' });
+            const buttons = [];
             for (let n = 1; n <= 5; n++) {
                 const b = btns.createEl('button', {
                     text: String(n),
-                    cls: `rpg-btn secondary rpg-aar-score-btn${accion[key] === n ? ' is-active' : ''}`
+                    cls: `rpg-btn secondary rpg-aar-score-btn${accion[key] === n ? ' is-active' : ''}`,
+                    attr: { type: 'button' }
                 });
-                b.onclick = () => {
+                buttons.push(b);
+                b.onclick = (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
                     accion[key] = n;
                     this.dirty = true;
-                    this.render();
+                    // Update in place — full render() was scrolling the list to the top.
+                    labelEl.setText(`${label}: ${n}`);
+                    buttons.forEach((btn, i) => {
+                        btn.toggleClass('is-active', i + 1 === n);
+                    });
                 };
             }
         };
         mk('Impacto', 'impacto');
         mk('Esfuerzo', 'esfuerzo');
+
+        const rapidaCol = row.createDiv({ cls: 'rpg-aar-score-col' });
+        const rapidaBtn = rapidaCol.createEl('button', {
+            text: '<7d',
+            cls: `rpg-btn secondary rpg-aar-rapida-btn${accion.rapida ? ' is-active' : ''}`,
+            attr: {
+                type: 'button',
+                title: 'Prueba en menos de 7 días · ×1.5 en prioridad'
+            }
+        });
+        rapidaBtn.onclick = (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            accion.rapida = !accion.rapida;
+            this.dirty = true;
+            rapidaBtn.toggleClass('is-active', !!accion.rapida);
+        };
+
         return row;
     }
 
@@ -15295,8 +15346,12 @@ class HitoStoryEditorModal extends Modal {
 
             field('1. ¿Qué pretendíamos lograr?', 'intent', 3, 'Estrategia, objetivos, criterio de éxito');
             field('2. ¿Qué pasó en realidad?', 'hechos', 4, 'Hechos y evidencias · no la novela');
-            field('3. Gap (intent vs hechos)', 'gap', 2, '¿Cuál fue la diferencia?');
-            field('3b. ¿Por qué? (5 Whys en un solo texto)', 'whys', 7, '1. …\n2. …\nRaíz accionable:');
+            field(
+                '3. Gap y por qué (intent vs hechos · 5 Whys)',
+                'gap',
+                7,
+                '¿Cuál fue la diferencia?\n1. …\n2. …\nRaíz accionable:'
+            );
 
             body.createDiv({
                 cls: 'rpg-hito-field-label',
@@ -15304,28 +15359,24 @@ class HitoStoryEditorModal extends Modal {
             });
             body.createDiv({
                 cls: 'rpg-modal-subtitle',
-                text: 'Impacto × esfuerzo · elegí máximo 2'
+                text: 'Impacto × esfuerzo × <7d · elegí máximo 2'
             });
 
             if (!Array.isArray(aar.acciones) || aar.acciones.length === 0) {
-                aar.acciones = [emptyAccionDraft(), emptyAccionDraft()];
+                aar.acciones = [emptyAccionDraft()];
             }
 
-            const ranked = [...aar.acciones].sort(
-                (a, b) => scoreAccionDraft(b) - scoreAccionDraft(a)
-            );
             const elegidasCount = aar.acciones.filter(a => a.elegida).length;
-            const topIds = new Set(ranked.slice(0, 2).map(a => a.id));
 
-            ranked.forEach((accion) => {
+            aar.acciones.forEach((accion, accionIdx) => {
                 const box = body.createDiv({
-                    cls: `rpg-aar-accion-card${topIds.has(accion.id) ? ' is-suggested' : ''}${accion.elegida ? ' is-chosen' : ''}`
+                    cls: `rpg-aar-accion-card${accion.elegida ? ' is-chosen' : ''}`
                 });
                 const area = box.createEl('textarea', {
-                    cls: 'rpg-hito-textarea',
+                    cls: 'rpg-hito-textarea rpg-aar-accion-texto',
                     attr: {
                         spellcheck: 'true',
-                        rows: '2',
+                        rows: '1',
                         placeholder: 'Acción concreta…'
                     }
                 });
@@ -15334,11 +15385,35 @@ class HitoStoryEditorModal extends Modal {
                     accion.texto = area.value;
                     this.dirty = true;
                 };
-                this.renderScoreRow(box, accion);
-                const chooseRow = box.createDiv({ cls: 'rpg-aar-accion-choose' });
-                const chooseBtn = chooseRow.createEl('button', {
-                    text: accion.elegida ? '✓ Elegida' : 'Elegir',
-                    cls: `rpg-btn secondary${accion.elegida ? ' is-active' : ''}`
+                const scoreRow = this.renderScoreRow(box, accion);
+                const chooseWrap = scoreRow.createDiv({ cls: 'rpg-aar-accion-choose' });
+                const delAccionBtn = chooseWrap.createEl('button', {
+                    cls: 'rpg-hito-icon-btn rpg-hito-trash-btn',
+                    attr: {
+                        type: 'button',
+                        title: 'Borrar acción',
+                        'aria-label': 'Borrar acción'
+                    }
+                });
+                IbmIcons.mount(delAccionBtn, 'trashCan', { size: 14, className: 'rpg-hito-icon' });
+                delAccionBtn.onclick = () => {
+                    if (aar.acciones.length <= 1) {
+                        aar.acciones[0] = emptyAccionDraft();
+                    } else {
+                        aar.acciones.splice(accionIdx, 1);
+                    }
+                    this.dirty = true;
+                    this.renderKeepingListScroll();
+                };
+                const chooseBtn = chooseWrap.createEl('button', {
+                    text: accion.elegida ? '✓' : 'Elegir',
+                    cls: `rpg-btn secondary rpg-aar-elegir-btn${accion.elegida ? ' is-active' : ''}`,
+                    attr: {
+                        type: 'button',
+                        title: accion.elegida
+                            ? 'Elegida · se guarda como compromiso (máx. 2)'
+                            : 'Elegir como compromiso (máx. 2). El resto va a parking.'
+                    }
                 });
                 chooseBtn.onclick = () => {
                     if (!accion.elegida && elegidasCount >= 2) {
@@ -15347,19 +15422,20 @@ class HitoStoryEditorModal extends Modal {
                     }
                     accion.elegida = !accion.elegida;
                     this.dirty = true;
-                    this.render();
+                    this.renderKeepingListScroll();
                 };
             });
 
             const addAccionRow = body.createDiv({ cls: 'rpg-hito-editor-card-actions' });
             const addAccionBtn = addAccionRow.createEl('button', {
                 text: '+ Acción',
-                cls: 'rpg-btn secondary'
+                cls: 'rpg-btn secondary',
+                attr: { type: 'button' }
             });
             addAccionBtn.onclick = () => {
                 aar.acciones.push(emptyAccionDraft());
                 this.dirty = true;
-                this.render();
+                this.renderKeepingListScroll();
             };
         });
 
@@ -15382,7 +15458,7 @@ class HitoStoryEditorModal extends Modal {
             text: `${this.aars.length}/${AAR_MAX_COUNT}`
         });
 
-        const bottom = this.renderBottomBar({ showSave: true });
+        const bottom = this.renderBottomBar({ showSave: false });
         const nextBtn = bottom.createEl('button', {
             text: 'Siguiente · Hito',
             cls: 'rpg-btn'
@@ -15394,6 +15470,7 @@ class HitoStoryEditorModal extends Modal {
     }
 
     renderHitoStep() {
+        const service = new VowService(this.plugin);
         this.renderTopBar('Hito · reconocer');
         this.renderStepPills('hito');
         this.contentEl.createEl('p', {
@@ -15448,6 +15525,16 @@ class HitoStoryEditorModal extends Modal {
                 cls: 'rpg-hito-accordion-label',
                 text: hitoTitleLabel
             });
+            if (hito.vowIds?.length) {
+                const pills = titleText.createDiv({ cls: 'rpg-hito-accordion-pills' });
+                hito.vowIds.forEach(id => {
+                    const vow = service.getVow(id);
+                    pills.createSpan({
+                        cls: 'rpg-hito-vow-pill',
+                        text: vow ? vow.title : id
+                    });
+                });
+            }
             const chevronWrap = titleRow.createDiv({ cls: 'rpg-hito-accordion-chevron' });
             IbmIcons.mount(chevronWrap, isOpen ? 'chevronUp' : 'chevronDown', {
                 size: 16,
@@ -15494,6 +15581,23 @@ class HitoStoryEditorModal extends Modal {
                 hito.bien = influiArea.value;
                 this.dirty = true;
             };
+
+            const vowRow = body.createDiv({ cls: 'rpg-hito-editor-card-actions' });
+            const linkBtn = vowRow.createEl('button', {
+                text: 'Vincular a vow',
+                cls: 'rpg-btn secondary',
+                attr: { type: 'button' }
+            });
+            linkBtn.onclick = () => {
+                const experience = (hito.logre || hito.paso || '').trim();
+                if (!experience) {
+                    new Notice('Escribí «Qué logré» antes de vincular');
+                    return;
+                }
+                this.pickHitoIndex = idx;
+                this.screen = 'pick';
+                this.render();
+            };
         });
 
         const addRow = this.contentEl.createDiv({ cls: 'rpg-hito-editor-add-row' });
@@ -15532,10 +15636,11 @@ class HitoStoryEditorModal extends Modal {
         const service = new VowService(this.plugin);
         const vows = service.listVows();
         const hito = this.hitos[this.pickHitoIndex];
+        const experience = (hito?.logre || hito?.paso || '').trim();
         this.renderTopBar('Vincular a vow');
         this.contentEl.createEl('p', {
             cls: 'rpg-modal-subtitle',
-            text: (hito?.paso || '').trim().slice(0, 180) || 'Sin escena'
+            text: experience.slice(0, 180) || 'Sin escena'
         });
 
         if (hito?.vowIds?.length) {
@@ -15558,7 +15663,8 @@ class HitoStoryEditorModal extends Modal {
                 const already = (hito.vowIds || []).some(id => String(id) === String(v.id));
                 const btn = list.createEl('button', {
                     cls: `rpg-btn secondary rpg-hito-vow-pick-btn${already ? ' is-disabled' : ''}`,
-                    text: `${v.title} (${service.revealedCount(v)}/${service.targetCells(v)})${already ? ' · ya vinculado' : ''}`
+                    text: `${v.title} (${service.revealedCount(v)}/${service.targetCells(v)})${already ? ' · ya vinculado' : ''}`,
+                    attr: { type: 'button' }
                 });
                 btn.disabled = already;
                 btn.onclick = async () => {
@@ -15567,7 +15673,7 @@ class HitoStoryEditorModal extends Modal {
                             file: this.file,
                             date: this.date,
                             hitoIndex: hito.n,
-                            experience: hito.paso,
+                            experience,
                             vowId: v.id,
                             existingVowIds: hito.vowIds
                         });
