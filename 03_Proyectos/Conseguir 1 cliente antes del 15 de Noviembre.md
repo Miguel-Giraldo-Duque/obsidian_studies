@@ -15,6 +15,8 @@ Inicio: 05-nov | Fin: 15-nov | Días: **11** | Score meta: ≥ **85%** de tácti
 
 ## 1) Objetivo
 
+Lograr 2mil dólares.
+
 Conseguir **1 seña** de sitio web antes del 15 de noviembre (calle + referidos).
 
 ## 2) Key Results
@@ -23,6 +25,8 @@ Conseguir **1 seña** de sitio web antes del 15 de noviembre (calle + referidos)
 - [ ] KR2: 3–5 leads calientes (next step agendado: reunión, propuesta o seña)
 - [ ] KR3: 1 video simulado del agente listo para mostrar (8 Onzas)
 
+
+#### Identidad
 ## 3) Lead measures (lo que controlás)
 
 | Lead | Meta diaria | Meta sprint (11 días) |
@@ -124,7 +128,6 @@ dv.table(
 ```
 
 ### 2026-11-05
-- [x] role · Role-play guion 30s + seña
 - [x] local · Local 1 (dueño + pitch)
 - [x] local · Local 2
 - [ ] local · Local 3
@@ -136,19 +139,17 @@ dv.table(
 - [x] habito · Cuando tome acción por un objetivo me voy a celebrar levantando los brazos y decir "1M de 10"
 
 ### 2026-11-06
-- [ ] role · Role-play guion 30s + seña
 - [ ] local · Local 1 (dueño + pitch)
 - [ ] local · Local 2
 - [ ] local · Local 3
 - [ ] local · Local 4
-- [ ] review · Aplicar una corrección
-- [ ] habito · Teatro 10 min
-- [ ] habito · Cuando sienta incomodidad me dire es parte del proceso
-- [ ] habito · Noche éxito + corrección
-- [ ] habito · Cuando tome acción por un objetivo me voy a celebrar levantando los brazos y decir "1M de 10"
+- [x] review · Aplicar una corrección
+- [x] habito · Teatro 10 min
+- [x] habito · Cuando sienta incomodidad me dire es parte del proceso
+- [x] habito · Noche éxito + corrección
+- [x] habito · Cuando tome acción por un objetivo me voy a celebrar levantando los brazos y decir "1M de 10"
 
 ### 2026-11-07
-- [ ] role · Role-play guion 30s + seña
 - [ ] local · Local 1 (dueño + pitch)
 - [ ] local · Local 2
 - [ ] local · Local 3
@@ -158,9 +159,8 @@ dv.table(
 - [ ] habito · Cuando sienta incomodidad me dire es parte del proceso
 - [ ] habito · Noche éxito + corrección
 - [ ] habito · Cuando tome acción por un objetivo me voy a celebrar levantando los brazos y decir "1M de 10"
-
+- [ ] habito · Dedicar 1H diaria a mejorar el negocio
 ### 2026-11-08
-- [ ] role · Role-play guion 30s + seña
 - [ ] local · Local 1 (dueño + pitch)
 - [ ] local · Local 2
 - [ ] local · Local 3
@@ -170,9 +170,8 @@ dv.table(
 - [ ] habito · Cuando sienta incomodidad me dire es parte del proceso
 - [ ] habito · Noche éxito + corrección
 - [ ] habito · Cuando tome acción por un objetivo me voy a celebrar levantando los brazos y decir "1M de 10"
-
+- [ ] habito · Dedicar 1H diaria a mejorar el negocio
 ### 2026-11-09
-- [ ] role · Role-play guion 30s + seña
 - [ ] local · Local 1 (dueño + pitch)
 - [ ] local · Local 2
 - [ ] local · Local 3
@@ -182,9 +181,8 @@ dv.table(
 - [ ] habito · Cuando sienta incomodidad me dire es parte del proceso
 - [ ] habito · Noche éxito + corrección
 - [ ] habito · Cuando tome acción por un objetivo me voy a celebrar levantando los brazos y decir "1M de 10"
-
+- [ ] habito · Dedicar 1H diaria a mejorar el negocio
 ### 2026-11-10
-- [ ] role · Role-play guion 30s + seña
 - [ ] local · Local 1 (dueño + pitch)
 - [ ] local · Local 2
 - [ ] local · Local 3
@@ -194,9 +192,8 @@ dv.table(
 - [ ] habito · Cuando sienta incomodidad me dire es parte del proceso
 - [ ] habito · Noche éxito + corrección
 - [ ] habito · Cuando tome acción por un objetivo me voy a celebrar levantando los brazos y decir "1M de 10"
-
+- [ ] habito · Dedicar 1H diaria a mejorar el negocio
 ### 2026-11-11
-- [ ] role · Role-play guion 30s + seña
 - [ ] local · Local 1 (dueño + pitch)
 - [ ] local · Local 2
 - [ ] local · Local 3
@@ -206,9 +203,8 @@ dv.table(
 - [ ] habito · Cuando sienta incomodidad me dire es parte del proceso
 - [ ] habito · Noche éxito + corrección
 - [ ] habito · Cuando tome acción por un objetivo me voy a celebrar levantando los brazos y decir "1M de 10"
-
+- [ ] habito · Dedicar 1H diaria a mejorar el negocio
 ### 2026-11-12
-- [ ] role · Role-play guion 30s + seña
 - [ ] local · Local 1 (dueño + pitch)
 - [ ] local · Local 2
 - [ ] local · Local 3
@@ -218,9 +214,8 @@ dv.table(
 - [ ] habito · Cuando sienta incomodidad me dire es parte del proceso
 - [ ] habito · Noche éxito + corrección
 - [ ] habito · Cuando tome acción por un objetivo me voy a celebrar levantando los brazos y decir "1M de 10"
-
+- [ ] habito · Dedicar 1H diaria a mejorar el negocio
 ### 2026-11-13
-- [ ] role · Role-play guion 30s + seña
 - [ ] local · Local 1 (dueño + pitch)
 - [ ] local · Local 2
 - [ ] local · Local 3
@@ -230,26 +225,26 @@ dv.table(
 - [ ] habito · Cuando sienta incomodidad me dire es parte del proceso
 - [ ] habito · Noche éxito + corrección
 - [ ] habito · Cuando tome acción por un objetivo me voy a celebrar levantando los brazos y decir "1M de 10"
-
+- [ ] habito · Dedicar 1H diaria a mejorar el negocio
 ### 2026-11-14
-- [ ] role · Role-play guion 30s + seña
 - [ ] local · Local 1 (dueño + pitch)
 - [ ] local · Local 2
 - [ ] local · Local 3
 - [ ] local · Local 4
 - [ ] review · Aplicar una corrección
+- [ ] habito · Dedicar 1H diaria a mejorar el negocio
 - [ ] habito · Teatro 10 min
 - [ ] habito · Cuando sienta incomodidad me dire es parte del proceso
 - [ ] habito · Noche éxito + corrección
 - [ ] habito · Cuando tome acción por un objetivo me voy a celebrar levantando los brazos y decir "1M de 10"
 
 ### 2026-11-15
-- [ ] role · Role-play guion 30s + seña
 - [ ] local · Local 1 (dueño + pitch)
 - [ ] local · Local 2
 - [ ] local · Local 3
 - [ ] local · Local 4
 - [ ] review · Aplicar una corrección
+- [ ] habito · Dedicar 1H diaria a mejorar el negocio
 - [ ] habito · Teatro 10 min
 - [ ] habito · Cuando sienta incomodidad me dire es parte del proceso
 - [ ] habito · Noche éxito + corrección
@@ -326,7 +321,59 @@ Dígase acción todo paso que me acerque a la meta
 
 ## Ruta de aprendizaje (ratos muertos)
 
-Orden: **1) Ventas LI → 2) GEO/SEO LI → 3) Psycho-Cybernetics**.
+#### Identidad
+
+1. Construir las imágenes: 1/4 vendiendo un negocio de un sitio web en el último piso en el lugar más consiguen blancos, coraciones doradas de oro, un hombre en traje con mucha admiración. Se sentaba abierto y obras mirando todo alrededor por mi computadora al frente. Le vendo al señor. Ahí de los millones. Yo en ese dólares en mi mano.
+2. Tener una meta
+3. ¿Que hábitos físicos y mentales tiene esa persona?
+	- Habitos mentales :
+		- Ve todo a su favor, es positivo hasta el punto de doblar cada tropiezo como crecimiento, cada victoria como merecida, la mirada runcida, todo.
+		- Es amable y amoroso consigo mismo, se apoya en todas especialmente cuando las cosas
+		- Esta centrado en el otro. Sus pensamientos son: ¿Que dolor tiene? ¿Que quiere solucionar? ¿Que emociones le dejo? 
+		- Esta cinvencido de sue imapcto con "Todos quieren hablar", "Todos son interesantes", "Dejo una sonrisa por donde voy", "La personas confian en mi", "No necesito cumplir ni probarles nada. "
+		- Se felcita a cada logro
+		- Sueña y es ambciosos,  vizualiza sus mas alocados sueños, sus obstaculos
+		- Ante distracciones se dice "1,2,3  y  vuelve al trabajo", o cuando esta tentado "aun no en 15min " y lo repite hasta que la ola pasa
+		- Cuando se distrae conecta con sus pies y vuelve al presente.
+		- Se dice merecedor de sus sueños, su mente es "Lo voy a lograr", "Lo meresco", "Llegara"
+		- Cuando aparece pensamientos que no le funcionan, los ve como nubes, los nomraliza entiende que aprten del rpcoeso, se trata bien y entonces se motiva a si mismo, y vizualiza soltando la responsabilidad
+		- Su mente es. No hay excusa valida para no ir por lo que quiero
+		- Su mente es ¿Quiero? si es si, mueve tierra y mar, para conseguir los recursos e ir por ello.
+		- Su mente es, este es mi estilo de vida no improta si llueve, cae un rayo, o hay un apocalipsis me mantendre conssitente
+		- Cuando se siente incomodo entonces saborea su incomodidad tomando acción en los 3 segundos
+		- Se da permiso de "No necesito saber todo para ser amado", "Me mereco amor", "Me meresco el exito", "No necesito estar perfecto para ser amado, para ser valorado, ya soy valioso"
+		- Cuando se encuentra el no, el rechazo, o el fallo se dice "Lo voy a aprender", "Voy a entontrar el punto en comun", "Estoy un paso mas cerca" el bsuca el rechazo por que quiere obtener feedback real del mundo para mejorarse a si mismo
+		- No trata de cumplir expectativas, ni de llenar ideas, el cumple su palabra a ragatabal y hace todo humanamente, y cuando no peude simplemente lo acepta
+		- Agradece al mundo, lo ve como un regalo o potecial regalo, y retirbuye de forma cosntante desde la gratitud.
+		- Se vizualiza a si mismo como el campeon como lider de su barco 
+		- Vizualiza cada sitauccion previa como un "Que tal si va bien y..." imagina el resultado
+		- Saborea la incomodidad por que cuanod la siente la identiifca como "Esto me convierte en alguien aun mas fuerte, y recolectare los frutos de esto, es temporal"
+		- Incluso cuando no se siente comodo se dice, "Lo hare igual me amo"
+		- Concidera totodo el mundo como que le podria interesar su producto, que el puede ayudar a cualquiera, que todas las conversaciones ya estan abiertas
+		- Cuando alguien le dice de su sufrienmeitno trata de ponerse en lugar en de donde vino, que le duele, su hsitoria
+		- Cuando ve el enojo de otros los imagina en su lecho de muerte cuales serian sus ultimas plabras sus arrepentimientos y atenderia.
+		- Cuando se despide de cualquier persona les desea un feliz dia, en su mente dice "Ojala le vaya bien", " que se mejore"
+		- Cuando siente miedo se enfoca en als otras perosnas y pensar en ayudarlas
+		  
+	- Habitos fisicos:
+	  -  Todos los dias medita
+	  -  Todos los dias ejercita la benevolencia deseando el bien a los demas
+	  -  Todos los dias agradece en su dia
+	  - Todos los dias propecta neuvos clientes
+	  - Todos las semanas escribe un post 
+	  - Todos los dias se celebrar, organiza y planea su día
+	  - Todos los días se analiza y planifica tomar acción sobre sus errores, y extios
+	  - Todos los dias busca evidencia de su propio progreso escirbeind o en su diario
+	  - Todos los dias vizualiza su propuesta de valor la repite mire obtaculos y esta ahi
+	  - Todos los dias vuelve a casa con un notepad sobre que aprednio d elas perosnas de hoy, sobre que les preocupaba, sobre que quieren lograr, sobre una historia
+	  - Todos los dias saluda y desea el bien desear a los demas, se imagina su dolor y les ofrece una sonrisa calida.
+
+	-  Todos los días ofrece 4 al menos, semanalmente 45 ofertas, mensualmente 180
+	  - Todos los dias 1 sección de rpactica del pitch Semanal una practica con el coach mensualmente 31 practicas realziadas y 4 parcias smenales con coach
+	  - Trabajar 1H diaria en mejorar el producto todos los dias
+	  - 
+4. Implementarlos hoy. 
+
 
 ### 1) Fundamentos de ventas B2B/B2C (LinkedIn Learning)
 
@@ -343,26 +390,7 @@ Orden: **1) Ventas LI → 2) GEO/SEO LI → 3) Psycho-Cybernetics**.
 3. How to show proof of your solution
 4. (opcional) Create a prospecting process
 
-### 2) GEO + SEO (LinkedIn Learning)
 
-1. [AI search and generative engine optimization (GEO)](https://www.linkedin.com/learning/ai-and-digital-marketing-trends/ai-search-and-generative-engine-optimization-geo)
-2. [How to get started with SEO and GEO](https://www.linkedin.com/learning/digital-marketing-foundations-26945172/how-to-get-started-with-seo-geo) (`digital-marketing-foundations-26945172`)
-3. AI for discovery + SEO measurement and AI — [SEO Foundations](https://www.linkedin.com/learning/seo-foundations-14828080)
-4. [Learning Local SEO](https://www.linkedin.com/learning/learning-local-seo): general vs local → ranking factors → GMB/GBP → reviews → tags → content for searcher intent
-5. SEO Foundations selectas: keywords · on-page · structured data · Search Console · measuring performance
-6. (opcional entrega) [Using AI as Your SEO Assistant](https://www.linkedin.com/learning/using-ai-as-your-seo-assistant): schema markup · intent keywords · optimize content
-
-### 3) [[Psycho-Cybernetics]] (7 piezas)
-
-PDF: `04_Libros/Maxwell Maltz - Psycho-Cybernetics (0, Perigee) - libgen.li.pdf`
-
-0. Prefacio  
-1. Ch.1 Autoimagen  
-2. Ch.2 Success Mechanism  
-3. Ch.3 Imaginación  
-4. Ch.4 Creencias falsas  
-5. Ch.6 No atascar (Relax / Don’t Jam)  
-6. Ch.14 Winning Feeling  
 
 ---
 
