@@ -19,15 +19,114 @@ vowIds1: []
 # 🧠 Dashboard Diario: <% tp.file.title %>
 
 ## Misiones pendientes días Anteriores
-> [!warning] Tareas de esta semana que quedaron sin marcar:
+> [!warning] Tareas de esta semana que quedaron sin marcar 
 ```dataviewjs
+function prioNivel(text) {
+    const raw = String(text || "");
+    if (/\^{3}/.test(raw)) return 3;
+    if (/\^{2}/.test(raw)) return 2;
+    if (/\^/.test(raw)) return 1;
+    return 0;
+}
+function prioTag(n) {
+    return n === 3 ? "^^^" : n === 2 ? "^^" : n === 1 ? "^" : "";
+}
+function prioClean(text) {
+    return String(text || "")
+        .replace(/\*{0,2}\^{1,3}\*{0,2}/g, "")
+        .replace(/\s+/g, " ")
+        .trim();
+}
+async function toggleSemanal(path, line, done) {
+    const af = app.vault.getAbstractFileByPath(path);
+    if (!af) return;
+    const content = await app.vault.read(af);
+    const lines = content.split("\n");
+    const i = line - 1;
+    if (i < 0 || i >= lines.length) return;
+    lines[i] = lines[i].replace(/^((?:>\s*)?- )\[[^\]]*\]/, `$1[${done ? "x" : " "}]`);
+    await app.vault.modify(af, lines.join("\n"));
+}
+function stylePrioBadge(el, n) {
+    el.style.fontFamily = "var(--font-monospace)";
+    el.style.fontWeight = "800";
+    el.style.flex = "0 0 auto";
+    el.style.letterSpacing = "0.06em";
+    el.style.fontSize = n === 3 ? "0.82em" : "0.78em";
+    el.style.padding = "3px 9px";
+    el.style.borderRadius = "999px";
+    el.style.minWidth = "3em";
+    el.style.textAlign = "center";
+    el.style.lineHeight = "1.35";
+    el.style.border = "1px solid transparent";
+    if (n === 3) {
+        el.style.background = "rgba(245, 197, 66, 0.22)";
+        el.style.color = "#f0c14b";
+        el.style.borderColor = "rgba(245, 197, 66, 0.75)";
+        el.style.boxShadow = "0 0 10px rgba(245, 197, 66, 0.35)";
+        el.title = "Main · máxima prioridad";
+    } else if (n === 2) {
+        el.style.background = "rgba(126, 184, 255, 0.18)";
+        el.style.color = "#7eb8ff";
+        el.style.borderColor = "rgba(126, 184, 255, 0.6)";
+        el.style.boxShadow = "0 0 6px rgba(126, 184, 255, 0.22)";
+        el.title = "Side · alta";
+    } else if (n === 1) {
+        el.style.background = "rgba(110, 207, 150, 0.16)";
+        el.style.color = "#6bcf8e";
+        el.style.borderColor = "rgba(110, 207, 150, 0.5)";
+        el.title = "Quest · importante";
+    } else {
+        el.style.background = "transparent";
+        el.style.color = "var(--text-faint)";
+        el.style.borderColor = "var(--background-modifier-border)";
+        el.style.opacity = "0.55";
+        el.title = "Secundaria";
+    }
+}
+function renderMisiones(tasks, path) {
+    const list = [...tasks].sort((a, b) => {
+        const d = prioNivel(b.text) - prioNivel(a.text);
+        if (d !== 0) return d;
+        return (a.line || 0) - (b.line || 0);
+    });
+    const wrap = dv.el("div");
+    for (const t of list) {
+        const n = prioNivel(t.text);
+        const row = wrap.createEl("div");
+        row.style.display = "flex";
+        row.style.gap = "10px";
+        row.style.alignItems = "center";
+        row.style.margin = "4px 0";
+        row.style.padding = n === 3 ? "5px 8px" : "3px 6px";
+        row.style.borderRadius = "8px";
+        if (n === 3) {
+            row.style.background = "rgba(245, 197, 66, 0.07)";
+            row.style.outline = "1px solid rgba(245, 197, 66, 0.22)";
+        } else if (n === 2) {
+            row.style.background = "rgba(126, 184, 255, 0.05)";
+        }
+        const chk = row.createEl("input");
+        chk.type = "checkbox";
+        chk.checked = !!t.completed;
+        chk.addEventListener("change", () => toggleSemanal(path, t.line, chk.checked));
+        const tag = row.createEl("span", { text: prioTag(n) || "·" });
+        stylePrioBadge(tag, n);
+        const label = row.createEl("span", { text: prioClean(t.text) || "(sin texto)" });
+        label.style.flex = "1 1 auto";
+        if (n === 3) label.style.fontWeight = "600";
+        if (n === 0) label.style.opacity = "0.72";
+    }
+    return list.length > 0;
+}
+
 let hoyStr = dv.current().file.name;
 let fechaNota = moment(hoyStr, "YYYY-MM-DD");
 
 if (fechaNota.isValid()) {
     let numeroSemanaISO = String(fechaNota.isoWeek()).padStart(2, '0');
     let nombreSemana = fechaNota.format("YYYY") + "-W" + numeroSemanaISO;
-    let sem = dv.pages("#sprint/semanal").find(p => 
+    let sem = dv.pages("#sprint/semanal").find(p =>
         p.file.name.toLowerCase().includes(nombreSemana.toLowerCase())
     );
 
@@ -36,11 +135,9 @@ if (fechaNota.isValid()) {
             app.vault.getAbstractFileByPath(sem.file.path)
         );
 
-        // Recolectamos todas las fechas de headings que sean anteriores a hoy
         let headingsAnteriores = (cache.headings || [])
             .map(h => h.heading)
             .filter(h => {
-                // Extraemos fecha del heading (formato: "2026-06-05" o "2026-06-05 - Friday")
                 let match = h.match(/^(\d{4}-\d{2}-\d{2})/);
                 if (!match) return false;
                 let fechaHeading = moment(match[1], "YYYY-MM-DD");
@@ -52,16 +149,12 @@ if (fechaNota.isValid()) {
         } else {
             let tareasPendientes = sem.file.tasks.where(t => {
                 if (t.completed) return false;
-                // Excluir hábitos
                 if (t.text.startsWith("habito")) return false;
-                // Verificar que la sección de la tarea corresponde a un heading anterior
                 let subpath = t.section?.subpath || "";
                 return headingsAnteriores.some(h => subpath.startsWith(h.substring(0, 10)));
             });
 
-            if (tareasPendientes.length > 0) {
-                dv.taskList(tareasPendientes, false);
-            } else {
+            if (!renderMisiones(tareasPendientes, sem.file.path)) {
                 dv.paragraph("✅ ¡Todo al día, no hay pendientes de días anteriores!");
             }
         }
@@ -73,24 +166,126 @@ if (fechaNota.isValid()) {
 
 ---
 
-## Misiones de hoy 
-> [!info] Tu bloque de enfoque asignado para hoy:
+## Misiones de hoy
+> [!info] Bloque de hoy 
 ```dataviewjs
-let hoyStr = dv.current().file.name; // Lee "2026-05-30"
+function prioNivel(text) {
+    const raw = String(text || "");
+    if (/\^{3}/.test(raw)) return 3;
+    if (/\^{2}/.test(raw)) return 2;
+    if (/\^/.test(raw)) return 1;
+    return 0;
+}
+function prioTag(n) {
+    return n === 3 ? "^^^" : n === 2 ? "^^" : n === 1 ? "^" : "";
+}
+function prioClean(text) {
+    return String(text || "")
+        .replace(/\*{0,2}\^{1,3}\*{0,2}/g, "")
+        .replace(/\s+/g, " ")
+        .trim();
+}
+async function toggleSemanal(path, line, done) {
+    const af = app.vault.getAbstractFileByPath(path);
+    if (!af) return;
+    const content = await app.vault.read(af);
+    const lines = content.split("\n");
+    const i = line - 1;
+    if (i < 0 || i >= lines.length) return;
+    lines[i] = lines[i].replace(/^((?:>\s*)?- )\[[^\]]*\]/, `$1[${done ? "x" : " "}]`);
+    await app.vault.modify(af, lines.join("\n"));
+}
+function stylePrioBadge(el, n) {
+    el.style.fontFamily = "var(--font-monospace)";
+    el.style.fontWeight = "800";
+    el.style.flex = "0 0 auto";
+    el.style.letterSpacing = "0.06em";
+    el.style.fontSize = n === 3 ? "0.82em" : "0.78em";
+    el.style.padding = "3px 9px";
+    el.style.borderRadius = "999px";
+    el.style.minWidth = "3em";
+    el.style.textAlign = "center";
+    el.style.lineHeight = "1.35";
+    el.style.border = "1px solid transparent";
+    if (n === 3) {
+        el.style.background = "rgba(245, 197, 66, 0.22)";
+        el.style.color = "#f0c14b";
+        el.style.borderColor = "rgba(245, 197, 66, 0.75)";
+        el.style.boxShadow = "0 0 10px rgba(245, 197, 66, 0.35)";
+        el.title = "Main · máxima prioridad";
+    } else if (n === 2) {
+        el.style.background = "rgba(126, 184, 255, 0.18)";
+        el.style.color = "#7eb8ff";
+        el.style.borderColor = "rgba(126, 184, 255, 0.6)";
+        el.style.boxShadow = "0 0 6px rgba(126, 184, 255, 0.22)";
+        el.title = "Side · alta";
+    } else if (n === 1) {
+        el.style.background = "rgba(110, 207, 150, 0.16)";
+        el.style.color = "#6bcf8e";
+        el.style.borderColor = "rgba(110, 207, 150, 0.5)";
+        el.title = "Quest · importante";
+    } else {
+        el.style.background = "transparent";
+        el.style.color = "var(--text-faint)";
+        el.style.borderColor = "var(--background-modifier-border)";
+        el.style.opacity = "0.55";
+        el.title = "Secundaria";
+    }
+}
+function renderMisiones(tasks, path) {
+    const list = [...tasks].sort((a, b) => {
+        const d = prioNivel(b.text) - prioNivel(a.text);
+        if (d !== 0) return d;
+        return (a.line || 0) - (b.line || 0);
+    });
+    const wrap = dv.el("div");
+    for (const t of list) {
+        const n = prioNivel(t.text);
+        const row = wrap.createEl("div");
+        row.style.display = "flex";
+        row.style.gap = "10px";
+        row.style.alignItems = "center";
+        row.style.margin = "4px 0";
+        row.style.padding = n === 3 ? "5px 8px" : "3px 6px";
+        row.style.borderRadius = "8px";
+        if (n === 3) {
+            row.style.background = "rgba(245, 197, 66, 0.07)";
+            row.style.outline = "1px solid rgba(245, 197, 66, 0.22)";
+        } else if (n === 2) {
+            row.style.background = "rgba(126, 184, 255, 0.05)";
+        }
+        const chk = row.createEl("input");
+        chk.type = "checkbox";
+        chk.checked = !!t.completed;
+        chk.addEventListener("change", () => toggleSemanal(path, t.line, chk.checked));
+        const tag = row.createEl("span", { text: prioTag(n) || "·" });
+        stylePrioBadge(tag, n);
+        const label = row.createEl("span", { text: prioClean(t.text) || "(sin texto)" });
+        label.style.flex = "1 1 auto";
+        if (n === 3) label.style.fontWeight = "600";
+        if (n === 0) label.style.opacity = "0.72";
+    }
+    return list.length > 0;
+}
+
+let hoyStr = dv.current().file.name;
 let numeroSemana = String(moment(hoyStr).isoWeek()).padStart(2, '0');
 let nombreSemana = moment(hoyStr).format("YYYY") + "-W" + numeroSemana;
 
 let sem = dv.pages("#sprint/semanal").find(p => p.file.name.toLowerCase().includes(nombreSemana.toLowerCase()));
 
-if(sem) {
-    // Usamos el cache de Obsidian para buscar el encabezado de forma ultra-flexible
+if (sem) {
     let cache = app.metadataCache.getFileCache(app.vault.getAbstractFileByPath(sem.file.path));
-    // Filtramos buscando el título que EMPIECE con la fecha de hoy (ignora si dice " - Saturday" al lado)
     let encabezadoHoy = cache.headings?.find(h => h.heading.startsWith(hoyStr));
-    
+
     if (encabezadoHoy) {
-        // Renderiza los checkboxes reales de texto plano que viven bajo ese título específico
-        dv.taskList(sem.file.tasks.where(t => t.section.subpath.startsWith(hoyStr)), false);
+        const tasksHoy = sem.file.tasks.where(t =>
+            !String(t.text || "").startsWith("habito") &&
+            (t.section?.subpath || "").startsWith(hoyStr)
+        );
+        if (!renderMisiones(tasksHoy, sem.file.path)) {
+            dv.paragraph("_Sin tareas en el bloque de hoy._");
+        }
     } else {
         dv.paragraph("✅ ¡No tienes bloques de trabajo asignados para hoy, manito!");
     }

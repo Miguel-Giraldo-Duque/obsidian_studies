@@ -1,0 +1,366 @@
+---
+tags:
+  - sprint/semanal
+objetivo_norte: ""
+---
+# Agenda Semanal - Untitled 1
+
+## Objetivos concretos
+
+## Priorizar
+
+> Fuente: [[01_Planificacion/02_Semanal/Inbox|Inbox global]] · solo **pendientes** · `Peso = I × (6−E) × (6−T)`.
+
+```dataviewjs
+/** Tabla desde Inbox global — solo abiertas. Sin asignación a días. */
+const INBOX_PATH = "01_Planificacion/02_Semanal/Inbox.md";
+const WEEK_PATH = dv.current().file.path;
+
+function clamp(n) {
+    const x = Number(n);
+    if (!Number.isFinite(x)) return null;
+    return Math.max(1, Math.min(5, Math.round(x)));
+}
+function peso(e, t, i) { return i * (6 - e) * (6 - t); }
+function cleanText(raw) {
+    return String(raw || "").replace(/\[(\w+)::\s*[^\]]*\]/g, "").replace(/\s+/g, " ").trim();
+}
+function uid() {
+    return "r-" + Date.now().toString(36) + "-" + Math.random().toString(36).slice(2, 6);
+}
+
+function getEditorFor(path) {
+    for (const leaf of app.workspace.getLeavesOfType("markdown")) {
+        const view = leaf.view;
+        if (view?.file?.path === path && view.editor) return view.editor;
+    }
+    return null;
+}
+async function readPath(path) {
+    const ed = getEditorFor(path);
+    if (ed) return ed.getValue().split("\n");
+    return (await app.vault.read(app.vault.getAbstractFileByPath(path))).split("\n");
+}
+async function writePath(path, next) {
+    const ed = getEditorFor(path);
+    if (ed) { ed.setValue(next); return; }
+    await app.vault.modify(app.vault.getAbstractFileByPath(path), next);
+}
+
+const norte = (dv.current().objetivo_norte != null ? String(dv.current().objetivo_norte) : "").trim();
+if (norte) dv.paragraph(`**Norte:** ${norte}`);
+
+const inboxAf = app.vault.getAbstractFileByPath(INBOX_PATH);
+if (!inboxAf) {
+    dv.paragraph("_Falta la nota Inbox global._");
+} else {
+const inboxPage = dv.page(INBOX_PATH) || dv.page("01_Planificacion/02_Semanal/Inbox");
+const rawTasks = inboxPage?.file?.tasks;
+const openTasks = rawTasks ? rawTasks.where((t) => !t.completed) : [];
+
+let localRows = [];
+for (const t of openTasks) {
+    const e = clamp(t.e) ?? 3;
+    const tm = clamp(t.t) ?? 3;
+    const i = clamp(t.i) ?? 3;
+    localRows.push({
+        key: uid(),
+        text: cleanText(t.text),
+        e, t: tm, i,
+        peso: peso(e, tm, i),
+    });
+}
+
+const wrap = dv.el("div");
+const topBar = wrap.createEl("div");
+topBar.style.display = "flex";
+topBar.style.gap = "10px";
+topBar.style.alignItems = "center";
+topBar.style.marginBottom = "8px";
+const openBtn = topBar.createEl("button", { text: "Abrir Inbox" });
+openBtn.addEventListener("click", () => app.workspace.openLinkText(INBOX_PATH, WEEK_PATH, false));
+const tip = topBar.createEl("span", { text: "Solo pendientes del Inbox global" });
+tip.style.opacity = "0.65";
+tip.style.fontSize = "0.85em";
+
+function scoreSelect(parent, value, onPick) {
+    const sel = parent.createEl("select");
+    sel.style.width = "52px";
+    for (let n = 1; n <= 5; n++) {
+        const opt = document.createElement("option");
+        opt.value = String(n);
+        opt.textContent = String(n);
+        if (n === value) opt.selected = true;
+        sel.appendChild(opt);
+    }
+    sel.value = String(value);
+    sel.addEventListener("change", () => onPick(Number(sel.value)));
+    return sel;
+}
+
+const table = wrap.createEl("table");
+table.style.width = "100%";
+table.style.tableLayout = "fixed";
+table.style.borderCollapse = "collapse";
+table.style.fontSize = "0.92em";
+const cg = table.createEl("colgroup");
+for (const w of ["36px", "auto", "56px", "56px", "56px", "52px"]) {
+    cg.createEl("col").style.width = w;
+}
+const hr = table.createEl("thead").createEl("tr");
+for (const [label, align] of [
+    ["#", "center"], ["Tarea", "left"], ["E", "center"], ["I", "center"],
+    ["T", "center"], ["Peso", "right"],
+]) {
+    const th = hr.createEl("th", { text: label });
+    th.style.textAlign = align;
+    th.style.padding = "6px 6px";
+    th.style.borderBottom = "1px solid var(--background-modifier-border)";
+}
+const tbody = table.createEl("tbody");
+
+async function persistInbox() {
+    const lines = await readPath(INBOX_PATH);
+    const headIdx = lines.findIndex((l) => /^##\s+Backlog\b/.test(l));
+    if (headIdx < 0) { new Notice("Inbox: falta ## Backlog"); return; }
+    let sectionEnd = lines.length;
+    for (let i = headIdx + 1; i < lines.length; i++) {
+        if (/^##\s/.test(lines[i]) || /^#\s/.test(lines[i])) { sectionEnd = i; break; }
+    }
+    const keptDone = [];
+    for (let i = headIdx + 1; i < sectionEnd; i++) {
+        if (/^\s*- \[[xX]\]/.test(lines[i])) keptDone.push(lines[i]);
+    }
+    const openLines = localRows.map((r) =>
+        `- [ ] ${r.text || "Nueva tarea"} [e:: ${r.e}] [t:: ${r.t}] [i:: ${r.i}]`
+    );
+    const next = lines.slice(0, headIdx + 1).concat(openLines, keptDone, lines.slice(sectionEnd)).join("\n");
+    await writePath(INBOX_PATH, next);
+}
+
+function schedulePersist() {
+    clearTimeout(window.__inboxPersist);
+    window.__inboxPersist = setTimeout(() => {
+        persistInbox().catch((e) => { console.error(e); new Notice("No se pudo guardar Inbox"); });
+    }, 200);
+}
+
+async function completeRow(r) {
+    localRows = localRows.filter((x) => x.key !== r.key);
+    paint();
+    const lines = await readPath(INBOX_PATH);
+    const headIdx = lines.findIndex((l) => /^##\s+Backlog\b/.test(l));
+    if (headIdx < 0) return;
+    let sectionEnd = lines.length;
+    for (let i = headIdx + 1; i < lines.length; i++) {
+        if (/^##\s/.test(lines[i]) || /^#\s/.test(lines[i])) { sectionEnd = i; break; }
+    }
+    const keptDone = [];
+    for (let i = headIdx + 1; i < sectionEnd; i++) {
+        if (/^\s*- \[[xX]\]/.test(lines[i])) keptDone.push(lines[i]);
+    }
+    keptDone.push(`- [x] ${r.text} [e:: ${r.e}] [t:: ${r.t}] [i:: ${r.i}]`);
+    const openLines = localRows.map((x) =>
+        `- [ ] ${x.text || "Nueva tarea"} [e:: ${x.e}] [t:: ${x.t}] [i:: ${x.i}]`
+    );
+    await writePath(INBOX_PATH, lines.slice(0, headIdx + 1).concat(openLines, keptDone, lines.slice(sectionEnd)).join("\n"));
+}
+
+/** Actualiza datos + UI en el acto (sin destruir el select). */
+function patchRow(key, partial, ui) {
+    const r = localRows.find((x) => x.key === key);
+    if (!r) return;
+    Object.assign(r, partial);
+    r.peso = peso(r.e, r.t, r.i);
+    if (ui?.pesoEl) ui.pesoEl.textContent = String(r.peso);
+    if (ui?.metaEl) ui.metaEl.textContent = `E${r.e} · I${r.i} · T${r.t}`;
+    // Reordenar cuando cambie el peso (después, para no romper el select)
+    clearTimeout(window.__prioResort);
+    window.__prioResort = setTimeout(() => paint(), 450);
+    schedulePersist();
+}
+
+function paint() {
+    tbody.empty();
+    const view = [...localRows].sort((a, b) => b.peso - a.peso);
+    if (!view.length) {
+        const tr = tbody.createEl("tr");
+        const td = tr.createEl("td", { text: "Sin pendientes en Inbox", attr: { colspan: "6" } });
+        td.style.padding = "10px 8px";
+        td.style.opacity = "0.7";
+        return;
+    }
+    view.forEach((r, idx) => {
+        const tr = tbody.createEl("tr");
+        if (idx < 3) tr.style.boxShadow = "inset 3px 0 0 var(--interactive-accent)";
+
+        const tdRank = tr.createEl("td", { text: String(idx + 1) });
+        tdRank.style.textAlign = "center";
+        tdRank.style.fontWeight = "600";
+        tdRank.style.padding = "4px";
+
+        const tdTask = tr.createEl("td");
+        tdTask.style.padding = "4px 6px";
+        const col = tdTask.createEl("div");
+        col.style.display = "flex";
+        col.style.flexDirection = "column";
+        col.style.gap = "2px";
+        const rowBox = col.createEl("div");
+        rowBox.style.display = "flex";
+        rowBox.style.gap = "8px";
+        rowBox.style.alignItems = "center";
+        const chk = rowBox.createEl("input");
+        chk.type = "checkbox";
+        chk.title = "Completar (sale de pendientes)";
+        chk.addEventListener("change", () => {
+            if (chk.checked) completeRow(r).catch(console.error);
+        });
+        const inp = rowBox.createEl("input");
+        inp.type = "text";
+        inp.value = r.text;
+        inp.style.flex = "1";
+        inp.style.width = "100%";
+        inp.style.minWidth = "0";
+        inp.style.padding = "5px 6px";
+        const metaEl = col.createEl("div");
+        metaEl.textContent = `E${r.e} · I${r.i} · T${r.t}`;
+        metaEl.style.fontSize = "0.8em";
+        metaEl.style.opacity = "0.75";
+        metaEl.style.paddingLeft = "24px";
+        metaEl.style.fontFamily = "var(--font-monospace)";
+
+        const ui = { metaEl, pesoEl: null };
+        inp.addEventListener("change", () => {
+            patchRow(r.key, { text: inp.value.trim() || "Nueva tarea" }, ui);
+        });
+
+        for (const [field, val] of [["e", r.e], ["i", r.i], ["t", r.t]]) {
+            const td = tr.createEl("td");
+            td.style.textAlign = "center";
+            scoreSelect(td, val, (n) => patchRow(r.key, { [field]: n }, ui));
+        }
+
+        const tdPeso = tr.createEl("td", { text: String(r.peso) });
+        tdPeso.style.textAlign = "right";
+        tdPeso.style.fontWeight = "600";
+        tdPeso.style.padding = "4px 8px";
+        ui.pesoEl = tdPeso;
+    });
+}
+
+paint();
+
+const bar = wrap.createEl("div");
+bar.style.display = "flex";
+bar.style.gap = "8px";
+bar.style.alignItems = "center";
+bar.style.marginTop = "10px";
+const btnAdd = bar.createEl("button", { text: "+ Pendiente" });
+btnAdd.addEventListener("click", () => {
+    localRows.push({ key: uid(), text: "Nueva tarea", e: 3, t: 3, i: 3, peso: peso(3, 3, 3) });
+    paint();
+    schedulePersist();
+});
+const hint = bar.createEl("span", { text: "Al cambiar E/I/T se ve al toque · se guarda en Inbox" });
+hint.style.opacity = "0.65";
+hint.style.fontSize = "0.85em";
+}
+```
+
+## 💼 Bloques de Trabajo y Experimentos
+
+### 2026-11-02 - Lunes
+- [ ] **^^^** 
+- [ ] **^^**  
+- [ ] **^**  
+
+### 2026-11-03 - Martes
+- [ ] **^^^** 
+- [ ] **^^**  
+- [ ] **^**  
+
+### 2026-11-04 - Miércoles
+- [ ] **^^^** 
+- [ ] **^^**  
+- [ ] **^**  
+
+### 2026-11-05 - Jueves
+- [ ] **^^^** 
+- [ ] **^^**  
+- [ ] **^**  
+
+### 2026-11-06 - Viernes
+- [ ] **^^^** 
+- [ ] **^^**  
+- [ ] **^**  
+
+### 2026-11-07 - Sábado
+- [ ] **^^^** 
+- [ ] **^^**  
+- [ ] **^**  
+
+### 2026-11-08 - Domingo
+- [ ] **^^^** 
+- [ ] **^^**  
+- [ ] **^**  
+
+
+---
+## 🏆 Hitos de la Semana  
+
+```dataviewjs
+let nombreArchivo = dv.current().file.name.trim();
+let match = nombreArchivo.match(/(\d{4})-W(\d{2})/i);
+
+if (!match) {
+    dv.paragraph("_(Este bloque muestra los hitos una vez que la plantilla es aplicada a una nota semanal con formato YYYY-WXX)_");
+} else {
+    let lunes  = moment().year(parseInt(match[1])).isoWeek(parseInt(match[2])).startOf('isoWeek');
+    let domingo = lunes.clone().endOf('isoWeek');
+
+    let dias = dv.pages('"01_Planificacion/03_Diario"')
+        .where(p => {
+            let f = moment(p.file.name, "YYYY-MM-DD");
+            return f.isValid()
+                && !f.isBefore(lunes, 'day')
+                && !f.isAfter(domingo, 'day');
+        })
+        .sort(p => p.file.name, 'asc');
+
+    let filas = [];
+
+    dias.forEach(p => {
+        [1, 2, 3, 4, 5].forEach(n => {
+            let hito = p[`hito${n}`];
+            let logre = p[`logre${n}`];
+            let texto = (logre != null && String(logre).trim() !== "")
+                ? String(logre)
+                : (hito != null ? String(hito) : "");
+            if (texto.trim() === "") return;
+            let bien = p[`influi${n}`] != null && String(p[`influi${n}`]).trim() !== ""
+                ? String(p[`influi${n}`])
+                : (p[`bien${n}`] != null && String(p[`bien${n}`]).trim() !== ""
+                    ? String(p[`bien${n}`])
+                    : (p[`logro${n}`] ? String(p[`logro${n}`]) : "—"));
+            let proxima = p[`proxima${n}`] != null && String(p[`proxima${n}`]).trim() !== ""
+                ? String(p[`proxima${n}`])
+                : "—";
+            filas.push([
+                p.file.link,
+                texto,
+                bien,
+                proxima
+            ]);
+        });
+    });
+
+    if (filas.length === 0) {
+        dv.paragraph("Todavía no hay hitos esta semana. Completá el cierre con «Cuéntame la historia de hoy» (`logre` / `influi` o legacy `hito` / `bien`).");
+    } else {
+        dv.table(
+            ["Día", "Qué logré / pasó", "Cómo influí / bien", "Próxima"],
+            filas
+        );
+    }
+}
+```
