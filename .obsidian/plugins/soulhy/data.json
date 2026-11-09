@@ -7,7 +7,7 @@
   "totalGoldEarned": 6122,
   "totalHabitsCompleted": 741,
   "totalQuestsCompleted": 116,
-  "lastPlayedDate": "Sun Nov 08 2026",
+  "lastPlayedDate": "Mon Nov 09 2026",
   "domains": [
     {
       "id": "psychologicalWellbeing",
@@ -103,7 +103,7 @@
       ],
       "skillXp": 10,
       "completed": false,
-      "streak": 1,
+      "streak": 0,
       "bestStreak": 12,
       "lastCompletedDate": "Sat Nov 07 2026",
       "id": "habit_1785588794845_0_5401ak",
@@ -125,7 +125,7 @@
       ],
       "skillXp": 10,
       "completed": false,
-      "streak": 1,
+      "streak": 0,
       "bestStreak": 20,
       "lastCompletedDate": "Sat Nov 07 2026",
       "id": "habit_1785588794845_1_aitecv",
@@ -145,7 +145,7 @@
       ],
       "skillXp": 10,
       "completed": false,
-      "streak": 1,
+      "streak": 0,
       "bestStreak": 20,
       "lastCompletedDate": "Sat Nov 07 2026",
       "id": "habit_1785588794845_2_p1xxd7",
@@ -167,7 +167,7 @@
       ],
       "skillXp": 10,
       "completed": false,
-      "streak": 1,
+      "streak": 0,
       "bestStreak": 12,
       "lastCompletedDate": "Sat Nov 07 2026",
       "id": "habit_1785588794845_3_jhrj2u",
@@ -207,7 +207,7 @@
       ],
       "skillXp": 10,
       "completed": false,
-      "streak": 1,
+      "streak": 0,
       "bestStreak": 12,
       "lastCompletedDate": "Sat Nov 07 2026",
       "id": "habit_1785588794845_6_ipm0v7",
@@ -245,7 +245,7 @@
       ],
       "skillXp": 10,
       "completed": false,
-      "streak": 2,
+      "streak": 0,
       "bestStreak": 7,
       "lastCompletedDate": "Sat Nov 07 2026",
       "id": "habit_1785588794845_8_10weyf",
@@ -272,7 +272,7 @@
       ],
       "bossDamage": 10,
       "completed": false,
-      "streak": 1,
+      "streak": 0,
       "bestStreak": 7,
       "lastCompletedDate": "Sun Nov 08 2026",
       "id": "habit_1785588794845_12_4mynu4"
@@ -288,7 +288,7 @@
       ],
       "skillXp": 10,
       "completed": false,
-      "streak": 2,
+      "streak": 0,
       "bestStreak": 9,
       "lastCompletedDate": "Sat Nov 07 2026",
       "id": "habit_1785588794845_13_gk42or",
@@ -348,7 +348,7 @@
       "bossDamage": 10,
       "skillXp": 10,
       "completed": false,
-      "streak": 1,
+      "streak": 0,
       "bestStreak": 11,
       "lastCompletedDate": "Sat Nov 07 2026"
     },
@@ -366,7 +366,7 @@
       "bossDamage": 10,
       "skillXp": 10,
       "completed": false,
-      "streak": 2,
+      "streak": 0,
       "bestStreak": 6,
       "lastCompletedDate": "Sat Nov 07 2026"
     }
@@ -11929,7 +11929,7 @@
       ]
     }
   ],
-  "lastPenaltyCheck": "2026-11-02T01:25:27.327Z",
+  "lastPenaltyCheck": "2026-11-09T14:34:34.322Z",
   "penaltyEnabled": true,
   "bossFights": [
     {
@@ -14841,6 +14841,10 @@
           "quest_ventas_d14"
         ],
         "2026-11-08": [
+          "quest_ventas_d13",
+          "quest_ventas_d14"
+        ],
+        "2026-11-09": [
           "quest_ventas_d13",
           "quest_ventas_d14"
         ]
