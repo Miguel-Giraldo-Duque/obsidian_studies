@@ -1,0 +1,235 @@
+{
+  "sidebarConfig": {
+    "enabled": true,
+    "width": 290,
+    "isCollapsed": false,
+    "collapsedModules": {
+      "mini-month": false,
+      "up-next": false,
+      "task-backlog": false,
+      "agent": true
+    },
+    "moduleOrder": [
+      "mini-month",
+      "up-next",
+      "task-backlog",
+      "agent"
+    ]
+  },
+  "githubToken": null,
+  "availabilityGistId": null,
+  "availabilityExportPath": "",
+  "availabilityDefaultTimeRange": {
+    "startTime": "09:00",
+    "endTime": "17:00"
+  },
+  "useLegacyPlaintextCredentials": false,
+  "calendarSources": [
+    {
+      "type": "local",
+      "id": "local-rutinas-soulhy",
+      "name": "Rutinas Soulhy",
+      "directory": "01_Planificacion/04_Calendario",
+      "color": "#4CAF50"
+    },
+    {
+      "type": "local",
+      "id": "local-activitywatch",
+      "name": "ActivityWatch",
+      "directory": "01_Planificacion/04_Calendario/ActivityWatch",
+      "color": "#78909C"
+    }
+  ],
+  "defaultCalendarId": "local-rutinas-soulhy",
+  "firstDay": 1,
+  "initialView": {
+    "desktop": "timeGridWeek",
+    "mobile": "timeGrid3Days"
+  },
+  "timeFormat24h": true,
+  "clickToCreateEventFromMonthView": true,
+  "displayTimezone": "America/Buenos_Aires",
+  "lastSystemTimezone": "America/Buenos_Aires",
+  "enableAdvancedCategorization": false,
+  "chrono_analyser_config": null,
+  "categorySettings": [],
+  "useCustomGoogleClient": false,
+  "googleClientId": "",
+  "googleClientSecret": "",
+  "googleUseCopyPasteAuth": false,
+  "googleAccounts": [],
+  "useCustomMicrosoftClient": false,
+  "microsoftClientId": "",
+  "microsoftProxyBaseUrl": "",
+  "microsoftAccounts": [],
+  "businessHours": {
+    "enabled": false,
+    "daysOfWeek": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "startTime": "09:00",
+    "endTime": "17:00"
+  },
+  "enableBackgroundEvents": true,
+  "enableReminders": true,
+  "workspaces": [],
+  "activeWorkspace": null,
+  "showEventInStatusBar": false,
+  "highlightCurrentOrNextEvent": true,
+  "enableLivePreview": true,
+  "slotMinTime": "06:00",
+  "slotMaxTime": "24:00",
+  "allDaySlot": true,
+  "timeGridDayHeaderFormat": "day-mmdd",
+  "weekends": true,
+  "hiddenDays": [],
+  "dayMaxEvents": false,
+  "activityWatch": {
+    "enabled": true,
+    "apiUrl": "http://127.0.0.1:5600",
+    "lastSyncTime": 0,
+    "autoSyncEnabled": true,
+    "autoSyncIntervalMins": 10,
+    "targetCalendarId": "local-activitywatch",
+    "syncStrategy": "auto",
+    "customDateStart": "",
+    "customDateEnd": "",
+    "profiles": [
+      {
+        "id": "aw-deep-work",
+        "name": "Deep Work / Coding",
+        "activationThresholdMins": 5,
+        "softBreakLimitMins": 3,
+        "titleTemplate": "Deep Work - {app}",
+        "color": "Deep Work",
+        "primaryEvidenceRules": [
+          {
+            "id": "dw-code",
+            "bucketType": "window",
+            "matchField": "app",
+            "matchPattern": "Code|Cursor|Obsidian",
+            "useRegex": true
+          }
+        ],
+        "supportingEvidenceRules": [
+          {
+            "id": "dw-afk",
+            "bucketType": "afk",
+            "matchField": "status",
+            "matchPattern": "afk",
+            "useRegex": false
+          }
+        ],
+        "hardBreakRules": []
+      },
+      {
+        "id": "aw-job-search",
+        "name": "Job Search",
+        "activationThresholdMins": 5,
+        "softBreakLimitMins": 3,
+        "titleTemplate": "Job Search - {title}",
+        "color": "Job Search",
+        "primaryEvidenceRules": [
+          {
+            "id": "js-linkedin",
+            "bucketType": "web",
+            "matchField": "url",
+            "matchPattern": "linkedin\\.com|indeed\\.com|glassdoor\\.com|greenhouse\\.io|lever\\.co|wellfound\\.com|levels\\.fyi",
+            "useRegex": true
+          }
+        ],
+        "supportingEvidenceRules": [
+          {
+            "id": "js-browser",
+            "bucketType": "window",
+            "matchField": "app",
+            "matchPattern": "chrome|msedge|firefox|brave",
+            "useRegex": true
+          }
+        ],
+        "hardBreakRules": []
+      },
+      {
+        "id": "aw-distraction",
+        "name": "Distraction",
+        "activationThresholdMins": 5,
+        "softBreakLimitMins": 2,
+        "titleTemplate": "Distraction - {title}",
+        "color": "Distraction",
+        "primaryEvidenceRules": [
+          {
+            "id": "di-web",
+            "bucketType": "web",
+            "matchField": "url",
+            "matchPattern": "youtube\\.com|twitter\\.com|x\\.com|reddit\\.com|tiktok\\.com|instagram\\.com",
+            "useRegex": true
+          }
+        ],
+        "supportingEvidenceRules": [],
+        "hardBreakRules": []
+      }
+    ]
+  },
+  "tasksIntegration": {
+    "backlogDateTarget": "scheduledDate",
+    "calendarDisplayDateTarget": "scheduledDate",
+    "openEditModalAfterBacklogDrop": false,
+    "taskDisplayFormat": "dayPlanner",
+    "includeGlobalQueryInBacklog": false,
+    "backlogQuery": ""
+  },
+  "milestones": {
+    "counters": {},
+    "unlockedAt": {},
+    "shown": {}
+  },
+  "enableMonthlyStatsReport": false,
+  "lastMonthlyMilestonesGeneratedMonth": null,
+  "lastMonthlyMilestonesCheckDate": null,
+  "fcrReminderCompanion": {
+    "enabled": false,
+    "apiUrl": "http://127.0.0.1:45677"
+  },
+  "apiTokens": {},
+  "authorizedTokens": {},
+  "enableLocalServer": false,
+  "localServerPort": 8540,
+  "milestoneNotifierDuration": 8000,
+  "enableDefaultReminder": true,
+  "defaultReminderMinutes": 10,
+  "currentVersion": "0.13.7",
+  "linkedNotesDirectory": "",
+  "linkedNoteLinkStrategy": "deadline",
+  "taskBacklogLastProviderId": "",
+  "caldavTaskInboxLastCalendarId": "",
+  "weatherCity": "",
+  "weatherLatitude": null,
+  "weatherLongitude": null,
+  "weatherHide": false,
+  "weatherInputMode": "city",
+  "weatherUnit": "C",
+  "linkedNoteTemplate": "# {{title}}\n\n**Date**: {{date}}\n**Time**: {{timeString}}\n**Location**: {{location}}\n**Calendar**: {{calendarName}}\n\n## Description\n{{description}}\n\n## Notes\n- ",
+  "enableLinkedNoteTemplatesPreset": false,
+  "linkedNoteTemplatesPresets": [],
+  "openDailyNoteOnDateClick": true,
+  "breakTimer": {
+    "enabled": false,
+    "intervalMins": 60,
+    "idleThresholdMins": 30,
+    "breakDurationSecs": 30
+  },
+  "agent": {
+    "enabled": false,
+    "endpointUrl": "https://api.openai.com/v1",
+    "model": "gpt-4o-mini",
+    "apiKey": "",
+    "temperature": 0.2,
+    "specUrl": "https://raw.githubusercontent.com/obsidian-full-calendar-remastered/plugin-full-calendar/main/docs/architecture/api/agent-spec.md",
+    "maxRetries": 3,
+    "timeoutMs": 60000
+  }
+}
