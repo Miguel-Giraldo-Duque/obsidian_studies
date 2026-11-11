@@ -2,11 +2,11 @@
   "sidebarConfig": {
     "enabled": true,
     "width": 290,
-    "isCollapsed": false,
+    "isCollapsed": true,
     "collapsedModules": {
       "mini-month": false,
-      "up-next": false,
-      "task-backlog": false,
+      "up-next": true,
+      "task-backlog": true,
       "agent": true
     },
     "moduleOrder": [
@@ -91,7 +91,7 @@
   "activityWatch": {
     "enabled": true,
     "apiUrl": "http://127.0.0.1:5600",
-    "lastSyncTime": 0,
+    "lastSyncTime": 1794374403145,
     "autoSyncEnabled": true,
     "autoSyncIntervalMins": 10,
     "targetCalendarId": "local-activitywatch",
@@ -183,7 +183,14 @@
     "backlogQuery": ""
   },
   "milestones": {
-    "counters": {},
+    "counters": {
+      "updated.total": 1,
+      "updated.local": 1,
+      "meta.firstActionAt": 1794364191368,
+      "meta.lastActionAt": 1794364191368,
+      "day.action.2026-11-10": 1,
+      "meta.nightOwlOps": 1
+    },
     "unlockedAt": {},
     "shown": {}
   },

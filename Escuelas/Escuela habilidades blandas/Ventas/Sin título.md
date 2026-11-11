@@ -1,0 +1,37 @@
+---
+tags:
+  - sesion-estudio
+estudio_estado: raw
+fecha_raw: 2026-11-10
+fecha_cornell: ""
+fuente: ""
+---
+# Sesión estudio — Sin título
+
+**Estado**
+```meta-bind
+INPUT[inlineSelect(option(raw), option(cornell), option(cards)):estudio_estado]
+```
+
+**Fecha Cornell** (al pasar a `cornell`)
+```meta-bind
+INPUT[date:fecha_cornell]
+```
+
+> [!note]- Raw (día 0 — voz)
+> Transcript / voz en tus palabras. No pegues el libro.
+>
+> - Y si en realidad yo no puedo elegir mi cliente. Supongo que lo que van a tratar de hablar es. Realmente vos no puede saber cuál es la persona que realmente necesita tu producto y capaz si vos no puedes saber cuál es realmente la persona que puede tu producto, porque limitarte específicamente a un cierto grupo de personas. La realidad o capaz, lo que podría plantear la clase es sobre cómo. Puedes dar la cierta ilusión de elección a la otra persona O más bien que la otra persona siente que fue su decisión entrar al lugar, cierto que todo fue su idea de que desde la implementación, la compra y todo fue de ellos, entre otras ideas fuerte, más fácil y difícil de de de quitar justamente. Entonces creo que por ahí puede ir por la ilusión, por hacer que la otra persona crea tanto en su propia idea que sea EH Que sienta que realmente está eligiendo o que realmente es ella la que se le ocurre esa idea. Quizás una de las formas más fáciles para poder lograr eso de que la persona no sienta que le está pidiendo, que sea natural y que le dé nazca de ellos, es decir, que viene esta posible pista. Endí algo que ver con no sé Otro mecanismo cada Algo como Y. ¿Cómo está visualizando usted este producto en 3 años Um no sé. La inducción del control funciona de las de la Eh. La elección funciona de la siguiente manera. Lo que hace es que en vez de proponer una pregunta abierta sin una opción concreta, lo que haces es que cerrás las opciones bajo las cual la persona puede responder. Y lo hace es basado en la información de lo que ya conoces de la otra persona, eso es lo que genera es que te ponen una perspectiva de autoridad porque si yo digo bueno, cuáles tu cómo, cómo estás actualmente resolviendo las reservas, quiere decir que estoy poniendo a la otra persona en un marco de enseñanza, como si yo no supiera, si Por otro lado yo conociera de su industria de su contexto de cómo realizan las cosas y yo absorbiera ese conocimiento y dijera, Ah Ah, Eh, y le pregunto cómo, cómo estás resolviendo esto en las reservas hoy quizás estás usando Whatsapp Business puede ser que estés trabajando lo con Una inteligencia artificial o directamente es todo manual. Lo que estamos haciendo aquí es que le damos opciones, que impliquen un conocimiento general común sobre lo que la otra persona logra estabilidad es clave porque puede llegar a duplicar la cantidad de ventas que hacemos porque una u otra forma, lo que realmente estamos haciendo es que estamos presando mucha atención a lo que realmente le pasa. A la otra persona, las personas realmente queremos hacer dos cosas siempre en mi interacción, confirmar o Eh rechazar o corregir más bien lo que pasa es que decimos dos. Si te digo, apareces enojado y vos reaccionás y decís, no, no, no estoy enojado, estoy bien. O te pregunto, estás triste o estás o pareces muy contenta, me vas a decir si estoy muy contenta porque me habló pepita y me siento muy feliz. Eso es lo que realmente pasa. Entonces la ilusión del control se basa en lugar de hacer preguntas abiertas. Entre cada cada pregunta que haces, utilizas es el ese conocimiento común que tienes del contexto del otro y le ofreces opciones, o sea, le decís, bueno, parce, pues parece que. 3 entre entre sesión entre preguntas, utilizas las la ilusión del control o la ilusión de la elección para que la persona pueda decir a no, pues sí, mira yo, la verdad no lo trabajaba así. Esto funciona porque lo que hace es que inconscientemente la persona compara las opciones que tenía previamente. Si yo inicio preguntando, bueno, entonces puede ser que estés utilizando actualmente Whatsapp Business, quizás estabas haciéndolo todo manual o tienes como algún tipo automatización para la conversación. ¿Cuál suena más interesante? Suena más interesante Whatsapp Business, que simplemente tener una persona normal suena más interesante y decir que tengo automatizado todo el proceso y la persona empieza a pensar. Oh, mira, es cierto, esta es una mejor opción, debería tenerlo automatizado entonces poco a poco la vamos metiendo a la persona a la idea de que claro, esa persona siente de que está encontrando una mejor opción y lo está desglosando mental e inconscientemente poco a poco. Eso es lo lo más interesante. Otra cosa extra es que realmente no se deja de aprender más. El objetivo con las ventas, con las habilidades sociales, no es parar de aprender, pero seguir el camino desde una perspectiva de enriquecimiento. No vale la pena proponerse de pensar que va a llegar un día donde vaya a tener que parar de aprender, porque nunca tuve, es una decisión de placer y autocrecimiento. Entonces sí, no creo que sea el camino a decir. Necesito saberlo todo. La fórmula de simple, dos opciones que puede que la persona ya esté usando muy comunes y la tercera, la última es la que yo propongo, si le ciclo directamente, pero la que yo uso Y finalmente serrás utilizando otra pregunta, es como Ah ¿Has utilizado antes una inteligencia artificial a su utilizado una automatización de de Instagram o has utilizado una automatización completa en la interacción? ¿Cómo? ¿Cómo estás manejando actualmente las interacciones o las reservas por más Apple Ah. Lo interesante es que, claro, por comparación, la persona va a decidido a decir como a 8 de claro. Yo no había pensado justamente en tener ese gran servicio porque no me había ocurrido y ahora puedo comparar este gran servicio con mis anteriores opciones y digo no, pues realmente sí es un mejor servicio, quizás lo que está haciendo ahora no es tan bueno La idea es utilizar una tonalidad alta como si estuviera pensando en voz alta con Con curiosidad, como Kiko, cu lo está haciendo tipo como para arriba las preguntas para los comentarios. Ah, puede ser que lo estés haciendo así o haciéndolo de esa manera, como lo estás planteando de esa manera tipo de esa forma, lo que hace es que la persona tenga como ese ese lenguaje más simple y la persona al final va a tener una respuesta más fácil, que es lo que en una venta se necesita la persona quiere tener una conversación fácil de seguir, no si siente que es muy complejo hablar con vos, bueno va a parar y no va a crecir Un detalle. Muy importante es que, claro, yo al plantearlo con estas ilusiones, si la persona me dice no, pues yo realmente lo hago todo manual o lo hago, tengo una persona encargada que no está respondiendo un mensaje 24 horas. Eso hacia la persona que creo que como una persona que con autoridad que conoce su mundo segundo, que. Existe una solución mejor que la que estoy proponiendo, pues de alguna manera no se siente en una posición de enseñanza como Ah, te tengo que explicar cómo es mi mundo, entenderse Lo que pasa es que entre más la persona comparte su conocimiento entre más te corrige o te dice como sí está haciendo correcto, más fuerte es la conexión que tenés con esa persona, es decir, más siente la persona que estás ahí con ella, que puede confiar más en es una brutalidad.
+
+---
+
+## Cornell (día +1)
+
+#### **Cues**
+-
+
+#### **Notas**
+-
+
+#### **Summary**
+-
