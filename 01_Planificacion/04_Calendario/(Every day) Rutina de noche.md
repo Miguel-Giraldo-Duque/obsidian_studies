@@ -19,9 +19,12 @@ Wind-down espejo de la matutina. Chrome bloqueado desde las 22:00.
 
 - [ ] Organizar cuarto / una cosa concreta de casa
 - [ ] Dejar ropa lista (venta / día siguiente) → mañana solo hacer la cama
-- [ ] 5 agradecimientos (movidos de la mañana)
-- [ ] Revisar 3 importantes de mañana (E/I/T) en 5′
-- [ ] Cerrar screens / sin browser → luz baja → dormir
+- [ ] Escribir exitos del dia
+- [ ] 5 agradecimientos 
+- [ ] Funeral 
+- [ ] Visualizar 10min escenario de venta 
+- [ ] Cerrar screens / sin browser 10pm
+- [ ] 10min meditación 
 
 ## Notas
 

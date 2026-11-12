@@ -38,6 +38,22 @@
       "name": "ActivityWatch",
       "directory": "01_Planificacion/04_Calendario/ActivityWatch",
       "color": "#78909C"
+    },
+    {
+      "type": "google",
+      "name": "miguel@qnow.tech",
+      "color": "#9fe1e7",
+      "id": "google_1",
+      "googleAccountId": "gcal_miguel@qnow.tech",
+      "calendarId": "miguel@qnow.tech"
+    },
+    {
+      "type": "google",
+      "name": "miguelgiradu@gmail.com",
+      "color": "#b3dc6c",
+      "id": "google_2",
+      "googleAccountId": "gcal_miguel@qnow.tech",
+      "calendarId": "miguelgiradu@gmail.com"
     }
   ],
   "defaultCalendarId": "local-rutinas-soulhy",
@@ -57,7 +73,16 @@
   "googleClientId": "",
   "googleClientSecret": "",
   "googleUseCopyPasteAuth": false,
-  "googleAccounts": [],
+  "googleAccounts": [
+    {
+      "id": "gcal_miguel@qnow.tech",
+      "email": "miguel@qnow.tech",
+      "refreshToken": null,
+      "accessToken": null,
+      "expiryDate": 1794412020261,
+      "grantedScopes": "https://www.googleapis.com/auth/calendar.readonly https://www.googleapis.com/auth/calendar.events email"
+    }
+  ],
   "useCustomMicrosoftClient": false,
   "microsoftClientId": "",
   "microsoftProxyBaseUrl": "",
@@ -91,7 +116,7 @@
   "activityWatch": {
     "enabled": true,
     "apiUrl": "http://127.0.0.1:5600",
-    "lastSyncTime": 1794374403145,
+    "lastSyncTime": 1794464395406,
     "autoSyncEnabled": true,
     "autoSyncIntervalMins": 10,
     "targetCalendarId": "local-activitywatch",
@@ -184,12 +209,18 @@
   },
   "milestones": {
     "counters": {
-      "updated.total": 1,
-      "updated.local": 1,
+      "updated.total": 8,
+      "updated.local": 8,
       "meta.firstActionAt": 1794364191368,
-      "meta.lastActionAt": 1794364191368,
+      "meta.lastActionAt": 1794409432999,
       "day.action.2026-11-10": 1,
-      "meta.nightOwlOps": 1
+      "meta.nightOwlOps": 1,
+      "created.total": 5,
+      "created.local": 5,
+      "day.action.2026-11-11": 12,
+      "day.created.2026-11-11": 5,
+      "meta.recurringSeriesCreated": 2,
+      "tz.America/Buenos_Aires": 1
     },
     "unlockedAt": {},
     "shown": {}

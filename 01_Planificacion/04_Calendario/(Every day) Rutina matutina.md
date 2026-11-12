@@ -21,8 +21,8 @@ Cadena AM compacta. Canon: [[01_Planificacion/Mapa_Cues_Habitos]].
 - [ ] Ejercicio 30′ → Shine → check
 - [ ] Meditación FOM/OM → Shine → check
 - [ ] 5 agradecimientos + frase 3ª + lectura de principios → Shine → check
-- [ ] Metta + imaginar funeral → Shine → check
-- [ ] Organización interna y externa → Shine → check → ciclo `deep-work`
+- [ ] Metta  → Shine → check
+- [ ] Organización interna (Cuarto y planeación ) → Shine → check → ciclo `deep-work`
 
 ## Notas
 
