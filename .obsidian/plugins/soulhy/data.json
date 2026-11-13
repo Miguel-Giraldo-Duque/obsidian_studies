@@ -1,20 +1,20 @@
 {
   "level": 18,
-  "xp": 1368,
+  "xp": 1495,
   "hp": 280,
   "maxHp": 280,
-  "gold": 11016,
-  "totalGoldEarned": 6316,
-  "totalHabitsCompleted": 772,
+  "gold": 11080,
+  "totalGoldEarned": 6380,
+  "totalHabitsCompleted": 781,
   "totalQuestsCompleted": 116,
-  "lastPlayedDate": "Thu Nov 12 2026",
+  "lastPlayedDate": "Fri Nov 13 2026",
   "domains": [
     {
       "id": "psychologicalWellbeing",
       "name": "Psychological Well-being",
       "score": 85,
       "level": 18,
-      "xp": 166,
+      "xp": 236,
       "icon": "🧠",
       "color": "#9b59b6"
     },
@@ -23,7 +23,7 @@
       "name": "Health",
       "score": 75,
       "level": 10,
-      "xp": 452,
+      "xp": 465,
       "icon": "💪",
       "color": "#e74c3c"
     },
@@ -41,7 +41,7 @@
       "name": "Education",
       "score": 64,
       "level": 9,
-      "xp": 167,
+      "xp": 191,
       "icon": "📚",
       "color": "#f39c12"
     },
@@ -68,7 +68,7 @@
       "name": "Community Vitality",
       "score": 62,
       "level": 8,
-      "xp": 160,
+      "xp": 180,
       "icon": "🤝",
       "color": "#2ecc71"
     },
@@ -103,9 +103,9 @@
       ],
       "skillXp": 10,
       "completed": false,
-      "streak": 2,
+      "streak": 3,
       "bestStreak": 12,
-      "lastCompletedDate": "Wed Nov 11 2026",
+      "lastCompletedDate": "Thu Nov 12 2026",
       "id": "habit_1785588794845_0_5401ak",
       "linkedBossIds": [
         "1783917794860",
@@ -125,9 +125,9 @@
       ],
       "skillXp": 10,
       "completed": false,
-      "streak": 3,
+      "streak": 4,
       "bestStreak": 20,
-      "lastCompletedDate": "Wed Nov 11 2026",
+      "lastCompletedDate": "Thu Nov 12 2026",
       "id": "habit_1785588794845_1_aitecv",
       "linkedBossIds": [
         "1786983444165"
@@ -145,9 +145,9 @@
       ],
       "skillXp": 10,
       "completed": false,
-      "streak": 2,
+      "streak": 3,
       "bestStreak": 20,
-      "lastCompletedDate": "Wed Nov 11 2026",
+      "lastCompletedDate": "Thu Nov 12 2026",
       "id": "habit_1785588794845_2_p1xxd7",
       "linkedBossIds": [
         "1783917794860",
@@ -167,33 +167,15 @@
       ],
       "skillXp": 10,
       "completed": false,
-      "streak": 2,
+      "streak": 3,
       "bestStreak": 12,
-      "lastCompletedDate": "Wed Nov 11 2026",
+      "lastCompletedDate": "Thu Nov 12 2026",
       "id": "habit_1785588794845_3_jhrj2u",
       "linkedBossIds": [
         "1783917794860",
         "1783927787622",
         "1786983444165"
       ],
-      "bossDamage": 10
-    },
-    {
-      "name": "12min Ejercicios oratoria",
-      "xp": 10,
-      "gold": 5,
-      "domain": "vocation",
-      "difficulty": "medium",
-      "linkedSkillIds": [
-        "skill_1782600801284_311afiafz"
-      ],
-      "skillXp": 10,
-      "completed": false,
-      "streak": 0,
-      "bestStreak": 1,
-      "lastCompletedDate": "Wed Jul 08 2026",
-      "id": "habit_1785588794845_5_ijczxm",
-      "linkedBossIds": [],
       "bossDamage": 10
     },
     {
@@ -207,9 +189,9 @@
       ],
       "skillXp": 10,
       "completed": false,
-      "streak": 2,
+      "streak": 3,
       "bestStreak": 12,
-      "lastCompletedDate": "Wed Nov 11 2026",
+      "lastCompletedDate": "Thu Nov 12 2026",
       "id": "habit_1785588794845_6_ipm0v7",
       "linkedBossIds": [
         "1786983444165"
@@ -217,7 +199,7 @@
       "bossDamage": 10
     },
     {
-      "name": "Salir a conocer una persona a las 3pm en plaza irlanda",
+      "name": "Salir a socializar 10min",
       "xp": 10,
       "gold": 5,
       "domain": "communityVitality",
@@ -227,9 +209,9 @@
       ],
       "skillXp": 10,
       "completed": false,
-      "streak": 0,
+      "streak": 1,
       "bestStreak": 2,
-      "lastCompletedDate": "Wed Nov 11 2026",
+      "lastCompletedDate": "Thu Nov 12 2026",
       "id": "habit_1785588794845_7_kwxew2",
       "linkedBossIds": [],
       "bossDamage": 10
@@ -245,9 +227,9 @@
       ],
       "skillXp": 10,
       "completed": false,
-      "streak": 2,
+      "streak": 3,
       "bestStreak": 7,
-      "lastCompletedDate": "Wed Nov 11 2026",
+      "lastCompletedDate": "Thu Nov 12 2026",
       "id": "habit_1785588794845_8_10weyf",
       "linkedBossIds": [],
       "bossDamage": 10
@@ -288,9 +270,9 @@
       ],
       "skillXp": 10,
       "completed": false,
-      "streak": 2,
+      "streak": 3,
       "bestStreak": 9,
-      "lastCompletedDate": "Wed Nov 11 2026",
+      "lastCompletedDate": "Thu Nov 12 2026",
       "id": "habit_1785588794845_13_gk42or",
       "linkedBossIds": [],
       "bossDamage": 10
@@ -348,9 +330,9 @@
       "bossDamage": 10,
       "skillXp": 10,
       "completed": false,
-      "streak": 2,
+      "streak": 3,
       "bestStreak": 11,
-      "lastCompletedDate": "Wed Nov 11 2026"
+      "lastCompletedDate": "Thu Nov 12 2026"
     },
     {
       "id": "habit_1789466781987_b6skiv10p",
@@ -366,7 +348,7 @@
       "bossDamage": 10,
       "skillXp": 10,
       "completed": false,
-      "streak": 2,
+      "streak": 0,
       "bestStreak": 6,
       "lastCompletedDate": "Wed Nov 11 2026"
     }
@@ -10037,6 +10019,284 @@
   },
   "activityLog": [
     {
+      "id": "1794513615280",
+      "timestamp": "2026-11-12T20:00:15.280Z",
+      "category": "habit_complete",
+      "description": "15min Perply",
+      "details": {
+        "xp": 12,
+        "gold": 6,
+        "streak": 2,
+        "linkedSkillIds": [
+          "skill_1782600801285_xfjqocoem"
+        ],
+        "linkedBossIds": [],
+        "bossDamage": 10,
+        "vowXpMult": 1,
+        "vowDmgMult": 1
+      }
+    },
+    {
+      "id": "1794513400185",
+      "timestamp": "2026-11-12T19:56:40.185Z",
+      "category": "habit_complete",
+      "description": "Salir a socializar 10min",
+      "details": {
+        "xp": 20,
+        "gold": 10,
+        "streak": 0,
+        "linkedSkillIds": [
+          "skill_1782600801285_jj0fzwy4u"
+        ],
+        "linkedBossIds": [],
+        "bossDamage": 10,
+        "vowXpMult": 1,
+        "vowDmgMult": 1
+      }
+    },
+    {
+      "id": "1794509283641",
+      "timestamp": "2026-11-12T18:48:03.641Z",
+      "category": "boss_damage",
+      "description": "Dealt 12 damage to Guiltmal",
+      "details": {
+        "damage": 12,
+        "remaining": 625
+      }
+    },
+    {
+      "id": "1794509283640",
+      "timestamp": "2026-11-12T18:48:03.640Z",
+      "category": "habit_complete",
+      "description": "Imaginar mi funeral",
+      "details": {
+        "xp": 14,
+        "gold": 7,
+        "streak": 2,
+        "linkedSkillIds": [
+          "skill_1782600801284_710kzzmwo"
+        ],
+        "linkedBossIds": [],
+        "bossDamage": 12,
+        "vowXpMult": 1.2,
+        "vowDmgMult": 1.2
+      }
+    },
+    {
+      "id": "1794509280582",
+      "timestamp": "2026-11-12T18:48:00.582Z",
+      "category": "boss_damage",
+      "description": "Dealt 12 damage to Guiltmal",
+      "details": {
+        "damage": 12,
+        "remaining": 637
+      }
+    },
+    {
+      "id": "1794509280568",
+      "timestamp": "2026-11-12T18:48:00.568Z",
+      "category": "boss_damage",
+      "description": "Dealt 12 damage to Guiltmal",
+      "details": {
+        "damage": 12,
+        "remaining": 649
+      }
+    },
+    {
+      "id": "1794509280568",
+      "timestamp": "2026-11-12T18:48:00.568Z",
+      "category": "habit_complete",
+      "description": "Meditación Metta",
+      "details": {
+        "xp": 14,
+        "gold": 7,
+        "streak": 2,
+        "linkedSkillIds": [
+          "skill_1782596299032_o0ambkloe"
+        ],
+        "linkedBossIds": [
+          "1783917794860",
+          "1783927787622",
+          "1786983444165"
+        ],
+        "bossDamage": 12,
+        "vowXpMult": 1.2,
+        "vowDmgMult": 1.2
+      }
+    },
+    {
+      "id": "1794509000680",
+      "timestamp": "2026-11-12T18:43:20.680Z",
+      "category": "boss_damage",
+      "description": "Dealt 12 damage to Guiltmal",
+      "details": {
+        "damage": 12,
+        "remaining": 661
+      }
+    },
+    {
+      "id": "1794509000666",
+      "timestamp": "2026-11-12T18:43:20.666Z",
+      "category": "boss_damage",
+      "description": "Dealt 12 damage to Guiltmal",
+      "details": {
+        "damage": 12,
+        "remaining": 673
+      }
+    },
+    {
+      "id": "1794509000664",
+      "timestamp": "2026-11-12T18:43:20.664Z",
+      "category": "habit_complete",
+      "description": "Escribir 5 agradecimientos propios y vision en tercera persona viendome",
+      "details": {
+        "xp": 14,
+        "gold": 7,
+        "streak": 2,
+        "linkedSkillIds": [
+          "skill_1782600801284_710kzzmwo"
+        ],
+        "linkedBossIds": [
+          "1783917794860",
+          "1783927787622",
+          "1786983444165"
+        ],
+        "bossDamage": 12,
+        "vowXpMult": 1.2,
+        "vowDmgMult": 1.2
+      }
+    },
+    {
+      "id": "1794508998542",
+      "timestamp": "2026-11-12T18:43:18.542Z",
+      "category": "boss_damage",
+      "description": "Dealt 12 damage to Guiltmal",
+      "details": {
+        "damage": 12,
+        "remaining": 685
+      }
+    },
+    {
+      "id": "1794508998529",
+      "timestamp": "2026-11-12T18:43:18.529Z",
+      "category": "boss_damage",
+      "description": "Dealt 12 damage to Guiltmal",
+      "details": {
+        "damage": 12,
+        "remaining": 697
+      }
+    },
+    {
+      "id": "1794508998528",
+      "timestamp": "2026-11-12T18:43:18.528Z",
+      "category": "habit_complete",
+      "description": "Lectura de mis principios",
+      "details": {
+        "xp": 14,
+        "gold": 7,
+        "streak": 2,
+        "linkedSkillIds": [
+          "skill_1782600801284_g84pfxiy7"
+        ],
+        "linkedBossIds": [
+          "1786983444165"
+        ],
+        "bossDamage": 12,
+        "vowXpMult": 1.2,
+        "vowDmgMult": 1.2
+      }
+    },
+    {
+      "id": "1794508535816",
+      "timestamp": "2026-11-12T18:35:35.816Z",
+      "category": "boss_damage",
+      "description": "Dealt 12 damage to Guiltmal",
+      "details": {
+        "damage": 12,
+        "remaining": 709
+      }
+    },
+    {
+      "id": "1794508535803",
+      "timestamp": "2026-11-12T18:35:35.803Z",
+      "category": "boss_damage",
+      "description": "Dealt 12 damage to Guiltmal",
+      "details": {
+        "damage": 12,
+        "remaining": 721
+      }
+    },
+    {
+      "id": "1794508535803",
+      "timestamp": "2026-11-12T18:35:35.803Z",
+      "category": "habit_complete",
+      "description": "10min meditación FOM y OM",
+      "details": {
+        "xp": 14,
+        "gold": 7,
+        "streak": 2,
+        "linkedSkillIds": [
+          "skill_1782596299032_o0ambkloe"
+        ],
+        "linkedBossIds": [
+          "1783917794860",
+          "1783927787622",
+          "1786983444165"
+        ],
+        "bossDamage": 12,
+        "vowXpMult": 1.2,
+        "vowDmgMult": 1.2
+      }
+    },
+    {
+      "id": "1794506606051",
+      "timestamp": "2026-11-12T18:03:26.051Z",
+      "category": "boss_damage",
+      "description": "Dealt 10 damage to Guiltmal",
+      "details": {
+        "damage": 10,
+        "remaining": 733
+      }
+    },
+    {
+      "id": "1794506606051",
+      "timestamp": "2026-11-12T18:03:26.051Z",
+      "category": "habit_complete",
+      "description": "30min ejercicio",
+      "details": {
+        "xp": 13,
+        "gold": 7,
+        "streak": 3,
+        "linkedSkillIds": [
+          "skill_1782600801284_anttohfwh"
+        ],
+        "linkedBossIds": [
+          "1786983444165"
+        ],
+        "bossDamage": 10,
+        "vowXpMult": 1,
+        "vowDmgMult": 1
+      }
+    },
+    {
+      "id": "1794504322186",
+      "timestamp": "2026-11-12T17:25:22.186Z",
+      "category": "habit_complete",
+      "description": "20min estudio",
+      "details": {
+        "xp": 12,
+        "gold": 6,
+        "streak": 2,
+        "linkedSkillIds": [
+          "skill_1782598763683_06ikkboio"
+        ],
+        "linkedBossIds": [],
+        "bossDamage": 10,
+        "vowXpMult": 1,
+        "vowDmgMult": 1
+      }
+    },
+    {
       "id": "1794418954899",
       "timestamp": "2026-11-11T17:42:34.899Z",
       "category": "habit_complete",
@@ -12838,7 +13098,9 @@
     "durante la conversacion con una persona, decir 3 cosas que agradesco de esa persona.",
     "1 clase de plazi",
     "mirar 2 conductores a los ojos mientras espero en la parada del bus, sin reir, ni enconbarme solo mirar.",
-    "leer 10pag de mito del carisma"
+    "leer 10pag de mito del carisma",
+    "salir a conocer una persona a las 3pm en plaza irlanda",
+    "12min ejercicios oratoria"
   ],
   "npcs": [
     {
@@ -12987,7 +13249,7 @@
       "imagePath": "RpgImages/bosses/Icon12.png",
       "tier": "soberano",
       "maxHp": 10000,
-      "currentHp": 743,
+      "currentHp": 625,
       "domain": "psychologicalWellbeing",
       "defeated": false,
       "createdAt": "2026-08-17T16:17:24.165Z",
@@ -14124,6 +14386,16 @@
           "id": "grain_1790472460245_vmq45e4a6",
           "date": "2026-09-26",
           "experience": "Me sorprendo ahora mismo con mi propia osadia, es curioso como pensaba no hace mucho que yo no era un tipo valiente,  que era la persona que deseaba algo y se lo guardaba.\n\nFue aquel dia que decidi irrepetar mi primera norma, toda mi vida sin romper una regla el dia que me escape de mi salon con Juanse, me dio la esperanza de que no tenia que someterme.\n\nPase muchos arrepentimientos, muchos besos que no di, espacios que me negue, solo fue en el dolor del dia dia, que me permitio guardar silencio tranquilo por 5s mirando esta chica a quien acaba de conocer.\n\nAntes me hubiera roto, pero ahora mi cuerpo estaba tranquilo, no lo forze solo estaba ahi. Mas alla del beso y la agarrada de culo que hiso sentir un deseo sexual increible, me felicite a mi mismo, por la acción que tome, por el esfuerzo que ese Miguel hiso todos los dias por mi.\n\nToda montaña tiene cima, a veces hay que levantar la mirada del piso para saber que tan lejos has llegado"
+        },
+        {
+          "id": "grain_1794531012243_o0y668us7",
+          "date": "2026-11-12",
+          "experience": "Pues hoy le hable a la Julieta, Julieta es esta chica súper guapa, que es así de gimnasio muy interesante, estaba un poco nervioso porque justo me acaban de rechazar en una interacción previa, sentía de alguna manera. Como como si la garganta se me cerrara. Pero, sin embargo, me animé cuando la VI y dije, Hola, me encanta tu camisa de rica en Morty. Ella se alegró con una sonrisa de rostro rostro, parecía como si nunca se lo hubieran dicho y se quitó los audífonos, me dijo, No, nunca me lo habían dicho súper genial. Yo me emocioné y hablé un poco más de lo que me imaginaba. Me pareció muy bonito saber que implemente, pues eso, la audacia de incluso sabiendo que me acaban de rechazar, incluso sabiendo que OK, me siento un poco mal, fui capaz de decir Hola. Independientemente el resultado, si me veo orgulloso"
+        },
+        {
+          "id": "grain_1794531232778_kzjhxzn89",
+          "date": "2026-11-12",
+          "experience": "Después del día que salí de las clases de muay thai estaba un poco aburrido. Algo decaído porque sentía que no podía pagar al gimnasio, sentía cierta culpa por haber ido y no darles el dinero. Cuando volví a casa estaba mirando el suelo, un poco desanimado, llegué al cuarto y. Y mire la pared y dije que tal y si realmente no es una mentira. Realmente sí puedo hacerlo, lo logro y puedo pagarme las clases. ¿La pregunta es No sé, o no me das pagar, pero si me las quiero pagar. Eso es todo. Y realmente me gustó esa sensación de internamente sentí como esa fuerza de decir sí, sí puedo, sí puedo vivir mi vida como yo quiero, si está en mi control y sentí un escalofrío que me subió desde la columna la cabeza la musculatura está pensando, sí, parece Sólo tengo que proponérmelo. Me gustó porque demuestra esta sensación ambiciosa de que incluso si me siento mal, solo me necesito recordar de mi parce los riesgos no están ahí para detenerme, sino para retarme, para crecer"
         }
       ]
     },
@@ -14835,13 +15107,13 @@
         "name": "Meditación",
         "category": "mind",
         "level": 7,
-        "xp": 341,
+        "xp": 361,
         "xpToNextLevel": 1139,
         "description": "Hechizo de canalización activa el (presente)\n\n- Mecánica: Mientras canalizas el Presente, cargas un multiplicador de energía. Al terminar la canalización, el siguiente hechizo lanzado de la escuela de Calidez (conexión, escucha) o Poder (acción, autoridad) se ejecuta con máxima potencia.\n\n- Foco laser y monitoreo abierto permite maxima persepción sin generar reacciones por estimulo.\n\n- Disipa (ansiedad bruma del futuro, sindrome del impostor) permite el estado [Armonia] \nque convierte cualquier hechizo bloqueante de vision en nubes inocentes.",
         "discoveredFrom": "manual",
         "discoveredDate": "2026-06-27T21:38:19.032Z",
-        "lastPracticed": "2026-11-11T11:58:46.079Z",
-        "totalPracticeCount": 204,
+        "lastPracticed": "2026-11-12T18:48:00.568Z",
+        "totalPracticeCount": 206,
         "kind": "spell",
         "spellSchool": "Presencia",
         "effects": [
@@ -14864,13 +15136,13 @@
         "name": "Learning",
         "category": "mind",
         "level": 4,
-        "xp": 315,
+        "xp": 325,
         "xpToNextLevel": 337,
         "description": "Hechizo de adquisición de conocimiento y avance intelectual.",
         "discoveredFrom": "habit-checklist",
         "discoveredDate": "2026-06-27T22:19:23.683Z",
-        "lastPracticed": "2026-11-11T17:42:29.452Z",
-        "totalPracticeCount": 79,
+        "lastPracticed": "2026-11-12T17:25:22.186Z",
+        "totalPracticeCount": 80,
         "kind": "spell",
         "spellSchool": "Aprendizaje",
         "effects": [
@@ -14892,7 +15164,7 @@
         "kind": "spell",
         "spellSchool": "Vitalidad",
         "level": 5,
-        "xp": 128,
+        "xp": 138,
         "xpToNextLevel": 506,
         "description": "Hechizo corporal que fortalece energía, resistencia y presencia física.",
         "effects": [
@@ -14908,8 +15180,8 @@
         "spellPowerBonus": 5,
         "discoveredFrom": "native-habit",
         "discoveredDate": "2026-06-27T22:53:21.284Z",
-        "lastPracticed": "2026-11-11T11:38:52.463Z",
-        "totalPracticeCount": 94
+        "lastPracticed": "2026-11-12T18:03:26.051Z",
+        "totalPracticeCount": 95
       },
       {
         "id": "skill_1782600801284_710kzzmwo",
@@ -14918,7 +15190,7 @@
         "kind": "spell",
         "spellSchool": "Disipación",
         "level": 7,
-        "xp": 371,
+        "xp": 391,
         "xpToNextLevel": 1139,
         "description": "Hechizo de disipación para ansiedad o apego al resultado.",
         "effects": [
@@ -14938,8 +15210,8 @@
         "spellPowerBonus": 10,
         "discoveredFrom": "native-habit",
         "discoveredDate": "2026-06-27T22:53:21.284Z",
-        "lastPracticed": "2026-11-11T11:58:40.000Z",
-        "totalPracticeCount": 182
+        "lastPracticed": "2026-11-12T18:48:03.640Z",
+        "totalPracticeCount": 184
       },
       {
         "id": "skill_1782600801284_e4lh9515p",
@@ -15002,7 +15274,7 @@
         "kind": "spell",
         "spellSchool": "Congruencia",
         "level": 5,
-        "xp": 28,
+        "xp": 38,
         "xpToNextLevel": 506,
         "description": "Hechizo de energía que activa el estado Congruencia.",
         "effects": [
@@ -15021,8 +15293,8 @@
         "spellPowerBonus": 10,
         "discoveredFrom": "native-habit",
         "discoveredDate": "2026-06-27T22:53:21.284Z",
-        "lastPracticed": "2026-11-11T11:53:22.184Z",
-        "totalPracticeCount": 84
+        "lastPracticed": "2026-11-12T18:43:18.528Z",
+        "totalPracticeCount": 85
       },
       {
         "id": "skill_1782600801285_jj0fzwy4u",
@@ -15031,7 +15303,7 @@
         "kind": "spell",
         "spellSchool": "Vínculo",
         "level": 2,
-        "xp": 130,
+        "xp": 140,
         "xpToNextLevel": 150,
         "description": "Hechizo de apertura social y contacto con nuevas personas.",
         "effects": [
@@ -15047,8 +15319,8 @@
         "spellPowerBonus": 5,
         "discoveredFrom": "native-habit",
         "discoveredDate": "2026-06-27T22:53:21.285Z",
-        "lastPracticed": "2026-11-11T05:23:11.247Z",
-        "totalPracticeCount": 23
+        "lastPracticed": "2026-11-12T19:56:40.185Z",
+        "totalPracticeCount": 24
       },
       {
         "id": "skill_1782600801285_xfjqocoem",
@@ -15057,7 +15329,7 @@
         "kind": "spell",
         "spellSchool": "Lenguaje",
         "level": 4,
-        "xp": 165,
+        "xp": 175,
         "xpToNextLevel": 337,
         "description": "Hechizo de expansión lingüística y comprensión verbal.",
         "effects": [
@@ -15073,8 +15345,8 @@
         "spellPowerBonus": 5,
         "discoveredFrom": "native-habit",
         "discoveredDate": "2026-06-27T22:53:21.285Z",
-        "lastPracticed": "2026-11-11T12:09:43.753Z",
-        "totalPracticeCount": 64
+        "lastPracticed": "2026-11-12T20:00:15.280Z",
+        "totalPracticeCount": 65
       },
       {
         "id": "skill_1782600801285_36i7nyml0",
@@ -15833,6 +16105,10 @@
           "quest_ventas_d14"
         ],
         "2026-11-12": [
+          "quest_ventas_d13",
+          "quest_ventas_d14"
+        ],
+        "2026-11-13": [
           "quest_ventas_d13",
           "quest_ventas_d14"
         ]

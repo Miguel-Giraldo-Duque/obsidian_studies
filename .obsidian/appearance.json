@@ -3,5 +3,6 @@
   "baseFontSize": 19,
   "enabledCssSnippets": [
     "cierre-dia"
-  ]
+  ],
+  "showRibbon": true
 }

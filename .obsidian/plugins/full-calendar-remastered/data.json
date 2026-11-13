@@ -79,7 +79,7 @@
       "email": "miguel@qnow.tech",
       "refreshToken": null,
       "accessToken": null,
-      "expiryDate": 1794412020261,
+      "expiryDate": 1794535019623,
       "grantedScopes": "https://www.googleapis.com/auth/calendar.readonly https://www.googleapis.com/auth/calendar.events email"
     }
   ],
@@ -116,7 +116,7 @@
   "activityWatch": {
     "enabled": true,
     "apiUrl": "http://127.0.0.1:5600",
-    "lastSyncTime": 1794464395406,
+    "lastSyncTime": 1794535026186,
     "autoSyncEnabled": true,
     "autoSyncIntervalMins": 10,
     "targetCalendarId": "local-activitywatch",
@@ -209,18 +209,20 @@
   },
   "milestones": {
     "counters": {
-      "updated.total": 8,
-      "updated.local": 8,
+      "updated.total": 9,
+      "updated.local": 9,
       "meta.firstActionAt": 1794364191368,
-      "meta.lastActionAt": 1794409432999,
+      "meta.lastActionAt": 1794515750001,
       "day.action.2026-11-10": 1,
       "meta.nightOwlOps": 1,
-      "created.total": 5,
-      "created.local": 5,
+      "created.total": 6,
+      "created.local": 6,
       "day.action.2026-11-11": 12,
       "day.created.2026-11-11": 5,
       "meta.recurringSeriesCreated": 2,
-      "tz.America/Buenos_Aires": 1
+      "tz.America/Buenos_Aires": 1,
+      "day.action.2026-11-12": 2,
+      "day.created.2026-11-12": 1
     },
     "unlockedAt": {},
     "shown": {}
