@@ -79,7 +79,7 @@
       "email": "miguel@qnow.tech",
       "refreshToken": null,
       "accessToken": null,
-      "expiryDate": 1794535019623,
+      "expiryDate": 1794572660181,
       "grantedScopes": "https://www.googleapis.com/auth/calendar.readonly https://www.googleapis.com/auth/calendar.events email"
     }
   ],
@@ -116,7 +116,7 @@
   "activityWatch": {
     "enabled": true,
     "apiUrl": "http://127.0.0.1:5600",
-    "lastSyncTime": 1794535026186,
+    "lastSyncTime": 1794662825730,
     "autoSyncEnabled": true,
     "autoSyncIntervalMins": 10,
     "targetCalendarId": "local-activitywatch",
