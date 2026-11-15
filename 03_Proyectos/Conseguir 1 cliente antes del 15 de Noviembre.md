@@ -13,6 +13,9 @@ escuela: []
 North Star (lag): **1 seña** cobrada o compromiso escrito ≤ 15-nov  
 Inicio: 05-nov | Fin: 15-nov | Días: **11** | Score meta: ≥ **85%** de tácticas del día
 
+## Inbox
+→ [[01_Planificacion/02_Semanal/Inbox#Ventas|Inbox · Ventas]]
+
 ## 1) Objetivo
 
 Lograr 2mil dólares.

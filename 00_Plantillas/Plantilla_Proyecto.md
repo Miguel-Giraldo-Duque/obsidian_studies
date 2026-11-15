@@ -40,6 +40,10 @@ _Pendiente — fecha:_
 
 - 
 
+## Inbox
+→ [[01_Planificacion/02_Semanal/Inbox#Emprendimiento|Inbox · Emprendimiento]]
+_Cambiá el ancla (`#Qnow`, `#Ventas`, `#Lina`, …) a la sección del proyecto. Fuente de verdad: Inbox global — no dupliques tareas acá._
+
 ## Bitácora
 
 ```dataviewjs

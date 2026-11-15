@@ -25,6 +25,15 @@ Leé frontmatter y cuerpo. Los campos Meta Bind viven en frontmatter:
 
 También aceptá inline legacy (`hito1::`, etc.) si el frontmatter está vacío.
 
+## Paso 1.5 — Captura / Inbox
+
+La Captura del día escribe en `01_Planificacion/02_Semanal/Inbox.md` (por proyecto). Antes de hitos:
+
+1. Abrí o listá pendientes abiertos del Inbox (secciones ≠ `Hecho`).
+2. Si hay tareas nuevas sin proyecto claro / o “Nueva tarea” sin renombrar → pedí clasificarlas en la UI de Captura.
+3. Complejas (varios pasos en una línea) → recordá romper en next actions (GTD).
+4. No hace falta “volcar” de noche: ya están en el Inbox que usa Priorizar.
+
 ## Paso 2 — Validar hitos
 
 1. Si `hito1` está vacío → pedí que complete el Hito 1 en Obsidian y pará.
@@ -50,6 +59,7 @@ Si es `true`:
 
 Respondé con un bloque corto:
 
+- Captura del día: ok / pendientes sin proyecto / a romper
 - Hitos del día (lista)
 - Energía (si hay)
 - Si hubo OMA: skill, enlace a evaluación, parche activo, cómo se medirá

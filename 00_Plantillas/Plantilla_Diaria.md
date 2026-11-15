@@ -621,12 +621,374 @@ El mas importante
 - [ ] Acciones de estudio (20′)
 - [ ] 
 
-1:30H
-- [ ] 30min - a
-- [ ] 1H - a
+
 
 4:00pm
 - [ ] Plan salida / ejecutar `mision_salida` 
+
+## Captura del día
+> ≤2 min → hacer · >1 paso → romper · inesperado hoy → 1:30H
+> **Se guarda en** [[01_Planificacion/02_Semanal/Inbox|Inbox global]] por proyecto → Priorizar semanal (E·T·I allá).
+
+```dataviewjs
+/** Captura → Inbox.md. Sin dv.page(Inbox) para no re-render al guardar. */
+const INBOX_PATH = "01_Planificacion/02_Semanal/Inbox.md";
+const SKIP_SECTIONS = new Set(["Hecho", "Backlog"]);
+const DEFAULT_PROJECTS = ["Qnow", "Emprendimiento", "Ventas", "Lina", "Zora", "Pasaporte", "BTZ", "Familia", "Social"];
+const CUANDOS = ["hoy", "7d", "luego"];
+const ORIGENES = ["yo", "pedido"];
+const CACHE_KEY = "__capturaInboxSession";
+
+function uid() {
+    return "c-" + Date.now().toString(36) + "-" + Math.random().toString(36).slice(2, 6);
+}
+function cleanText(raw) {
+    return String(raw || "").replace(/\[(\w+)::\s*[^\]]*\]/g, "").replace(/\s+/g, " ").trim();
+}
+function field(raw, key) {
+    const m = String(raw || "").match(new RegExp("\\[" + key + "::\\s*([^\\]]*)\\]", "i"));
+    return m ? m[1].trim() : "";
+}
+function escapeRe(s) {
+    return String(s).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+function taskLine(r, done) {
+    const text = (r.text || "Nueva tarea").trim();
+    const origen = r.origen ? ` [origen:: ${r.origen}]` : "";
+    const cuando = r.cuando ? ` [cuando:: ${r.cuando}]` : "";
+    const e = r.e ?? 3;
+    const tm = r.t ?? 3;
+    const i = r.i ?? 3;
+    return `- [${done ? "x" : " "}] ${text}${origen}${cuando} [e:: ${e}] [t:: ${tm}] [i:: ${i}]`;
+}
+function getEditorFor(path) {
+    for (const leaf of app.workspace.getLeavesOfType("markdown")) {
+        const view = leaf.view;
+        if (view?.file?.path === path && view.editor) return view.editor;
+    }
+    return null;
+}
+async function readPath(path) {
+    const ed = getEditorFor(path);
+    if (ed) return ed.getValue().split("\n");
+    const af = app.vault.getAbstractFileByPath(path);
+    if (!af) return null;
+    return (await app.vault.read(af)).split("\n");
+}
+async function writePath(path, next) {
+    const af = app.vault.getAbstractFileByPath(path);
+    if (!af) return;
+    saveSession();
+    await app.vault.modify(af, next);
+}
+function saveSession() {
+    window[CACHE_KEY] = { rows: localRows.map((r) => ({ ...r })) };
+}
+function listProjectHeads(lines) {
+    const heads = [];
+    for (const l of lines) {
+        const m = l.match(/^##\s+(.+?)\s*$/);
+        if (!m) continue;
+        const name = m[1].trim();
+        if (SKIP_SECTIONS.has(name)) continue;
+        heads.push(name);
+    }
+    return heads.length ? heads : DEFAULT_PROJECTS.slice();
+}
+function sectionBounds(lines, name) {
+    const re = new RegExp("^##\\s+" + escapeRe(name) + "\\s*$");
+    const headIdx = lines.findIndex((l) => re.test(l));
+    if (headIdx < 0) return null;
+    let sectionEnd = lines.length;
+    for (let i = headIdx + 1; i < lines.length; i++) {
+        if (/^##\s/.test(lines[i]) || /^#\s/.test(lines[i])) { sectionEnd = i; break; }
+    }
+    return { headIdx, sectionEnd };
+}
+function parseInboxRows(lines) {
+    const rows = [];
+    let current = "";
+    for (const line of lines) {
+        const hm = line.match(/^##\s+(.+?)\s*$/);
+        if (hm) {
+            current = hm[1].trim();
+            continue;
+        }
+        if (!current || SKIP_SECTIONS.has(current)) continue;
+        if (!/^\s*- \[ \]/.test(line)) continue;
+        const body = line.replace(/^\s*- \[ \]\s*/, "");
+        const text = cleanText(body);
+        if (!text) continue;
+        const e = Number(field(body, "e"));
+        const tm = Number(field(body, "t"));
+        const i = Number(field(body, "i"));
+        rows.push({
+            key: uid(),
+            text,
+            proyecto: current,
+            cuando: field(body, "cuando") || "7d",
+            origen: field(body, "origen") || "yo",
+            e: Number.isFinite(e) && e > 0 ? e : 3,
+            t: Number.isFinite(tm) && tm > 0 ? tm : 3,
+            i: Number.isFinite(i) && i > 0 ? i : 3,
+            done: false,
+        });
+    }
+    return rows;
+}
+
+let localRows = [];
+const wrap = dv.el("div");
+const tip = wrap.createEl("div", {
+    text: "Alta → Inbox por proyecto. Prioridad (E·T·I) en Priorizar semanal.",
+});
+tip.style.opacity = "0.7";
+tip.style.fontSize = "0.85em";
+tip.style.marginBottom = "8px";
+
+function styleSelect(sel, wide) {
+    sel.style.cssText = [
+        wide ? "max-width:140px" : "width:72px",
+        "height:28px",
+        "padding:2px 4px",
+        "font-size:12px",
+        "border-radius:6px",
+        "border:1px solid var(--background-modifier-border)",
+        "background:var(--background-primary)",
+        "color:var(--text-normal)",
+    ].join(";");
+}
+function optionSelect(parent, value, options, onPick, wide) {
+    const sel = document.createElement("select");
+    parent.appendChild(sel);
+    styleSelect(sel, wide);
+    for (const name of options) {
+        const opt = document.createElement("option");
+        opt.value = name;
+        opt.textContent = name;
+        if (String(name) === String(value)) opt.selected = true;
+        sel.appendChild(opt);
+    }
+    sel.value = String(value || options[0]);
+    for (const ev of ["pointerdown", "mousedown", "mouseup", "click"]) {
+        sel.addEventListener(ev, (e) => e.stopPropagation());
+    }
+    sel.addEventListener("change", (e) => {
+        e.stopPropagation();
+        onPick(sel.value);
+    });
+    return sel;
+}
+
+const table = wrap.createEl("table");
+table.style.width = "100%";
+table.style.tableLayout = "fixed";
+table.style.borderCollapse = "collapse";
+table.style.fontSize = "0.92em";
+const cg = table.createEl("colgroup");
+for (const w of ["36px", "auto", "130px", "80px", "90px"]) {
+    cg.createEl("col").style.width = w;
+}
+const hr = table.createEl("thead").createEl("tr");
+for (const [label, align] of [
+    ["✓", "center"], ["Tarea", "left"], ["Proyecto", "center"],
+    ["Cuando", "center"], ["Origen", "center"],
+]) {
+    const th = hr.createEl("th", { text: label });
+    th.style.textAlign = align;
+    th.style.padding = "6px 4px";
+    th.style.borderBottom = "1px solid var(--background-modifier-border)";
+}
+const tbody = table.createEl("tbody");
+
+async function persistOpen() {
+    const lines = await readPath(INBOX_PATH);
+    if (!lines) { new Notice("Falta Inbox global"); return; }
+    const projects = listProjectHeads(lines);
+    const byProj = {};
+    for (const p of projects) byProj[p] = [];
+    for (const r of localRows.filter((x) => !x.done)) {
+        const p = r.proyecto || projects[0] || "Qnow";
+        if (!byProj[p]) byProj[p] = [];
+        byProj[p].push(r);
+    }
+    let next = lines.slice();
+    for (const name of Object.keys(byProj)) {
+        let bounds = sectionBounds(next, name);
+        if (!bounds) {
+            const hechoIdx = next.findIndex((l) => /^##\s+Hecho\b/.test(l));
+            const insertAt = hechoIdx >= 0 ? hechoIdx : next.length;
+            next = next.slice(0, insertAt).concat(
+                [`## ${name}`, ...byProj[name].map((r) => taskLine(r, false)), ""],
+                next.slice(insertAt)
+            );
+            continue;
+        }
+        const { headIdx, sectionEnd } = bounds;
+        next = next.slice(0, headIdx + 1).concat(
+            byProj[name].map((r) => taskLine(r, false)),
+            next.slice(sectionEnd)
+        );
+    }
+    await writePath(INBOX_PATH, next.join("\n"));
+}
+
+function schedulePersist() {
+    clearTimeout(window.__capturaInboxPersist);
+    window.__capturaInboxPersist = setTimeout(() => {
+        persistOpen().catch((e) => { console.error(e); new Notice("No se pudo guardar en Inbox"); });
+    }, 400);
+}
+
+async function completeRow(r) {
+    localRows = localRows.filter((x) => x.key !== r.key);
+    saveSession();
+    paint();
+    await persistOpen();
+    const lines = await readPath(INBOX_PATH);
+    if (!lines) return;
+    let bounds = sectionBounds(lines, "Hecho");
+    const doneLine = taskLine(r, true);
+    let next = lines;
+    if (!bounds) {
+        next = lines.concat(["", "## Hecho", doneLine]);
+    } else {
+        next = lines.slice(0, bounds.sectionEnd).concat([doneLine], lines.slice(bounds.sectionEnd));
+    }
+    await writePath(INBOX_PATH, next.join("\n"));
+    new Notice("Movida a Inbox · Hecho");
+}
+
+function patchRow(key, partial) {
+    const r = localRows.find((x) => x.key === key);
+    if (!r) return;
+    Object.assign(r, partial);
+    saveSession();
+    schedulePersist();
+}
+
+function paint() {
+    tbody.empty();
+    const view = [...localRows].sort((a, b) => String(a.proyecto).localeCompare(String(b.proyecto)) || a.text.localeCompare(b.text));
+    if (!view.length) {
+        const tr = tbody.createEl("tr");
+        const td = tr.createEl("td", { text: "Inbox vacío — + Tarea", attr: { colspan: "5" } });
+        td.style.padding = "10px 8px";
+        td.style.opacity = "0.7";
+        return;
+    }
+    view.forEach((r) => {
+        const tr = tbody.createEl("tr");
+        const tdChk = tr.createEl("td");
+        tdChk.style.textAlign = "center";
+        const chk = tdChk.createEl("input");
+        chk.type = "checkbox";
+        chk.title = "Completar → ## Hecho en Inbox";
+        for (const ev of ["pointerdown", "mousedown", "click"]) {
+            chk.addEventListener(ev, (e) => e.stopPropagation());
+        }
+        chk.addEventListener("change", () => {
+            if (chk.checked) completeRow(r).catch(console.error);
+        });
+
+        const tdTask = tr.createEl("td");
+        tdTask.style.padding = "4px 6px";
+        const inp = tdTask.createEl("input");
+        inp.type = "text";
+        inp.value = r.text;
+        inp.placeholder = "Qué surgió…";
+        inp.style.width = "100%";
+        inp.style.padding = "5px 6px";
+        for (const ev of ["pointerdown", "mousedown", "click"]) {
+            inp.addEventListener(ev, (e) => e.stopPropagation());
+        }
+        inp.addEventListener("change", () => patchRow(r.key, { text: inp.value.trim() || "Nueva tarea" }));
+
+        const tdProy = tr.createEl("td");
+        tdProy.style.textAlign = "center";
+        optionSelect(tdProy, r.proyecto, DEFAULT_PROJECTS, (v) => patchRow(r.key, { proyecto: v }), true);
+
+        const tdCuando = tr.createEl("td");
+        tdCuando.style.textAlign = "center";
+        optionSelect(tdCuando, r.cuando, CUANDOS, (v) => patchRow(r.key, { cuando: v }));
+
+        const tdOrigen = tr.createEl("td");
+        tdOrigen.style.textAlign = "center";
+        optionSelect(tdOrigen, r.origen, ORIGENES, (v) => patchRow(r.key, { origen: v }));
+    });
+}
+
+async function loadFromFile() {
+    const lines = await readPath(INBOX_PATH);
+    if (!lines) {
+        dv.paragraph("_Falta Inbox global._");
+        return false;
+    }
+    localRows = parseInboxRows(lines);
+    saveSession();
+    paint();
+    return true;
+}
+
+const bar = wrap.createEl("div");
+bar.style.display = "flex";
+bar.style.gap = "8px";
+bar.style.alignItems = "center";
+bar.style.flexWrap = "wrap";
+bar.style.marginTop = "10px";
+const openBtn = bar.createEl("button", { text: "Abrir Inbox" });
+openBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    app.workspace.openLinkText(INBOX_PATH, dv.current().file.path, false);
+});
+const btnAdd = bar.createEl("button", { text: "+ Tarea" });
+btnAdd.addEventListener("click", (e) => {
+    e.stopPropagation();
+    localRows.unshift({
+        key: uid(),
+        text: "Nueva tarea",
+        proyecto: "Qnow",
+        cuando: "7d",
+        origen: "yo",
+        e: 3,
+        t: 3,
+        i: 3,
+        done: false,
+    });
+    saveSession();
+    paint();
+    schedulePersist();
+});
+const btnReload = bar.createEl("button", { text: "Recargar" });
+btnReload.title = "Leer de nuevo desde Inbox (descarta sesión en memoria)";
+btnReload.addEventListener("click", (e) => {
+    e.stopPropagation();
+    delete window[CACHE_KEY];
+    loadFromFile().then(() => new Notice("Captura recargada desde Inbox"));
+});
+const hint = bar.createEl("span", { text: "Proyecto · cuando · origen" });
+hint.style.opacity = "0.65";
+hint.style.fontSize = "0.85em";
+
+(async () => {
+    const af = app.vault.getAbstractFileByPath(INBOX_PATH);
+    if (!af) {
+        dv.paragraph("_Falta [[01_Planificacion/02_Semanal/Inbox|Inbox global]]._");
+        return;
+    }
+    // Sesión en memoria: no pisar con índice Dataview viejo al re-render
+    const cached = window[CACHE_KEY];
+    if (cached && Array.isArray(cached.rows)) {
+        localRows = cached.rows.map((r) => ({ ...r }));
+        paint();
+        return;
+    }
+    await loadFromFile();
+})().catch((e) => {
+    console.error(e);
+    dv.paragraph("_Error cargando Inbox en Captura._");
+});
+```
 
 ## Cierre del Día
 

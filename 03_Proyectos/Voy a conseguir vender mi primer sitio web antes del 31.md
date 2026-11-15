@@ -17,6 +17,9 @@ cursos: Mentalidad de vendedor
 
 _Pendiente — fecha:_
 
+## Inbox
+→ [[01_Planificacion/02_Semanal/Inbox#Ventas|Inbox · Ventas]]
+
 ## Métricas (M)
 - [ ] 30 locales a los que les ofrecí en persona mi servicio de pagina web. 
 - [ ] Definido identidad clave para este proyecto

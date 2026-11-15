@@ -19,6 +19,7 @@ Wind-down espejo de la matutina. Chrome bloqueado desde las 22:00.
 
 - [ ] Organizar cuarto / una cosa concreta de casa
 - [ ] Dejar ropa lista (venta / día siguiente) → mañana solo hacer la cama
+- [ ] Mirar Inbox global (ya entra desde Captura) · opcional sembrar mañana (máx 3 con `^^^`)
 - [ ] Escribir exitos del dia
 - [ ] 5 agradecimientos 
 - [ ] Funeral 
@@ -29,4 +30,5 @@ Wind-down espejo de la matutina. Chrome bloqueado desde las 22:00.
 ## Notas
 
 - Este bloque es accionable en la ventana post-22h, no scroll.
-- Si quedó algo urgente: capturarlo en Inbox, no ejecutarlo ahora.
+- Captura del día ya registra en [[01_Planificacion/02_Semanal/Inbox|Inbox global]]. De noche solo revisás / sembrás mañana.
+- Inesperado aceptado hoy vive en el **1:30H — Respaldo** del diario, no en este wind-down.

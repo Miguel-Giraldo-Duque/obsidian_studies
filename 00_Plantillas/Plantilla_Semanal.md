@@ -28,12 +28,14 @@ _%>
 
 ## Priorizar
 
-> Fuente: [[01_Planificacion/02_Semanal/Inbox|Inbox global]] · solo **pendientes** · `Peso = I × (6−E) × (6−T)`.
+> Fuente: [[01_Planificacion/02_Semanal/Inbox|Inbox global]] · pendientes por **proyecto** · `Peso = I × (6−E) × (6−T)`.
 
 ```dataviewjs
-/** Tabla desde Inbox global — solo abiertas. Sin asignación a días. */
+/** Inbox por secciones de proyecto — solo abiertas. Sin asignación a días. */
 const INBOX_PATH = "01_Planificacion/02_Semanal/Inbox.md";
 const WEEK_PATH = dv.current().file.path;
+const SKIP_SECTIONS = new Set(["Hecho", "Backlog"]);
+const DEFAULT_PROJECTS = ["Qnow", "Emprendimiento", "Ventas", "Lina", "Zora", "Pasaporte", "BTZ", "Familia", "Social"];
 
 function clamp(n) {
     const x = Number(n);
@@ -47,7 +49,14 @@ function cleanText(raw) {
 function uid() {
     return "r-" + Date.now().toString(36) + "-" + Math.random().toString(36).slice(2, 6);
 }
-
+function sectionName(t) {
+    const sub = (t.section?.subpath != null ? String(t.section.subpath) : "").trim();
+    if (!sub) return "";
+    return sub.split(">").pop().trim();
+}
+function escapeRe(s) {
+    return String(s).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
 function getEditorFor(path) {
     for (const leaf of app.workspace.getLeavesOfType("markdown")) {
         const view = leaf.view;
@@ -65,6 +74,33 @@ async function writePath(path, next) {
     if (ed) { ed.setValue(next); return; }
     await app.vault.modify(app.vault.getAbstractFileByPath(path), next);
 }
+function listProjectHeads(lines) {
+    const heads = [];
+    for (const l of lines) {
+        const m = l.match(/^##\s+(.+?)\s*$/);
+        if (!m) continue;
+        const name = m[1].trim();
+        if (SKIP_SECTIONS.has(name)) continue;
+        heads.push(name);
+    }
+    return heads.length ? heads : DEFAULT_PROJECTS.slice();
+}
+function sectionBounds(lines, name) {
+    const re = new RegExp("^##\\s+" + escapeRe(name) + "\\s*$");
+    const headIdx = lines.findIndex((l) => re.test(l));
+    if (headIdx < 0) return null;
+    let sectionEnd = lines.length;
+    for (let i = headIdx + 1; i < lines.length; i++) {
+        if (/^##\s/.test(lines[i]) || /^#\s/.test(lines[i])) { sectionEnd = i; break; }
+    }
+    return { headIdx, sectionEnd };
+}
+function taskLine(r, done) {
+    const origen = r.origen ? ` [origen:: ${r.origen}]` : "";
+    const cuando = r.cuando ? ` [cuando:: ${r.cuando}]` : "";
+    const prio = r.prio ? ` [prio:: ${r.prio}]` : "";
+    return `- [${done ? "x" : " "}] ${r.text || "Nueva tarea"}${origen}${cuando}${prio} [e:: ${r.e}] [t:: ${r.t}] [i:: ${r.i}]`;
+}
 
 const norte = (dv.current().objetivo_norte != null ? String(dv.current().objetivo_norte) : "").trim();
 if (norte) dv.paragraph(`**Norte:** ${norte}`);
@@ -79,12 +115,21 @@ const openTasks = rawTasks ? rawTasks.where((t) => !t.completed) : [];
 
 let localRows = [];
 for (const t of openTasks) {
+    const proy = sectionName(t);
+    if (!proy || SKIP_SECTIONS.has(proy)) continue;
     const e = clamp(t.e) ?? 3;
     const tm = clamp(t.t) ?? 3;
     const i = clamp(t.i) ?? 3;
+    const origen = (t.origen != null ? String(t.origen).trim() : "") || "";
+    const cuando = (t.cuando != null ? String(t.cuando).trim() : "") || "";
+    const prio = (t.prio != null ? String(t.prio).trim() : "") || "";
     localRows.push({
         key: uid(),
         text: cleanText(t.text),
+        proyecto: proy,
+        origen,
+        cuando,
+        prio,
         e, t: tm, i,
         peso: peso(e, tm, i),
     });
@@ -98,7 +143,7 @@ topBar.style.alignItems = "center";
 topBar.style.marginBottom = "8px";
 const openBtn = topBar.createEl("button", { text: "Abrir Inbox" });
 openBtn.addEventListener("click", () => app.workspace.openLinkText(INBOX_PATH, WEEK_PATH, false));
-const tip = topBar.createEl("span", { text: "Solo pendientes del Inbox global" });
+const tip = topBar.createEl("span", { text: "Pendientes por proyecto · Inbox global" });
 tip.style.opacity = "0.65";
 tip.style.fontSize = "0.85em";
 
@@ -137,18 +182,45 @@ function scoreSelect(parent, value, onPick) {
     return sel;
 }
 
+function projectSelect(parent, value, options, onPick) {
+    const sel = document.createElement("select");
+    parent.appendChild(sel);
+    sel.style.cssText = [
+        "max-width:120px",
+        "height:28px",
+        "padding:2px 4px",
+        "font-size:12px",
+        "border-radius:6px",
+        "border:1px solid var(--background-modifier-border)",
+        "background:var(--background-primary)",
+        "color:var(--text-normal)",
+    ].join(";");
+    const opts = options.slice();
+    if (value && !opts.includes(value)) opts.unshift(value);
+    for (const name of opts) {
+        const opt = document.createElement("option");
+        opt.value = name;
+        opt.textContent = name;
+        if (name === value) opt.selected = true;
+        sel.appendChild(opt);
+    }
+    sel.value = value || opts[0] || "Qnow";
+    sel.addEventListener("change", () => onPick(sel.value));
+    return sel;
+}
+
 const table = wrap.createEl("table");
 table.style.width = "100%";
 table.style.tableLayout = "fixed";
 table.style.borderCollapse = "collapse";
 table.style.fontSize = "0.92em";
 const cg = table.createEl("colgroup");
-for (const w of ["36px", "auto", "58px", "58px", "58px", "52px"]) {
+for (const w of ["36px", "auto", "100px", "58px", "58px", "58px", "52px"]) {
     cg.createEl("col").style.width = w;
 }
 const hr = table.createEl("thead").createEl("tr");
 for (const [label, align] of [
-    ["#", "center"], ["Tarea", "left"], ["E", "center"], ["I", "center"],
+    ["#", "center"], ["Tarea", "left"], ["Proy", "center"], ["E", "center"], ["I", "center"],
     ["T", "center"], ["Peso", "right"],
 ]) {
     const th = hr.createEl("th", { text: label });
@@ -160,21 +232,29 @@ const tbody = table.createEl("tbody");
 
 async function persistInbox() {
     const lines = await readPath(INBOX_PATH);
-    const headIdx = lines.findIndex((l) => /^##\s+Backlog\b/.test(l));
-    if (headIdx < 0) { new Notice("Inbox: falta ## Backlog"); return; }
-    let sectionEnd = lines.length;
-    for (let i = headIdx + 1; i < lines.length; i++) {
-        if (/^##\s/.test(lines[i]) || /^#\s/.test(lines[i])) { sectionEnd = i; break; }
+    const projects = listProjectHeads(lines);
+    const byProj = {};
+    for (const p of projects) byProj[p] = [];
+    for (const r of localRows) {
+        const p = r.proyecto || projects[0] || "Qnow";
+        if (!byProj[p]) byProj[p] = [];
+        byProj[p].push(r);
     }
-    const keptDone = [];
-    for (let i = headIdx + 1; i < sectionEnd; i++) {
-        if (/^\s*- \[[xX]\]/.test(lines[i])) keptDone.push(lines[i]);
+    let next = lines.slice();
+    for (const name of Object.keys(byProj)) {
+        let bounds = sectionBounds(next, name);
+        if (!bounds) {
+            const hechoIdx = next.findIndex((l) => /^##\s+Hecho\b/.test(l));
+            const insertAt = hechoIdx >= 0 ? hechoIdx : next.length;
+            const block = [`## ${name}`, ...byProj[name].map((r) => taskLine(r, false)), ""];
+            next = next.slice(0, insertAt).concat(block, next.slice(insertAt));
+            continue;
+        }
+        const { headIdx, sectionEnd } = bounds;
+        const openLines = byProj[name].map((r) => taskLine(r, false));
+        next = next.slice(0, headIdx + 1).concat(openLines, next.slice(sectionEnd));
     }
-    const openLines = localRows.map((r) =>
-        `- [ ] ${r.text || "Nueva tarea"} [e:: ${r.e}] [t:: ${r.t}] [i:: ${r.i}]`
-    );
-    const next = lines.slice(0, headIdx + 1).concat(openLines, keptDone, lines.slice(sectionEnd)).join("\n");
-    await writePath(INBOX_PATH, next);
+    await writePath(INBOX_PATH, next.join("\n"));
 }
 
 function schedulePersist() {
@@ -187,33 +267,26 @@ function schedulePersist() {
 async function completeRow(r) {
     localRows = localRows.filter((x) => x.key !== r.key);
     paint();
+    await persistInbox();
     const lines = await readPath(INBOX_PATH);
-    const headIdx = lines.findIndex((l) => /^##\s+Backlog\b/.test(l));
-    if (headIdx < 0) return;
-    let sectionEnd = lines.length;
-    for (let i = headIdx + 1; i < lines.length; i++) {
-        if (/^##\s/.test(lines[i]) || /^#\s/.test(lines[i])) { sectionEnd = i; break; }
+    let bounds = sectionBounds(lines, "Hecho");
+    let next = lines;
+    if (!bounds) {
+        next = lines.concat(["", "## Hecho", taskLine(r, true)]);
+    } else {
+        const { sectionEnd } = bounds;
+        next = lines.slice(0, sectionEnd).concat([taskLine(r, true)], lines.slice(sectionEnd));
     }
-    const keptDone = [];
-    for (let i = headIdx + 1; i < sectionEnd; i++) {
-        if (/^\s*- \[[xX]\]/.test(lines[i])) keptDone.push(lines[i]);
-    }
-    keptDone.push(`- [x] ${r.text} [e:: ${r.e}] [t:: ${r.t}] [i:: ${r.i}]`);
-    const openLines = localRows.map((x) =>
-        `- [ ] ${x.text || "Nueva tarea"} [e:: ${x.e}] [t:: ${x.t}] [i:: ${x.i}]`
-    );
-    await writePath(INBOX_PATH, lines.slice(0, headIdx + 1).concat(openLines, keptDone, lines.slice(sectionEnd)).join("\n"));
+    await writePath(INBOX_PATH, next.join("\n"));
 }
 
-/** Actualiza datos + UI en el acto (sin destruir el select). */
 function patchRow(key, partial, ui) {
     const r = localRows.find((x) => x.key === key);
     if (!r) return;
     Object.assign(r, partial);
     r.peso = peso(r.e, r.t, r.i);
     if (ui?.pesoEl) ui.pesoEl.textContent = String(r.peso);
-    if (ui?.metaEl) ui.metaEl.textContent = `E${r.e} · I${r.i} · T${r.t}`;
-    // Reordenar cuando cambie el peso (después, para no romper el select)
+    if (ui?.metaEl) ui.metaEl.textContent = `${r.proyecto || "—"} · E${r.e} · I${r.i} · T${r.t}`;
     clearTimeout(window.__prioResort);
     window.__prioResort = setTimeout(() => paint(), 450);
     schedulePersist();
@@ -221,14 +294,15 @@ function patchRow(key, partial, ui) {
 
 function paint() {
     tbody.empty();
-    const view = [...localRows].sort((a, b) => b.peso - a.peso);
+    const view = [...localRows].sort((a, b) => b.peso - a.peso || String(a.proyecto).localeCompare(String(b.proyecto)));
     if (!view.length) {
         const tr = tbody.createEl("tr");
-        const td = tr.createEl("td", { text: "Sin pendientes en Inbox", attr: { colspan: "6" } });
+        const td = tr.createEl("td", { text: "Sin pendientes en Inbox", attr: { colspan: "7" } });
         td.style.padding = "10px 8px";
         td.style.opacity = "0.7";
         return;
     }
+    const projectOpts = [...new Set([...DEFAULT_PROJECTS, ...localRows.map((r) => r.proyecto).filter(Boolean)])];
     view.forEach((r, idx) => {
         const tr = tbody.createEl("tr");
         if (idx < 3) tr.style.boxShadow = "inset 3px 0 0 var(--interactive-accent)";
@@ -250,7 +324,7 @@ function paint() {
         rowBox.style.alignItems = "center";
         const chk = rowBox.createEl("input");
         chk.type = "checkbox";
-        chk.title = "Completar (sale de pendientes)";
+        chk.title = "Completar (va a ## Hecho)";
         chk.addEventListener("change", () => {
             if (chk.checked) completeRow(r).catch(console.error);
         });
@@ -262,7 +336,7 @@ function paint() {
         inp.style.minWidth = "0";
         inp.style.padding = "5px 6px";
         const metaEl = col.createEl("div");
-        metaEl.textContent = `E${r.e} · I${r.i} · T${r.t}`;
+        metaEl.textContent = `${r.proyecto || "—"} · E${r.e} · I${r.i} · T${r.t}`;
         metaEl.style.fontSize = "0.8em";
         metaEl.style.opacity = "0.75";
         metaEl.style.paddingLeft = "24px";
@@ -272,6 +346,10 @@ function paint() {
         inp.addEventListener("change", () => {
             patchRow(r.key, { text: inp.value.trim() || "Nueva tarea" }, ui);
         });
+
+        const tdProy = tr.createEl("td");
+        tdProy.style.textAlign = "center";
+        projectSelect(tdProy, r.proyecto || "Qnow", projectOpts, (name) => patchRow(r.key, { proyecto: name }, ui));
 
         for (const [field, val] of [["e", r.e], ["i", r.i], ["t", r.t]]) {
             const td = tr.createEl("td");
@@ -294,13 +372,23 @@ bar.style.display = "flex";
 bar.style.gap = "8px";
 bar.style.alignItems = "center";
 bar.style.marginTop = "10px";
+const addProySel = document.createElement("select");
+bar.appendChild(addProySel);
+addProySel.style.cssText = "height:28px;padding:2px 6px;border-radius:6px;border:1px solid var(--background-modifier-border);background:var(--background-primary);color:var(--text-normal);";
+for (const name of DEFAULT_PROJECTS) {
+    const opt = document.createElement("option");
+    opt.value = name;
+    opt.textContent = name;
+    addProySel.appendChild(opt);
+}
 const btnAdd = bar.createEl("button", { text: "+ Pendiente" });
 btnAdd.addEventListener("click", () => {
-    localRows.push({ key: uid(), text: "Nueva tarea", e: 3, t: 3, i: 3, peso: peso(3, 3, 3) });
+    const proyecto = addProySel.value || "Qnow";
+    localRows.push({ key: uid(), text: "Nueva tarea", proyecto, origen: "", e: 3, t: 3, i: 3, peso: peso(3, 3, 3) });
     paint();
     schedulePersist();
 });
-const hint = bar.createEl("span", { text: "Al cambiar E/I/T se ve al toque · se guarda en Inbox" });
+const hint = bar.createEl("span", { text: "E/I/T y proyecto se guardan en Inbox por sección" });
 hint.style.opacity = "0.65";
 hint.style.fontSize = "0.85em";
 }

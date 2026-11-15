@@ -5,10 +5,22 @@ tags:
 ---
 # Inbox global
 
-> Backlog vivo (E · T · I). Las notas semanales **solo traen pendientes**.
-> Completá acá o desde el Priorizar semanal · `Peso = I × (6−E) × (6−T)`.
+> Backlog por **proyecto** (E · T · I). La **Captura del día** escribe acá · Priorizar semanal · `Peso = I × (6−E) × (6−T)`.
+> Secciones: Qnow · Emprendimiento · Ventas · Lina · Zora · Pasaporte · BTZ · Familia · Social.
 
-## Backlog
+## Qnow
+- [ ] Planificar Zora entrega el Lunes [origen:: yo] [cuando:: 7d] [e:: 3] [t:: 3] [i:: 3]
+## Emprendimiento
+- [ ] Agendar las actividades (1 salida semanal con amigos acorde a mi presupuesto, 1 espacio de conversación familiar, 1 cita, desarrollo del emprendimiento) [origen:: pedido] [cuando:: 7d] [e:: 3] [t:: 3] [i:: 3]
+## Ventas
+## Lina
+## Zora
+## Pasaporte
+## BTZ
+## Familia
+## Social
+- [ ] Escribir a Pablo que paso. [origen:: yo] [cuando:: luego] [e:: 3] [t:: 3] [i:: 3]
+## Hecho
 - [x] Pedir referidos con oferta concreta [e:: 1] [t:: 1] [i:: 4]
 - [x] Pitch peach pulido [e:: 2] [t:: 2] [i:: 5]
 - [x] Solucionar performance Construct [e:: 3] [t:: 1] [i:: 5]
