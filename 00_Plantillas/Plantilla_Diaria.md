@@ -522,15 +522,34 @@ function esSesionReal(p) {
     return true;
 }
 
+function fueraDeRepaso(p) {
+    const v = p.fuera_de_repaso;
+    if (v === true) return true;
+    const s = (v != null ? String(v) : "").trim().toLowerCase();
+    return s === "true" || s === "yes" || s === "1";
+}
+
+function prioridadDe(p) {
+    return (p.prioridad != null ? String(p.prioridad) : "").trim().toLowerCase();
+}
+
+function enColaEvaluar(p) {
+    if (fueraDeRepaso(p)) return false;
+    if (prioridadDe(p) === "standby") return false;
+    const e = estadoSesion(p);
+    return e === "" || e === "raw" || e === "cornell" || e === "cards";
+}
+
 const sesiones = dv.pages("#sesion-estudio").where(esSesionReal);
-const colaCornell = sesiones.where(p => estadoSesion(p) === "raw");
-const colaGenerar = sesiones.where(p => estadoSesion(p) === "cornell");
+const colaEvaluar = sesiones.where(enColaEvaluar);
 
 let repasarHoy = [];
 if (hoy.isValid()) {
     repasarHoy = dv.pages("#estudio").where(p => p.tema_iniciado).filter(p => {
         const path = String(p.file.path).replace(/\\/g, "/");
         if (path.includes("00_Plantillas/") || String(p.file.name).startsWith("EJEMPLO_")) return false;
+        if (fueraDeRepaso(p)) return false;
+        if (prioridadDe(p) === "standby") return false;
         const inicio = moment(p.tema_iniciado.toString()).startOf("day");
         const d = hoy.diff(inicio, "days");
         return [1, 2, 7, 15, 31].includes(d);
@@ -552,15 +571,14 @@ if (validModes.includes(override)) {
 }
 
 const modoLabel = modoKey === "plazi" ? "Plazi" : modoKey === "lectura" ? "Lectura" : "Repaso";
-const hayBacklog = colaCornell.length > 0 || colaGenerar.length > 0 || repasarHoy.length > 0;
+const hayBacklog = colaEvaluar.length > 0 || repasarHoy.length > 0;
 
 dv.paragraph(`**Modo:** \`${modoLabel}\``);
 
 // Todo lo pendiente, en orden de prioridad dentro de los 20′
 const acciones = [];
-for (const p of colaCornell) acciones.push(`**Cornell** — ${p.file.link}`);
-for (const p of colaGenerar) acciones.push(`**Generar** — ${p.file.link}`);
-for (const p of repasarHoy) acciones.push(`**Repaso** — ${p.file.link}`);
+for (const p of colaEvaluar) acciones.push(`**Generar evaluación** — ${p.file.link}`);
+for (const p of repasarHoy) acciones.push(`**Hacer las preguntas** — ${p.file.link}`);
 
 if (modoKey === "plazi" || modoKey === "lectura") {
     if (hayBacklog) {
@@ -602,9 +620,9 @@ if (campanas.length > 0) {
 ```
 
 ```meta-bind-button
-label: Generar estudios de hoy
+label: Generar evaluación de hoy
 style: primary
-tooltip: Solo notas estudio_estado=cornell. Modal Create Chat = seguridad Cursor. Workspace = Notas_plazi-master.
+tooltip: Sesiones raw/cornell/cards (prioridad critica/normal). Ejercicios y preguntas de práctica; sin esperar Cornell.
 action:
   type: open
   link: cursor://anysphere.cursor-deeplink/prompt?text=%2Fgenerar-estudios-hoy

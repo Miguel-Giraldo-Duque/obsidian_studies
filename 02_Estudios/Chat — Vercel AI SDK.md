@@ -3,7 +3,11 @@ tags:
   - estudio
   - codigo
 tema_iniciado: 2026-09-15
+fuera_de_repaso: true
+prioridad: standby
 ---
+> Fuera de cola de repasos desde 2026-11-22 (pedido de Miguel: arco Vercel AI SDK).
+
 Preguntas, respuestas y ejercicios de código para fijar [[Chat]] del [[02_Estudios/Vercel AI SDK]]: `useChat`, `sendMessage`, `DefaultChatTransport`, `convertToModelMessages`, `UIMessage.parts` y el contrato UI del stream.
 
   

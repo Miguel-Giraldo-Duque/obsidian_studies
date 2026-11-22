@@ -2,7 +2,11 @@
 tags:
   - estudio
 tema_iniciado: 2026-08-16
+fuera_de_repaso: true
+prioridad: standby
 ---
+> Fuera de cola de repasos desde 2026-11-22 (pedido de Miguel: arco Vercel AI SDK).
+
 Preguntas y respuestas para fijar los conceptos de [[02_Estudios/Tokens]]: qué es un token, tokenizer, context window, input vs output y costo.
 
 

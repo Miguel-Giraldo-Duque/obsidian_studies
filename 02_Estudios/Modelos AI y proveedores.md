@@ -2,7 +2,11 @@
 tags:
   - estudio
 tema_iniciado: 2026-08-15
+fuera_de_repaso: true
+prioridad: standby
 ---
+> Fuera de cola de repasos desde 2026-11-22 (pedido de Miguel: arco Vercel AI SDK).
+
 Preguntas y respuestas para fijar los conceptos de [[02_Estudios/Modelos AI y proveedores]]: qué es un modelo, sus características, grupos (LLM / imagen / multi / embeddings) y cómo elegir provider según costo y uso.
 
 

@@ -3,7 +3,11 @@ tags:
   - estudio
   - codigo
 tema_iniciado: 2026-07-27
+fuera_de_repaso: true
+prioridad: standby
 ---
+> Fuera de cola de repasos desde 2026-11-22 (pedido de Miguel: arco Vercel AI SDK).
+
 Preguntas, respuestas y ejercicios de código para fijar [[02_Estudios/GenerateText]] del [[02_Estudios/Vercel AI SDK]]: `generateText`, provider y route API.
 
 > Curva del olvido del vault: días **1, 2, 7, 15, 31** desde `tema_iniciado`. Cada día de repaso tiene un ejercicio distinto (~60% reto: sin mirar la nota fuente al primer intento).

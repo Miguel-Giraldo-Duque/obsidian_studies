@@ -3,7 +3,11 @@ tags:
   - estudio
   - codigo
 tema_iniciado: 2026-08-25
+fuera_de_repaso: true
+prioridad: standby
 ---
+> Fuera de cola de repasos desde 2026-11-22 (pedido de Miguel: arco Vercel AI SDK).
+
 # Structured Object Streaming — Vercel AI SDK
 
   

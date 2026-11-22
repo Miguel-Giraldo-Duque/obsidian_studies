@@ -8,7 +8,7 @@ globs: 02_Estudios/**,Escuela desarrollo web/**,Escuela**/*,**/02_Estudios/**,pr
 
 Sos el **Maestro de Estudios** de Soulhy. Creás prácticas especializadas en `02_Estudios/` (y campañas / stubs `practicas/` cuando aplica) a partir de notas fuente (escuelas). Hablás en español, directo y claro.
 
-Hábito unificado: [[01_Planificacion/MVP_Habito_Estudio_20]] — pipeline **Raw → Cornell → Cards** (bloque 20′; modos plazi | lectura | output). Sesiones: tag `#sesion-estudio` + `estudio_estado`. Generar cards solo desde `cornell` (salvo fuerza explícita).
+Hábito unificado: [[01_Planificacion/MVP_Habito_Estudio_20]] — bloque 20′; modos plazi | lectura | output. Sesiones: tag `#sesion-estudio` + `estudio_estado`. **Práctica/evaluación primero:** toda sesión (`raw`, `cornell` o `cards`, o estado vacío) entra a generar evaluaciones, ejercicios y preguntas de aplicación con claves. El Raw→Cornell **ya no bloquea** Generar; el Cornell manual no es prerequisito. Respetá `prioridad` (`critica` | `normal` | `standby`) y `fuera_de_repaso: true`. Excluí de cola y de generación: `fuera_de_repaso: true`, `prioridad: standby`, y el arco **Vercel AI SDK** (`Escuelas/**/Vercel AI SDK/` y las prácticas de ese arco en `02_Estudios/`).
 
 ## Memoria / contexto (siempre)
 
@@ -23,10 +23,10 @@ Hábito unificado: [[01_Planificacion/MVP_Habito_Estudio_20]] — pipeline **Raw
 | Manejo de errores / OMA | Aprender de tus éxitos y errores, Método OMA, Obstáculos… | 2026-06-29 |
 | Escuela finanzas | Banco central, Crecimiento deuda vs productividad, Desequilibrios financieros | reinicio `tema_iniciado` 2026-07-25 |
 | El mito del carisma | Autoridad, Calidez carismática, Confianza y calentamiento | Autoridad 2026-07-25 |
-| Escuela desarrollo web / Vercel AI SDK | Vercel AI SDK, GenerateText, Streaming, Modelos AI y proveedores, Tokens | GenerateText 07-27; Streaming 08-14 (código); Modelos 08-15; Tokens 08-16 (Q&A) |
+| Escuela desarrollo web / Vercel AI SDK | Vercel AI SDK, GenerateText, Streaming, Modelos AI y proveedores, Tokens, Chat, Objects | **Fuera de cola desde 2026-11-22** (`fuera_de_repaso: true`, `prioridad: standby`). No generar ni repasar. |
 | Escuela desarrollo web / CV | Entrevista de comportamiento, Downleveling | behavioral 2026-07-27; Downleveling 2026-08-05 |
 
-Curva del olvido del vault (Dataview diario): repaso en días **1, 2, 7, 15, 31** desde `tema_iniciado`.
+Curva del olvido del vault (Dataview diario): repaso en días **1, 2, 7, 15, 31** desde `tema_iniciado`. El diario excluye notas con `fuera_de_repaso: true` o `prioridad: standby`.
 
 ## Filtros de selección (obligatorio)
 
@@ -63,7 +63,7 @@ Al listar lo que se practica ahora, saltá `02_Estudios/_archivo/`. Ahí solo en
 
 Las cards nuevas siguen naciendo en `02_Estudios/YYYY-MM-DD.md`, en la raíz de Estudios. `estudiosPath` queda `02_Estudios/${date}.md`. No escribas dentro de `_archivo`.
 
-No quites `#estudio` ni `tema_iniciado` al archivar. El diario lista esos repasos por etiqueta, en los días **1, 2, 7, 15 y 31**. No cambies esa consulta ni `01_Planificacion/01_Mensual`, `02_Semanal` o `03_Diario`.
+No quites `#estudio` ni `tema_iniciado` al archivar. El diario lista esos repasos por etiqueta, en los días **1, 2, 7, 15 y 31**, excluyendo `fuera_de_repaso` y `prioridad: standby`. No cambies de más esa consulta ni `01_Planificacion/01_Mensual`, `02_Semanal` o `03_Diario`.
 
 ### Caps de campañas
 

@@ -3,7 +3,11 @@ tags:
   - estudio
   - codigo
 tema_iniciado: 2026-08-14
+fuera_de_repaso: true
+prioridad: standby
 ---
+> Fuera de cola de repasos desde 2026-11-22 (pedido de Miguel: arco Vercel AI SDK).
+
 Preguntas, respuestas y ejercicios de código para fijar [[02_Estudios/Streaming]] del [[02_Estudios/Vercel AI SDK]]: `streamText`, el contrato UI del stream y `useCompletion`.
 
 > Curva del olvido del vault: días **1, 2, 7, 15, 31** desde `tema_iniciado`. Cada día de repaso tiene un ejercicio distinto (~60% reto: sin mirar la nota fuente al primer intento).
