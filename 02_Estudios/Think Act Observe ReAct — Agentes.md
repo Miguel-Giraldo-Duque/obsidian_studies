@@ -4,7 +4,7 @@ tags:
 prioridad: critica
 tema_iniciado: 2026-11-25
 etapa_repaso: 0
-ultimo_repaso: ""
+ultimo_repaso: 2026-11-25
 proximo_repaso: 2026-11-26
 fuente: "[[Escuelas/Escuela de AI/Agentes/Think Act Observe ReAct|Think Act Observe ReAct]]"
 ---
@@ -31,3 +31,10 @@ Práctica de [[Escuelas/Escuela de AI/Agentes/Think Act Observe ReAct|Think Act 
 - **5. Tu nota dice que «el LM lo ejecuta» y le pasa el resultado como observación. ¿Qué hay que corregir y qué pasa con la observación?**
     - **Respuesta:** Tu nota dice: el LLM ejecuta la acción. La fuente dice: el LLM deja de generar tras escribir la acción (stop and parse); el framework la parsea y ejecuta, y agrega el resultado al final del prompt como observación. Corrección: el que ejecuta es el agente, no el LLM. La observación (logs, respuesta de API, filas de DB) es el nuevo input para el siguiente Thought.
     - **Puntos clave:** stop and parse · el agente ejecuta · observación se agrega al prompt · alimenta el próximo Thought
+
+## Repaso
+
+- **Fecha:** 2026-11-25 (America/Buenos_Aires), primer repaso (etapa 0). Formato opción múltiple (A/B/C + D respuesta libre): las opciones miden reconocimiento, no recuerdo libre.
+- **Día de curva:** primer intento. La mitad falló (ReAct vs CoT), así que repite etapa: `etapa_repaso: 0`, próximo 2026-11-26.
+- **Orden 1, loop Thought → Action → Observation (presupuesto en pesos argentinos):** resultado correcto (opción B) · ayuda ninguna · autocorreccion false.
+- **Orden 2, ReAct vs Chain-of-Thought:** resultado incorrecto · ayuda respuesta · autocorreccion true. No recordó qué era Chain-of-Thought. Al reexplicar: ReAct añade tomar acción entre pasos y usar el feedback del mundo real para evaluar el próximo paso.

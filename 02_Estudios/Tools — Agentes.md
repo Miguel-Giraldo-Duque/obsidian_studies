@@ -3,8 +3,8 @@ tags:
   - estudio
 prioridad: critica
 tema_iniciado: 2026-11-25
-etapa_repaso: 0
-ultimo_repaso: ""
+etapa_repaso: 1
+ultimo_repaso: 2026-11-25
 proximo_repaso: 2026-11-26
 fuente: "[[Escuelas/Escuela de AI/Agentes/Tools|Tools (Agentes)]]"
 ---
@@ -35,3 +35,10 @@ Práctica de [[Escuelas/Escuela de AI/Agentes/Tools|Tools]] del curso de agentes
 - **6. ¿Para qué sirve un decorador `@tool` en un framework?**
     - **Respuesta:** Para no escribir la descripción a mano: el framework toma la firma de la función (nombre, tipos de los argumentos y del retorno) y el docstring, y arma automáticamente el texto de la tool que va al prompt (así lo muestra el curso de HF con `@tool`).
     - **Puntos clave:** firma + docstring → descripción automática · menos errores de formato
+
+## Repaso
+
+- **Fecha:** 2026-11-25 (America/Buenos_Aires). Formato opción múltiple (A/B/C + D respuesta libre): las opciones miden reconocimiento, no recuerdo libre.
+- **Día de curva:** etapa 0 (primera práctica). Las dos preguntas evaluadas correctas por reconocimiento. Avanza a etapa 1, próximo 2026-11-26.
+- **Orden 3, cómo llega una tool y quién la ejecuta:** resultado correcto (opción C) · ayuda ninguna · autocorreccion false.
+- **Orden 4, definición de la tool «rendimiento de los últimos N meses»:** resultado correcto (opción B) · ayuda ninguna · autocorreccion false.

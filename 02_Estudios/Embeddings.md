@@ -3,9 +3,9 @@ tags:
   - estudio
 prioridad: critica
 tema_iniciado: 2026-11-22
-etapa_repaso: 0
-ultimo_repaso: 2026-11-22
-proximo_repaso: 2026-11-23
+etapa_repaso: 1
+ultimo_repaso: 2026-11-25
+proximo_repaso: 2026-11-26
 fuente: "[[Escuelas/Escuela de AI/Embeddings]]"
 ---
 Práctica de [[Escuelas/Escuela de AI/Embeddings|Embeddings]] (Escuela de AI, prioridad critica). Generada el 2026-11-22 tras el cambio a práctica/evaluación sin Cornell. Contraste con [Gemini API · Embeddings](https://ai.google.dev/gemini-api/docs/embeddings) (consultada 2026-11-22).
@@ -49,3 +49,19 @@ Práctica de [[Escuelas/Escuela de AI/Embeddings|Embeddings]] (Escuela de AI, pr
 ### Dudas emergentes
 
 - 2026-11-22 · pregunta_origen: ejercicio de chunking · duda_literal: «no entendería cómo eso tendría que ver con los [embeddings], porque tenía la idea de que eran justamente como esas relaciones entre palabras» · contexto_situacion: tras entender el overlap, no conectaba los chunks con los embeddings · clasificacion: ampliacion_no_cubierta
+
+## Repaso
+
+- **Fecha:** 2026-11-25 (America/Buenos_Aires), día de curva: etapa 0 repetida (prevista 23/11, 2 días de atraso). Formato opción múltiple (A/B/C + D respuesta libre): las opciones miden reconocimiento, no recuerdo libre.
+- **Día de curva:** etapa 0 repetida. Mayoría correcta por reconocimiento; P1 y P4 no salieron en libre. Avanza a etapa 1, próximo 2026-11-26.
+- **Orden 1, pregunta 3 (cercanía en el espacio de embeddings):** resultado correcto (opción B) · ayuda ninguna · autocorreccion false.
+- **Orden 2, pregunta 1 (qué es un embedding):** resultado parcial (respuesta libre) · ayuda respuesta · autocorreccion false. Dijo que es un vector numérico por palabra o chunk; le faltó «captura significado» y mezcló la definición con el uso en RAG (buscar el input y devolver el chunk).
+- **Orden 3, pregunta 4 (rey − hombre + mujer):** resultado incorrecto · ayuda respuesta (explicación con números de juguete) · autocorreccion false. No entendió la pregunta. Al reexplicar, retomó la suma/resta de vectores pero no llegó a explicarlo con claridad.
+- **Orden 4, pregunta 5 (3D / Three.js):** resultado correcto (opción B) · ayuda ninguna · autocorreccion false.
+- **Orden 5, pregunta 6a (RAG, fase de indexar):** resultado correcto (opción C) · ayuda ninguna · autocorreccion false.
+- **Orden 6, pregunta 6b (RAG, fase de consulta + qué recibe el LLM):** resultado correcto (opción A) · ayuda ninguna · autocorreccion false. El pendiente del 22/11 quedó cubierto por reconocimiento.
+- **Pendiente:** pregunta 2 (usos) no evaluada; preguntas 1 y 4 a reevaluar con respuesta libre.
+
+### Dudas emergentes
+
+- 2026-11-25 · pregunta_origen: P4 rey−hombre+mujer · duda_literal: «Pero eso tiene realmente sentido en el comportamiento real de los embeddings o qué?» · contexto_situacion: tras la explicación con números de juguete · clasificacion: ampliacion_no_cubierta
