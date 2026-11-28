@@ -1,9 +1,9 @@
 ---
 tags:
   - sesion-estudio
-estudio_estado: raw
+estudio_estado: cards
 fecha_raw: 2026-10-29
-fecha_cornell: ""
+fecha_cornell: 2026-11-27
 fuente: ""
 ---
 # Sesión estudio — Sin título
